@@ -25,8 +25,9 @@ public class UserRegistrationServlet extends HttpServlet {
         UserCreateRequestDto user = new UserCreateRequestDto(phone,password, conf_password);
 
         userService.registration(user);
+        resp.setContentType("text/html");
 
-     req.getRequestDispatcher("/register.html").include(req,resp);
+     req.getRequestDispatcher("/success.html").include(req,resp);
 
     }
 }

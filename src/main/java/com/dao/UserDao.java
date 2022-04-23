@@ -146,7 +146,7 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public  List<User> getAllUsers() {
 
 
         logger.debug("Start  searching all users....");
@@ -164,8 +164,8 @@ public class UserDao implements Dao<User> {
                 user.setPassword(result.getString("password"));
                 user.setActive(result.getBoolean("isActive"));
                 user.setRole(Role.valueOf(result.getString("role")));
-                user.setCreated(LocalDateTime.parse(result.getString("created")));
-                user.setUpdated(LocalDateTime.parse(result.getString("updated")));
+                user.setCreated(result.getTimestamp("created").toLocalDateTime());
+                user.setUpdated(result.getTimestamp("updated").toLocalDateTime());
                 userList.add(user);
 
             }

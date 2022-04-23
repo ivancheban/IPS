@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:useBean id="userService" class="com.service.UserServiceImpl"/>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -198,7 +198,7 @@
                 </div>
             </div>
             <table class="table table-striped table-hover">
-                <a href="<%=request.getContextPath()%>/list"></a>
+<%--                <a href="<%=request.getContextPath()%>/list"></a>--%>
                 <thead>
                 <tr>
                     <th>Phone</th>
@@ -213,19 +213,23 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="user" items="${listUser}">
+
+
+                <c:forEach var="user" items="${userService.findAll()}" >
 
                     <tr>
-                        <td><c:out value="${user.phone}" /></td>
-                        <td><c:out value="${user.password}" /></td>
-                        <td><c:out value="${user.isActive}" /></td>
-                        <td><c:out value="${user.Role}" /></td>
-                        <td><c:out value="${user.Created}" /></td>
-                        <td><c:out value="${user.Updated}" /></td>
+                        <td><c:out value="${user.getPhone()}" /></td>
+
+                        <td><c:out value="${user.getPassword()}" /></td>
+                        <td><c:out value="${user.isActive()}" /></td>
+                        <td><c:out value="${user.getRole()}" /></td>
+                        <td><c:out value="${user.getCreated()}" /></td>
+                        <td><c:out value="${user.getUpdated()}" /></td>
 
                         <td> <a href="/user/update"  class="btn btn-info" >Update</a></td>
                         <td> <a href="/user/delete" class="btn btn-danger">Delete</a></td>
                     </tr>
+
                 </c:forEach>
                 </tbody>
             </table>

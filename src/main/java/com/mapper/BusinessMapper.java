@@ -3,6 +3,7 @@ package com.mapper;
 import com.dto.*;
 import com.model.*;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -60,6 +61,17 @@ public class BusinessMapper {
         userDto.setUpdated(user.getUpdated());
 
         return userDto;
+    }
+    public User conversationRegisterDto(UserCreateRequestDto userCreateRequestDto){
+        User user = new User();
+        user.setPhone(userCreateRequestDto.getPhone());
+        user.setPassword(userCreateRequestDto.getPassword());
+        user.setRole(Role.CLIENT);
+        user.setActive(user.isActive());
+        user.setCreated(LocalDateTime.now());
+        user.setUpdated(LocalDateTime.now());
+
+        return user;
     }
 
     public Wallet getWallet(WalletDto walletDto) {

@@ -1,68 +1,144 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page session="true" %>
 
-<html lang="en"></html>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-<head>
+<fmt:setLocale value="${param.lang}" />
+<fmt:setBundle basename="resources" />
 
-    <title>Registration Page</title>
-</head>
+<html lang="${param.lang}">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
-<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-<div class="col-md-6" style="background-color: blue">
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
 
-</div>
+    label {
+        margin-bottom: 15px;
+    }
+
+    input,
+    input::-webkit-input-placeholder {
+        font-size: 11px;
+        padding-top: 3px;
+    }
+
+    .form-control {
+        height: auto !important;
+        padding: 8px 12px !important;
+    }
+
+    .input-group {
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21) !important;
+    }
+
+    #button {
+        border: 1px solid #ccc;
+        margin-top: 28px;
+        padding: 6px 12px;
+        color: #666;
+        text-shadow: 0 1px #fff;
+        cursor: pointer;
+        border-radius: 3px 3px;
+        box-shadow: 0 1px #fff inset, 0 1px #ddd;
+        background: #f5f5f5;
+        background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+        background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+        background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+        background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+        background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+    }
+
+    .main-form {
+        margin-top: 30px;
+        margin: 0 auto;
+        max-width: 400px;
+        padding: 10px 40px;
+        background: #009edf;
+        color: #FFF;
+        text-shadow: none;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+    }
+
+    span.input-group-addon i {
+        color: #009edf;
+        font-size: 17px;
+    }
+
+    .login-button {
+        margin-top: 5px;
+    }
+</style>
+
 
 <div class="container">
 
-    <div class="row col-md-4 col-md-offset-2">
-       <c:if test="${requestScope.get('validation_message')!= null}">
+    <div class="row main-form">
+        <c:if test="${requestScope.get('validation_message')!=null}">
             <div class="alert alert-danger" role="alert">
                 <%=request.getAttribute("validation_message")%>
             </div>
-       </c:if>
+        </c:if>
 
         <form action="/user/registration" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Registration Form</h1>
+                    <h1><fmt:message key="label.form" /></h1>
                 </div>
                 <div class="panel-body">
 
+                    <div class="form-group">
+                        <label for="phone"><fmt:message key="phone.label.phone"/></label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="phone" id="phone"
+                                       placeholder="<fmt:message key="phone.placeholder.phone"/>"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><fmt:message key="password.label.password"/></label>
 
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" class="form-control" id="phone">
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" id="password"
+                                       placeholder="<fmt:message key="password.placeholder.password"/>"/>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="text" name="password" class="form-control" id="password">
+                        <label for="confirm password"><fmt:message key="confirm_password.label.confirm_password"/></label>
+
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="conf_password"
+                                       id="confirm password"
+                                       placeholder="<fmt:message key="confirm_password.placeholder.confirm_password"/>"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="confirm password">Confirm Password</label>
-                        <input type="text" name="confirm_password" class="form-control" id="confirm password">
-                    </div>
-                    <input type="submit" class="btn btn-primary">
+
+                    <button class="btn btn-primary" type="submit"><fmt:message key="save.button.save"/></button>
+                    <ul>
+                        <li><a href="?lang=en"><fmt:message key="label.lang.en" /></a></li>
+                        <li><a href="?lang=de"><fmt:message key="label.lang.ua" /></a></li>
+
+                    </ul>
                 </div>
-                </div>
+            </div>
         </form>
 
-        <div class="panel-footer">
-            <small>&copy;InternetProvider</small>
-
-        </div>
 
     </div>
-
 </div>
-</div>
-
-</body>
-
-

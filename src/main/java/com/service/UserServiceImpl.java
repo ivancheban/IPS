@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.UserDao;
 import com.dto.UserCreateRequestDto;
+import com.exceptions.UserException;
 import com.mapper.BusinessMapper;
 import com.model.User;
 
@@ -12,23 +13,23 @@ public class UserServiceImpl implements UserService {
     private BusinessMapper mapper = new BusinessMapper();
 
     @Override
-    public User registration(UserCreateRequestDto user) {
-        User user1 = mapper.conversationRegisterDto(user);
-        User user2 = userDao.create(user1);
+    public String registration(UserCreateRequestDto user) {
 
-//        String userValidate = userValidation(user);
-//
-//        if (userValidate.equals("successfully")) {
-//            User user1 = mapper.conversationRegisterDto(user);
-//            userDao.create(user1);
-//
-//            if (userDao.create(user1) == null) {
-//                userValidate = "error";
-//            }
-        //}
-        //return userValidate;
 
-        return user2;
+        String userValidate = userValidation(user);
+
+        if (userValidate.equals("successfully")) {
+            User user1 = mapper.conversationRegisterDto(user);
+
+
+            if (userDao.create(user1) == null) {
+                userValidate = "error";
+          throw new UserException("user is not create");
+            }
+        }
+        return userValidate;
+
+
     }
 
     @Override
@@ -61,22 +62,26 @@ public class UserServiceImpl implements UserService {
             return "This is phone number not correct";
         } else if (userDao.findByField(user.getPhone()).getPhone() != null) {
             return "This is phone number already exist";
-        } else if (user.getPassword().length() < 8) {
-            return "You are enter password length < 8 symbols";
-        } else if (!user.getPassword().equals(user.getCondPassword())) {
+        } else if (user.getPassword() == null || user.getPassword().isEmpty()) {
+            return "You are  not enter password not correct";
+        } else if (user.getPassword().length() < 4) {
+            return "You are  not enter password not correct";
+        }
+        else if (!user.getPassword().equals(user.getCondPassword())) {
             return "You are make mistake when trying to repeat password";
         }
 
         return "successfully";
+
     }
 
     private boolean validatePhoneNumberFormat(String phoneNumber) {
-        String regexPhone = "^[0-9]{12}$";
+        String regexPhone = "^\\d{12}$";
         return phoneNumber.matches(regexPhone);
     }
 
     private boolean validationPasswordFormat(String password) {
-        String regexPassword = "^\\d{8}$";
+        String regexPassword = "^\\d{4}$";
         return password.matches(regexPassword);
     }
 }

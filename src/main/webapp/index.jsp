@@ -38,7 +38,7 @@
             </ul>
             <div>
                 <a href="/registration.jsp" class="btn btn-success">SignUp</a>
-                <a href="/login.html" class="btn btn-dark">Login</a>
+                <a href="/login.jsp" class="btn btn-dark">Login</a>
             </div>
         </div>
     </div>

@@ -3,15 +3,15 @@ package com.dao;
 import com.exceptions.UserException;
 import com.model.Role;
 import com.model.User;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
+
+import org.junit.Assert;
+import org.junit.Test;
 
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.*;
 
 
 public class UserDaoTest {
@@ -28,40 +28,58 @@ public class UserDaoTest {
         user.setUpdated(LocalDateTime.now());
 
         userDao.create(user);
-        Assertions.assertNotNull(user);
-
+        assertEquals(user, user);
+        assertNotNull("user", user);
 
 
     }
+
     @Test()
-    public void createNegativeNullPhoneTest(){
+    public void createNegativeNullPhoneTest() {
 
         User user = new User();
         user.setPhone(null);
+
         assertThrows(UserException.class, () -> userDao.create(null));
+        //assertThrows(()-> userDao.create(user)).isInstanceOf(RuntimeException.class).hasMessage("User not create");
 
     }
+
     @Test()
-    public void createNegativeNullPasswordTest(){
+    public void createNegativeNullPasswordTest() {
         User user = new User();
         user.setPhone("380669507700");
         user.setPassword(null);
         assertThrows(UserException.class, () -> userDao.create(null));
 
     }
+
     @Test
-    public void findByPhoneNumberPositiveTest(){
-        User user = userDao.findByField("380507037445");
-        assertEquals("380507037445","380507037445");
-        assertEquals(1,1);
+    public void createNegativeDuplicatePhoneTest() {
+        User user = new User();
+        user.setPhone("380507037445");
+        userDao.create(user);
+        assertEquals(UserException.class, UserException.class);
+        assertThrows(UserException.class, () -> userDao.create(null));
     }
 
     @Test
-    public void findByPhoneNumberNegativeTest(){
+    public void findByPhoneNumberPositiveTest() {
+        User user = userDao.findByField("380507037445");
+        //assertThat()
+        assertEquals("380507037445", "380507037445");
+        assertEquals(1, 1);
+    }
+
+    @Test
+    public void findByPhoneNumberNegativeTest() {
         User user = userDao.findByField("380501119974");
 
-        assertEquals((Short) null,null,"phone is not found");
-        Assertions.assertFalse(Boolean.parseBoolean("380501119974"));
+        assertEquals("phone is not found", null, null);
+        /*assertThrows(() -> userDao.findByField("380501119974"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Runtime exception occurred")
+                .hasCauseInstanceOf(IllegalStateException.class);*/
 
     }
 }

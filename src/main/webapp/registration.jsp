@@ -130,11 +130,15 @@
                     </div>
 
                     <button class="btn btn-primary" type="submit"><fmt:message key="save.button.save"/></button>
-                    <ul>
-                        <li><a href="?lang=en"><fmt:message key="label.lang.en" /></a></li>
-                        <li><a href="?lang=de"><fmt:message key="label.lang.ua" /></a></li>
 
-                    </ul>
+                    <div>
+
+                        <li><a href="?lang=en"class="btn btn-danger"><fmt:message key="label.lang.en" /></a></li>
+                       </div>
+                    <div>
+                        <li><a href="?lang=de"class="btn btn-success"><fmt:message key="label.lang.ua" /></a></li>
+
+                    </div>
                 </div>
             </div>
         </form>

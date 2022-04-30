@@ -1,11 +1,20 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${param.lang}" />
+<fmt:setBundle basename="resources" />
+<html lang="${param.lang}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <style>
     /* Demo Background */
     body {
-        background: url(/images/bg/bg-6.png)
+        /*background: url(/images/bg/bg-6.png)*/
     }
 
     /* Form Style */
@@ -159,22 +168,24 @@
 
         <div class="col-md-offset-3 col-md-6">
 
-            <
 
-            <form class="form-horizontal" th:action="@{/login}" method="post">
-                <span class="heading">SIGN IN</span>
+
+            <form action="/login" class="form-horizontal"  method="post">
+                <span class="heading"><fmt:message key="signIn.label.signIn"/></span>
                 <div class="form-group">
 
-                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<fmt:message key="login.phone.login"/>">
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="form-group help">
                     <input type="password" class="form-control" id="inputPassword" name="password"
-                           placeholder="Password">
+                           placeholder="<fmt:message key="login.password.login"/>">
                     <i class="fa fa-lock"></i>
                     <a href="#" class="fa fa-question-circle"></a>
                 </div>
-                <button type="submit">SignIn</button>
+                <button type="submit"><fmt:message key="signIn.button.signIn"/></button>
+
+
             </form>
         </div>
 

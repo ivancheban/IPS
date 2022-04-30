@@ -1,5 +1,6 @@
 package com.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -89,5 +90,9 @@ public class Tariff {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+    public Timestamp convertToTimestamp(LocalDateTime date){
+        if(date == null) date = LocalDateTime.now();
+        return Timestamp.valueOf(date);
     }
 }

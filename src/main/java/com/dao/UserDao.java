@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.dto.UserDto;
 import com.exceptions.UserException;
 import com.model.Role;
 import com.model.User;
@@ -146,7 +147,7 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public  List<User> getAllUsers() {
+    public  List<User> findAll() {
 
 
         logger.debug("Start  searching all users....");

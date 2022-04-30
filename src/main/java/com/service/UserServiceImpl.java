@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.UserDao;
 import com.dto.UserCreateRequestDto;
+import com.dto.UserDto;
 import com.exceptions.UserException;
 import com.mapper.BusinessMapper;
 import com.model.User;
@@ -50,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        List<User> userList = userDao.getAllUsers();
+        List<User> userList = userDao.findAll();
         return userList;
     }
 

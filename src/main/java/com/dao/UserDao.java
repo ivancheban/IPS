@@ -22,6 +22,7 @@ public class UserDao implements Dao<User> {
     private static final String FIND_ALL_QUERY = "select * from users";
     private static Logger logger = LogManager.getLogger(UserDao.class);
 
+   private UserDao userDao;
 
     @Override
     public User create(User user) {
@@ -86,7 +87,7 @@ public class UserDao implements Dao<User> {
 
         logger.debug("User searched");
 
-        System.out.println(user.toString());
+
         return user;
 
     }
@@ -181,4 +182,7 @@ public class UserDao implements Dao<User> {
 
         return userList;
     }
+
+
+
 }

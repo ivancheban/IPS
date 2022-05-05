@@ -1,5 +1,6 @@
 package com.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Limit {
@@ -20,6 +21,10 @@ public class Limit {
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
+    }
+    public Timestamp convertToTimestamp(LocalDateTime date){
+        if(date == null) date = LocalDateTime.now();
+        return Timestamp.valueOf(date);
     }
 
     public int getId() {
@@ -68,5 +73,10 @@ public class Limit {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

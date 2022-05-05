@@ -3,19 +3,94 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page session="true" %>
 
-<fmt:setLocale value="${param.lang}" />
+<fmt:setLocale value="${sessionScope.lang}" />
 <fmt:setBundle basename="resources" />
-<html lang="${param.lang}">
+<html lang="${sessionScope.lang}">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <style>
-    /* Demo Background */
-    body {
-        /*background: url(/images/bg/bg-6.png)*/
+    @import url('https://fonts.googleapis.com/css?family=Caveat:700');
+
+    * {
+        box-sizing: border-box;
     }
+    body {
+        background: url(https://look.com.ua/pic/201805/1920x1080/look.com.ua-282297.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Caveat', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    section {
+        background: rgba( 0,0,0,.6);
+        border-radius: 5px;
+        left: 50%;
+        padding: 40px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        width: 400px;
+    }
+    section h2 {
+        color: #fff;
+        font-family: 'Caveat', sans-serif;
+        font-size: 30px;
+        margin: 0 0 30px;
+        padding: 0;
+        text-align: center;
+    }
+    section div {
+        position: relative;
+    }
+    section div input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        font-family: 'Caveat', sans-serif;
+        font-size: 20px;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        padding: 10px 0;
+        outline: none;
+        width: 100%;
+    }
+    section div label {
+        color: #fff;
+        font-size: 22px;
+        left: 0;
+        letter-spacing: 1px;
+        padding: 10px 0;
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        transition: .5s;
+    }
+    section div input:focus ~ label,
+    section div input:valid ~ label {
+        color: #2d89ea;
+        font-size: 22px;
+        left: 0;
+        top: -22px;
+    }
+    section input[type="submit"] {
+        background: #2d89ea;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Caveat', sans-serif;
+        font-size: 24px;
+        padding: 6px 28px;
+        outline: none;
+    }
+
 
     /* Form Style */
     .form-horizontal {
@@ -161,8 +236,10 @@
         }
     }
 </style>
+<body>
 
 <div class="container">
+
     <div class="row">
 
 
@@ -170,11 +247,12 @@
 
 
 
-            <form action="/login" class="form-horizontal"  method="post">
+            <form action="/login" class="form-horizontal"  method="post" style="scroll-margin-right: 20px" >
+
                 <span class="heading"><fmt:message key="signIn.label.signIn"/></span>
                 <div class="form-group">
 
-                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<fmt:message key="login.phone.login"/>">
+                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="<fmt:message key="login.phone.login"/>">
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="form-group help">
@@ -191,4 +269,6 @@
 
     </div><!-- /.row -->
 </div><!-- /.container -->
+
+</body>
 </html>

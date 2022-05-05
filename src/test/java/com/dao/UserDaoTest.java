@@ -3,33 +3,35 @@ package com.dao;
 import com.exceptions.UserException;
 import com.model.Role;
 import com.model.User;
-
-
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class UserDaoTest {
+
     UserDao userDao = new UserDao();
+
+    @BeforeAll
+    public void init(){
+     User user = new User("380507087133","2365");
+     User user1 = new User("380445546321","7841");
+     User user2 = new User(null,"4460");
+     User user3 = new User("380995213322",null);
+    }
 
     @Test
     public void createUserPositiveTest() {
-        User user = new User();
-        user.setPhone("380507037445");
-        user.setPassword("4562");
-        user.setRole(Role.CLIENT);
-        user.setActive(true);
-        user.setCreated(LocalDateTime.now());
-        user.setUpdated(LocalDateTime.now());
-
-        userDao.create(user);
-        assertEquals(user, user);
-        assertNotNull("user", user);
+//        userDao.create(user);
+//        assertEquals(user, user);
+//        Assertions.assertNotNull(user);
 
 
     }
@@ -37,8 +39,8 @@ public class UserDaoTest {
     @Test()
     public void createNegativeNullPhoneTest() {
 
-        User user = new User();
-        user.setPhone(null);
+
+        //user.setPhone(null);
 
         assertThrows(UserException.class, () -> userDao.create(null));
         //assertThrows(()-> userDao.create(user)).isInstanceOf(RuntimeException.class).hasMessage("User not create");
@@ -75,8 +77,8 @@ public class UserDaoTest {
     public void findByPhoneNumberNegativeTest() {
         User user = userDao.findByField("380501119974");
 
-        assertEquals("phone is not found", null, null);
-        /*assertThrows(() -> userDao.findByField("380501119974"))
+        //assertEquals("phone is not found", null, null);
+       /* assertThrows(() -> userDao.findByField("380501119974"))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("Runtime exception occurred")
                 .hasCauseInstanceOf(IllegalStateException.class);*/

@@ -5,10 +5,10 @@
 <%@ page isELIgnored="false" %>
 <%@ page session="true" %>
 
-<fmt:setLocale value="${param.lang}" />
+<fmt:setLocale value="${sessionScope.lang}" />
 <fmt:setBundle basename="resources" />
 
-<html lang="${param.lang}">
+<html lang="${sessionScope.lang}">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -76,15 +76,18 @@
     .login-button {
         margin-top: 5px;
     }
+
 </style>
 
 
 <div class="container">
 
+
+
     <div class="row main-form">
-        <c:if test="${requestScope.get('validation_message')!=null}">
+        <c:if test="${requestScope.get('validation_message')!=null}" >
             <div class="alert alert-danger" role="alert">
-                <%=request.getAttribute("validation_message")%>
+               <%=request.getAttribute("validation_message")%>
             </div>
         </c:if>
 
@@ -127,18 +130,18 @@
                                        placeholder="<fmt:message key="confirm_password.placeholder.confirm_password"/>"/>
                             </div>
                         </div>
+
                     </div>
 
                     <button class="btn btn-primary" type="submit"><fmt:message key="save.button.save"/></button>
 
-                    <div>
+<%--                    <div>--%>
 
-                        <li><a href="?lang=en"class="btn btn-danger"><fmt:message key="label.lang.en" /></a></li>
-                       </div>
-                    <div>
-                        <li><a href="?lang=de"class="btn btn-success"><fmt:message key="label.lang.ua" /></a></li>
+<%--                        <a href="?lang=en"class="btn btn-danger"><fmt:message key="label.lang.en" /></a>--%>
 
-                    </div>
+<%--                        <a href="?lang=de"class="btn btn-success"><fmt:message key="label.lang.ua" /></a>--%>
+
+<%--                    </div>--%>
                 </div>
             </div>
         </form>

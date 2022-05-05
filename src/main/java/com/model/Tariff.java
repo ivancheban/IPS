@@ -91,6 +91,7 @@ public class Tariff {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
+
     public Timestamp convertToTimestamp(LocalDateTime date){
         if(date == null) date = LocalDateTime.now();
         return Timestamp.valueOf(date);

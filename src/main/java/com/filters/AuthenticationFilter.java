@@ -1,5 +1,8 @@
 package com.filters;
 
+import com.model.Role;
+import com.model.User;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -68,4 +71,5 @@ public class AuthenticationFilter implements Filter {
         }
         return null;
     }
+
 }

@@ -23,6 +23,7 @@ public class TariffDao implements Dao<Tariff> {
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from tariffs";
     private static Logger logger = LogManager.getLogger(UserDao.class);
+    private static UserDao userDao;
 
     @Override
     public String toString() {
@@ -43,7 +44,7 @@ public class TariffDao implements Dao<Tariff> {
             pst.setInt(1, tariff.getId());
             pst.setString(2, tariff.getName());
             pst.setString(3, String.valueOf(tariff.getType()));
-            // pst.setString(4, tariff.getLimitsList());
+             //pst.setString(4, tariff.getLimitsList());
             pst.setInt(5, tariff.getPricePerDay());
             pst.setBoolean(6, tariff.isActive());
             pst.setTimestamp(7, tariff.convertToTimestamp(tariff.getCreated()));
@@ -164,8 +165,8 @@ public class TariffDao implements Dao<Tariff> {
                 tariff = new Tariff();
                 tariff.setId(result.getInt("id"));
                 tariff.setName(result.getString("name"));
-                //tariff.setType(result.getType("type"));
-                //tariff.setLimitsList(result.g);
+                //tariff.setType(result.getType(String.v));
+                //tariff.setLimitsList();
                 tariff.setPricePerDay(result.getInt("pricePerDay"));
                 tariff.setActive(result.getBoolean("isActive"));
                 tariff.setCreated(result.getTimestamp("created").toLocalDateTime());

@@ -5,9 +5,10 @@ import com.dto.UserDto;
 import com.model.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
-    String registration(UserCreateRequestDto user);
+   Map <String,String> registration(UserCreateRequestDto user);
 
     User findByPhoneNumber(String phone);
 

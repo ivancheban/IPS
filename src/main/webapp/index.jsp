@@ -21,7 +21,7 @@
 
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"><fmt:message key="index.button.navbar" /></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,23 +29,18 @@
         <li class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="?lang=ua" class="btn btn-info"><fmt:message key="label.lang.ua" /></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link active" aria-current="page" href="?lang=en" class="btn btn-success"><fmt:message key="label.lang.en" /></a>
                 </li>
 
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <fmt:message key="index.button.languages" />
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a href="?lang=en"><fmt:message key="label.lang.en" /></a></li>
-                        <li><a href="?lang=ua"><fmt:message key="label.lang.ua" /></a></li>
-                    </ul>
-                </li>
+
+
+
+
 <%--             </li>--%>
 <%--                <li class="nav-item">--%>
 <%--                    <a class="nav-link disabled">Disabled</a>--%>
@@ -59,6 +54,6 @@
     </div>
 </nav>
 
-<img src="https://img1.akspic.ru/crops/5/1/2/0/80215/80215-priroda-atmosfera-mir-zemlya-liniya-1920x1080.jpg" width="1600" height="600">
+<img src="https://img1.akspic.ru/crops/5/1/2/0/80215/80215-priroda-atmosfera-mir-zemlya-liniya-1920x1080.jpg" width="1600" height="650">
 </body>
 

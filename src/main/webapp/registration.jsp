@@ -1,3 +1,4 @@
+<%@ page import="com.dto.UserCreateRequestDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -10,11 +11,45 @@
 
 <html lang="${sessionScope.lang}">
 
+<%
+UserCreateRequestDto userDto = ((UserCreateRequestDto) session.getAttribute("userCreateRequestDto"));
+%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Caveat:700');
+
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        background: url(https://look.com.ua/pic/201805/1920x1080/look.com.ua-282297.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Caveat', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    section {
+        background: rgba( 0,0,0,.6);
+        border-radius: 5px;
+        left: 50%;
+        padding: 40px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        width: 400px;
+    }
+    section h2 {
+        color: #fff;
+        font-family: 'Caveat', sans-serif;
+        font-size: 30px;
+        margin: 0 0 30px;
+        padding: 0;
+        text-align: center;
+    }
     .form-group {
         margin-bottom: 15px;
     }
@@ -59,7 +94,7 @@
 
     .main-form {
         margin-top: 30px;
-        margin: 0 auto;
+        margin: 20px auto;
         max-width: 400px;
         padding: 10px 40px;
         background: #009edf;
@@ -85,9 +120,11 @@
 
 
     <div class="row main-form">
-        <c:if test="${requestScope.get('validation_message')!=null}" >
+        <c:if test="${sessionScope.get('errorMessages') !=null}">
             <div class="alert alert-danger" role="alert">
-               <%=request.getAttribute("validation_message")%>
+
+                <fmt:message key="label.invalidData" />
+
             </div>
         </c:if>
 
@@ -98,50 +135,67 @@
                 </div>
                 <div class="panel-body">
 
+<%--                    <div class="form-group">--%>
+
+<%--                        <label class="form-label" for="phone"><fmt:message key="phone.label.phone" /></label>--%>
+<%--                        <div class="cols-sm-10">--%>
+<%--                            <div class="input-group">--%>
+<%--                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>--%>
+<%--                        <input type="phone" name="phone" id="phone" class="form-control form-control-lg"--%>
+<%--                               placeholder="<fmt:message key="phone.placeholder.phone"/>"--%>
+<%--                               value="<%=userDto!=null? userDto.getPhone():""%>"/>--%>
+<%--                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').containsKey('phone') }">--%>
+<%--                            <span class="text-danger"><fmt:message key="label.validPhone" /></span>--%>
+<%--                        </c:if>--%>
+<%--                    </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="phone"><fmt:message key="phone.label.phone" /></label>
+        <input type="phone" name="phone" id="phone" class="form-control form-control-lg"
+               value="<%=userDto!=null?userDto.getPhone():""%>"/>
+        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').containsKey('phone') }">
+                                        <span class="text-danger">
+<%--                                        <%=((Map<String, String>) session.getAttribute("errorMessages")).get("email")%>--%>
+                                            <fmt:message key="label.validPhone" />
+                                        </span>
+        </c:if>
+    </div>
                     <div class="form-group">
-                        <label for="phone"><fmt:message key="phone.label.phone"/></label>
+
+                        <label class="form-label" for="phone"><fmt:message key="password.label.password" /></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="phone" id="phone"
-                                       placeholder="<fmt:message key="phone.placeholder.phone"/>"/>
+                                <input type="phone" name="phone" id="phone" class="form-control form-control-lg"
+                                       placeholder="<fmt:message key="password.placeholder.password"/>"
+                                       value="<%=userDto!=null? userDto.getPassword():""%>"/>
+                                <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').containsKey('password') }">
+                                    <span class="text-danger"><fmt:message key="label.validPassword" /></span>
+                                </c:if>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password"><fmt:message key="password.label.password"/></label>
 
+                    <div class="form-group">
+
+                        <label class="form-label" for="phone"><fmt:message key="confirm_password.label.confirm_password" /></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password"
-                                       placeholder="<fmt:message key="password.placeholder.password"/>"/>
+                                <input type="phone" name="phone" id="phone" class="form-control form-control-lg"
+                                       placeholder="<fmt:message key="confirm_password.placeholder.confirm_password"/>"
+                                       value="<%=userDto!=null? userDto.getPassword():""%>"/>
+                                <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').containsKey('confirm_password') }">
+                                    <span class="text-danger"><fmt:message key="label.validConfirm_Password" /></span>
+                                </c:if>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="confirm password"><fmt:message key="confirm_password.label.confirm_password"/></label>
-
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="conf_password"
-                                       id="confirm password"
-                                       placeholder="<fmt:message key="confirm_password.placeholder.confirm_password"/>"/>
-                            </div>
-                        </div>
-
-                    </div>
-
                     <button class="btn btn-primary" type="submit"><fmt:message key="save.button.save"/></button>
 
-<%--                    <div>--%>
 
-<%--                        <a href="?lang=en"class="btn btn-danger"><fmt:message key="label.lang.en" /></a>--%>
-
-<%--                        <a href="?lang=de"class="btn btn-success"><fmt:message key="label.lang.ua" /></a>--%>
-
-<%--                    </div>--%>
                 </div>
             </div>
         </form>

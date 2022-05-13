@@ -80,6 +80,10 @@ public class UserDao implements Dao<User> {
             user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
             user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
 
+if (user==null){
+    throw new  UserException("user not found");
+
+}
 
         } catch (Exception ex) {
             logger.debug("Problem with searching user: " + ex.getMessage());

@@ -3,12 +3,12 @@ package com.dto;
 public class UserCreateRequestDto {
     private String phone;
     private String password;
-    private  String condPassword;
+    private  String confirm_password;
 
     public UserCreateRequestDto(String phone, String password, String condPassword) {
         this.phone = phone;
         this.password = password;
-        this.condPassword = condPassword;
+        this.confirm_password = confirm_password;
     }
 
     public String getPhone() {
@@ -27,11 +27,11 @@ public class UserCreateRequestDto {
         this.password = password;
     }
 
-    public String getCondPassword() {
-        return condPassword;
+    public String getConfirm_password() {
+        return confirm_password;
     }
 
-    public void setCondPassword(String condPassword) {
-        this.condPassword = condPassword;
+    public void setConfirm_password(String confirm_password) {
+        this.confirm_password = confirm_password;
     }
 }

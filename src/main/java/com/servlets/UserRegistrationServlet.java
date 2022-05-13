@@ -14,7 +14,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
 
 @WebServlet(name = "registration", urlPatterns = {"/user/registration"})
 public class UserRegistrationServlet extends HttpServlet {
@@ -25,23 +28,33 @@ public class UserRegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("User registration");
+        HttpSession session = req.getSession(true);
+        PrintWriter message = resp.getWriter();
+
+
+        resp.setContentType("text/html");
+
         String phone = req.getParameter("phone");
+        System.out.println(phone);
         String password = req.getParameter("password");
-        String conf_password = req.getParameter("conf_password");
+        System.out.println(password);
+        String confirm_password = req.getParameter("confirm_password");
+        System.out.println(confirm_password);
 
-        UserCreateRequestDto user = new UserCreateRequestDto(phone, password, conf_password);
-        String response = userService.registration(user);
 
+        UserCreateRequestDto userCreateRequestDto = new UserCreateRequestDto(phone, password,confirm_password);
+        System.out.println("1++++++++++++++++++++++++++++");
+        Map<String, String> response = userService.registration(userCreateRequestDto);
+        System.out.println("2++++++++++++++++++++++++++");
 
-        if (!response.equals("successfully")) {
-            req.setAttribute("validation_message", response);
-            req.getRequestDispatcher("/registration.jsp").forward(req, resp);
-
+        if(!response.isEmpty()){
+            session.setAttribute("errorMessages", response);
+            System.out.println("============================");
+            session.setAttribute("userCreateRequestDto", userCreateRequestDto);
+            resp.sendRedirect(req.getContextPath() + "/registration.jsp");
         } else {
-            req.setAttribute("validation_message", response);
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
-
-
+            session.setAttribute("registrationMessage", "user with " + userCreateRequestDto.getPhone() + " successful registered");
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
 
     }

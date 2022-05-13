@@ -27,74 +27,12 @@
         margin: 0;
         padding: 0;
     }
-    section {
-        background: rgba( 0,0,0,.6);
-        border-radius: 5px;
-        left: 50%;
-        padding: 40px;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        width: 400px;
-    }
-    section h2 {
-        color: #fff;
-        font-family: 'Caveat', sans-serif;
-        font-size: 30px;
-        margin: 0 0 30px;
-        padding: 0;
-        text-align: center;
-    }
-    section div {
-        position: relative;
-    }
-    section div input {
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid #fff;
-        color: #fff;
-        font-family: 'Caveat', sans-serif;
-        font-size: 20px;
-        letter-spacing: 1px;
-        margin-bottom: 30px;
-        padding: 10px 0;
-        outline: none;
-        width: 100%;
-    }
-    section div label {
-        color: #fff;
-        font-size: 22px;
-        left: 0;
-        letter-spacing: 1px;
-        padding: 10px 0;
-        position: absolute;
-        pointer-events: none;
-        top: 0;
-        transition: .5s;
-    }
-    section div input:focus ~ label,
-    section div input:valid ~ label {
-        color: #2d89ea;
-        font-size: 22px;
-        left: 0;
-        top: -22px;
-    }
-    section input[type="submit"] {
-        background: #2d89ea;
-        border: none;
-        border-radius: 10px;
-        color: #fff;
-        cursor: pointer;
-        font-family: 'Caveat', sans-serif;
-        font-size: 24px;
-        padding: 6px 28px;
-        outline: none;
-    }
+
 
 
     /* Form Style */
     .form-horizontal {
-        background: lightgrey;
+        background: lightblue;
         padding-bottom: 40px;
         border-radius: 15px;
         text-align: center;
@@ -144,19 +82,6 @@
         color: #00b4ef;
     }
 
-    .form-horizontal .fa-question-circle {
-        display: inline-block;
-        position: absolute;
-        top: 12px;
-        right: 60px;
-        font-size: 20px;
-        color: #808080;
-        transition: all 0.5s ease 0s;
-    }
-
-    .form-horizontal .fa-question-circle:hover {
-        color: #000;
-    }
 
     .form-horizontal .main-checkbox {
         float: left;
@@ -165,7 +90,7 @@
         background: #11a3fc;
         border-radius: 50%;
         position: relative;
-        margin: 5px 0 0 5px;
+        margin: 25px 0 0 5px;
         border: 1px solid #11a3fc;
     }
 
@@ -258,8 +183,8 @@
                 <div class="form-group help">
                     <input type="password" class="form-control" id="inputPassword" name="password"
                            placeholder="<fmt:message key="login.password.login"/>">
-                    <i class="fa fa-lock"></i>
-                    <a href="#" class="fa fa-question-circle"></a>
+                   <i class="fa fa-lock"></i>
+
                 </div>
                 <button type="submit"><fmt:message key="signIn.button.signIn"/></button>
 

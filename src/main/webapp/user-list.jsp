@@ -1,8 +1,13 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page session="true" %>
 <jsp:useBean id="userService" class="com.service.UserServiceImpl"/>
-<html lang="en">
+<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setBundle basename="resources" />
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -189,28 +194,27 @@
                 <div class="row">
                     <div class="col-xs-5">
 
-                        <h2>User <b>Management</b></h2>
+                        <h2><fmt:message key="list.users.list"/></h2>
                     </div>
                     <div class="col-xs-7">
-                        <a href="/registration.jsp" class="btn btn-primary"><i class="material-icons"style="color:green">&#xE147;</i> <span>Add New User</span></a>
+                        <a href="/registration.jsp" class="btn btn-primary"><i class="material-icons"style="color:green">&#xE147;</i> <span><fmt:message key="button.addUser.list"/></span></a>
 
 
                     </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
-<%--                <a href="<%=request.getContextPath()%>/list"></a>--%>
+
                 <thead>
                 <tr>
-                    <th>Phone</th>
-                    <th>Password</th>
-                    <th>isActive</th>
-                    <th>Role</th>
-                    <th>Date Created</th>
-                    <th>Date Updated</th>
-
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th><fmt:message key="list.phone.list"/></th>
+                    <th><fmt:message key="list.password.list"/></th>
+                    <th><fmt:message key="list.active.list"/></th>
+                    <th><fmt:message key="list.role.list"/></th>
+                    <th><fmt:message key="list.created.list"/></th>
+                    <th><fmt:message key="list.updated.list"/></th>
+                    <th><fmt:message key="list.update.list"/></th>
+                    <th><fmt:message key="list.delete.list"/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -234,18 +238,18 @@
                 </c:forEach>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

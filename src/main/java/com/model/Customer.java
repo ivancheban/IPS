@@ -18,6 +18,14 @@ public class Customer {
     private LocalDateTime updated;
 
     public Customer() {
+
+    }
+
+    public Customer(String name, String surname, String phone, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
     }
 
     public Customer(int id, String name, String surname, String phone, String email, List<Subscription> services, Wallet wallet, boolean isActive, LocalDateTime created, LocalDateTime updated) {

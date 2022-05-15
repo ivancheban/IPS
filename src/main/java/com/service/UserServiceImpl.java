@@ -1,12 +1,15 @@
 package com.service;
 
 import com.dao.CustomerDao;
+import com.dao.DataSource;
 import com.dao.UserDao;
 import com.dto.CustomerCreateRequestDto;
 import com.mapper.BusinessMapper;
 import com.model.Customer;
 import com.model.User;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +18,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserServiceImpl implements UserService {
-    private UserDao userDao = new UserDao();
-    private  CustomerDao customerDao= new CustomerDao();
+
+    private UserDao userDao;
+    private CustomerDao customerDao;
+    private Connection connection;
     private BusinessMapper businessMapper;
+
+    {
+        try {
+            connection = DataSource.getConnection();
+            userDao = new UserDao(connection);
+            customerDao = new CustomerDao(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public List<String> registration(CustomerCreateRequestDto customerCreateRequestDto) {
@@ -27,8 +43,8 @@ public class UserServiceImpl implements UserService {
         if (validation.isEmpty()) {
 
 
-            User user = businessMapper.conversationRegisterUserDto(customerCreateRequestDto);
-            Customer customer = businessMapper.conversationRegisterDto(customerCreateRequestDto);
+            User user = BusinessMapper.conversationRegisterUserDto(customerCreateRequestDto);
+            Customer customer = BusinessMapper.conversationRegisterDto(customerCreateRequestDto);
 
             System.out.println("INSIDE SERVICE -> " + user.toString());
 
@@ -39,6 +55,7 @@ public class UserServiceImpl implements UserService {
         return validation;
 
     }
+
     private List<String> userValidation(CustomerCreateRequestDto createRequestDto) {
         List<String> validResult = new ArrayList<>();
 
@@ -63,11 +80,10 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     private void validatePhoneNumberFormat(String phoneNumber) {
-        Pattern pattern= Pattern.compile("^\\d{12}$");
+        Pattern pattern = Pattern.compile("^\\d{12}$");
         Matcher matcher = pattern.matcher(phoneNumber);
-        if(userDao.findByField(phoneNumber).equals(phoneNumber)){
+        if (userDao.findByField(phoneNumber).equals(phoneNumber)) {
             throw new RuntimeException("It looks like this phone has already been registered");
         }
         if (!matcher.matches()) {
@@ -82,7 +98,8 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("You enter invalid password");
         }
     }
-    private  void  validConfirmPassword(String password, String confirm_password){
+
+    private void validConfirmPassword(String password, String confirm_password) {
         if (!password.equals(confirm_password)) {
             throw new RuntimeException("You enter invalid confirm password");
         }
@@ -106,9 +123,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        List<User>usersList = userDao.findAll();
+        List<User> usersList = userDao.findAll();
         return usersList;
     }
-    }
+}
 
 

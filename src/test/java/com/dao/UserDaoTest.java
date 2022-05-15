@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -18,7 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserDaoTest {
 
-    UserDao userDao = new UserDao();
+    UserDao userDao;
+
+    {
+        try {
+            userDao = new UserDao();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 //    @BeforeAll
 //    public void init(){

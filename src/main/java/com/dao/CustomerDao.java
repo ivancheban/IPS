@@ -8,13 +8,14 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDao implements Dao<Customer> {
 
-    private static final String CREATE_QUERY = "insert into customers(id,name,surname, phone,email,services,wallet,isActive,created,updated) values (?,?,?,?,?,?,?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into customers(name,surname, phone,email) values (?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from customers where phone = ?";
     private static final String UPDATE_QUERY = "UPDATE customers SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
@@ -22,6 +23,19 @@ public class CustomerDao implements Dao<Customer> {
     private static Logger logger = LogManager.getLogger(UserDao.class);
 
     private CustomerDao customerDao;
+
+    private Connection con;
+
+    public CustomerDao(Connection con) {
+        try {
+            this.con  = DataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public CustomerDao() {
+    }
 
     @Override
     public Customer create(Customer customer) {
@@ -32,20 +46,20 @@ public class CustomerDao implements Dao<Customer> {
         }
 
 
-        try (Connection con = DataSource.getConnection();
+        try (
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
-            pst.setInt(1, customer.getId());
-            pst.setString(2, customer.getName());
-            pst.setString(3, customer.getSurname());
-            pst.setString(4, customer.getPhone());
-            pst.setString(5, customer.getEmail());
+
+            pst.setString(1, customer.getName());
+            pst.setString(2, customer.getSurname());
+            pst.setString(3, customer.getPhone());
+            pst.setString(4, customer.getEmail());
 
             // pst.setString(6, customer.getServices());
             // pst.setString(7, customer.getWallet());
-            pst.setBoolean(8, customer.isActive());
-
-            pst.setTimestamp(9, customer.convertToTimestamp(customer.getCreated()));
-            pst.setTimestamp(10, customer.convertToTimestamp(customer.getUpdated()));
+//            pst.setBoolean(8, customer.isActive());
+//
+//            pst.setTimestamp(9, customer.convertToTimestamp(customer.getCreated()));
+//            pst.setTimestamp(10, customer.convertToTimestamp(customer.getUpdated()));
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Created more than one record!!");

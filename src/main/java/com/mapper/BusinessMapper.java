@@ -64,20 +64,32 @@ public class BusinessMapper {
         return userDto;
     }
 
-    public User conversationRegisterUserDto(CustomerCreateRequestDto createRequestDto) {
-        User user = new User();
-        if (user == null) {
-            user.setPhone(createRequestDto.getPhone());
-            user.setPassword(createRequestDto.getPassword());
-            user.setActive(false);
-            user.setRole(Role.CLIENT);
-            user.setCreated(LocalDateTime.now());
-            user.setUpdated(LocalDateTime.now());
+    public static User conversationRegisterUserDto(CustomerCreateRequestDto createRequestDto) {
+        return new User(createRequestDto.getPhone(), createRequestDto.getPassword());
 
-        }
-        return user;
+//            user.setPhone(createRequestDto.getPhone());
+//            user.setPassword(createRequestDto.getPassword());
+//            user.setActive(false);
+//            user.setRole(Role.CLIENT);
+//            user.setCreated(LocalDateTime.now());
+//            user.setUpdated(LocalDateTime.now());
+
+
+
     }
-
+    public static Customer conversationRegisterDto(CustomerCreateRequestDto createRequestDto) {
+        Customer customer = new Customer(createRequestDto.getName(),createRequestDto.getSurname(),createRequestDto.getPhone(),createRequestDto.getEmail());
+//        customer.setName(createRequestDto.getName());
+//        customer.setSurname(createRequestDto.getSurname());
+//        customer.setPhone(createRequestDto.getPhone());
+//        customer.setEmail(createRequestDto.getEmail());
+//        customer.setServices(new ArrayList<>());
+////        customer.setWallet(new Wallet());
+//        customer.setActive(customer.isActive());
+//        customer.setCreated(LocalDateTime.now());
+//        customer.setUpdated(LocalDateTime.now());
+        return customer;
+    }
 
 
 
@@ -101,19 +113,7 @@ public class BusinessMapper {
 
         return walletDto;
     }
-    public Customer conversationRegisterDto(CustomerCreateRequestDto createRequestDto) {
-        Customer customer = new Customer();
-        customer.setName(createRequestDto.getName());
-        customer.setSurname(createRequestDto.getSurname());
-        customer.setPhone(createRequestDto.getPhone());
-        customer.setEmail(createRequestDto.getEmail());
-//        customer.setServices(new ArrayList<>());
-//        customer.setWallet(new Wallet());
-        customer.setActive(customer.isActive());
-        customer.setCreated(LocalDateTime.now());
-        customer.setUpdated(LocalDateTime.now());
-        return customer;
-    }
+
 
     public Customer getCustomer(CustomerDto customerDto) {
         Customer customer = new Customer();

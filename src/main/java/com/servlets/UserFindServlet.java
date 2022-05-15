@@ -17,7 +17,7 @@ import java.io.IOException;
 public class UserFindServlet extends HttpServlet {
 
     private UserService userService = new UserServiceImpl();
-    private UserDao userDao = new UserDao();
+   // private UserDao userDao = new UserDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +22,19 @@ public class UserDao implements Dao<User> {
     private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
     private static Logger logger = LogManager.getLogger(UserDao.class);
+    private Connection con;
+    public UserDao(Connection con) {
+        try {
+            this.con  = DataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-   private UserDao userDao;
+//   private UserDao userDao;
+
+    public UserDao() throws SQLException {
+    }
 
     @Override
     public User create(User user) {
@@ -33,7 +45,7 @@ public class UserDao implements Dao<User> {
         }
 
 
-        try (Connection con = DataSource.getConnection();
+        try (
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
             pst.setInt(1, user.getId());
             pst.setString(2, user.getPhone());

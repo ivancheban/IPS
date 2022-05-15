@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "delete", urlPatterns = "/user/delete")
 public class DeleteServlet extends HttpServlet {
     private UserService userService = new UserServiceImpl();
-    private UserDao userDao = new UserDao();
+   // private UserDao userDao = new UserDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -7,7 +7,7 @@ public class CustomerDto {
     private int id;
     private String name;
     private String surname;
-    private String phone_number;
+    private String phone;
     private String email;
     private List<SubscriptionDto> servicesDto;
     private WalletDto walletDto;
@@ -18,16 +18,25 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
-    public CustomerDto(String name, String surname, String phone_number, String email, List<SubscriptionDto> servicesDto, WalletDto walletDto, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public CustomerDto(int id, String name, String surname, String phone, String email, List<SubscriptionDto> servicesDto, WalletDto walletDto, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
-        this.phone_number = phone_number;
+        this.phone = phone;
         this.email = email;
         this.servicesDto = servicesDto;
         this.walletDto = walletDto;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,12 +55,12 @@ public class CustomerDto {
         this.surname = surname;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -101,6 +110,4 @@ public class CustomerDto {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
-
-
 }

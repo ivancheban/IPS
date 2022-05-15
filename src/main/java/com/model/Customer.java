@@ -9,26 +9,25 @@ public class Customer {
     private int id;
     private String name;
     private String surname;
-    private String phone_number;
+    private String phone;
     private String email;
-    private List<Subscription> services;
-    private Wallet wallet;
+//    private List<Subscription> services;
+//    private Wallet wallet;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
 
     public Customer() {
-
     }
 
-    public Customer(int id, String name, String surname, String phone_number, String email, List<Subscription> services, Wallet wallet, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public Customer(int id, String name, String surname, String phone, String email, List<Subscription> services, Wallet wallet, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.phone_number = phone_number;
+        this.phone = phone;
         this.email = email;
-        this.services = services;
-        this.wallet = wallet;
+//        this.services = services;
+//        this.wallet = wallet;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
@@ -58,12 +57,12 @@ public class Customer {
         this.surname = surname;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -74,21 +73,21 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Subscription> getServices() {
-        return services;
-    }
-
-    public void setServices(List<Subscription> services) {
-        this.services = services;
-    }
-
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
+//    public List<Subscription> getServices() {
+//        return services;
+//    }
+//
+//    public void setServices(List<Subscription> services) {
+//        this.services = services;
+//    }
+//
+//    public Wallet getWallet() {
+//        return wallet;
+//    }
+//
+//    public void setWallet(Wallet wallet) {
+//        this.wallet = wallet;
+//    }
 
     public boolean isActive() {
         return isActive;
@@ -114,13 +113,14 @@ public class Customer {
         this.updated = updated;
     }
 
-    public Timestamp convertToTimestamp(LocalDateTime date){
-        if(date == null) date = LocalDateTime.now();
-        return Timestamp.valueOf(date);
-    }
-
     @Override
     public String toString() {
         return super.toString();
+    }
+
+
+    public Timestamp convertToTimestamp(LocalDateTime date){
+        if(date == null) date = LocalDateTime.now();
+        return Timestamp.valueOf(date);
     }
 }

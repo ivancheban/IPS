@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CustomerDao implements Dao<Customer> {
 
-    private static final String CREATE_QUERY = "insert into customers(id,name,surname,phone_number, email,services,wallet,isActive,created,updated) values (?,?,?,?,?,?,?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into customers(id,name,surname, phone,email,services,wallet,isActive,created,updated) values (?,?,?,?,?,?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from customers where phone = ?";
     private static final String UPDATE_QUERY = "UPDATE customers SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
@@ -37,8 +37,9 @@ public class CustomerDao implements Dao<Customer> {
             pst.setInt(1, customer.getId());
             pst.setString(2, customer.getName());
             pst.setString(3, customer.getSurname());
-            pst.setString(4, customer.getPhone_number());
+            pst.setString(4, customer.getPhone());
             pst.setString(5, customer.getEmail());
+
             // pst.setString(6, customer.getServices());
             // pst.setString(7, customer.getWallet());
             pst.setBoolean(8, customer.isActive());
@@ -76,9 +77,9 @@ public class CustomerDao implements Dao<Customer> {
 
             customer.setName(resultSet.getString("name"));
             customer.setSurname(resultSet.getString("surname"));
-            customer.setPhone_number(resultSet.getString("phone_number"));
+            customer.setPhone(resultSet.getString("phone_number"));
             customer.setEmail(resultSet.getString("email"));
-            customer.setWallet(resultSet.getObject("wallet", Wallet.class));
+           // customer.setWallet(resultSet.getObject("wallet", Wallet.class));
             //customer.setServices(resultSet.getObject("subscriptions", ArrayList<Subscription.class>);
 
             customer.setActive(resultSet.getBoolean("isActive"));
@@ -102,17 +103,93 @@ public class CustomerDao implements Dao<Customer> {
 
     @Override
     public Customer update(Customer item) {
-        return null;
+
+        Customer customer = new Customer();
+
+
+        logger.debug("Start customer updating....");
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
+            pst.setInt(1, customer.getId());
+
+            customer.setName(item.getName());
+            customer.setSurname(item.getSurname());
+            customer.setPhone(item.getPhone());
+            customer.setEmail(item.getEmail());
+            customer.setActive(item.isActive());
+            customer.setCreated(item.getCreated());
+            customer.setUpdated(item.getUpdated());
+
+            int status = pst.executeUpdate();
+            if (status != 1) throw new UserException("Updated more than one record!!");
+
+
+        } catch (Exception ex) {
+
+            logger.debug("Problem with updating customer: " + ex.getMessage());
+        }
+
+        logger.debug("Customer updated");
+        return customer;
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        boolean status_boolean = false;
+        logger.debug("Start customer deleting....");
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(DELETE_QUERY);) {
+            pst.setInt(1, id);
+
+            int status = pst.executeUpdate();
+            if (status == 1) {
+                status_boolean = true;
+            }
+            if (status != 1) throw new UserException("Deleted more than one record!!");
+            con.close();
+        } catch (Exception ex) {
+            logger.debug("Problem with deleting customer: " + ex.getMessage());
+        }
+
+        logger.debug("customer deleted");
+        return status_boolean;
     }
 
     @Override
     public List<Customer> findAll() {
-        return null;
+
+        logger.debug("Start  searching all customers....");
+        List<Customer> customers = null;
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
+            ResultSet result = pst.executeQuery();
+            customers = new ArrayList<>();
+            Customer customer= null;
+            while (result.next()) {
+                customer = new Customer();
+                customer.setId(result.getInt("id"));
+                customer.setName(result.getString("name"));
+                customer.setSurname(result.getString("surname"));
+                customer.setPhone(result.getString("phone"));
+                customer.setEmail(result.getString("password"));
+                customer.setActive(result.getBoolean("isActive"));
+                customer.setCreated(result.getTimestamp("created").toLocalDateTime());
+                customer.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+                customers.add(customer);
+
+            }
+
+
+        } catch (Exception ex) {
+            logger.debug("Problem with searching all customers: " + ex.getMessage());
+        }
+
+        logger.debug("All Customers searched");
+        System.out.println(customers);
+
+        return customers;
     }
 
 

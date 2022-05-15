@@ -1,12 +1,13 @@
 package com.service;
 
+import com.dao.CustomerDao;
 import com.dao.UserDao;
-import com.dto.UserCreateRequestDto;
-import com.dto.UserDto;
-import com.exceptions.UserException;
+import com.dto.CustomerCreateRequestDto;
 import com.mapper.BusinessMapper;
+import com.model.Customer;
 import com.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,42 +16,46 @@ import java.util.regex.Pattern;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDao();
-    private BusinessMapper mapper = new BusinessMapper();
+    private  CustomerDao customerDao= new CustomerDao();
+    private BusinessMapper businessMapper;
 
     @Override
-    public Map<String, String> registration(UserCreateRequestDto userCreateRequestDto) {
-
-        Map<String, String> validation = userValidation(userCreateRequestDto);
+    public List<String> registration(CustomerCreateRequestDto customerCreateRequestDto) {
+        List<String> validation = userValidation(customerCreateRequestDto);
 
 
         if (validation.isEmpty()) {
 
-            User user = mapper.conversationRegisterDto(userCreateRequestDto);
+
+            User user = businessMapper.conversationRegisterUserDto(customerCreateRequestDto);
+            Customer customer = businessMapper.conversationRegisterDto(customerCreateRequestDto);
 
             System.out.println("INSIDE SERVICE -> " + user.toString());
+
             userDao.create(user);
+            customerDao.create(customer);
+
         }
         return validation;
 
-
     }
-    private Map<String, String> userValidation(UserCreateRequestDto user) {
-        Map<String, String> validResult = new TreeMap<>();
+    private List<String> userValidation(CustomerCreateRequestDto createRequestDto) {
+        List<String> validResult = new ArrayList<>();
 
         try {
-            validatePhoneNumberFormat(user.getPhone());
+            validatePhoneNumberFormat(createRequestDto.getPhone());
         } catch (Exception e) {
-            validResult.put("phone", e.getMessage());
+            validResult.add("phone");
         }
         try {
-            validationPasswordFormat(user.getPassword());
+            validationPasswordFormat(createRequestDto.getPassword());
         } catch (Exception e) {
-            validResult.put("password", e.getMessage());
+            validResult.add("password");
         }
         try {
-            validConfirmPassword(user.getPassword(), user.getConfirm_password());
+            validConfirmPassword(createRequestDto.getPassword(), createRequestDto.getConfirm_password());
         } catch (Exception e) {
-            validResult.put("confirm_password", e.getMessage());
+            validResult.add("confirm_password");
         }
 
         return validResult;
@@ -77,11 +82,12 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("You enter invalid password");
         }
     }
-       private  void  validConfirmPassword(String password, String confirm_password){
-            if (!password.equals(confirm_password)) {
-                throw new RuntimeException("You enter invalid confirm password");
-            }
+    private  void  validConfirmPassword(String password, String confirm_password){
+        if (!password.equals(confirm_password)) {
+            throw new RuntimeException("You enter invalid confirm password");
         }
+    }
+
     @Override
     public User findByPhoneNumber(String phone) {
         return userDao.findByField(phone);
@@ -100,8 +106,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        List<User> userList = userDao.findAll();
-        return userList;
+        List<User>usersList = userDao.findAll();
+        return usersList;
     }
     }
 

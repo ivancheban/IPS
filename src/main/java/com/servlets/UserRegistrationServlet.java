@@ -1,8 +1,8 @@
 package com.servlets;
 
-import com.dao.UserDao;
-import com.dto.UserCreateRequestDto;
-import com.model.User;
+import com.dto.CustomerCreateRequestDto;
+import com.service.CustomerService;
+import com.service.CustomerServiceImpl;
 import com.service.UserService;
 import com.service.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "registration", urlPatterns = {"/user/registration"})
@@ -27,33 +28,43 @@ public class UserRegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.info("User registration");
+        logger.info("Customer registration");
         HttpSession session = req.getSession(true);
         PrintWriter message = resp.getWriter();
 
 
         resp.setContentType("text/html");
+        String name = req.getParameter("name");
+        System.out.println(name);
+
+        String surname = req.getParameter("surname");
+        System.out.println(surname);
+
+        String email = req.getParameter("email");
+        System.out.println(email);
 
         String phone = req.getParameter("phone");
         System.out.println(phone);
+
         String password = req.getParameter("password");
         System.out.println(password);
+
         String confirm_password = req.getParameter("confirm_password");
         System.out.println(confirm_password);
 
 
-        UserCreateRequestDto userCreateRequestDto = new UserCreateRequestDto(phone, password,confirm_password);
+        CustomerCreateRequestDto customerCreateRequestDto = new CustomerCreateRequestDto(name,surname,email,phone, password,confirm_password);
         System.out.println("1++++++++++++++++++++++++++++");
-        Map<String, String> response = userService.registration(userCreateRequestDto);
+        List<String> response =userService.registration(customerCreateRequestDto);
         System.out.println("2++++++++++++++++++++++++++");
 
         if(!response.isEmpty()){
             session.setAttribute("errorMessages", response);
             System.out.println("============================");
-            session.setAttribute("userCreateRequestDto", userCreateRequestDto);
+            session.setAttribute("customerCreateRequestDto", customerCreateRequestDto);
             resp.sendRedirect(req.getContextPath() + "/registration.jsp");
         } else {
-            session.setAttribute("registrationMessage", "user with " + userCreateRequestDto.getPhone() + " successful registered");
+            session.setAttribute("registrationMessage", "customer with " + customerCreateRequestDto.getPhone() + " successful registered");
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
 

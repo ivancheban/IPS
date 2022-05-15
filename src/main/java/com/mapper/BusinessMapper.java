@@ -4,6 +4,7 @@ import com.dto.*;
 import com.model.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +35,7 @@ public class BusinessMapper {
     public Function<TariffDto, Tariff> TariffToEntity = this::getTariff;
 
     public Function<Limit, LimitDto> LimitToDto = this::getLimitDto;
-    public Function<LimitDto, Limit>LimitToEntity = this::getLimit;
+    public Function<LimitDto, Limit> LimitToEntity = this::getLimit;
 
 
     public User getUser(UserDto userDto) {
@@ -62,17 +63,24 @@ public class BusinessMapper {
 
         return userDto;
     }
-    public User conversationRegisterDto(UserCreateRequestDto userCreateRequestDto){
-        User user = new User();
-        user.setPhone(userCreateRequestDto.getPhone());
-        user.setPassword(userCreateRequestDto.getPassword());
-        user.setRole(Role.CLIENT);
-        user.setActive(user.isActive());
-        user.setCreated(LocalDateTime.now());
-        user.setUpdated(LocalDateTime.now());
 
+    public User conversationRegisterUserDto(CustomerCreateRequestDto createRequestDto) {
+        User user = new User();
+        if (user == null) {
+            user.setPhone(createRequestDto.getPhone());
+            user.setPassword(createRequestDto.getPassword());
+            user.setActive(false);
+            user.setRole(Role.CLIENT);
+            user.setCreated(LocalDateTime.now());
+            user.setUpdated(LocalDateTime.now());
+
+        }
         return user;
     }
+
+
+
+
 
     public Wallet getWallet(WalletDto walletDto) {
         Wallet wallet = new Wallet();
@@ -93,16 +101,29 @@ public class BusinessMapper {
 
         return walletDto;
     }
+    public Customer conversationRegisterDto(CustomerCreateRequestDto createRequestDto) {
+        Customer customer = new Customer();
+        customer.setName(createRequestDto.getName());
+        customer.setSurname(createRequestDto.getSurname());
+        customer.setPhone(createRequestDto.getPhone());
+        customer.setEmail(createRequestDto.getEmail());
+//        customer.setServices(new ArrayList<>());
+//        customer.setWallet(new Wallet());
+        customer.setActive(customer.isActive());
+        customer.setCreated(LocalDateTime.now());
+        customer.setUpdated(LocalDateTime.now());
+        return customer;
+    }
 
     public Customer getCustomer(CustomerDto customerDto) {
         Customer customer = new Customer();
 
         customer.setName(customerDto.getName());
         customer.setSurname(customerDto.getSurname());
-        customer.setPhone_number(customerDto.getPhone_number());
+        customer.setPhone(customerDto.getPhone());
         customer.setEmail(customerDto.getEmail());
-        customer.setServices(collectionToList(customerDto.getServicesDto(), SubscriptionToEntity));
-        customer.setWallet(getWallet(customerDto.getWalletDto()));
+//        customer.setServices(collectionToList(customerDto.getServicesDto(), SubscriptionToEntity));
+//        customer.setWallet(getWallet(customerDto.getWalletDto()));
         customer.setActive(customerDto.isActive());
         customer.setCreated(customerDto.getCreated());
         customer.setUpdated(customerDto.getUpdated());
@@ -115,10 +136,10 @@ public class BusinessMapper {
 
         customerDto.setName(customer.getName());
         customerDto.setSurname(customerDto.getSurname());
-        customerDto.setPhone_number(customer.getPhone_number());
+        customerDto.setPhone(customer.getPhone());
         customerDto.setEmail(customerDto.getEmail());
-        customerDto.setServicesDto(collectionToList(customer.getServices(), SubscriptionToDto));
-        customerDto.setWalletDto(getWalletDto(customer.getWallet()));
+//        customerDto.setServicesDto(collectionToList(customer.getServices(), SubscriptionToDto));
+       // customerDto.setWalletDto(getWalletDto(customer.getWallet()));
         customerDto.setActive(customer.isActive());
         customerDto.setCreated(customer.getCreated());
         customerDto.setUpdated(customer.getUpdated());
@@ -131,7 +152,7 @@ public class BusinessMapper {
 
         subscription.setName(subscriptionDto.getName());
         subscription.setDays(subscriptionDto.getDays());
-        subscription.setTariffs(collectionToList(subscriptionDto.getTariffsDto(),TariffToEntity));
+        subscription.setTariffs(collectionToList(subscriptionDto.getTariffsDto(), TariffToEntity));
         subscription.setActive(subscriptionDto.isActive());
         subscription.setCreated(subscriptionDto.getCreated());
         subscription.setUpdated(subscriptionDto.getUpdated());
@@ -144,7 +165,7 @@ public class BusinessMapper {
         SubscriptionDto subscriptionDto = new SubscriptionDto();
 
         subscriptionDto.setName(subscription.getName());
-        subscriptionDto.setTariffsDto(collectionToList(subscription.getTariffs(),TariffToDto));
+        subscriptionDto.setTariffsDto(collectionToList(subscription.getTariffs(), TariffToDto));
         subscriptionDto.setDays(subscription.getDays());
         subscriptionDto.setActive(subscription.isActive());
         subscriptionDto.setCreated(subscriptionDto.getCreated());
@@ -152,12 +173,13 @@ public class BusinessMapper {
 
         return subscriptionDto;
     }
-    public Tariff getTariff(TariffDto tariffDto){
+
+    public Tariff getTariff(TariffDto tariffDto) {
         Tariff tariff = new Tariff();
 
         tariff.setName(tariffDto.getName());
         tariff.setType(tariffDto.getType());
-        tariff.setLimitsList(collectionToList(tariffDto.getLimitsListDto(),LimitToEntity));
+        tariff.setLimitsList(collectionToList(tariffDto.getLimitsListDto(), LimitToEntity));
         tariff.setPricePerDay(tariffDto.getPricePerDay());
         tariff.setActive(tariffDto.isActive());
         tariff.setCreated(tariffDto.getCreated());
@@ -166,12 +188,12 @@ public class BusinessMapper {
         return tariff;
     }
 
-    public TariffDto getTariffDto(Tariff tariff){
+    public TariffDto getTariffDto(Tariff tariff) {
         TariffDto tariffDto = new TariffDto();
 
         tariffDto.setName(tariff.getName());
         tariffDto.setType(tariff.getType());
-        tariffDto.setLimitsListDto(collectionToList(tariff.getLimitsList(),LimitToDto));
+        tariffDto.setLimitsListDto(collectionToList(tariff.getLimitsList(), LimitToDto));
         tariffDto.setPricePerDay(tariff.getPricePerDay());
         tariffDto.setActive(tariff.isActive());
         tariffDto.setCreated(tariff.getCreated());
@@ -180,8 +202,8 @@ public class BusinessMapper {
         return tariffDto;
     }
 
-    public Limit getLimit(LimitDto limitDto){
-        Limit limit =new Limit();
+    public Limit getLimit(LimitDto limitDto) {
+        Limit limit = new Limit();
 
         limit.setName(limitDto.getName());
         limit.setAmount(limitDto.getAmount());
@@ -192,7 +214,7 @@ public class BusinessMapper {
         return limit;
     }
 
-    public LimitDto getLimitDto(Limit limit){
+    public LimitDto getLimitDto(Limit limit) {
         LimitDto limitDto = new LimitDto();
 
         limitDto.setName(limit.getName());

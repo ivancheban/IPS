@@ -1,5 +1,4 @@
 drop database internet_provider_base;
-
 create database internet_provider_base;
 use internet_provider_base;
 
@@ -24,7 +23,7 @@ create table customers
     id           int(10) primary key auto_increment,
     name         varchar(25) not null,
     surname      varchar(25) not null,
-    phone_number varchar(13) not null unique,
+    phone varchar(13) not null unique,
     email        varchar(25) not null unique,
     isActive     boolean   default true,
     created      timestamp default now(),

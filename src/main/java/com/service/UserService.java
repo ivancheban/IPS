@@ -1,14 +1,14 @@
 package com.service;
 
-import com.dto.UserCreateRequestDto;
-import com.dto.UserDto;
+import com.dto.CustomerCreateRequestDto;
 import com.model.User;
 
 import java.util.List;
 import java.util.Map;
 
 public interface UserService {
-   Map <String,String> registration(UserCreateRequestDto user);
+
+    List<String> registration(CustomerCreateRequestDto createRequestDto);
 
     User findByPhoneNumber(String phone);
 

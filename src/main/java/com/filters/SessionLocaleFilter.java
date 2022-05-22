@@ -6,25 +6,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+
 @WebFilter(filterName = "SessionLocaleFilter", urlPatterns = {"/*"})
-public class SessionLocaleFilter implements Filter {
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
+    public class SessionLocaleFilter implements Filter {
+        public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+                throws IOException, ServletException {
 
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession httpSession = req.getSession();
-        String lang = req.getParameter("lang");
+            HttpServletRequest req = (HttpServletRequest) request;
+            HttpSession currentSession = req.getSession();
+            String langReq = req.getParameter("lang");
 
-        if (lang != null) {
-            httpSession.setAttribute("lang", lang);
+            if (langReq != null) {
+                currentSession.setAttribute("lang", langReq);
+            } else {
+                if (currentSession.getAttribute("lang") == null) {
+                    currentSession.setAttribute("lang", "ua");
+                }
+            }
+            chain.doFilter(request, response);
         }
-        else {
-            if(httpSession.getAttribute("lang")==null)
-             httpSession.setAttribute("lang","ua");
 
+        @Override
+        public void destroy() {
         }
-        chain.doFilter(request, response);
+
+        @Override
+        public void init(FilterConfig arg0) throws ServletException {
+        }
     }
-    public void destroy() {}
-    public void init(FilterConfig arg0) throws ServletException {}
-}
+

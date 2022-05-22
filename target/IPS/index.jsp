@@ -10,8 +10,9 @@
 
 <html lang="${sessionScope.lang}">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -46,14 +47,16 @@
 <%--                    <a class="nav-link disabled">Disabled</a>--%>
 <%--                </li>--%>
             </ul>
+        </li>
             <div>
                 <a href="/registration.jsp" class="btn btn-success"><fmt:message key="index.button.signUP" /></a>
                 <a href="/login.jsp" class="btn btn-dark"><fmt:message key="index.button.login" /></a>
             </div>
         </div>
-    </div>
+
 </nav>
 
 <img src="https://img1.akspic.ru/crops/5/1/2/0/80215/80215-priroda-atmosfera-mir-zemlya-liniya-1920x1080.jpg" width="1600" height="650">
 </body>
+</html>
 

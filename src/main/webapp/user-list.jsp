@@ -213,6 +213,7 @@
                     <th><fmt:message key="list.role.list"/></th>
                     <th><fmt:message key="list.created.list"/></th>
                     <th><fmt:message key="list.updated.list"/></th>
+
                     <th><fmt:message key="list.update.list"/></th>
                     <th><fmt:message key="list.delete.list"/></th>
                 </tr>
@@ -223,13 +224,12 @@
                 <c:forEach var="user" items="${userService.findAll()}" >
 
                     <tr>
-                        <td><c:out value="${user.getPhone()}" /></td>
-
-                        <td><c:out value="${user.getPassword()}" /></td>
-                        <td><c:out value="${user.isActive()}" /></td>
-                        <td><c:out value="${user.getRole()}" /></td>
-                        <td><c:out value="${user.getCreated()}" /></td>
-                        <td><c:out value="${user.getUpdated()}" /></td>
+                        <td>${user.getPhone()}</td>
+                        <td>${user.getPassword()}</td>
+                        <td>${user.isActive()}</td>
+                        <td>${user.getRole()}</td>
+                        <td>${user.getCreated()}</td>
+                        <td>${user.getUpdated()}</td>
 
                         <td> <a href="/user/update"  class="btn btn-info" >Update</a></td>
                         <td> <a href="/user/delete" class="btn btn-danger">Delete</a></td>

@@ -168,22 +168,32 @@ if (user==null){
 
 
         logger.debug("Start  searching all users....");
-        List<User> userList = null;
+        List<User> userList = new ArrayList<>();
 
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
             ResultSet result = pst.executeQuery();
-            userList = new ArrayList<>();
-            User user = null;
+
+
             while (result.next()) {
-                user = new User();
-                user.setId(result.getInt("id"));
-                user.setPhone(result.getString("phone"));
-                user.setPassword(result.getString("password"));
-                user.setActive(result.getBoolean("isActive"));
-                user.setRole(Role.valueOf(result.getString("role")));
-                user.setCreated(result.getTimestamp("created").toLocalDateTime());
-                user.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+//               User user = new User();
+//                user.setId(result.getInt("id"));
+//                user.setPhone(result.getString("phone"));
+//                user.setPassword(result.getString("password"));
+//                user.setActive(result.getBoolean("isActive"));
+//                user.setRole(Role.valueOf(result.getString("role")));
+//                user.setCreated(result.getTimestamp("created").toLocalDateTime());
+//                user.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+                int id = result.getInt("id");
+                String phone = result.getString("phone");
+                String password = result.getString("password");
+                boolean isActive = result.getBoolean("isActive");
+                Role role = Role.valueOf(result.getString("role"));
+                LocalDateTime created = result.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
+
+
+                User user = new User(id, phone,password, isActive,role, created, updated);
                 userList.add(user);
 
             }
@@ -194,7 +204,7 @@ if (user==null){
         }
 
         logger.debug("All Users searched");
-        System.out.println(userList);
+        System.out.println(userList + "userList");
 
         return userList;
     }

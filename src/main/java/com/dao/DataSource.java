@@ -11,16 +11,16 @@ public class DataSource {
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource ds;
 
-    static {
+    public static void innitConfiguration(String driver, String url, String userName, String password) {
+        config.setDriverClassName(driver);
+        config.setJdbcUrl(url);
+        config.setUsername(userName);
+        config.setPassword(password);
 
-        config.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        config.setJdbcUrl( "jdbc:mysql://localhost:3306/internet_provider_base" );
-        config.setUsername( "root" );
-        config.setPassword( "root" );
-        config.addDataSourceProperty( "cachePrepStmts" , "true" );
-        config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
-        config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
-        ds = new HikariDataSource( config );
+        config.addDataSourceProperty("cachePrepStmts", "true");
+        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        ds = new HikariDataSource(config);
     }
 
     private DataSource() {}

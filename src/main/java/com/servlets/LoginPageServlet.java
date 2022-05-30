@@ -22,7 +22,7 @@ public class LoginPageServlet extends HttpServlet {
         user = userDao.findByField(phone);
 
       if (phone.equals(user.getPhone()) ){
-            req.getRequestDispatcher("success.html").forward(req, resp);
+            req.getRequestDispatcher("user-list.jsp").forward(req, resp);
         }
       else {
           req.getRequestDispatcher("error.html");

@@ -174,12 +174,12 @@ public class CustomerDao implements Dao<Customer> {
     public List<Customer> findAll() {
 
         logger.debug("Start  searching all customers....");
-        List<Customer> customers = null;
+        List<Customer> customersList = null;
 
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
             ResultSet result = pst.executeQuery();
-            customers = new ArrayList<>();
+            customersList = new ArrayList<>();
             Customer customer= null;
             while (result.next()) {
                 customer = new Customer();
@@ -191,7 +191,8 @@ public class CustomerDao implements Dao<Customer> {
                 customer.setActive(result.getBoolean("isActive"));
                 customer.setCreated(result.getTimestamp("created").toLocalDateTime());
                 customer.setUpdated(result.getTimestamp("updated").toLocalDateTime());
-                customers.add(customer);
+
+                customersList.add(customer);
 
             }
 
@@ -201,9 +202,9 @@ public class CustomerDao implements Dao<Customer> {
         }
 
         logger.debug("All Customers searched");
-        System.out.println(customers);
+        System.out.println(customersList);
 
-        return customers;
+        return customersList;
     }
 
 

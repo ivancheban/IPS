@@ -23,9 +23,6 @@ public class UserDao implements Dao<User> {
     private static final String FIND_ALL_QUERY = "select * from users";
     private static Logger logger = LogManager.getLogger(UserDao.class);
     private Connection con;
-
-    private int noOfRecords;
-
     public UserDao(Connection con) {
         try {
             this.con  = DataSource.getConnection();
@@ -167,19 +164,14 @@ if (user==null){
     }
 
     @Override
-    public List<User> findAll() {
-        return null;
-    }
-
-
-    public  List<User> wiewAll(int offset, int noOfRecords) {
+    public  List<User> findAll() {
 
 
         logger.debug("Start  searching all users....");
         List<User> userList = null;
-        String query = "select SQL_CALC_FOUND_ROWS * from user limit " + offset + ", " + noOfRecords;
+
         try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(query);) {
+             PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
             ResultSet result = pst.executeQuery();
             userList = new ArrayList<>();
             User user = null;
@@ -195,11 +187,6 @@ if (user==null){
                 userList.add(user);
 
             }
-            result.close();
-            result = pst.executeQuery("SELECT FOUND_ROWS()");
-
-            if (result.next())
-                this.noOfRecords = result.getInt(1);
 
 
         } catch (Exception ex) {
@@ -211,7 +198,6 @@ if (user==null){
 
         return userList;
     }
-    public int getNoOfRecords() { return noOfRecords; }
 
 
 

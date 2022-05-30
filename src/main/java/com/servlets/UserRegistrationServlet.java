@@ -68,25 +68,4 @@ public class UserRegistrationServlet extends HttpServlet {
 
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int page = 1;
-        int recordsPerPage = 5;
-        if (request.getParameter("page") != null)
-            page = Integer.parseInt(
-                    request.getParameter("page"));
-
-        List<User> list = userDao.wiewAll(
-                (page - 1) * recordsPerPage,
-                recordsPerPage);
-        int noOfRecords = userDao.getNoOfRecords();
-        int noOfPages = (int)Math.ceil(noOfRecords * 1.0
-                / recordsPerPage);
-        request.setAttribute("userList", list);
-        request.setAttribute("noOfPages", noOfPages);
-        request.setAttribute("currentPage", page);
-        RequestDispatcher view
-                = request.getRequestDispatcher("user-list.jsp");
-        view.forward(request, response);
-    }
 }

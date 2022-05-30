@@ -22,13 +22,13 @@ public class UserDao implements Dao<User> {
     private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
     private static Logger logger = LogManager.getLogger(UserDao.class);
+
     private Connection con;
+
     public UserDao(Connection con) {
-        try {
-            this.con  = DataSource.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+            this.con  = con;
+
     }
 
 //   private UserDao userDao;
@@ -204,7 +204,7 @@ if (user==null){
         }
 
         logger.debug("All Users searched");
-        System.out.println(userList + "userList");
+        System.out.println(userList + "userList in DAO");
 
         return userList;
     }

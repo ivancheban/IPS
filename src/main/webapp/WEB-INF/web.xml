@@ -3,10 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-
-<!--    <context-param>-->
-<!--        <param-name>log4jConfiguration</param-name>-->
-<!--        <param-value>classpath:log4j2-app.xml</param-value>-->
-<!--    </context-param>-->
+    <context-param>
+        <param-name>DBUSER</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DBPWD</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DBURL</param-name>
+        <param-value>jdbc:mysql://localhost:3306/internet_provider_base</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DBDRIVER</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
 
 </web-app>

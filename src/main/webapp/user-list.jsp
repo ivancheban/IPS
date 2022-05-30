@@ -5,6 +5,7 @@
 <%@ page isELIgnored="false" %>
 <%@ page session="true" %>
 <jsp:useBean id="userService" class="com.service.UserServiceImpl"/>
+<jsp:useBean id="userDao" class="com.dao.UserDao"/>
 <fmt:setLocale value="${sessionScope.lang}" />
 <fmt:setBundle basename="resources" />
 <html lang="${sessionScope.lang}">
@@ -221,7 +222,7 @@
                 <tbody>
 
 
-                <c:forEach var="user" items="${userService.findAll()}" >
+                <c:forEach var="user" items="${userList}" >
 
                     <tr>
                         <td>${user.getPhone()}</td>
@@ -238,18 +239,45 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+<%--            <div class="clearfix">--%>
+<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+<%--                <ul class="pagination">--%>
+<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
+            <%--For displaying Previous link except for the 1st page --%>
+            <c:if test="${currentPage != 1}">
+                <td><a href="user.do?page=${currentPage - 1}">Previous</a></td>
+            </c:if>
+
+            <%--For displaying Page numbers.
+            The when condition does not display a link for the current page--%>
+            <table border="1" cellpadding="5" cellspacing="5">
+                <tr>
+                    <c:forEach begin="1" end="${noOfPages}" var="i">
+                        <c:choose>
+                            <c:when test="${currentPage eq i}">
+                                <td>${i}</td>
+                            </c:when>
+                            <c:otherwise>
+                                <td><a href="user.do?page=${i}">${i}</a></td>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </tr>
+            </table>
+
+            <%--For displaying Next link --%>
+            <c:if test="${currentPage lt noOfPages}">
+                <td><a href="user.do?page=${currentPage+ 1}">Next</a></td>
+            </c:if>
+
         </div>
     </div>
 </div>

@@ -7,10 +7,7 @@ import com.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +21,7 @@ public class UserDao implements Dao<User> {
     private static Logger logger = LogManager.getLogger(UserDao.class);
 
     private Connection con;
+    private int noOfRecords;
 
     public UserDao(Connection con) {
 
@@ -207,6 +205,40 @@ if (user==null){
         System.out.println(userList + "userList in DAO");
 
         return userList;
+    }
+    public List<User> getAll(int offset, int noOfRecords) {
+        String query = "select SQL_CALC_FOUND_ROWS * from users limit "
+                + offset + ", " + noOfRecords;
+        List<User> usersList = new ArrayList<>();
+       User user = null;
+        try {Connection con = DataSource.getConnection();
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            while (result.next()) {
+                int id = result.getInt("id");
+                String phone = result.getString("phone");
+                String password = result.getString("password");
+                boolean isActive = result.getBoolean("isActive");
+                Role role = Role.valueOf(result.getString("role"));
+                LocalDateTime created = result.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
+
+                user = new User(id, phone,password, isActive,role, created, updated);
+                usersList.add(user);
+            }
+            result = stmt.executeQuery("SELECT FOUND_ROWS()");
+            if(result.next()){
+                this.noOfRecords = result.getInt(1);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return usersList;
+    }
+
+    public int getNoOfRecords() {
+        return noOfRecords;
     }
 
 

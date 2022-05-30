@@ -178,7 +178,7 @@
                 <div class="form-group">
 
                     <input type="phone" class="form-control" id="phone" name="phone" placeholder="<fmt:message key="login.phone.login"/>">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-phone"></i>
                 </div>
                 <div class="form-group help">
                     <input type="password" class="form-control" id="inputPassword" name="password"

@@ -177,7 +177,7 @@ CustomerCreateRequestDto customerCreateRequestDto = ((CustomerCreateRequestDto) 
                         <label class="form-label" for="email"><fmt:message key="email.label.email"/></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                 <input type="email" name="email" id="email" class="form-control form-control-lg"
                                        placeholder="<fmt:message key="email.placeholder.email"/>"
                                        value="<%=customerCreateRequestDto!=null? customerCreateRequestDto.getEmail():""%>"/>
@@ -193,7 +193,7 @@ CustomerCreateRequestDto customerCreateRequestDto = ((CustomerCreateRequestDto) 
                         <label class="form-label" for="phone"><fmt:message key="phone.label.phone"/></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
                         <input type="phone" name="phone" id="phone" class="form-control form-control-lg"
                                placeholder="<fmt:message key="phone.placeholder.phone"/>"
                                value="<%=customerCreateRequestDto!=null?customerCreateRequestDto.getPhone():""%>"/>
@@ -209,7 +209,7 @@ CustomerCreateRequestDto customerCreateRequestDto = ((CustomerCreateRequestDto) 
                         <label class="form-label" for="password"><fmt:message key="password.label.password"/></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
                                 <input type="password" name="password" id="password"
                                        class="form-control form-control-lg"
                                        placeholder="<fmt:message key="password.placeholder.password"/>"
@@ -227,7 +227,7 @@ CustomerCreateRequestDto customerCreateRequestDto = ((CustomerCreateRequestDto) 
                                 key="confirm_password.label.confirm_password"/></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
                                 <input type="password" name="confirm_password" id="confirm_password"
                                        class="form-control form-control-lg"
                                        placeholder="<fmt:message key="confirm_password.placeholder.confirm_password"/>"

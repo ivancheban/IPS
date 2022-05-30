@@ -50,7 +50,7 @@ public class AuthenticationFilter implements Filter {
                 // LOG.info("Logged out");
             } else {
                 httpRequest.logout();
-                RequestDispatcher requestDispatcher = httpRequest.getRequestDispatcher("/");
+                RequestDispatcher requestDispatcher = httpRequest.getRequestDispatcher("/login.jsp");
                 requestDispatcher.forward(servletRequest, servletResponse);
 
             }

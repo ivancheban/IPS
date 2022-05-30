@@ -1,6 +1,8 @@
 package com.servlets;
 
+import com.dao.UserDao;
 import com.dto.CustomerCreateRequestDto;
+import com.model.User;
 import com.service.CustomerService;
 import com.service.CustomerServiceImpl;
 import com.service.UserService;
@@ -25,6 +27,7 @@ public class UserRegistrationServlet extends HttpServlet {
     private static Logger logger = LogManager.getLogger(UserRegistrationServlet.class);
 
     private UserService userService = new UserServiceImpl();
+    private UserDao userDao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,19 +57,14 @@ public class UserRegistrationServlet extends HttpServlet {
 
 
         CustomerCreateRequestDto customerCreateRequestDto = new CustomerCreateRequestDto(name,surname,email,phone, password,confirm_password);
-        System.out.println("1++++++++++++++++++++++++++++");
+        session.setAttribute("customerCreateRequestDto", customerCreateRequestDto);
         List<String> response =userService.registration(customerCreateRequestDto);
-        System.out.println("2++++++++++++++++++++++++++");
 
-        if(!response.isEmpty()){
-            session.setAttribute("errorMessages", response);
-            System.out.println("============================");
-            session.setAttribute("customerCreateRequestDto", customerCreateRequestDto);
-            resp.sendRedirect(req.getContextPath() + "/registration.jsp");
-        } else {
-            session.setAttribute("registrationMessage", "customer with " + customerCreateRequestDto.getPhone() + " successful registered");
-            resp.sendRedirect(req.getContextPath() + "/login.jsp");
-        }
+        session.setAttribute("errorMessages",response);
+        resp.sendRedirect("/response_registration");
+
+
+
 
     }
 

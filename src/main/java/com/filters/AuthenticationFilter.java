@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/user-list.jsp")
+@WebFilter("/success.html")
 public class AuthenticationFilter implements Filter {
     private static final String AUTH_HEADER_KEY = "Authorization";
     private static final String AUTH_HEADER_VALUE_PREFIX = "Bearer ";

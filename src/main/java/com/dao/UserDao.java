@@ -18,20 +18,19 @@ public class UserDao implements Dao<User> {
     private static final String UPDATE_QUERY = "UPDATE users SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
+    private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from users limit ?, ?";
     private static Logger logger = LogManager.getLogger(UserDao.class);
 
-    private Connection con;
+
     private int noOfRecords;
+    Connection connection;
 
-    public UserDao(Connection con) {
-
-            this.con  = con;
-
+    public UserDao(Connection connection) {
+        this.connection = connection;
     }
 
-//   private UserDao userDao;
-
     public UserDao() throws SQLException {
+
     }
 
     @Override
@@ -43,7 +42,7 @@ public class UserDao implements Dao<User> {
         }
 
 
-        try (
+        try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
             pst.setInt(1, user.getId());
             pst.setString(2, user.getPhone());
@@ -174,14 +173,7 @@ if (user==null){
 
 
             while (result.next()) {
-//               User user = new User();
-//                user.setId(result.getInt("id"));
-//                user.setPhone(result.getString("phone"));
-//                user.setPassword(result.getString("password"));
-//                user.setActive(result.getBoolean("isActive"));
-//                user.setRole(Role.valueOf(result.getString("role")));
-//                user.setCreated(result.getTimestamp("created").toLocalDateTime());
-//                user.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+
                 int id = result.getInt("id");
                 String phone = result.getString("phone");
                 String password = result.getString("password");
@@ -206,37 +198,53 @@ if (user==null){
 
         return userList;
     }
+
     public List<User> getAll(int offset, int noOfRecords) {
-        String query = "select SQL_CALC_FOUND_ROWS * from users limit "
-                + offset + ", " + noOfRecords;
+
+        Connection con = null;
+        Statement stmt;
+        PreparedStatement pstmt;
+        ResultSet resultSet;
+
+
         List<User> usersList = new ArrayList<>();
-       User user = null;
-        try {Connection con = DataSource.getConnection();
-            Statement stmt = con.createStatement();
-            ResultSet result = stmt.executeQuery(query);
+        User user = null;
+        try {
+            pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);
+            stmt = con.createStatement();
+            pstmt.setInt(1, offset);
+            pstmt.setInt(2, noOfRecords);
+            resultSet = pstmt.executeQuery();
 
-            while (result.next()) {
-                int id = result.getInt("id");
-                String phone = result.getString("phone");
-                String password = result.getString("password");
-                boolean isActive = result.getBoolean("isActive");
-                Role role = Role.valueOf(result.getString("role"));
-                LocalDateTime created = result.getTimestamp("created").toLocalDateTime();
-                LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String phone = resultSet.getString("phone");
+                String password = resultSet.getString("password");
+                boolean isActive = resultSet.getBoolean("isActive");
+                Role role = Role.valueOf(resultSet.getString("role"));
+                LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
 
-                user = new User(id, phone,password, isActive,role, created, updated);
+                user = new User(id, phone, password, isActive, role, created, updated);
                 usersList.add(user);
             }
-            result = stmt.executeQuery("SELECT FOUND_ROWS()");
-            if(result.next()){
-                this.noOfRecords = result.getInt(1);
+            resultSet = stmt.executeQuery("SELECT FOUND_ROWS()");
+            if (resultSet.next()) {
+                this.noOfRecords = resultSet.getInt(1);
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return usersList;
-    }
 
+    }
     public int getNoOfRecords() {
         return noOfRecords;
     }

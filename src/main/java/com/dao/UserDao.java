@@ -18,7 +18,6 @@ public class UserDao implements Dao<User> {
     private static final String UPDATE_QUERY = "UPDATE users SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
-    private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from publishers limit ?, ?";
     private static Logger logger = LogManager.getLogger(UserDao.class);
 
     private Connection con;
@@ -26,7 +25,7 @@ public class UserDao implements Dao<User> {
 
     public UserDao(Connection con) {
 
-        this.con = con;
+            this.con  = con;
 
     }
 
@@ -45,7 +44,7 @@ public class UserDao implements Dao<User> {
 
 
         try (
-                PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
+             PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
             pst.setInt(1, user.getId());
             pst.setString(2, user.getPhone());
             pst.setString(3, user.getPassword());
@@ -91,10 +90,10 @@ public class UserDao implements Dao<User> {
             user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
             user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
 
-            if (user == null) {
-                throw new UserException("user not found");
+if (user==null){
+    throw new  UserException("user not found");
 
-            }
+}
 
         } catch (Exception ex) {
             logger.debug("Problem with searching user: " + ex.getMessage());
@@ -163,7 +162,7 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public List<User> findAll() {
+    public  List<User> findAll() {
 
 
         logger.debug("Start  searching all users....");
@@ -192,7 +191,7 @@ public class UserDao implements Dao<User> {
                 LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
 
 
-                User user = new User(id, phone, password, isActive, role, created, updated);
+                User user = new User(id, phone,password, isActive,role, created, updated);
                 userList.add(user);
 
             }
@@ -207,60 +206,41 @@ public class UserDao implements Dao<User> {
 
         return userList;
     }
-
     public List<User> getAll(int offset, int noOfRecords) {
-        Connection con = null;
-        Statement stmt;
-        PreparedStatement pstmt;
-        ResultSet resultSet;
-
-        try {
-            con = DataSource.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
+        String query = "select SQL_CALC_FOUND_ROWS * from users limit "
+                + offset + ", " + noOfRecords;
         List<User> usersList = new ArrayList<>();
-        User user = null;
-        try {
-            pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);
-            stmt = con.createStatement();
-            pstmt.setInt(1, offset);
-            pstmt.setInt(2, noOfRecords);
-            resultSet = pstmt.executeQuery();
+       User user = null;
+        try {Connection con = DataSource.getConnection();
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
 
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String phone = resultSet.getString("phone");
-                String password = resultSet.getString("password");
-                boolean isActive = resultSet.getBoolean("isActive");
-                Role role = Role.valueOf(resultSet.getString("role"));
-                LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
-                LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String phone = result.getString("phone");
+                String password = result.getString("password");
+                boolean isActive = result.getBoolean("isActive");
+                Role role = Role.valueOf(result.getString("role"));
+                LocalDateTime created = result.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
 
-                user = new User(id, phone, password, isActive, role, created, updated);
+                user = new User(id, phone,password, isActive,role, created, updated);
                 usersList.add(user);
             }
-            resultSet = stmt.executeQuery("SELECT FOUND_ROWS()");
-            if (resultSet.next()) {
-                this.noOfRecords = resultSet.getInt(1);
+            result = stmt.executeQuery("SELECT FOUND_ROWS()");
+            if(result.next()){
+                this.noOfRecords = result.getInt(1);
             }
-        } catch (SQLException e) {
+        } catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            try {
-                if (con != null)
-                    con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return usersList;
         }
+        return usersList;
     }
+
     public int getNoOfRecords() {
         return noOfRecords;
     }
+
 
 
 }

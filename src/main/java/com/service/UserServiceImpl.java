@@ -58,6 +58,17 @@ public class UserServiceImpl implements UserService {
 
     private List<String> userValidation(CustomerCreateRequestDto createRequestDto) {
         List<String> validResult = new ArrayList<>();
+        try {
+            validFormatName(createRequestDto.getName());
+        } catch (Exception e) {
+            validResult.add("name");
+        }
+        try {
+            validFormatSurName(createRequestDto.getSurname());
+        } catch (Exception e) {
+            validResult.add("surname");
+        }
+
 
         try {
             validatePhoneNumberFormat(createRequestDto.getPhone());
@@ -104,10 +115,31 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("You enter invalid confirm password");
         }
     }
+    private void validFormatName(String name) {
+        Pattern pattern = Pattern.compile("^[а-яА-ЯёЁa-zA-Z0-9]+$");
+        Matcher matcher = pattern.matcher(name);
+
+        if (!matcher.matches()) {
+            throw new RuntimeException("You enter invalid name");
+        }
+
+    }
+    private void validFormatSurName(String surname) {
+        Pattern pattern = Pattern.compile( "^[а-яА-ЯёЁa-zA-Z0-9]+$");
+        Matcher matcher = pattern.matcher(surname);
+
+        if (!matcher.matches()) {
+            throw new RuntimeException("You enter invalid surname ");
+        }
+
+    }
 
     @Override
     public User findByPhoneNumber(String phone) {
-        return userDao.findByField(phone);
+        User user = new User();
+        user = userDao.findByField(phone);
+        System.out.println(user);
+        return user;
     }
 
     @Override

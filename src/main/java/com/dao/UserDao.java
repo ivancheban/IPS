@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserDao implements Dao<User> {
     private static final String CREATE_QUERY = "insert into users(id,phone,password,isActive,role,created,updated) values (?,?,?,?,?,?,?)";
-    private static final String FIND_BY_FIELD_QUERY = "select * from users where phone = ?";
+    private static final String FIND_BY_FIELD_QUERY = "select *  FROM users WHERE phone =?";
     private static final String UPDATE_QUERY = "UPDATE users SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
@@ -23,6 +23,7 @@ public class UserDao implements Dao<User> {
 
 
     private int noOfRecords;
+
     Connection connection;
 
     public UserDao(Connection connection) {
@@ -66,33 +67,37 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public User findByField(String value) {
+    public User findByField(String phone) {
+
+        logger.debug("Start user searching....");
 
         User user = new User();
 
-        logger.debug("Start user searching....");
 
 
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
 
-            pst.setString(1, value);
+            pst.setString(1, phone);
 
             ResultSet resultSet = pst.executeQuery();
-            resultSet.next();
 
+            while (resultSet.next()) {
 
-            user.setPhone(resultSet.getString("phone"));
-            user.setPassword(resultSet.getString("password"));
-            user.setActive(resultSet.getBoolean("isActive"));
-            user.setRole(Role.valueOf(resultSet.getString("role")));
-            user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-            user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+               user.setId(resultSet.getInt("id"));
+               user.setPhone(resultSet.getString("phone"));
+               user.setPassword(resultSet.getString("password"));
+               user.setActive(resultSet.getBoolean("isActive"));
+               user.setRole(Role.valueOf(resultSet.getString("role")));
+               user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
+               user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
 
-if (user==null){
-    throw new  UserException("user not found");
-
-}
+               System.out.println(user + "User");
+           }
+//            if (user == null) {
+//                throw new UserException("user not found");
+//
+//            }
 
         } catch (Exception ex) {
             logger.debug("Problem with searching user: " + ex.getMessage());
@@ -161,7 +166,7 @@ if (user==null){
     }
 
     @Override
-    public  List<User> findAll() {
+    public List<User> findAll() {
 
 
         logger.debug("Start  searching all users....");
@@ -183,7 +188,7 @@ if (user==null){
                 LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
 
 
-                User user = new User(id, phone,password, isActive,role, created, updated);
+                User user = new User(id, phone, password, isActive, role, created, updated);
                 userList.add(user);
 
             }
@@ -202,19 +207,25 @@ if (user==null){
     public List<User> getAll(int offset, int noOfRecords) {
 
         Connection con = null;
-        Statement stmt;
-        PreparedStatement pstmt;
-        ResultSet resultSet;
+        Statement statement = null;
+        PreparedStatement pstmt = null;
+        ResultSet resultSet = null;
 
+        try {
+            con = DataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         List<User> usersList = new ArrayList<>();
         User user = null;
         try {
             pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);
-            stmt = con.createStatement();
+            statement = con.createStatement();
             pstmt.setInt(1, offset);
             pstmt.setInt(2, noOfRecords);
             resultSet = pstmt.executeQuery();
+
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -228,16 +239,23 @@ if (user==null){
                 user = new User(id, phone, password, isActive, role, created, updated);
                 usersList.add(user);
             }
-            resultSet = stmt.executeQuery("SELECT FOUND_ROWS()");
+            resultSet = statement.executeQuery("SELECT FOUND_ROWS()");
             if (resultSet.next()) {
                 this.noOfRecords = resultSet.getInt(1);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             try {
                 if (con != null)
                     con.close();
+                if (resultSet != null)
+                    resultSet.close();
+                if (pstmt != null)
+                    pstmt.close();
+                if (statement != null)
+                    statement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -245,10 +263,10 @@ if (user==null){
         return usersList;
 
     }
+
     public int getNoOfRecords() {
         return noOfRecords;
     }
-
 
 
 }

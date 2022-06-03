@@ -27,7 +27,7 @@ public class UserRegistrationServlet extends HttpServlet {
     private static Logger logger = LogManager.getLogger(UserRegistrationServlet.class);
 
     private UserService userService = new UserServiceImpl();
-    private UserDao userDao;
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

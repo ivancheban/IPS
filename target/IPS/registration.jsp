@@ -1,3 +1,6 @@
+
+<% request.setCharacterEncoding("UTF-8");%>
+
 <%@ page import="com.dto.CustomerCreateRequestDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>

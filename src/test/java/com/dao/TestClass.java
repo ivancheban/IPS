@@ -33,6 +33,11 @@ public class TestClass {
         CustomerCreateRequestDto customerCreateRequestDto = new CustomerCreateRequestDto(name, surname, email, phoneNumber, password, confirmPassword);
         userService.registration(customerCreateRequestDto);
 
+
+        User user = new User();
+        user = userDao.findByField("380501236547");
+        System.out.println(user);
+
 //        User user = new User("380662315698","1233");
 //        userDao.create(user);
 //

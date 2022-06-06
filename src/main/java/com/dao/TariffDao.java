@@ -22,7 +22,7 @@ public class TariffDao implements Dao<Tariff> {
     private static final String UPDATE_QUERY = "UPDATE tariffs SET item=? WHERE name=?";
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from tariffs";
-    private static Logger logger = LogManager.getLogger(UserDao.class);
+    private static Logger logger = LogManager.getLogger(TariffDao.class);
     private static UserDao userDao;
 
     @Override

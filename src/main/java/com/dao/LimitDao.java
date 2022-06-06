@@ -21,7 +21,7 @@ public class LimitDao implements Dao<Limit>{
     private static final String UPDATE_QUERY = "UPDATE limit SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM limit WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from limit";
-    private static Logger logger = LogManager.getLogger(UserDao.class);
+    private static Logger logger = LogManager.getLogger(LimitDao.class);
 
     @Override
     public Limit create(Limit limit) {

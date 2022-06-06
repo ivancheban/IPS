@@ -20,7 +20,7 @@ public class CustomerDao implements Dao<Customer> {
     private static final String UPDATE_QUERY = "UPDATE customers SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from customers";
-    private static Logger logger = LogManager.getLogger(UserDao.class);
+    private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
 

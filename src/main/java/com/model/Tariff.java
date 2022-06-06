@@ -3,6 +3,7 @@ package com.model;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Tariff {
     private int id;
@@ -95,5 +96,18 @@ public class Tariff {
     public Timestamp convertToTimestamp(LocalDateTime date){
         if(date == null) date = LocalDateTime.now();
         return Timestamp.valueOf(date);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tariff)) return false;
+        Tariff tariff = (Tariff) o;
+        return Objects.equals(name, tariff.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

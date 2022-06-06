@@ -1,5 +1,8 @@
 package com.listner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -20,9 +23,16 @@ public class AppContextListener implements ServletContextListener {
 
        innitConfiguration(driver, url, userName, password);
 
-        //create database connection from init parameters and set it to context
-        //DBConnectionManager dbManager = new DBConnectionManager(url, u, p);
-        // ctx.setAttribute("DBManager", dbManager);
-        // System.out.println("Database connection initialized for Application.");
+
+
+
+
+        String path = ctx.getRealPath("/WEB-INF/log4j2.log");
+        System.setProperty("logFile", path);
+
+        final Logger log = LogManager.getLogger(AppContextListener.class);
+        log.debug("path = " + path);
+
+
     }
 }

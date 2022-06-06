@@ -28,6 +28,12 @@ public class TariffDto {
         this.updated = updated;
     }
 
+    public TariffDto(String name, ServiceType type, int pricePerDay) {
+        this.name = name;
+        this.type = type;
+        this.pricePerDay = pricePerDay;
+    }
+
     public String getName() {
         return name;
     }

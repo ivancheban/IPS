@@ -89,4 +89,8 @@ public class TariffDto {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
+
+    public int getId() {
+        return id;
+    }
 }

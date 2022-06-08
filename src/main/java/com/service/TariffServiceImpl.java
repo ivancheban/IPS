@@ -17,9 +17,9 @@ public class TariffServiceImpl implements TariffService {
     public boolean create(TariffDto tariffDto) throws TariffException {
 
         Tariff newTariff = BusinessMapper.convertTariff(tariffDto);
-        System.out.println(newTariff + " before service");
-        Tariff newTariff1 = tariffDao.create(newTariff);
-        System.out.println(newTariff1 + "after service");
+
+        tariffDao.create(newTariff);
+
         if (newTariff.getId() == 0) {
             System.out.println(newTariff.getId());
             throw new TariffException("tariff is not create");
@@ -30,8 +30,9 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     public TariffDto update(TariffDto tariffDto) {
-//        TariffDto updateTariff = tariffDao.update(tariffDto);
-        return null;
+        Tariff tariff = tariffDao.update(businessMapper.getTariff(tariffDto));
+
+        return  businessMapper.getTariffDto(tariff);
     }
 
     @Override
@@ -49,8 +50,9 @@ public class TariffServiceImpl implements TariffService {
     }
 
     @Override
-    public List<TariffDto> findAll() {
-        //List <TariffDto> tariffs = tariffDao.findAll();
-        return null;
+    public List<Tariff> findAll() {
+
+
+        return tariffDao.findAll();
     }
 }

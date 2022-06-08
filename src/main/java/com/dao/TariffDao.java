@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.dto.TariffDto;
 import com.exceptions.TariffException;
 import com.exceptions.UserException;
 import com.model.Role;
@@ -36,7 +37,7 @@ public class TariffDao implements Dao<Tariff> {
         logger.debug("Start tariff creating");
         if (tariff == null) {
             logger.error("tariff not found");
-            System.out.println("not");
+
             throw new IllegalArgumentException();
         }
 
@@ -51,8 +52,7 @@ public class TariffDao implements Dao<Tariff> {
 
 
             int status = pst.executeUpdate();
-            System.out.println("begin");
-            System.out.println("status" + status);
+
             if (status != 1) throw new TariffException("Created more than one record!!");
             ResultSet keys = pst.getGeneratedKeys();
             if(keys.next()){
@@ -68,7 +68,7 @@ public class TariffDao implements Dao<Tariff> {
 
         logger.debug("Tariff created");
 
-        System.out.println(tariff.toString());
+
         return tariff;
     }
 
@@ -106,6 +106,8 @@ public class TariffDao implements Dao<Tariff> {
         return tariff;
     }
 
+
+
     @Override
     public Tariff update(Tariff item) {
         Tariff tariff = new Tariff();
@@ -116,7 +118,7 @@ public class TariffDao implements Dao<Tariff> {
             pst.setInt(1, tariff.getId());
 
             tariff.setName(item.getName());
-            //tariff.setType(item.getType());
+            tariff.setType(item.getType());
             tariff.setPricePerDay(item.getPricePerDay());
             tariff.setActive(item.isActive());
             tariff.setCreated(item.getCreated());

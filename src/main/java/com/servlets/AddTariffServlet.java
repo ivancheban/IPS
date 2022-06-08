@@ -34,18 +34,16 @@ public class AddTariffServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
 
         String name = req.getParameter("name");
-        System.out.println(name);
         ServiceType type = ServiceType.valueOf(req.getParameter("type"));
-        System.out.println(type);
         int pricePerDay = Integer.parseInt(req.getParameter("price"));
 
         TariffDto tariffDto = new TariffDto(name, type, pricePerDay);
 
         try {
-            boolean result = tariffService.create(tariffDto);
-            System.out.println("servlet tariffDto");
-            if (result) {
-                System.out.println(true + "tariff");
+
+
+            if (tariffService.create(tariffDto)) {
+
 
                 session.setAttribute("tariffs",tariffService.findAll());
                 resp.sendRedirect("/index.jsp");
@@ -54,7 +52,7 @@ public class AddTariffServlet extends HttpServlet {
         } catch (TariffException e) {
 
             session.setAttribute("erorrMessage", e.getMessage());
-            System.out.println("error servlet" + e.getMessage());
+
         }
 
 

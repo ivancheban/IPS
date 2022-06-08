@@ -2,14 +2,12 @@ package com.model;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 public class Tariff {
     private int id;
     private String name;
     private ServiceType type;
-    private List<Limit> limitsList;
     private int pricePerDay;
     private boolean isActive;
     private LocalDateTime created;
@@ -18,11 +16,39 @@ public class Tariff {
     public Tariff() {
     }
 
-    public Tariff(int id, String name, ServiceType type, List<Limit> limitsList, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public Tariff(String name, ServiceType type, int pricePerDay) {
+        this.name = name;
+        this.type = type;
+        this.pricePerDay = pricePerDay;
+    }
+
+    public Tariff(String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+        this.name = name;
+        this.type = type;
+        this.pricePerDay = pricePerDay;
+        this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "Tariff{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", pricePerDay=" + pricePerDay +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
+    }
+
+    public Tariff(int id, String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.limitsList = limitsList;
+
         this.pricePerDay = pricePerDay;
         this.isActive = isActive;
         this.created = created;
@@ -51,14 +77,6 @@ public class Tariff {
 
     public void setType(ServiceType type) {
         this.type = type;
-    }
-
-    public List<Limit> getLimitsList() {
-        return limitsList;
-    }
-
-    public void setLimitsList(List<Limit> limitsList) {
-        this.limitsList = limitsList;
     }
 
     public int getPricePerDay() {

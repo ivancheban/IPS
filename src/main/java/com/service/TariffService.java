@@ -1,19 +1,21 @@
 package com.service;
 
+import com.dto.TariffDto;
+import com.exceptions.TariffException;
 import com.model.Tariff;
 
 import java.util.List;
 
 public interface TariffService {
 
-    Tariff create(Tariff tariff);
+    boolean create(TariffDto tariffDto) throws TariffException;
 
-    Tariff update(Tariff tariff);
+    TariffDto update(TariffDto tariffDto);
 
     boolean delete(int id);
 
-    Tariff findByName(String name);
+    TariffDto findByName(String name);
 
-    List<Tariff> findAll();
+    List<TariffDto> findAll();
 
 }

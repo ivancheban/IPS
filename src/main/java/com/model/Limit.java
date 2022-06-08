@@ -10,18 +10,21 @@ public class Limit {
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
+    private int tariff_id;
 
     public Limit() {
     }
 
-    public Limit(int id, String name, int amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public Limit(int id, String name, int amount, boolean isActive, LocalDateTime created, LocalDateTime updated, int tariff_id) {
         this.id = id;
         this.name = name;
         this.amount = amount;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
+        this.tariff_id = tariff_id;
     }
+
     public Timestamp convertToTimestamp(LocalDateTime date){
         if(date == null) date = LocalDateTime.now();
         return Timestamp.valueOf(date);
@@ -73,6 +76,14 @@ public class Limit {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public int getTariff_id() {
+        return tariff_id;
+    }
+
+    public void setTariff_id(int tariff_id) {
+        this.tariff_id = tariff_id;
     }
 
     @Override

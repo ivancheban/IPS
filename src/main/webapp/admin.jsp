@@ -1,3 +1,8 @@
+<%@ page import="com.dto.TariffDto" %>
+<%@ page import="com.dto.CustomerCreateRequestDto" %>
+<% request.setCharacterEncoding("UTF-8");%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,6 +14,11 @@
 <fmt:setBundle basename="resources"/>
 
 <html lang="${sessionScope.lang}">
+
+    <%
+
+TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));
+%>
 
 
 <head>
@@ -49,254 +59,52 @@
         </li>
         <div>
             <a href="/user.do" class="btn btn-success"><fmt:message key="all.users.admin"/></a>
-            <a href="/login.jsp" class="btn btn-dark"><fmt:message key="index.button.login"/></a>
+            <a href="#addTariffModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
+                    <span>Add New Tariff</span></a>
+
         </div>
     </div>
 
 </nav>
 
-<%--<img src="https://img1.akspic.ru/crops/5/1/2/0/80215/80215-priroda-atmosfera-mir-zemlya-liniya-1920x1080.jpg" width="1600" height="650">--%>
+<form action="/addTariff" method="post">
+<div id="addTariffModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Tariff</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name Tariff</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
+                        </c:if>
+                    </div>
+                    <div class="form-group">
+                        <label>Type Tariff</label>
+                        <input type="text" name="type" id="type" class="form-control" required>
+                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('type') }">
+                        </c:if>
+                    </div>
 
-
-<%--<table>--%>
-<%--    <tr>--%>
-<%--<section class="container">--%>
-<%--    <section class="one">--%>
-<%--        <div class="logo">--%>
-<%--            <img src="https://image.flaticon.com/icons/svg/143/143361.svg">--%>
-<%--        </div>--%>
-<%--        <h2 class="heading">--%>
-<%--            please subscribe to get updates--%>
-<%--        </h2>--%>
-<%--        <p> signup with your email to get latest updates--%>
-<%--        </p>--%>
-<%--        <form>--%>
-<%--            <input type='text' placeholder="enter your email"><br/>--%>
-<%--            <button class="btn" role="button">--%>
-<%--                subscribe--%>
-<%--            </button>--%>
-<%--        </form>--%>
-<%--    </section>--%>
-<%--    <section class="two">--%>
-<%--        <h3>--%>
-<%--            thank you for subscribing !--%>
-<%--        </h3>--%>
-<%--        <div class="close">--%>
-<%--        </div>--%>
-<%--    </section>--%>
-<%--</section>--%>
-<%--    </tr>--%>
-<%--    <tr>--%>
-<%--<section class="container">--%>
-<%--    <section class="one">--%>
-<%--        <div class="logo">--%>
-<%--            <img src="https://image.flaticon.com/icons/svg/143/143361.svg">--%>
-<%--        </div>--%>
-<%--        <h2 class="heading">--%>
-<%--            please subscribe to get updates--%>
-<%--        </h2>--%>
-<%--        <p> signup with your email to get latest updates--%>
-<%--        </p>--%>
-<%--        <form>--%>
-<%--            <input type='text' placeholder="enter your email"><br/>--%>
-<%--            <button class="btn" role="button">--%>
-<%--                subscribe--%>
-<%--            </button>--%>
-<%--        </form>--%>
-<%--    </section>--%>
-<%--    <section class="two">--%>
-<%--        <h3>--%>
-<%--            thank you for subscribing !--%>
-<%--        </h3>--%>
-<%--        <div class="close">--%>
-<%--        </div>--%>
-<%--    </section>--%>
-<%--</section>--%>
-<%--    </tr>--%>
-<%--</table>--%>
-<%--<style>--%>
-<%--    *{--%>
-<%--        -webkit-box-sizing:border-box;--%>
-<%--        -moz-box-sizing:border-box;--%>
-<%--        box-sizing:border-box;--%>
-<%--    }--%>
-
-<%--    body, html{--%>
-<%--        background:lightgray;--%>
-<%--        font-family: 'Open Sans', sans-serif;--%>
-<%--    }--%>
-
-<%--    .container{--%>
-<%--        width:400px;--%>
-<%--        height:500px;--%>
-<%--        background:#fff;--%>
-<%--        margin:20px auto;--%>
-<%--        border-radius:4px;--%>
-<%--        text-align:center;--%>
-<%--        position:relative;--%>
-<%--        -moz-box-shadow: 0px 0px 28px rgba(0,0,0,.3);--%>
-<%--        -webkit-box-shadow: 0px 0px 28px rgba(0,0,0,.3);--%>
-<%--        box-shadow: 0px 0px 28px rgba(0,0,0,.3);--%>
-<%--        overflow:hidden;--%>
-<%--    }--%>
-
-
-<%--    .one , .two{--%>
-<%--        display:block;--%>
-<%--        height:500px;--%>
-<%--        width:400px;--%>
-<%--        margin:0px auto;--%>
-<%--        position:absolute;--%>
-<%--        -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);--%>
-<%--        transition:         all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);--%>
-<%--    }--%>
-
-<%--    .one{--%>
-<%--        top:0;--%>
-<%--        background:#fff;--%>
-<%--        margin-top:20px;--%>
-<%--    }--%>
-
-<%--    .two{--%>
-<%--        top:500px;--%>
-<%--        background:lightgray;--%>
-<%--    }--%>
-
-<%--    .two h3{--%>
-<%--        color:#fff;--%>
-<%--        padding-top:240px;--%>
-<%--    }--%>
-
-<%--    .container .logo{--%>
-<%--        width:40%;--%>
-<%--        height:auto;--%>
-<%--        display:block;--%>
-<%--        margin:20px auto;--%>
-<%--    }--%>
-
-<%--    .one  .heading{--%>
-<%--        color:#607d8b;--%>
-<%--        text-transform:capitalize;--%>
-<%--        font-size:20px;--%>
-<%--        fonr-weight:900;--%>
-<%--        margin-top:40px;--%>
-<%--    }--%>
-
-<%--    .container p{--%>
-<%--        font-size:12px;--%>
-<%--        color:#b7b7b7;--%>
-<%--        font-weight:lighter;--%>
-<%--        text-transform:capitalize;--%>
-<%--    }--%>
-
-<%--    input[type='text']{--%>
-<%--        width:85%;--%>
-<%--        height:60px;--%>
-<%--        margin-top:20px;--%>
-<%--        margin-bottom:20px;--%>
-<%--        padding-bottom:-80px;--%>
-<%--        border:none;--%>
-<%--        border-bottom:3px solid #ffc107;--%>
-<%--        overflow:auto;--%>
-<%--        position:relative;--%>
-<%--    }--%>
-
-
-<%--    input[type='text']:active:focus,--%>
-<%--    input[type='text']:focus,--%>
-<%--    input[type='text']:hover{--%>
-<%--        outline : none;--%>
-<%--        font-size:20px;--%>
-<%--    }--%>
-
-
-<%--    input[type='text']:focus::-webkit-input-placeholder,--%>
-<%--    input[type='text']:active:focus::-webkit-input-placeholder--%>
-<%--    {--%>
-<%--        font-size:12px;--%>
-<%--        display:block;--%>
-<%--        -webkit-transform:translateY(-20px);--%>
-<%--        transform:translateY(-20px);--%>
-<%--    }--%>
-
-<%--    -webkit-placeholder{--%>
-<%--        font-size:14px;--%>
-<%--        color:#b7b7b7;--%>
-<%--        text-transform:capitalize;--%>
-<%--        -webkit-transform:translateY(0px);--%>
-<%--        transform:translateY(0px);--%>
-<%--        -webkit-transition: all .3s ease-in-out;--%>
-<%--        transition: all .3s ease-in-out;--%>
-<%--    }--%>
-
-<%--    ::placeholder{--%>
-<%--        font-size:14px;--%>
-<%--        color:#b7b7b7;--%>
-<%--        text-transform:capitalize;--%>
-<%--        -webkit-transform:translateY(0px);--%>
-<%--        transform:translateY(0px);--%>
-<%--        -webkit-transition: all .3s ease-in-out;--%>
-<%--        transition: all .3s ease-in-out;--%>
-<%--    }--%>
-
-<%--    .one  .btn{--%>
-<%--        width:85%;--%>
-<%--        background:#ffc107;--%>
-<%--        padding:15px;--%>
-<%--        border:none;--%>
-<%--        border-radius:5px;--%>
-<%--        font-size:14px;--%>
-<%--        color:#fff;--%>
-<%--        text-transform:capitalize;--%>
-<%--        font-family: 'Open Sans', sans-serif;--%>
-<%--    }--%>
-
-<%--    .one  .btn:active:focus,--%>
-<%--    .one  .btn:focus,--%>
-<%--    .one  .btn:hover{--%>
-<%--        outline : none;--%>
-<%--    }--%>
-
-<%--    .one .btn:hover{--%>
-<%--        cursor:pointer;--%>
-<%--    }--%>
-
-<%--    .close{--%>
-<%--        position:relative;--%>
-<%--        top:0;--%>
-<%--        left:0;--%>
-<%--        display:block;--%>
-<%--        cursor:pointer;--%>
-<%--    }--%>
-
-<%--    .close:before{--%>
-<%--        content:"";--%>
-<%--        position:absolute;--%>
-<%--        top:-240px;--%>
-<%--        right:50px;--%>
-<%--        display:block;--%>
-<%--        width:22px;--%>
-<%--        height:3px;--%>
-<%--        background:#fff;--%>
-<%--        -webkit-transform:rotate(45deg);--%>
-<%--        transform:rotate(45deg);--%>
-<%--    }--%>
-
-<%--    .close:after{--%>
-<%--        content:"";--%>
-<%--        position:absolute;--%>
-<%--        top:-240px;--%>
-<%--        right:50px;--%>
-<%--        display:block;--%>
-<%--        width:22px;--%>
-<%--        height:3px;--%>
-<%--        background:#fff;--%>
-<%--        -webkit-transform:rotate(-45deg);--%>
-<%--        transform:rotate(-45deg);--%>
-<%--    }--%>
-
-
-<%--</style>--%>
+                    <div class="form-group">
+                        <label>Price Tariff</label>
+                        <input type="text" name="price" id="price" class="form-control" required>
+                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('price') }">
+                        </c:if>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <!DOCTYPE html>
@@ -342,22 +150,22 @@
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_four"><i class="fa fa-database"></i></span>
-                    <h6>Business Growth</h6>
+                <div class="item"><span class="icon feature_box_col_four"><i class="fa fa-phone"></i></span>
+                    <h6>Phone</h6>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean
                         massa.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_five"><i class="fa fa-upload"></i></span>
-                    <h6>Market Strategy</h6>
+                <div class="item"><span class="icon feature_box_col_five"><i class="fa fa-ethernet"></i></span>
+                    <h6>Internet</h6>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean
                         massa.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_six"><i class="fa fa-camera"></i></span>
-                    <h6>Retina Ready</h6>
+                <div class="item"><span class="icon feature_box_col_six"><i class="fa fa-tv"></i></span>
+                    <h6>IP-TV</h6>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean
                         massa.</p>
                 </div>
@@ -372,8 +180,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
-</body>
-</html>
+
 
 <style>
     * {
@@ -520,3 +327,5 @@
 </body>
 </html>
 
+
+</form>

@@ -1,6 +1,7 @@
 package com.servlets;
 
 import com.dto.TariffDto;
+import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.ServiceType;
 import com.model.Tariff;
@@ -33,15 +34,29 @@ public class AddTariffServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
 
         String name = req.getParameter("name");
+        System.out.println(name);
         ServiceType type = ServiceType.valueOf(req.getParameter("type"));
-        int pricePerDay = req.getIntHeader("price");
+        System.out.println(type);
+        int pricePerDay = Integer.parseInt(req.getParameter("price"));
 
-        TariffDto tariffDto = new TariffDto(name, type,pricePerDay);
-        session.setAttribute("tariffDto", tariffDto);
+        TariffDto tariffDto = new TariffDto(name, type, pricePerDay);
 
-        Tariff tariff = businessMapper.getTariff(tariffDto);
-        tariff = tariffService.create(tariff);
+        try {
+            boolean result = tariffService.create(tariffDto);
+            System.out.println("servlet tariffDto");
+            if (result) {
+                System.out.println(true + "tariff");
 
-        resp.sendRedirect("/tariffs.jsp");
+                session.setAttribute("tariffs",tariffService.findAll());
+                resp.sendRedirect("/index.jsp");
+            }
+
+        } catch (TariffException e) {
+
+            session.setAttribute("erorrMessage", e.getMessage());
+            System.out.println("error servlet" + e.getMessage());
+        }
+
+
     }
 }

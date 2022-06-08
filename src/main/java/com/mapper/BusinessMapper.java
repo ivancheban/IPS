@@ -4,7 +4,6 @@ import com.dto.*;
 import com.model.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -175,17 +174,19 @@ public class BusinessMapper {
     }
 
     public Tariff getTariff(TariffDto tariffDto) {
-        Tariff tariff = new Tariff();
+        return new Tariff(tariffDto.getName(),tariffDto.getType(),tariffDto.getPricePerDay());
 
-        tariff.setName(tariffDto.getName());
-        tariff.setType(tariffDto.getType());
-        tariff.setLimitsList(collectionToList(tariffDto.getLimitsListDto(), LimitToEntity));
-        tariff.setPricePerDay(tariffDto.getPricePerDay());
-        tariff.setActive(tariffDto.isActive());
-        tariff.setCreated(tariffDto.getCreated());
-        tariff.setUpdated(tariff.getUpdated());
+//        tariff.setName(tariffDto.getName());
+//        tariff.setType(tariffDto.getType());
+//        tariff.setPricePerDay(tariffDto.getPricePerDay());
+//        tariff.setActive(tariffDto.isActive());
+//        tariff.setCreated(LocalDateTime.now());
+//        tariff.setUpdated(LocalDateTime.now());
 
-        return tariff;
+
+    }
+    public static Tariff convertTariff(TariffDto tariffDto) {
+        return new Tariff(tariffDto.getName(), tariffDto.getType(), tariffDto.getPricePerDay());
     }
 
     public TariffDto getTariffDto(Tariff tariff) {
@@ -193,7 +194,6 @@ public class BusinessMapper {
 
         tariffDto.setName(tariff.getName());
         tariffDto.setType(tariff.getType());
-        tariffDto.setLimitsListDto(collectionToList(tariff.getLimitsList(), LimitToDto));
         tariffDto.setPricePerDay(tariff.getPricePerDay());
         tariffDto.setActive(tariff.isActive());
         tariffDto.setCreated(tariff.getCreated());

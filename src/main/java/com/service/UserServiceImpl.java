@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
             User user = BusinessMapper.conversationRegisterUserDto(customerCreateRequestDto);
             Customer customer = BusinessMapper.conversationRegisterDto(customerCreateRequestDto);
 
-            System.out.println("INSIDE SERVICE -> " + user.toString());
+
 
             userDao.create(user);
             customerDao.create(customer);

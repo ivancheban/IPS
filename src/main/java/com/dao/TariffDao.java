@@ -10,9 +10,7 @@ import com.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +22,10 @@ public class TariffDao implements Dao<Tariff> {
     private static final String UPDATE_QUERY = "UPDATE tariffs SET item=? WHERE name=?";
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from tariffs";
+    private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from tariffs limit ?, ?";
     private static Logger logger = LogManager.getLogger(TariffDao.class);
-    private static UserDao userDao;
+
+    private int noOfRecords;
 
     @Override
     public String toString() {
@@ -179,6 +179,7 @@ public class TariffDao implements Dao<Tariff> {
                 tariff.setActive(result.getBoolean("isActive"));
                 tariff.setCreated(result.getTimestamp("created").toLocalDateTime());
                 tariff.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+
                 tariffsList.add(tariff);
 
             }
@@ -192,5 +193,69 @@ public class TariffDao implements Dao<Tariff> {
         System.out.println(tariffsList);
 
         return tariffsList;
+    }
+    public List<Tariff> getAll(int offset, int noOfRecords) {
+
+        Connection con = null;
+        Statement statement = null;
+        PreparedStatement pstmt = null;
+        ResultSet resultSet = null;
+
+        try {
+            con = DataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        List<Tariff> tariffsList = new ArrayList<>();
+        Tariff tariff = null;
+        try {
+            pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);
+            statement = con.createStatement();
+            pstmt.setInt(1, offset);
+            pstmt.setInt(2, noOfRecords);
+
+            resultSet = pstmt.executeQuery();
+
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                ServiceType type = ServiceType.valueOf(resultSet.getString("type"));
+                int pricePerDay = resultSet.getInt("price");
+                boolean isActive = resultSet.getBoolean("isActive");
+                LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
+
+                tariff = new Tariff(id, name, type,pricePerDay, isActive, created, updated);
+                tariffsList.add(tariff);
+            }
+            resultSet = statement.executeQuery("SELECT FOUND_ROWS()");
+            if (resultSet.next()) {
+                this.noOfRecords = resultSet.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null)
+                    con.close();
+                if (resultSet != null)
+                    resultSet.close();
+                if (pstmt != null)
+                    pstmt.close();
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return tariffsList;
+
+    }
+
+    public int getNoOfRecords() {
+        return noOfRecords;
     }
 }

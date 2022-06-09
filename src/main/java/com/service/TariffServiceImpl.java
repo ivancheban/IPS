@@ -6,7 +6,9 @@ import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.Tariff;
 
+import javax.servlet.annotation.WebServlet;
 import java.util.List;
+
 
 public class TariffServiceImpl implements TariffService {
 
@@ -53,6 +55,6 @@ public class TariffServiceImpl implements TariffService {
     public List<Tariff> findAll() {
 
 
-        return tariffDao.findAll();
+        return  tariffDao.findAll();
     }
 }

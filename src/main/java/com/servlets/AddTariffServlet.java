@@ -46,7 +46,7 @@ public class AddTariffServlet extends HttpServlet {
 
 
                 session.setAttribute("tariffs",tariffService.findAll());
-                resp.sendRedirect("/index.jsp");
+                resp.sendRedirect("/tariff-list.jsp");
             }
 
         } catch (TariffException e) {

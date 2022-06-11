@@ -147,11 +147,10 @@ public class BusinessMapper {
     }
 
     public Subscription getSubscription(SubscriptionDto subscriptionDto) {
-        Subscription subscription = new Subscription();
+    Subscription subscription = new Subscription();
 
         subscription.setName(subscriptionDto.getName());
-        subscription.setDays(subscriptionDto.getDays());
-        subscription.setTariffs(collectionToList(subscriptionDto.getTariffsDto(), TariffToEntity));
+        subscription.setDays_amount(subscriptionDto.getDays());
         subscription.setActive(subscriptionDto.isActive());
         subscription.setCreated(subscriptionDto.getCreated());
         subscription.setUpdated(subscriptionDto.getUpdated());
@@ -159,13 +158,15 @@ public class BusinessMapper {
         return subscription;
 
     }
+    public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
+        return new Subscription(subscriptionDto.getName(), subscriptionDto.getDays());
+    }
 
-    public SubscriptionDto getSubscriptionDto(Subscription subscription) {
+        public SubscriptionDto getSubscriptionDto(Subscription subscription) {
         SubscriptionDto subscriptionDto = new SubscriptionDto();
 
         subscriptionDto.setName(subscription.getName());
-        subscriptionDto.setTariffsDto(collectionToList(subscription.getTariffs(), TariffToDto));
-        subscriptionDto.setDays(subscription.getDays());
+        subscriptionDto.setDays(subscription.getDays_amount());
         subscriptionDto.setActive(subscription.isActive());
         subscriptionDto.setCreated(subscriptionDto.getCreated());
         subscriptionDto.setUpdated(subscriptionDto.getUpdated());
@@ -176,12 +177,7 @@ public class BusinessMapper {
     public Tariff getTariff(TariffDto tariffDto) {
         return new Tariff(tariffDto.getName(),tariffDto.getType(),tariffDto.getPricePerDay());
 
-//        tariff.setName(tariffDto.getName());
-//        tariff.setType(tariffDto.getType());
-//        tariff.setPricePerDay(tariffDto.getPricePerDay());
-//        tariff.setActive(tariffDto.isActive());
-//        tariff.setCreated(LocalDateTime.now());
-//        tariff.setUpdated(LocalDateTime.now());
+
 
 
     }

@@ -6,7 +6,7 @@ import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.Tariff;
 
-import javax.servlet.annotation.WebServlet;
+
 import java.util.List;
 
 
@@ -23,7 +23,7 @@ public class TariffServiceImpl implements TariffService {
         tariffDao.create(newTariff);
 
         if (newTariff.getId() == 0) {
-            System.out.println(newTariff.getId());
+
             throw new TariffException("tariff is not create");
         }
 

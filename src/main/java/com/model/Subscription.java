@@ -15,6 +15,11 @@ public class Subscription {
     public Subscription() {
     }
 
+    public Subscription(String name, int days_amount) {
+        this.name = name;
+        this.days_amount = days_amount;
+    }
+
     public Subscription(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;

@@ -2,13 +2,12 @@ package com.model;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
+
 
 public class Subscription {
     private int id;
     private String name;
-    private List<Tariff> tariffs;
-    private int days;
+    private int days_amount;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -16,11 +15,10 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(int id, String name, List<Tariff> tariffs, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public Subscription(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;
-        this.tariffs = tariffs;
-        this.days = days;
+        this.days_amount = days_amount;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
@@ -42,20 +40,13 @@ public class Subscription {
         this.name = name;
     }
 
-    public List<Tariff> getTariffs() {
-        return tariffs;
+
+    public int getDays_amount() {
+        return days_amount;
     }
 
-    public void setTariffs(List<Tariff> tariffs) {
-        this.tariffs = tariffs;
-    }
-
-    public int getDays() {
-        return days;
-    }
-
-    public void setDays(int days) {
-        this.days = days;
+    public void setDays_amount(int days_amount) {
+        this.days_amount = days_amount;
     }
 
     public boolean isActive() {
@@ -81,6 +72,7 @@ public class Subscription {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
+
 
     public Timestamp convertToTimestamp(LocalDateTime date){
         if(date == null) date = LocalDateTime.now();

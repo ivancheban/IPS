@@ -1,0 +1,55 @@
+package com.servlets;
+
+import com.dto.SubscriptionDto;
+import com.dto.TariffDto;
+import com.exceptions.SubscriptionException;
+import com.exceptions.TariffException;
+import com.mapper.BusinessMapper;
+import com.model.ServiceType;
+import com.service.SubscriptionServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+@WebServlet
+public class AddSubscriptionServlet extends HttpServlet {
+
+    private static Logger logger = LogManager.getLogger(AddSubscriptionServlet.class);
+    private BusinessMapper businessMapper;
+    SubscriptionServiceImpl subscriptionService = new SubscriptionServiceImpl();
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logger.info("adding subscription");
+        HttpSession session = req.getSession(true);
+
+        String name = req.getParameter("name");
+        int amount_days = Integer.parseInt(req.getParameter("amount_days"));
+
+        SubscriptionDto subscriptionDto = new SubscriptionDto(name, amount_days);
+
+
+
+            try {
+                if (subscriptionService.create(subscriptionDto)) {
+
+
+                    session.setAttribute("subscriptions", subscriptionService.findAll());
+                    resp.sendRedirect("/index.jsp");
+                }
+            } catch (SubscriptionException e) {
+                session.setAttribute("erorrMessage", e.getMessage());
+            }
+
+
+        }
+    }
+
+

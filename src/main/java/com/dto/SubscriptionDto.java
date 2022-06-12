@@ -6,7 +6,6 @@ import java.util.List;
 public class SubscriptionDto {
     private int id;
     private String name;
-    private List<TariffDto> tariffsDto;
     private int days;
     private boolean isActive;
     private LocalDateTime created;
@@ -15,9 +14,13 @@ public class SubscriptionDto {
     public SubscriptionDto() {
     }
 
-    public SubscriptionDto(String name, List<TariffDto> tariffsDto, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public SubscriptionDto(String name, int days) {
         this.name = name;
-        this.tariffsDto = tariffsDto;
+        this.days = days;
+    }
+
+    public SubscriptionDto(String name, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+        this.name = name;
         this.days = days;
         this.isActive = isActive;
         this.created = created;
@@ -30,14 +33,6 @@ public class SubscriptionDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<TariffDto> getTariffsDto() {
-        return tariffsDto;
-    }
-
-    public void setTariffsDto(List<TariffDto> tariffsDto) {
-        this.tariffsDto = tariffsDto;
     }
 
     public int getDays() {

@@ -55,6 +55,6 @@ public class TariffServiceImpl implements TariffService {
     public List<Tariff> findAll() {
 
 
-        return  tariffDao.findAll();
+        return tariffDao.findAll();
     }
 }

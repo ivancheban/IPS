@@ -43,16 +43,13 @@ public class AddTariffServlet extends HttpServlet {
 
 
             if (tariffService.create(tariffDto)) {
-
-
-                session.setAttribute("tariffs",tariffService.findAll());
-                resp.sendRedirect("/tariff-list.jsp");
+                resp.sendRedirect("/tariffs");
             }
 
         } catch (TariffException e) {
 
-            session.setAttribute("erorrMessage", e.getMessage());
-
+            session.setAttribute("errorMessage", e.getMessage());
+            resp.sendRedirect("/admin.jsp");
         }
 
 

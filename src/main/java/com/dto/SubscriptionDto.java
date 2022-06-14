@@ -6,7 +6,7 @@ import java.util.List;
 public class SubscriptionDto {
     private int id;
     private String name;
-    private int days;
+    private int days_amount;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -16,12 +16,12 @@ public class SubscriptionDto {
 
     public SubscriptionDto(String name, int days) {
         this.name = name;
-        this.days = days;
+        this.days_amount = days;
     }
 
     public SubscriptionDto(String name, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.name = name;
-        this.days = days;
+        this.days_amount = days;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
@@ -36,11 +36,11 @@ public class SubscriptionDto {
     }
 
     public int getDays() {
-        return days;
+        return days_amount;
     }
 
     public void setDays(int days) {
-        this.days = days;
+        this.days_amount = days;
     }
 
     public boolean isActive() {

@@ -1,5 +1,6 @@
 <%@ page import="com.dto.TariffDto" %>
 <%@ page import="com.dto.CustomerCreateRequestDto" %>
+<%@ page import="com.dto.SubscriptionDto" %>
 <% request.setCharacterEncoding("UTF-8");%>
 
 
@@ -10,6 +11,9 @@
 <%@ page isELIgnored="false" %>
 <%@ page session="true" %>
 
+<jsp:useBean id="SubscriptionService" class="com.service.SubscriptionServiceImpl"/>
+<jsp:useBean id="SubscriptionDao" class="com.dao.SubscriptionDao"/>
+
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="resources"/>
 
@@ -18,6 +22,10 @@
     <%
 
 TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));
+%>
+        <%
+
+SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subscriptionDto"));
 %>
 
 
@@ -59,14 +67,15 @@ TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));
         </li>
         <div>
             <a href="/user.do" class="btn btn-success"><fmt:message key="all.users.admin"/></a>
-            <a href="#addTariffModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
-                    <span>Add New Tariff</span></a>
+            <a href="/subscriptions" class="btn btn-success"><fmt:message key="all.subscriptions.admin"/></a>
+            <a href="/tariffs" class="btn btn-success"><fmt:message key="all.tariffs.admin"/></a>
 
         </div>
     </div>
 
 </nav>
 
+<%--#Tariff--%>
 <form action="/addTariff" method="post">
 <div id="addTariffModal" class="modal fade">
     <div class="modal-dialog">
@@ -105,6 +114,40 @@ TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));
         </div>
     </div>
 </div>
+
+<%--    #Subscription--%>
+
+    <form action="/add/subscription" method="post">
+        <div id="addSubscriptionModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Subscription</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name Subscription</label>
+                                <input type="text" name="name" id="name" class="form-control" required>
+                                <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
+                                </c:if>
+                            </div>
+                            <div class="form-group">
+                                <label>Days Amount</label>
+                                <input type="text" name="days_amount" id="days_amount" class="form-control" required>
+                                <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
+                                </c:if>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-success" value="Add">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 <!DOCTYPE html>
@@ -156,18 +199,16 @@ TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));
                         massa.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_five"><i class="fa fa-ethernet"></i></span>
-                    <h6>Internet</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean
-                        massa.</p>
-                </div>
-            </div>
+
+
             <div class="col-lg-4 col-sm-6">
                 <div class="item"><span class="icon feature_box_col_six"><i class="fa fa-tv"></i></span>
-                    <h6>IP-TV</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean
-                        massa.</p>
+
+                    <c:forEach var="subscriptions" items="${subscriptionsList}" >
+                        ${subscriptions.getName()}
+                        ${subscriptions.getDays_amount()}
+                    </c:forEach>
+
                 </div>
             </div>
         </div>

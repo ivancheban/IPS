@@ -83,4 +83,16 @@ public class Subscription {
         if(date == null) date = LocalDateTime.now();
         return Timestamp.valueOf(date);
     }
+
+    @Override
+    public String toString() {
+        return "Subscription{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", days_amount=" + days_amount +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
+    }
 }

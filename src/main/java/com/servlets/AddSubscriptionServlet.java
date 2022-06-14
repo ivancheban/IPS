@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet
+@WebServlet(name = "addSubscription", urlPatterns = "/add/subscription")
 public class AddSubscriptionServlet extends HttpServlet {
 
     private static Logger logger = LogManager.getLogger(AddSubscriptionServlet.class);
@@ -31,9 +31,11 @@ public class AddSubscriptionServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
 
         String name = req.getParameter("name");
-        int amount_days = Integer.parseInt(req.getParameter("amount_days"));
 
-        SubscriptionDto subscriptionDto = new SubscriptionDto(name, amount_days);
+        int days_amount = Integer.parseInt(req.getParameter("days_amount"));
+
+
+        SubscriptionDto subscriptionDto = new SubscriptionDto(name, days_amount);
 
 
 
@@ -42,10 +44,11 @@ public class AddSubscriptionServlet extends HttpServlet {
 
 
                     session.setAttribute("subscriptions", subscriptionService.findAll());
-                    resp.sendRedirect("/index.jsp");
+                    resp.sendRedirect("/admin.jsp");
                 }
             } catch (SubscriptionException e) {
-                session.setAttribute("erorrMessage", e.getMessage());
+                session.setAttribute("errorMessage", e.getMessage());
+
             }
 
 

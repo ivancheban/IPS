@@ -21,7 +21,7 @@ public class TariffDao implements Dao<Tariff> {
     private static final String FIND_BY_FIELD_QUERY = "select * from tariffs where name = ?";
     private static final String UPDATE_QUERY = "UPDATE tariffs SET item=? WHERE name=?";
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
-    private static final String FIND_ALL_QUERY = "select * from tariffs";
+    private static final String FIND_ALL_QUERY = "SELECT * FROM tariffs";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from tariffs limit ?, ?";
     private static Logger logger = LogManager.getLogger(TariffDao.class);
 
@@ -43,7 +43,7 @@ public class TariffDao implements Dao<Tariff> {
 
 
         try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(CREATE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);) {
+             PreparedStatement pst = con.prepareStatement(CREATE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             pst.setString(1, tariff.getName());
             pst.setString(2, String.valueOf(tariff.getType()));
@@ -55,7 +55,7 @@ public class TariffDao implements Dao<Tariff> {
 
             if (status != 1) throw new TariffException("Created more than one record!!");
             ResultSet keys = pst.getGeneratedKeys();
-            if(keys.next()){
+            if (keys.next()) {
                 int id = keys.getInt(1);
                 tariff.setId(id);
                 System.out.println(tariff.getId());
@@ -89,8 +89,8 @@ public class TariffDao implements Dao<Tariff> {
 
 
             tariff.setName(resultSet.getString("name"));
-            tariff.setType(ServiceType.valueOf(resultSet.getString("type")));
-            tariff.setPricePerDay(resultSet.getInt("pricePerDay"));
+            tariff.setType(ServiceType.valueOf(resultSet.getString("service_type")));
+            tariff.setPricePerDay(resultSet.getInt("price_per_day"));
             tariff.setActive(resultSet.getBoolean("isActive"));
             tariff.setCreated(LocalDateTime.parse(resultSet.getString("created")));
             tariff.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
@@ -105,7 +105,6 @@ public class TariffDao implements Dao<Tariff> {
         System.out.println(tariff.toString());
         return tariff;
     }
-
 
 
     @Override
@@ -174,8 +173,8 @@ public class TariffDao implements Dao<Tariff> {
                 tariff = new Tariff();
                 tariff.setId(result.getInt("id"));
                 tariff.setName(result.getString("name"));
-                tariff.setType(ServiceType.valueOf(result.getString("type")));
-                tariff.setPricePerDay(result.getInt("pricePerDay"));
+                tariff.setType(ServiceType.valueOf(result.getString("service_type")));
+                tariff.setPricePerDay(result.getInt("price_per_day"));
                 tariff.setActive(result.getBoolean("isActive"));
                 tariff.setCreated(result.getTimestamp("created").toLocalDateTime());
                 tariff.setUpdated(result.getTimestamp("updated").toLocalDateTime());
@@ -190,10 +189,11 @@ public class TariffDao implements Dao<Tariff> {
         }
 
         logger.debug("All Tariffs searched");
-        System.out.println(tariffsList);
+        System.out.println(tariffsList + "dao");
 
         return tariffsList;
     }
+
     public List<Tariff> getAll(int offset, int noOfRecords) {
 
         Connection con = null;
@@ -208,7 +208,7 @@ public class TariffDao implements Dao<Tariff> {
         }
 
         List<Tariff> tariffsList = new ArrayList<>();
-        Tariff tariff = null;
+
         try {
             pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);
             statement = con.createStatement();
@@ -221,13 +221,13 @@ public class TariffDao implements Dao<Tariff> {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                ServiceType type = ServiceType.valueOf(resultSet.getString("type"));
-                int pricePerDay = resultSet.getInt("price");
+                ServiceType type = ServiceType.valueOf(resultSet.getString("service_type"));
+                int pricePerDay = resultSet.getInt("price_per_day");
                 boolean isActive = resultSet.getBoolean("isActive");
                 LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
                 LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
 
-                tariff = new Tariff(id, name, type,pricePerDay, isActive, created, updated);
+                Tariff tariff = new Tariff(id, name, type, pricePerDay, isActive, created, updated);
                 tariffsList.add(tariff);
             }
             resultSet = statement.executeQuery("SELECT FOUND_ROWS()");

@@ -32,6 +32,7 @@ public class TariffPaginationServlet extends HttpServlet {
 
         int page = 1;
         int recordsPerPage = 5;
+
         if (req.getParameter("page") != null) {
             page = Integer.parseInt(req.getParameter("page"));
         }
@@ -45,8 +46,8 @@ public class TariffPaginationServlet extends HttpServlet {
                 recordsPerPage);
         int noOfRecords = tariffDao.getNoOfRecords();
         int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-        req.setAttribute("tariffList", tariffList);
-        req.setAttribute("tariffList", tariffList);
+
+        req.setAttribute("tariffsList", tariffList);
         req.setAttribute("noOfPages", noOfPages);
         req.setAttribute("currentPage", page);
         RequestDispatcher view = req.getRequestDispatcher("tariff-list.jsp");

@@ -1,10 +1,8 @@
 package com.servlets;
 
-import com.dao.UserDao;
+
 import com.dto.CustomerCreateRequestDto;
-import com.model.User;
-import com.service.CustomerService;
-import com.service.CustomerServiceImpl;
+
 import com.service.UserService;
 import com.service.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
+
 
 @WebServlet(name = "registration", urlPatterns = {"/user/registration"})
 public class UserRegistrationServlet extends HttpServlet {

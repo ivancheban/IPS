@@ -1,5 +1,7 @@
 package com.dao;
 
+import com.exceptions.SubscriptionException;
+import com.exceptions.TariffException;
 import com.exceptions.UserException;
 import com.model.ServiceType;
 import com.model.Subscription;
@@ -15,7 +17,7 @@ import java.util.List;
 public class SubscriptionDao implements Dao<Subscription> {
 
 
-    private static final String CREATE_QUERY = "insert into subscriptions(id,name,days_amount,isActive,created, updated) values (?,?,?,?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into subscriptions(name,days_amount,isActive,created, updated) values (?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from subscriptions where name = ?";
     private static final String UPDATE_QUERY = "UPDATE subscriptions SET item=? WHERE name=?";
     private static final String DELETE_QUERY = "DELETE  FROM subscriptions WHERE id=?";
@@ -31,34 +33,42 @@ public class SubscriptionDao implements Dao<Subscription> {
     }
 
     @Override
-    public Subscription create(Subscription subscription) {
+    public Subscription create(Subscription subscription) throws SubscriptionException {
 
         logger.debug("Start subscription creating");
         if (subscription == null) {
             logger.error("subscription not found");
-            throw new UserException("subscription is not found");
+            throw new SubscriptionException("subscription is not found");
         }
 
 
         try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
-            pst.setInt(1, subscription.getId());
-            pst.setString(2, subscription.getName());
-            pst.setInt(4, subscription.getDays_amount());
-            pst.setBoolean(5, subscription.isActive());
-            pst.setTimestamp(6, subscription.convertToTimestamp(subscription.getCreated()));
-            pst.setTimestamp(7, subscription.convertToTimestamp(subscription.getUpdated()));
+             PreparedStatement pst = con.prepareStatement(CREATE_QUERY,PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+            pst.setString(1, subscription.getName());
+            pst.setInt(2, subscription.getDays_amount());
+            pst.setBoolean(3, subscription.isActive());
+            pst.setTimestamp(4, subscription.convertToTimestamp(subscription.getCreated()));
+            pst.setTimestamp(5, subscription.convertToTimestamp(subscription.getUpdated()));
 
             int status = pst.executeUpdate();
-            if (status != 1) throw new UserException("Created more than one record!!");
+
+            if (status != 1) throw new SubscriptionException("Created more than one record!!");
+            ResultSet keys = pst.getGeneratedKeys();
+            if(keys.next()){
+                int id = keys.getInt(1);
+                subscription.setId(id);
+                System.out.println(subscription.getId());
+            }
 
         } catch (Exception ex) {
             logger.debug("Problem with creating subscription: " + ex.getMessage());
+            throw new SubscriptionException(ex.getMessage(), ex);
         }
 
         logger.debug("subscription created");
 
-        System.out.println(subscription.toString());
+
         return subscription;
     }
 

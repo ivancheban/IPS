@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class LimitDao implements Dao<Limit>{
-    private static final String CREATE_QUERY = "insert into limit(id,name,amount,isActive,created,updated) values (?,?,?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into limit(name,amount,isActive,created,updated) values (?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from limit where name = ?";
     private static final String UPDATE_QUERY = "UPDATE limit SET item=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM limit WHERE id=?";
@@ -34,12 +34,12 @@ public class LimitDao implements Dao<Limit>{
 
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
-            pst.setInt(1, limit.getId());
-            pst.setString(2, limit.getName());
-            pst.setInt(3,limit.getAmount());
-            pst.setBoolean(4, limit.isActive());
-            pst.setTimestamp(5, limit.convertToTimestamp(limit.getCreated()));
-            pst.setTimestamp(6, limit.convertToTimestamp(limit.getUpdated()));
+
+            pst.setString(1, limit.getName());
+            pst.setInt(2,limit.getAmount());
+            pst.setBoolean(3, limit.isActive());
+            pst.setTimestamp(4, limit.convertToTimestamp(limit.getCreated()));
+            pst.setTimestamp(5, limit.convertToTimestamp(limit.getUpdated()));
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Created more than one record!!");

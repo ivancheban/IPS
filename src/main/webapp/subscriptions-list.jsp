@@ -307,7 +307,7 @@
                             <td>${subscription.getUpdated()}</td>
 
                             <td> <a href="/subscription/update"  class="btn btn-info" >Update</a></td>
-                            <td> <a href="/subscription/delete" class="btn btn-danger">Delete</a></td>
+                            <td> <a href="/delete? id=${subscription.id}"  class="btn btn-danger">Delete</a></td>
                             <td> <a href="/subscription/enabled" class="btn btn-success">Enabled</a></td>
                         </tr>
 

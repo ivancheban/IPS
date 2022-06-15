@@ -91,7 +91,9 @@ public class BusinessMapper {
     }
 
 
-
+public  static Wallet walletConversation(WalletDto walletDto){
+        return new Wallet(walletDto.getNumber(),walletDto.getBalance(), walletDto.getCustomerId());
+}
 
     public Wallet getWallet(WalletDto walletDto) {
         Wallet wallet = new Wallet();

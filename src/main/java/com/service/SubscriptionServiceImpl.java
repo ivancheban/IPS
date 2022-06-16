@@ -8,7 +8,7 @@ import com.model.Subscription;
 
 import java.util.List;
 
-public class SubscriptionServiceImpl implements SubscriptionService{
+public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     SubscriptionDao subscriptionDao = new SubscriptionDao();
@@ -20,8 +20,8 @@ public class SubscriptionServiceImpl implements SubscriptionService{
         Subscription subscription = BusinessMapper.convertSubscription(subscriptionDto);
         subscriptionDao.create(subscription);
 
-        if ((subscription.getId() == 0 )){
-            throw  new SubscriptionException("subscription is not create");
+        if ((subscription.getId() == 0)) {
+            throw new SubscriptionException("subscription is not create");
         }
 
 
@@ -37,6 +37,7 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 
     @Override
     public boolean delete(int id) {
+
         return subscriptionDao.delete(id);
     }
 
@@ -51,5 +52,11 @@ public class SubscriptionServiceImpl implements SubscriptionService{
     public List<Subscription> findAll() {
 
         return subscriptionDao.findAll();
+    }
+
+
+    public void addTariff(int subId, int tariffId) throws SubscriptionException {
+        subscriptionDao.addTariff(subId, tariffId);
+
     }
 }

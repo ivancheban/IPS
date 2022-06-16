@@ -14,7 +14,7 @@ public class ContextListenerLogging implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();
         String path = ctx.getRealPath("/WEB-INF/log4j2.log");
-        System.setProperty("logFile", path);
+        System.setProperty("C:\\Users\\eduar\\IdeaProjects\\IPS\\logFile.log", path);
 
         final Logger log = LogManager.getLogger(ContextListenerLogging.class);
         log.debug("path = " + path);

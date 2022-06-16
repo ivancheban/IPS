@@ -160,7 +160,7 @@ public  static Wallet walletConversation(WalletDto walletDto){
 
     }
     public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
-        return new Subscription(subscriptionDto.getName(), subscriptionDto.getDays());
+        return new Subscription(subscriptionDto.getName(), subscriptionDto.getDays(), subscriptionDto.isActive());
     }
 
         public SubscriptionDto getSubscriptionDto(Subscription subscription) {

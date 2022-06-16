@@ -2,12 +2,14 @@ package com.model;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class Subscription {
     private int id;
     private String name;
     private int days_amount;//List<Tariffs> tariffs;
+    private List<Tariff> tariffs;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -18,6 +20,12 @@ public class Subscription {
     public Subscription(String name, int days_amount) {
         this.name = name;
         this.days_amount = days_amount;
+    }
+
+    public Subscription(String name, int days_amount, boolean isActive) {
+        this.name = name;
+        this.days_amount = days_amount;
+        this.isActive = isActive;
     }
 
     public Subscription(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
@@ -79,9 +87,17 @@ public class Subscription {
     }
 
 
-    public Timestamp convertToTimestamp(LocalDateTime date){
-        if(date == null) date = LocalDateTime.now();
+    public Timestamp convertToTimestamp(LocalDateTime date) {
+        if (date == null) date = LocalDateTime.now();
         return Timestamp.valueOf(date);
+    }
+
+    public List<Tariff> getTariffs() {
+        return tariffs;
+    }
+
+    public void setTariffs(List<Tariff> tariffs) {
+        this.tariffs = tariffs;
     }
 
     @Override

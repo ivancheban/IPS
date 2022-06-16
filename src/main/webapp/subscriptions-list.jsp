@@ -277,6 +277,54 @@
                     </div>
                 </div>
 
+                <!-- Edit Modal HTML -->
+                <form action="/update/subscription" method="post">
+                    <div id="editSubscriptionsModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update Subscription</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Find by name</label>
+                                            <input type="text" name="oldName" id="oldName" class="form-control" required>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name Subscription</label>
+                                            <input type="text" name="name" id="name" class="form-control" required>
+                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
+                                            </c:if>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Days Amount</label>
+                                            <input type="text" name="days_amount" id="days_amount" class="form-control"
+                                                   required>
+                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
+                                            </c:if>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>isActive</label>
+                                            <input type="text" name="isActive" id="isActive" class="form-control" required>
+                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('isActive') }">
+                                            </c:if>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input type="submit" class="btn btn-success" value="Save">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
 
                 <table class="table table-striped table-hover">
 
@@ -306,9 +354,11 @@
                             <td>${subscription.getCreated()}</td>
                             <td>${subscription.getUpdated()}</td>
 
-                            <td> <a href="/subscription/update"  class="btn btn-info" >Update</a></td>
-                            <td> <a href="/delete? id=${subscription.id}"  class="btn btn-danger">Delete</a></td>
-                            <td> <a href="/subscription/enabled" class="btn btn-success">Enabled</a></td>
+                            <td><a href="#editSubscriptionsModal"  class="btn btn-primary" data-toggle="modal">Update</a></td>
+
+                            <td><a href="/add/subscription?id=${subscription.id}"  class="btn btn-danger">Delete</a></td>
+
+                            <td><a href="/enabled" class="btn btn-success">Enabled</a></td>
                         </tr>
 
                     </c:forEach>

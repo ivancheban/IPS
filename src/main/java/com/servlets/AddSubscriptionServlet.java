@@ -50,7 +50,7 @@ public class AddSubscriptionServlet extends HttpServlet {
 
 
                     session.setAttribute("subscriptions", subscriptionService.findAll());
-                    resp.sendRedirect("/admin.jsp");
+                    resp.sendRedirect("/subscriptions");
                 }
             } catch (SubscriptionException e) {
                 session.setAttribute("errorMessage", e.getMessage());
@@ -59,6 +59,14 @@ public class AddSubscriptionServlet extends HttpServlet {
 
 
         }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String sid=request.getParameter("id");
+        int id=Integer.valueOf(sid);
+        subscriptionService.delete(id);
+        response.sendRedirect("/subscriptions");
+
+    }
 
 
     }

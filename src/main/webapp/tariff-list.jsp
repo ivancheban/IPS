@@ -207,7 +207,7 @@
                     </div>
                 </div>
             </div>
-
+<%--#ADD Tariff--%>
             <form action="/addTariff" method="post">
                 <div id="addTariffModal" class="modal fade">
                     <div class="modal-dialog">
@@ -275,7 +275,8 @@
                         <td>${tariff.getCreated()}</td>
                         <td>${tariff.getUpdated()}</td>
 
-                        <td> <a href="/tariff/update"  class="btn btn-info" >Update</a></td>
+                        <td><a href="#editTariffModal" class="edit" data-toggle="modal">
+                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>
                         <td> <a href="/tariff/delete" class="btn btn-danger">Delete</a></td>
                     </tr>
 

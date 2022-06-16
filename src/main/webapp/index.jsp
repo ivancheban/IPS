@@ -48,7 +48,7 @@
                        Послуги
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Інтернет</a>
+                        <a class="dropdown-item" href="/internet.jsp">Інтернет</a>
                         <a class="dropdown-item" href="#">Мобільний звя'зок</a>
                         <a class="dropdown-item" href="#">Кабельне телебачення</a>
                         <a class="dropdown-item" href="#">Цифрове телебачення</a>

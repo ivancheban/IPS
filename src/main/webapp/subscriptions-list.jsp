@@ -250,7 +250,7 @@
                                 <div class="modal-header">
                                     <h4 class="modal-title">Add Subscription</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        &times;
+                                        &times
                                     </button>
                                 </div>
                                 <div class="modal-body">

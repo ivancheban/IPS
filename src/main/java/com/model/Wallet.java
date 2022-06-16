@@ -3,23 +3,16 @@ package com.model;
 public class Wallet {
     private int id;
     private String number;
-    private int balance;
+    private double balance;
     private int customerId;
+
 
     public Wallet() {
     }
 
-    public Wallet(String number, int balance, int customerId) {
+    public Wallet(String number, double balance) {
         this.number = number;
         this.balance = balance;
-        this.customerId = customerId;
-    }
-
-    public Wallet(int id, String number, int balance, int customerId) {
-        this.id = id;
-        this.number = number;
-        this.balance = balance;
-        this.customerId = customerId;
     }
 
     public int getId() {
@@ -38,11 +31,11 @@ public class Wallet {
         this.number = number;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -52,5 +45,15 @@ public class Wallet {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    @Override
+    public String toString() {
+        return "Wallet{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", balance=" + balance +
+                ", customerId=" + customerId +
+                '}';
     }
 }

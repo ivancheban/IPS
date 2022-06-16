@@ -3,7 +3,6 @@ package com.mapper;
 import com.dto.*;
 import com.model.*;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -92,15 +91,15 @@ public class BusinessMapper {
 
 
 public  static Wallet walletConversation(WalletDto walletDto){
-        return new Wallet(walletDto.getNumber(),walletDto.getBalance(), walletDto.getCustomerId());
+        return new Wallet(walletDto.getNumber(),walletDto.getBalance());
 }
 
     public Wallet getWallet(WalletDto walletDto) {
-        Wallet wallet = new Wallet();
+        Wallet wallet = new Wallet(walletDto.getNumber(), walletDto.getBalance());
 
         wallet.setNumber(walletDto.getNumber());
         wallet.setBalance(walletDto.getBalance());
-        wallet.setCustomerId(walletDto.getCustomerId());
+
 
         return wallet;
     }
@@ -109,8 +108,8 @@ public  static Wallet walletConversation(WalletDto walletDto){
         WalletDto walletDto = new WalletDto();
 
         walletDto.setNumber(wallet.getNumber());
-        walletDto.setBalance(wallet.getBalance());
-        walletDto.setCustomerId(wallet.getCustomerId());
+        walletDto.setBalance(walletDto.getBalance());
+
 
         return walletDto;
     }

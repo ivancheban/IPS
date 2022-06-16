@@ -10,16 +10,16 @@ import java.util.List;
 
 public class WalletServiceImpl implements WalletService{
 
-    private WalletDao walletDao;
+    WalletDao walletDao = new WalletDao();
+
     @Override
     public boolean create(WalletDto walletDto) throws WalletException {
         Wallet wallet = BusinessMapper.walletConversation(walletDto);
         walletDao.create(wallet);
 
-        if ((wallet.getId() == 0 )) {
-            throw new WalletException("wallet is not create");
+        if(wallet.getId()==0){
+            throw new WalletException("wallet is not created");
         }
-
         return true;
     }
 
@@ -40,6 +40,6 @@ public class WalletServiceImpl implements WalletService{
 
     @Override
     public List<Wallet> findAll() {
-        return null;
+        return walletDao.findAll();
     }
 }

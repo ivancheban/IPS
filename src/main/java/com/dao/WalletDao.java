@@ -2,24 +2,22 @@ package com.dao;
 
 
 import com.exceptions.WalletException;
-import com.model.Subscription;
 import com.model.Wallet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WalletDao implements Dao<Wallet>{
 
-    private static final String CREATE_QUERY = "insert into wallet(number,balance,customers_id) values (?,?,?)";
-    private static final String FIND_BY_FIELD_QUERY = "select * from wallet where name = ?";
-    private static final String UPDATE_QUERY = "UPDATE wallet SET item=? WHERE name=?";
-    private static final String DELETE_QUERY = "DELETE  FROM wallet WHERE id=?";
-    private static final String FIND_ALL_QUERY = "select * from wallet";
-    private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from wallet limit ?, ?";
+    private static final String CREATE_QUERY = "insert into wallets(number,balance) values (?,?)";
+    private static final String FIND_BY_FIELD_QUERY = "select * from wallets where name = ?";
+    private static final String UPDATE_QUERY = "UPDATE wallets SET item=? WHERE name=?";
+    private static final String DELETE_QUERY = "DELETE  FROM wallets WHERE id=?";
+    private static final String FIND_ALL_QUERY = "select * from wallets";
+    private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from wallets limit ?, ?";
 
     private static Logger logger = LogManager.getLogger(WalletDao.class);
 
@@ -27,9 +25,10 @@ public class WalletDao implements Dao<Wallet>{
 
 
     @Override
-    public Wallet create(Wallet item) throws WalletException {
-        logger.debug("Start wallet  creating");
-        if (item == null) {
+    public Wallet create(Wallet wallet) throws WalletException {
+        logger.debug("Start wallet creating");
+        if (wallet == null) {
+            System.out.println("dao dont work");
             logger.error("wallet  not found");
             throw new WalletException("wallet  is not found");
         }
@@ -38,9 +37,9 @@ public class WalletDao implements Dao<Wallet>{
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY,PreparedStatement.RETURN_GENERATED_KEYS);) {
 
-            pst.setString(1, item.getNumber());
-            pst.setInt(2, item.getBalance());
-            pst.setInt(3, item.getCustomerId());
+            pst.setString(1, wallet.getNumber());
+            pst.setDouble(2, wallet.getBalance());
+
 
 
             int statusUpdate = pst.executeUpdate();
@@ -49,8 +48,8 @@ public class WalletDao implements Dao<Wallet>{
             ResultSet keys = pst.getGeneratedKeys();
             if(keys.next()){
                 int id = keys.getInt(1);
-                item.setId(id);
-                System.out.println(item.getId());
+                wallet.setId(id);
+                System.out.println(wallet.getId());
             }
 
         } catch (Exception ex) {
@@ -61,7 +60,7 @@ public class WalletDao implements Dao<Wallet>{
         logger.debug("wallet created");
 
 
-        return item;
+        return wallet;
     }
 
     @Override
@@ -88,14 +87,13 @@ public class WalletDao implements Dao<Wallet>{
              PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
             ResultSet result = pst.executeQuery();
             walletsList= new ArrayList<>();
-           Wallet wallet = null;
-            while (result.next()) {
-                wallet = new Wallet();
+
+
+           while (result.next()) {
+               Wallet wallet = new Wallet();
 
                 wallet.setNumber(result.getString("number"));
                 wallet.setBalance(result.getInt("balance"));
-                wallet.setCustomerId(result.getInt("customers_id"));
-
 
                 walletsList.add(wallet);
 
@@ -126,7 +124,7 @@ public class WalletDao implements Dao<Wallet>{
         }
 
         List<Wallet> walletsList = new ArrayList<>();
-        Wallet wallet = null;
+
         try {
             pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);
             statement = con.createStatement();
@@ -143,7 +141,7 @@ public class WalletDao implements Dao<Wallet>{
                 int customers_id = resultSet.getInt("customers_id");
 
 
-               wallet = new Wallet();
+               Wallet wallet = new Wallet(number,balance);
                 walletsList.add(wallet);
             }
             resultSet = statement.executeQuery("SELECT FOUND_ROWS()");

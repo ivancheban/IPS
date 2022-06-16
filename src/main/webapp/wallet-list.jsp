@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page session="true" %>
-<jsp:useBean id="Walletservice" class="com.service.WalletServiceImpl"/>
+<jsp:useBean id="WalletService" class="com.service.WalletServiceImpl"/>
 <jsp:useBean id="WalletDao" class="com.dao.WalletDao"/>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="resources"/>
@@ -230,47 +230,55 @@
                 <div class="row">
                     <div class="col-xs-5">
 
-                        <h2><fmt:message key="list.subscriptions.list"/></h2>
+                        <h2><fmt:message key="list.wallets.list"/></h2>
                     </div>
                     <div class="col-xs-7">
-                        <a href="#addSubscriptionsModal"  class="btn btn-primary" data-toggle="modal"><i
+                        <a href="#addWalletModal"  class="btn btn-primary" data-toggle="modal"><i
                                 class="material-icons">&#xE147;</i>
-                            <span><fmt:message key="new.subscriptions.add"/></span></a>
+                            <span><fmt:message key="new.wallets.add"/></span></a>
 
 
                     </div>
                 </div>
             </div>
 
-            <form action="/add/subscription" method="post">
-                <div id="addSubscriptionsModal" class="modal fade">
+            <form action="/add/wallet" method="post">
+                <div id="addWalletModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Add Subscription</h4>
+                                    <h4 class="modal-title">Add Wallet</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        &times;
+                                        &times
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Name Subscription</label>
-                                        <input type="text" name="name" id="name" class="form-control" required>
-                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
+                                        <label>Number wallet</label>
+                                        <input type="text" name="number" id="number" class="form-control" required>
+                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('number') }">
                                         </c:if>
                                     </div>
                                     <div class="form-group">
-                                        <label>Days Amount</label>
-                                        <input type="text" name="days_amount" id="days_amount" class="form-control"
+                                        <label>Balance</label>
+                                        <input type="text" name="balance" id="balance" class="form-control"
                                                required>
-                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
+                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('balance') }">
                                         </c:if>
                                     </div>
-                                </div>
+<%--                                    <div class="modal-body">--%>
+<%--                                        <div class="form-group">--%>
+<%--                                            <label>Customers_Id</label>--%>
+<%--                                            <input type="text" name="customers_id" id="customers_id" class="form-control" required>--%>
+<%--                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('customers_id') }">--%>
+<%--                                            </c:if>--%>
+<%--                                        </div>--%>
+<%--                                </div>--%>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                                     <input type="submit" class="btn btn-success" value="Add">
+                                </div>
                                 </div>
                             </form>
                         </div>
@@ -282,11 +290,10 @@
 
                     <thead>
                     <tr>
-                        <th><fmt:message key="list.name.list"/></th>
-                        <th><fmt:message key="list.days_amount.list"/></th>
-                        <th><fmt:message key="list.active.list"/></th>
-                        <th><fmt:message key="list.created.list"/></th>
-                        <th><fmt:message key="list.updated.list"/></th>
+                        <th><fmt:message key="list.number.list"/></th>
+                        <th><fmt:message key="list.balance.list"/></th>
+                        <th><fmt:message key="list.customers_id.list"/></th>
+
 
                         <th><fmt:message key="list.update.list"/></th>
                         <th><fmt:message key="list.delete.list"/></th>
@@ -297,17 +304,16 @@
 
 
 
-                    <c:forEach var="subscription" items="${subscriptionsList}" >
+                    <c:forEach var="wallet" items="${walletsList}" >
 
                         <tr>
-                            <td>${subscription.getName()}</td>
-                            <td>${subscription.getDays_amount()}</td>
-                            <td>${subscription.isActive()}</td>
-                            <td>${subscription.getCreated()}</td>
-                            <td>${subscription.getUpdated()}</td>
+                            <td>${wallet.getNumber()}</td>
+                            <td>${wallet.getBalance()}</td>
+                            <td>${wallet.getCustomerId()}</td>
+
 
                             <td> <a href="/subscription/update"  class="btn btn-info" >Update</a></td>
-                            <td> <a href="/delete? id=${subscription.id}"  class="btn btn-danger">Delete</a></td>
+                            <td> <a href="/delete? id=${wallet.id}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
                             <td> <a href="/subscription/enabled" class="btn btn-success">Enabled</a></td>
                         </tr>
 
@@ -332,7 +338,7 @@
 
 
                 <c:if test="${currentPage != 1}">
-                <td><a href="subscriptions?page=${currentPage - 1}">Previous</a></td>
+                <td><a href="wallets?page=${currentPage - 1}">Previous</a></td>
                 </c:if>
 
                 <%--For displaying Page numbers.
@@ -345,7 +351,7 @@
                                     <td>${i}</td>
                                 </c:when>
                                 <c:otherwise>
-                                    <td><a href="subscriptions?page=${i}">${i}</a></td>
+                                    <td><a href="wallets?page=${i}">${i}</a></td>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
@@ -354,7 +360,7 @@
 
                 <%--For displaying Next link --%>
                 <c:if test="${currentPage lt noOfPages}">
-                <td><a href="subscriptions?page=${currentPage+ 1}">Next</a></td>
+                <td><a href="wallets?page=${currentPage+ 1}">Next</a></td>
                 </c:if>
 
         </div>

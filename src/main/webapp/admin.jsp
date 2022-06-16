@@ -65,10 +65,11 @@ SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subsc
                 <%--                </li>--%>
             </ul>
         </li>
-        <div>
+        <div><a href="/add/wallet" class="btn btn-success"><fmt:message key="all.tariffs.admin"/></a>
             <a href="/user.do" class="btn btn-success"><fmt:message key="all.users.admin"/></a>
             <a href="/subscriptions" class="btn btn-success"><fmt:message key="all.subscriptions.admin"/></a>
-            <a href="/tariffs" class="btn btn-success"><fmt:message key="all.tariffs.admin"/></a>
+
+
 
         </div>
     </div>

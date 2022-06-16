@@ -3,16 +3,16 @@ package com.dto;
 public class WalletDto {
     private int id;
     private String number;
-    private int balance;
+    private double balance;
     private int customerId;
 
     public WalletDto() {
     }
 
-    public WalletDto(String number, int balance, int customerId) {
+    public WalletDto(String number, double balance) {
         this.number = number;
         this.balance = balance;
-        this.customerId = customerId;
+
     }
 
     public String getNumber() {
@@ -23,11 +23,11 @@ public class WalletDto {
         this.number = number;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

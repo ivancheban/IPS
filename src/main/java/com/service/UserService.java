@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dto.CustomerCreateRequestDto;
+import com.model.Role;
 import com.model.User;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface UserService {
     boolean deleteUser(int id);
 
     List<User> findAll();
+
+    Role identy (String phoneNumber, String password);
 
 
 }

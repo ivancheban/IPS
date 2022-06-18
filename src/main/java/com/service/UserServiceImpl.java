@@ -6,6 +6,7 @@ import com.dao.UserDao;
 import com.dto.CustomerCreateRequestDto;
 import com.mapper.BusinessMapper;
 import com.model.Customer;
+import com.model.Role;
 import com.model.User;
 
 import java.sql.Connection;
@@ -92,7 +93,7 @@ public class UserServiceImpl implements UserService {
 
 
     private void validatePhoneNumberFormat(String phoneNumber) {
-        Pattern pattern = Pattern.compile("^\\d{12}$");
+        Pattern pattern = Pattern.compile("^\\+?(38)?(\\d{10,11})$");
         Matcher matcher = pattern.matcher(phoneNumber);
         if (userDao.findByField(phoneNumber).equals(phoneNumber)) {
             throw new RuntimeException("It looks like this phone has already been registered");
@@ -159,6 +160,17 @@ public class UserServiceImpl implements UserService {
         System.out.println("Get All Users" + usersList);
 
         return usersList;
+    }
+
+    @Override
+    public Role identy(String phoneNumber, String password) {
+        User user = findByPhoneNumber(phoneNumber);
+        if (user != null){
+            if(user.getPassword().equals(password)){
+                return user.getRole();
+            }
+        }
+        return null;
     }
 }
 

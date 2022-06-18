@@ -88,8 +88,10 @@ public class UserDao implements Dao<User> {
                 user.setPassword(resultSet.getString("password"));
                 user.setActive(resultSet.getBoolean("isActive"));
                 user.setRole(Role.valueOf(resultSet.getString("role")));
-                user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-                user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+                Role role = Role.valueOf(String.valueOf(user.getRole()));
+                LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
+
 
 
             }

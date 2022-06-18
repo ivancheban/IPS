@@ -6,6 +6,7 @@ import com.exceptions.SubscriptionException;
 
 
 import com.model.Subscription;
+import com.model.Tariff;
 
 
 import java.util.List;
@@ -18,7 +19,13 @@ public interface SubscriptionService {
 
     boolean delete(int id);
 
-    SubscriptionDto findByName(String name);
+    SubscriptionDto findByName(String value);
+
+    SubscriptionDto findById (int id);
 
     List<Subscription> findAll();
+
+    void addTariff(int subId, int tariffId) throws SubscriptionException;
+
+    List<Tariff> getAllTariffs(int subs);
 }

@@ -62,7 +62,7 @@ public class UserDao implements Dao<User> {
 
         logger.debug("User created");
 
-        System.out.println(user.toString());
+
         return user;
     }
 
@@ -74,7 +74,6 @@ public class UserDao implements Dao<User> {
         User user = new User();
 
 
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
 
@@ -84,23 +83,19 @@ public class UserDao implements Dao<User> {
 
             while (resultSet.next()) {
 
-               user.setId(resultSet.getInt("id"));
-               user.setPhone(resultSet.getString("phone"));
-               user.setPassword(resultSet.getString("password"));
-               user.setActive(resultSet.getBoolean("isActive"));
-               user.setRole(Role.valueOf(resultSet.getString("role")));
-               user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-               user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+                user.setId(resultSet.getInt("id"));
+                user.setPhone(resultSet.getString("phone"));
+                user.setPassword(resultSet.getString("password"));
+                user.setActive(resultSet.getBoolean("isActive"));
+                user.setRole(Role.valueOf(resultSet.getString("role")));
+                user.setCreated(LocalDateTime.parse(resultSet.getString("created")));
+                user.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
 
-               System.out.println(user + "User");
-           }
-//            if (user == null) {
-//                throw new UserException("user not found");
-//
-//            }
 
-        } catch (Exception ex) {
-            logger.debug("Problem with searching user: " + ex.getMessage());
+            }
+
+        } catch (SQLException ex) {
+            logger.error("Problem with searching user ", ex);
         }
 
         logger.debug("User searched");
@@ -144,7 +139,7 @@ public class UserDao implements Dao<User> {
     @Override
     public boolean delete(int id) {
 
-        boolean status_boolean = false;
+        boolean statusBoolean = false;
         logger.debug("Start user deleting....");
 
         try (Connection con = DataSource.getConnection();
@@ -153,7 +148,7 @@ public class UserDao implements Dao<User> {
 
             int status = pst.executeUpdate();
             if (status == 1) {
-                status_boolean = true;
+                statusBoolean = true;
             }
             if (status != 1) throw new UserException("Deleted more than one record!!");
             con.close();
@@ -162,7 +157,7 @@ public class UserDao implements Dao<User> {
         }
 
         logger.debug("User deleted");
-        return status_boolean;
+        return statusBoolean;
     }
 
     @Override

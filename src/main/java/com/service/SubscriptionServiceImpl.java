@@ -3,8 +3,10 @@ package com.service;
 import com.dao.SubscriptionDao;
 import com.dto.SubscriptionDto;
 import com.exceptions.SubscriptionException;
+import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.Subscription;
+import com.model.Tariff;
 
 import java.util.List;
 
@@ -49,14 +51,23 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
+    public SubscriptionDto findById(int id) {
+        Subscription subscription = subscriptionDao.findById(id);
+        return businessMapper.getSubscriptionDto(subscription);
+    }
+
+    @Override
     public List<Subscription> findAll() {
 
         return subscriptionDao.findAll();
     }
 
-
-    public void addTariff(int subId, int tariffId) throws SubscriptionException {
+    @Override
+    public void addTariff(int subId, int tariffId)throws SubscriptionException {
         subscriptionDao.addTariff(subId, tariffId);
-
+    }
+    @Override
+    public List<Tariff>  getAllTariffs(int subs){
+        return getAllTariffs(subs);
     }
 }

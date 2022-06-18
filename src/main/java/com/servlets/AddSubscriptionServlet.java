@@ -1,19 +1,16 @@
 package com.servlets;
 
-import com.dao.SubscriptionDao;
+
 import com.dto.SubscriptionDto;
 
 import com.exceptions.SubscriptionException;
 
 import com.mapper.BusinessMapper;
 
-import com.model.Subscription;
-import com.service.SubscriptionService;
 import com.service.SubscriptionServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

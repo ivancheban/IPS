@@ -28,10 +28,11 @@ public class LoginPageServlet extends HttpServlet {
         String password = req.getParameter("password");
         User user = new User();
         user = userServiceImpl.findByPhoneNumber(phone);
-        System.out.println(user);
+
 
         if (user.getPhone().equals(phone)) {
-            req.getRequestDispatcher("success.html").forward(req, resp);
+           // req.getRequestDispatcher("/subscriptions-list").forward(req, resp);
+            resp.sendRedirect("/subscriptions");
         } else {
             req.getRequestDispatcher("error.html").forward(req, resp);
         }

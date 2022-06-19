@@ -297,7 +297,7 @@
 
                         <th><fmt:message key="list.update.list"/></th>
                         <th><fmt:message key="list.delete.list"/></th>
-                        <th><fmt:message key="list.enabled.list"/></th>
+                        <th><fmt:message key="add.money"/></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -314,7 +314,7 @@
 
                             <td> <a href="/subscription/update"  class="btn btn-info" >Update</a></td>
                             <td> <a href="/delete? id=${wallet.id}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
-                            <td> <a href="/subscription/enabled" class="btn btn-success">Enabled</a></td>
+                            <td> <a href="/subscription/enabled" class="btn btn-success">add Money</a></td>
                         </tr>
 
                     </c:forEach>

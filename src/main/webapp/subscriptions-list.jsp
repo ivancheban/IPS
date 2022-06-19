@@ -339,6 +339,7 @@
                         <th><fmt:message key="list.update.list"/></th>
                         <th><fmt:message key="list.delete.list"/></th>
                         <th><fmt:message key="list.enabled.list"/></th>
+                        <th><fmt:message key="menu.service"/></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -359,6 +360,7 @@
                             <td><a href="/add/subscription?id=${subscription.id}"  class="btn btn-danger">Delete</a></td>
 
                             <td><a href="/enabled" class="btn btn-success">Enabled</a></td>
+                            <td><a href="/open/service?id=${subscription.id}"  class="btn btn-success"></a>Menu Service</td>
                         </tr>
 
                     </c:forEach>

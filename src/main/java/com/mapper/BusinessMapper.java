@@ -26,7 +26,7 @@ public class BusinessMapper {
     public Function<Wallet, WalletDto> WalletToDto = this::getWalletDto;
     public Function<WalletDto, Wallet> WalletToEntity = this::getWallet;
 
-    public Function<Subscription, SubscriptionDto> SubscriptionToDto = this::getSubscriptionDto;
+    //public Function<Subscription, SubscriptionDto> SubscriptionToDto = this::getSubscriptionDto;
     public Function<SubscriptionDto, Subscription> SubscriptionToEntity = this::getSubscription;
 
     public Function<Tariff, TariffDto> TariffToDto = this::getTariffDto;
@@ -163,16 +163,8 @@ public  static Wallet walletConversation(WalletDto walletDto){
         return new Subscription(subscriptionDto.getName(), subscriptionDto.getDays(), subscriptionDto.isActive());
     }
 
-        public SubscriptionDto getSubscriptionDto(Subscription subscription) {
-        SubscriptionDto subscriptionDto = new SubscriptionDto();
-
-        subscriptionDto.setName(subscription.getName());
-        subscriptionDto.setDays(subscription.getDays_amount());
-        subscriptionDto.setActive(subscription.isActive());
-        subscriptionDto.setCreated(subscriptionDto.getCreated());
-        subscriptionDto.setUpdated(subscriptionDto.getUpdated());
-
-        return subscriptionDto;
+        public static SubscriptionDto getSubscriptionDto(Subscription subscription) {
+            return new SubscriptionDto (subscription.getName(),subscription.getDays_amount(),subscription.isActive(),subscription.getCreated(),subscription.getUpdated());
     }
 
     public Tariff getTariff(TariffDto tariffDto) {
@@ -187,16 +179,7 @@ public  static Wallet walletConversation(WalletDto walletDto){
     }
 
     public TariffDto getTariffDto(Tariff tariff) {
-        TariffDto tariffDto = new TariffDto();
-
-        tariffDto.setName(tariff.getName());
-        tariffDto.setType(tariff.getType());
-        tariffDto.setPricePerDay(tariff.getPricePerDay());
-        tariffDto.setActive(tariff.isActive());
-        tariffDto.setCreated(tariff.getCreated());
-        tariffDto.setUpdated(tariff.getUpdated());
-
-        return tariffDto;
+        return new TariffDto(tariff.getName(),tariff.getType(),tariff.getPricePerDay(),tariff.isActive(),tariff.getCreated(),tariff.getUpdated());
     }
 
     public Limit getLimit(LimitDto limitDto) {

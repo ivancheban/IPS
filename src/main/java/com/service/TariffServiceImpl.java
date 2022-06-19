@@ -52,6 +52,13 @@ public class TariffServiceImpl implements TariffService {
     }
 
     @Override
+    public TariffDto findById(int id) {
+        Tariff tariff = tariffDao.findById(id);
+
+        return businessMapper.getTariffDto(tariff);
+    }
+
+    @Override
     public List<Tariff> findAll() {
 
 

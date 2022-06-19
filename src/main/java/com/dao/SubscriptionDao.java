@@ -19,7 +19,7 @@ public class SubscriptionDao implements Dao<Subscription> {
 
     private static final String CREATE_QUERY = "insert into subscriptions(name,days_amount,isActive,created, updated) values (?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from subscriptions where name = ?";
-    private static final String FIND_BY_ID_QUERY = "select * from subscriptions where name = id";
+    private static final String FIND_BY_ID_QUERY = "select * from subscriptions where id = ?";
     private static final String UPDATE_QUERY = "UPDATE subscriptions SET name= ?, days_amount = ?, isActive = ?, updated = now() WHERE name = ?";
     private static final String DELETE_QUERY = "DELETE  FROM subscriptions WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from subscriptions";
@@ -138,7 +138,6 @@ public class SubscriptionDao implements Dao<Subscription> {
     }
 
 
-
     @Override
     public Subscription findByField(String value) {
         Subscription subscription = new Subscription();
@@ -173,6 +172,7 @@ public class SubscriptionDao implements Dao<Subscription> {
         System.out.println(subscription.toString());
         return subscription;
     }
+
     public Subscription findById(int id) {
         Subscription subscription = new Subscription();
 
@@ -192,9 +192,9 @@ public class SubscriptionDao implements Dao<Subscription> {
             subscription.setName(resultSet.getString("name"));
             subscription.setDays_amount(resultSet.getInt("days_amount"));
             subscription.setActive(resultSet.getBoolean("isActive"));
-            subscription.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-            subscription.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
-            subscription.setTariffs(getAllTariffs(subscription.getId()));
+            subscription.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+            subscription.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
+            //subscription.setTariffs(getAllTariffs(subscription.getId()));
 
 
         } catch (Exception ex) {
@@ -203,7 +203,7 @@ public class SubscriptionDao implements Dao<Subscription> {
 
         logger.debug("subscription searched");
 
-        System.out.println(subscription.toString());
+        System.out.println(subscription);
         return subscription;
     }
 

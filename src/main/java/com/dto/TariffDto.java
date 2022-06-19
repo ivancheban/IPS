@@ -9,7 +9,6 @@ public class TariffDto {
     private int id;
     private String name;
     private ServiceType type;
-    private List<LimitDto> limitsListDto;
     private int pricePerDay;
     private boolean isActive;
     private LocalDateTime created;
@@ -18,10 +17,10 @@ public class TariffDto {
     public TariffDto() {
     }
 
-    public TariffDto(String name, ServiceType type, List<LimitDto> limitsListDto, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public TariffDto(String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.name = name;
         this.type = type;
-        this.limitsListDto = limitsListDto;
+
         this.pricePerDay = pricePerDay;
         this.isActive = isActive;
         this.created = created;
@@ -48,14 +47,6 @@ public class TariffDto {
 
     public void setType(ServiceType type) {
         this.type = type;
-    }
-
-    public List<LimitDto> getLimitsListDto() {
-        return limitsListDto;
-    }
-
-    public void setLimitsListDto(List<LimitDto> limitsListDto) {
-        this.limitsListDto = limitsListDto;
     }
 
     public int getPricePerDay() {

@@ -46,7 +46,7 @@ public class LoginPageServlet extends HttpServlet {
             if (userRole.equals(Role.ADMIN)) {
                 response.sendRedirect("/admin.jsp");
             } else if (userRole.equals(Role.CLIENT)) {
-                response.sendRedirect("/index.jsp");
+                response.sendRedirect("/subscriptions");
 
             }
         }else {

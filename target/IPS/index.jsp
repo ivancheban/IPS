@@ -44,11 +44,11 @@
 
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="/subscriptions" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        Послуги
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/internet.jsp">Інтернет</a>
+                        <a class="dropdown-item" href="/open/service?id=${subscription.id}">Інтернет</a>
                         <a class="dropdown-item" href="#">Мобільний звя'зок</a>
                         <a class="dropdown-item" href="#">Кабельне телебачення</a>
                         <a class="dropdown-item" href="#">Цифрове телебачення</a>
@@ -56,6 +56,7 @@
 
                     </div>
                 </li>
+
 
 <%--             </li>--%>
 <%--                <li class="nav-item">--%>

@@ -19,6 +19,7 @@ public class TariffDao implements Dao<Tariff> {
 
     private static final String CREATE_QUERY = "insert into tariffs(name,service_type,  price_per_day,isActive) values (?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from tariffs where name = ?";
+    private static final String FIND_BY_ID_QUERY = "select * from tariffs where id = ?";
     private static final String UPDATE_QUERY = "UPDATE tariffs SET item=? WHERE name=?";
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM tariffs";
@@ -105,7 +106,38 @@ public class TariffDao implements Dao<Tariff> {
         System.out.println(tariff.toString());
         return tariff;
     }
+    public Tariff findById(int id) {
+        Tariff tariff = new Tariff();
 
+        logger.debug("Start tariff searching....");
+
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_BY_ID_QUERY);) {
+
+            pst.setInt(1, id);
+
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+
+
+            tariff.setName(resultSet.getString("name"));
+            tariff.setType(ServiceType.valueOf(resultSet.getString("service_type")));
+            tariff.setPricePerDay(resultSet.getInt("price_per_day"));
+            tariff.setActive(resultSet.getBoolean("isActive"));
+            tariff.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+            tariff.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
+
+
+        } catch (Exception ex) {
+            logger.debug("Problem with searching tariff: " + ex.getMessage());
+        }
+
+        logger.debug("Tariff searched");
+
+
+        return tariff;
+    }
 
     @Override
     public Tariff update(Tariff item) {

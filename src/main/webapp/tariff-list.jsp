@@ -244,36 +244,7 @@
                     </div>
                 </div>
 
-                <%--#ADD TariffService--%>
-                <form action="/add/tariff/service" method="post">
-                    <div id="addTariffServiceModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form>
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Add Tariff in service</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Subscription ID</label>
-                                            <input type="text" name="sub_id" id="sub_id" class="form-control" required>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label> Tariff ID</label>
-                                            <input type="text" name="tar_id" id="tar_id" class="form-control" required>
-
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                        <input type="submit" class="btn btn-success" value="Add">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
             <table class="table table-striped table-hover">
 
                 <thead>
@@ -306,7 +277,7 @@
                         <td><a href="#editTariffModal" class="edit" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>
                         <td> <a href="/tariff/delete" class="btn btn-danger">Delete</a></td>
-                        <td> <a href="#addTariffServiceModal" class="btn btn-success" data-toggle="modal">AddTariffService</a></td>
+
                     </tr>
 
                 </c:forEach>

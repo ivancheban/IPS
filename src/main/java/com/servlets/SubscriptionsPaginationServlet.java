@@ -43,6 +43,7 @@ public class SubscriptionsPaginationServlet extends HttpServlet {
             System.out.println(e.getMessage());
         }
 
+
         List<Subscription> subscriptionsList = subscriptionDao.getAll((page - 1) * recordsPerPage,
                 recordsPerPage);
         int noOfRecords = subscriptionDao.getNoOfRecords();
@@ -54,4 +55,5 @@ public class SubscriptionsPaginationServlet extends HttpServlet {
         RequestDispatcher view = req.getRequestDispatcher("subscriptions-list.jsp");
         view.forward(req, resp);
     }
+
 }

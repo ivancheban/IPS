@@ -16,6 +16,8 @@ public interface TariffService {
 
     TariffDto findByName(String name);
 
+    TariffDto findById(int id);
+
     List<Tariff> findAll();
 
 }

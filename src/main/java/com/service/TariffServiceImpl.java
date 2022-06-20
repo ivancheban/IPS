@@ -13,8 +13,6 @@ import java.util.List;
 public class TariffServiceImpl implements TariffService {
 
     TariffDao tariffDao = new TariffDao();
-    private BusinessMapper businessMapper;
-
     @Override
     public boolean create(TariffDto tariffDto) throws TariffException {
 
@@ -32,9 +30,9 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     public TariffDto update(TariffDto tariffDto) {
-        Tariff tariff = tariffDao.update(businessMapper.getTariff(tariffDto));
+        Tariff tariff = tariffDao.update(BusinessMapper.getTariff(tariffDto));
 
-        return  businessMapper.getTariffDto(tariff);
+        return  BusinessMapper.getTariffDto(tariff);
     }
 
     @Override
@@ -48,14 +46,14 @@ public class TariffServiceImpl implements TariffService {
 
         Tariff tariff = tariffDao.findByField(name);
 
-        return businessMapper.getTariffDto(tariff);
+        return BusinessMapper.getTariffDto(tariff);
     }
 
     @Override
     public TariffDto findById(int id) {
         Tariff tariff = tariffDao.findById(id);
 
-        return businessMapper.getTariffDto(tariff);
+        return BusinessMapper.getTariffDto(tariff);
     }
 
     @Override

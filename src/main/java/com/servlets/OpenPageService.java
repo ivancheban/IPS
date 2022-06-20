@@ -1,14 +1,7 @@
 package com.servlets;
-
-import com.dao.SubscriptionDao;
-import com.dto.SubscriptionDto;
-import com.dto.TariffDto;
-import com.model.Subscription;
+import com.model.Tariff;
 import com.service.SubscriptionService;
 import com.service.SubscriptionServiceImpl;
-import com.service.TariffService;
-import com.service.TariffServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,29 +9,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "openPage", urlPatterns = "/open/service")
 public class OpenPageService extends HttpServlet {
-    SubscriptionService subscriptionService = new SubscriptionServiceImpl();
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        SubscriptionService subscriptionService = new SubscriptionServiceImpl();
         HttpSession session = req.getSession(true);
         String sid = req.getParameter("id");
         int id = Integer.valueOf(sid);
-        SubscriptionDto subscriptionDto = subscriptionService.findById(id);
 
-
-
-        if(subscriptionDto!=null){
-            session.setAttribute("subscription",subscriptionDto);
-            resp.sendRedirect("/servicePage.jsp");
+        List<Tariff> tariffList = subscriptionService.getAllByService(id);
+        if (tariffList != null) {
+            session.setAttribute("subscription", tariffList);
+            resp.sendRedirect("/service-page.jsp");
         }
-        else {
-            new SQLException("error");
-        }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        SubscriptionService subscriptionService = new SubscriptionServiceImpl();
+        int sub_id = Integer.valueOf(request.getParameter("sub_id"));
+        request.setAttribute("sub_id", sub_id);
+        response.sendRedirect(request.getContextPath() + "/service-page.jsp");
     }
 }

@@ -31,7 +31,14 @@ public class User  {
         this.updated = updated;
     }
 
-
+    public User(String phone, String password, boolean isActive, Role role, LocalDateTime created, LocalDateTime updated) {
+        this.phone = phone;
+        this.password = password;
+        this.isActive = isActive;
+        this.role = role;
+        this.created = created;
+        this.updated = updated;
+    }
 
     public Timestamp convertToTimestamp(LocalDateTime date){
         if(date == null) date = LocalDateTime.now();

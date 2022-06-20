@@ -38,4 +38,9 @@ public class WalletDto {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

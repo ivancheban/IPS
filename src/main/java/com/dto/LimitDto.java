@@ -22,6 +22,14 @@ public class LimitDto {
         this.updated = updated;
     }
 
+    public LimitDto(String name, int amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+        this.name = name;
+        this.amount = amount;
+        this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+    }
+
     public String getName() {
         return name;
     }

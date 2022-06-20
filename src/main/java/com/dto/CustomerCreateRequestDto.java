@@ -1,6 +1,7 @@
 package com.dto;
 
 public class CustomerCreateRequestDto {
+    private  int id;
     private String name;
     private String surname;
     private String email;
@@ -9,6 +10,16 @@ public class CustomerCreateRequestDto {
     private  String confirm_password;
 
     public CustomerCreateRequestDto() {
+    }
+
+    public CustomerCreateRequestDto(int id, String name, String surname, String email, String phone, String password, String confirm_password) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.confirm_password = confirm_password;
     }
 
     public CustomerCreateRequestDto(String name, String surname, String email, String phone, String password, String confirm_password) {

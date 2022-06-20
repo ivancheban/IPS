@@ -33,6 +33,16 @@ public class TariffDto {
         this.pricePerDay = pricePerDay;
     }
 
+    public TariffDto(int id, String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.pricePerDay = pricePerDay;
+        this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+    }
+
     public String getName() {
         return name;
     }
@@ -83,5 +93,18 @@ public class TariffDto {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "TariffDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", pricePerDay=" + pricePerDay +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }

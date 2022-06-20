@@ -27,5 +27,5 @@ public interface SubscriptionService {
 
     void addTariff(int subId, int tariffId) throws SubscriptionException;
 
-    List<Tariff> getAllTariffs(int subs);
+    List<Tariff> getAllByService(int id);
 }

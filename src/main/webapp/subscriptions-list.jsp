@@ -215,11 +215,7 @@
             font-size: 13px;
         }
     </style>
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+
 </head>
 <body>
 
@@ -233,7 +229,7 @@
                         <h2><fmt:message key="list.subscriptions.list"/></h2>
                     </div>
                     <div class="col-xs-7">
-                        <a href="#addSubscriptionsModal"  class="btn btn-primary" data-toggle="modal"><i
+                        <a href="#addSubscriptionsModal" class="btn btn-primary" data-toggle="modal"><i
                                 class="material-icons">&#xE147;</i>
                             <span><fmt:message key="new.subscriptions.add"/></span></a>
 
@@ -241,91 +237,7 @@
                     </div>
                 </div>
             </div>
-
-            <form action="/add/subscription" method="post">
-                <div id="addSubscriptionsModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Add Subscription</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        &times
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Name Subscription</label>
-                                        <input type="text" name="name" id="name" class="form-control" required>
-                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
-                                        </c:if>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Days Amount</label>
-                                        <input type="text" name="days_amount" id="days_amount" class="form-control"
-                                               required>
-                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
-                                        </c:if>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Edit Modal HTML -->
-                <form action="/update/subscription" method="post">
-                    <div id="editSubscriptionsModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form>
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Update Subscription</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Find by name</label>
-                                            <input type="text" name="oldName" id="oldName" class="form-control" required>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Name Subscription</label>
-                                            <input type="text" name="name" id="name" class="form-control" required>
-                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
-                                            </c:if>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Days Amount</label>
-                                            <input type="text" name="days_amount" id="days_amount" class="form-control"
-                                                   required>
-                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
-                                            </c:if>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>isActive</label>
-                                            <input type="text" name="isActive" id="isActive" class="form-control" required>
-                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('isActive') }">
-                                            </c:if>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                        <input type="submit" class="btn btn-success" value="Save">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
+            <div>
                 <table class="table table-striped table-hover">
 
                     <thead>
@@ -345,8 +257,7 @@
                     <tbody>
 
 
-
-                    <c:forEach var="subscription" items="${subscriptionsList}" >
+                    <c:forEach var="subscription" items="${subscriptionsList}">
 
                         <tr>
                             <td>${subscription.getName()}</td>
@@ -355,17 +266,60 @@
                             <td>${subscription.getCreated()}</td>
                             <td>${subscription.getUpdated()}</td>
 
-                            <td><a href="#editSubscriptionsModal"  class="btn btn-primary" data-toggle="modal">Update</a></td>
+                            <td><a href="#updateSubscriptionsModal" class="btn btn-primary" data-toggle="modal">Update</a></td>
 
-                            <td><a href="/add/subscription?id=${subscription.id}"  class="btn btn-danger">Delete</a></td>
+                            <td><a href="/add/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
 
                             <td><a href="/enabled" class="btn btn-success">Enabled</a></td>
-                            <td><a href="/open/service?id=${subscription.id}"  class="btn btn-success"></a>Menu Service</td>
+                            <td><a href="/open/service?id=${subscription.id}" class="btn btn-success">Menu Service</a></td>
                         </tr>
 
                     </c:forEach>
                     </tbody>
                 </table>
+            </div>
+
+
+            <%--            <!-- Edit Modal HTML -->--%>
+            <%--            <form action="/update/subscription" method="post">--%>
+            <%--                <div id="updateSubscriptionsModal" class="modal fade">--%>
+            <%--                    <div class="modal-dialog">--%>
+            <%--                        <div class="modal-content">--%>
+            <%--                            <form>--%>
+            <%--                                <div class="modal-header">--%>
+            <%--                                    <h4 class="modal-title">Update Subscription</h4>--%>
+            <%--                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">--%>
+            <%--                                        &times--%>
+            <%--                                    </button>--%>
+            <%--                                </div>--%>
+
+            <%--                                <div class="form-group">--%>
+            <%--                                    <label>Name Subscription</label>--%>
+            <%--                                    <input type="text" name="name" id="name" class="form-control" required>--%>
+            <%--                                    <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">--%>
+            <%--                                    </c:if>--%>
+            <%--                                </div>--%>
+            <%--                                <div class="form-group">--%>
+            <%--                                    <label>Days Amount</label>--%>
+            <%--                                    <input type="text" name="days_amount" id="days_amount" class="form-control"--%>
+            <%--                                           required>--%>
+            <%--                                    <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">--%>
+            <%--                                    </c:if>--%>
+            <%--                                </div>--%>
+
+
+            <%--                        </div>--%>
+            <%--                        <div class="modal-footer">--%>
+            <%--                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">--%>
+            <%--                            <input type="submit" class="btn btn-success" value="Save">--%>
+            <%--                        </div>--%>
+            <%--            </form>--%>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 <%--            <div class="clearfix">--%>
@@ -383,38 +337,67 @@
 <%--For displaying Previous link except for the 1st page --%>
 
 
-                <c:if test="${currentPage != 1}">
-                <td><a href="subscriptions?page=${currentPage - 1}">Previous</a></td>
-                </c:if>
+<c:if test="${currentPage != 1}">
+    <td><a href="subscriptions?page=${currentPage - 1}">Previous</a></td>
+</c:if>
 
-                <%--For displaying Page numbers.
-                The when condition does not display a link for the current page--%>
-                <table border="1" cellpadding="5" cellspacing="5">
-                    <tr>
-                        <c:forEach begin="1" end="${noOfPages}" var="i">
-                            <c:choose>
-                                <c:when test="${currentPage eq i}">
-                                    <td>${i}</td>
-                                </c:when>
-                                <c:otherwise>
-                                    <td><a href="subscriptions?page=${i}">${i}</a></td>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </tr>
-                </table>
+<%--For displaying Page numbers.
+The when condition does not display a link for the current page--%>
+<table border="1" cellpadding="5" cellspacing="5">
+    <tr>
+        <c:forEach begin="1" end="${noOfPages}" var="i">
+            <c:choose>
+                <c:when test="${currentPage eq i}">
+                    <td>${i}</td>
+                </c:when>
+                <c:otherwise>
+                    <td><a href="subscriptions?page=${i}">${i}</a></td>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </tr>
+</table>
 
-                <%--For displaying Next link --%>
-                <c:if test="${currentPage lt noOfPages}">
-                <td><a href="subscriptions?page=${currentPage+ 1}">Next</a></td>
-                </c:if>
+<%--For displaying Next link --%>
+<c:if test="${currentPage lt noOfPages}">
+    <td><a href="subscriptions?page=${currentPage+ 1}">Next</a></td>
+</c:if>
 
+<form action="/add/subscription" method="post">
+    <div id="addSubscriptionsModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Subscription</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name Subscription</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
+                        </c:if>
+                    </div>
+                    <div class="form-group">
+                        <label>Days Amount</label>
+                        <input type="text" name="days_amount" id="days_amount" class="form-control"
+                               required>
+                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
+                        </c:if>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-
-
-
+</form>
 
 
 </body>

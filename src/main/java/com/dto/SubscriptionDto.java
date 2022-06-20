@@ -1,6 +1,7 @@
 package com.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubscriptionDto {
@@ -8,6 +9,8 @@ public class SubscriptionDto {
     private String name;
     private int days_amount;
     private boolean isActive;
+
+    private List<TariffDto> tariffs = new ArrayList<>();
     private LocalDateTime created;
     private LocalDateTime updated;
 
@@ -19,10 +22,28 @@ public class SubscriptionDto {
         this.days_amount = days;
     }
 
+    public SubscriptionDto(int id, String name, int days_amount) {
+        this.id = id;
+        this.name = name;
+        this.days_amount = days_amount;
+
+    }
+
     public SubscriptionDto(String name, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.name = name;
         this.days_amount = days;
         this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+    }
+
+    public SubscriptionDto(int id, String name, int days_amount, boolean isActive
+            , LocalDateTime created, LocalDateTime updated, List<TariffDto> tariffs) {
+        this.id = id;
+        this.name = name;
+        this.days_amount = days_amount;
+        this.isActive = isActive;
+        this.tariffs = tariffs;
         this.created = created;
         this.updated = updated;
     }
@@ -65,5 +86,34 @@ public class SubscriptionDto {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDays_amount() {
+        return days_amount;
+    }
+
+    public void setDays_amount(int days_amount) {
+        this.days_amount = days_amount;
+    }
+
+    public List<TariffDto> getTariffs() {
+        return tariffs;
+    }
+
+    public void setTariffs(List<TariffDto> tariffs) {
+        this.tariffs = tariffs;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

@@ -25,6 +25,14 @@ public class Limit {
         this.tariff_id = tariff_id;
     }
 
+    public Limit(String name, int amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+        this.name = name;
+        this.amount = amount;
+        this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+    }
+
     public Timestamp convertToTimestamp(LocalDateTime date){
         if(date == null) date = LocalDateTime.now();
         return Timestamp.valueOf(date);

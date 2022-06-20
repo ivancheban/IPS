@@ -13,8 +13,9 @@ import java.util.List;
 public class WalletDao implements Dao<Wallet>{
 
     private static final String CREATE_QUERY = "insert into wallets(number,balance) values (?,?)";
-    private static final String FIND_BY_FIELD_QUERY = "select * from wallets where name = ?";
-    private static final String UPDATE_QUERY = "UPDATE wallets SET item=? WHERE name=?";
+    private static final String FIND_BY_FIELD_QUERY = "select * from wallets where number = ?";
+    private static final String FIND_BY_ID_QUERY = "select * from wallets where id = ?";
+    private static final String UPDATE_QUERY = "UPDATE wallets SET item=? WHERE number=?";
     private static final String DELETE_QUERY = "DELETE  FROM wallets WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from wallets";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from wallets limit ?, ?";
@@ -65,8 +66,52 @@ public class WalletDao implements Dao<Wallet>{
 
     @Override
     public Wallet findByField(String value) {
-        return null;
+        Wallet wallet = new Wallet();
+        logger.debug("Start wallet searching....");
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
+
+            pst.setString(1, value);
+
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+            wallet.setId(resultSet.getInt("id"));
+            wallet.setNumber(resultSet.getString("number"));
+            wallet.setBalance(resultSet.getDouble("balance"));
+
+        } catch(Exception ex){
+                logger.debug("Problem with searching wallet: " + ex.getMessage());
+            }
+
+            logger.debug("wallet searched");
+
+
+            return wallet;
+        }
+    public Wallet findById(int id) {
+        Wallet wallet = new Wallet();
+        logger.debug("Start wallet searching....");
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_BY_ID_QUERY);) {
+
+            pst.setInt(1, id);
+
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+            wallet.setId(resultSet.getInt("id"));
+            wallet.setNumber(resultSet.getString("number"));
+            wallet.setBalance(resultSet.getDouble("balance"));
+
+        } catch(Exception ex){
+            logger.debug("Problem with searching wallet: " + ex.getMessage());
+        }
+
+        logger.debug("wallet searched");
+
+
+        return wallet;
     }
+
 
     @Override
     public Wallet update(Wallet item) {

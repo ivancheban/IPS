@@ -19,5 +19,7 @@ public interface WalletService {
 
     WalletDto findByNumber(String number);
 
+    WalletDto findById(int id);
+
     List<Wallet> findAll();
 }

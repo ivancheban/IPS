@@ -116,7 +116,7 @@ public class UserDao implements Dao<User> {
         logger.debug("Start user updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
-            pst.setInt(1, user1.getId());
+            pst.setInt(1, user.getId());
 
             user1.setPhone(user.getPhone());
             user1.setPassword(user.getPassword());

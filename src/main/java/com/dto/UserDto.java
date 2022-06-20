@@ -8,11 +8,12 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(String phone, String password, boolean isActive, Role role, LocalDateTime updated) {
+    public UserDto(String phone, String password, boolean isActive, Role role, LocalDateTime created, LocalDateTime updated) {
         this.phone = phone;
         this.password = password;
         this.isActive = isActive;
         this.role = role;
+        this.created = created;
         this.updated = updated;
     }
 

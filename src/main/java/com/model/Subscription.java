@@ -18,6 +18,10 @@ public class Subscription {
     public Subscription() {
     }
 
+    public Subscription(String name) {
+        this.name = name;
+    }
+
     public Subscription(String name, int days_amount) {
         this.name = name;
         this.days_amount = days_amount;
@@ -71,16 +75,16 @@ public class Subscription {
         isActive = active;
     }
 
-    public LocalDate getCreated() {
-        return created.toLocalDate();
+    public LocalDateTime getCreated() {
+        return created;
     }
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getUpdated() {
-        return updated.toLocalDate();
+    public LocalDateTime getUpdated() {
+        return updated;
     }
 
     public void setUpdated(LocalDateTime updated) {
@@ -88,9 +92,9 @@ public class Subscription {
     }
 
 
-    public Timestamp convertToTimestamp(LocalDate date) {
-        if (date == null) date = LocalDate.now();
-        return Timestamp.valueOf(String.valueOf(date));
+    public Timestamp convertToTimestamp(LocalDateTime date) {
+        if(date == null) date = LocalDateTime.now();
+        return Timestamp.valueOf(date);
     }
 
     public List<Tariff> getTariffs() {

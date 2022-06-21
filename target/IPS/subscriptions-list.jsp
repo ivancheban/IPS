@@ -386,8 +386,6 @@ The when condition does not display a link for the current page--%>
                     <div class="form-group">
                         <label>Name Subscription</label>
                         <input type="text" name="name" id="name" class="form-control" required>
-                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
-                        </c:if>
                     </div>
                 </div>
                 <div class="modal-footer">

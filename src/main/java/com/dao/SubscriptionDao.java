@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SubscriptionDao implements Dao<Subscription> {
     private static final String FIND_ALL_BY_SERVICE = "select *from tariffs where service_type=?";
-    private static final String CREATE_QUERY = "insert into subscriptions(name,isActive,created, updated) values (?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into subscriptions(name,days_amount,isActive,created, updated) values (?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from subscriptions where name = ?";
     private static final String FIND_BY_ID_QUERY = "select * from subscriptions where id = ?";
     private static final String UPDATE_QUERY = "UPDATE subscriptions SET name= ?, days_amount = ?, isActive = ?, updated = now() WHERE name = ?";
@@ -85,9 +85,10 @@ public class SubscriptionDao implements Dao<Subscription> {
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
             pst.setString(1, subscription.getName());
-            pst.setBoolean(2, subscription.isActive());
-            pst.setTimestamp(3, subscription.convertToTimestamp(subscription.getCreated()));
-            pst.setTimestamp(4, subscription.convertToTimestamp(subscription.getUpdated()));
+            pst.setInt(2,subscription.getDays_amount());
+            pst.setBoolean(3, subscription.isActive());
+            pst.setTimestamp(4, subscription.convertToTimestamp(subscription.getCreated()));
+            pst.setTimestamp(5, subscription.convertToTimestamp(subscription.getUpdated()));
 
             int status = pst.executeUpdate();
 

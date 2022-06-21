@@ -120,6 +120,15 @@ public class SubscriptionDto {
 
     @Override
     public String toString() {
-        return super.toString();
+
+            return "Subscription{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", days_amount=" + days_amount +
+                    ", isActive=" + isActive +
+                    ", created=" + created +
+                    ", updated=" + updated +
+                    '}';
+        }
     }
-}
+

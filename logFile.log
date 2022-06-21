@@ -1346,3 +1346,63 @@
 19:30:44.508 [http-nio-8081-exec-6] INFO  - adding subscription
 19:30:44.510 [http-nio-8081-exec-6] DEBUG - Start subscription creating
 19:30:44.513 [http-nio-8081-exec-6] DEBUG - Problem with creating subscription: null
+19:32:14.128 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:32:14.148 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:32:28.184 [http-nio-8081-exec-5] INFO  - adding subscription
+19:32:28.202 [http-nio-8081-exec-5] DEBUG - Start subscription creating
+19:32:28.204 [http-nio-8081-exec-5] DEBUG - Problem with creating subscription: null
+19:32:43.105 [http-nio-8081-exec-7] DEBUG - Start  searching all tariffs...
+19:32:43.106 [http-nio-8081-exec-7] DEBUG - Start subscription searching....
+19:32:43.111 [http-nio-8081-exec-7] DEBUG - Start  searching all tariffs ...
+19:32:43.123 [http-nio-8081-exec-7] DEBUG - Start tariff searching....
+19:32:43.153 [http-nio-8081-exec-7] DEBUG - Tariff searched
+19:32:43.153 [http-nio-8081-exec-7] DEBUG - Start tariff searching....
+19:32:43.155 [http-nio-8081-exec-7] DEBUG - Tariff searched
+19:32:43.155 [http-nio-8081-exec-7] DEBUG - All tariffs for subscription found
+19:32:43.156 [http-nio-8081-exec-7] DEBUG - subscription searched
+19:32:43.159 [http-nio-8081-exec-7] DEBUG - All tariffs searched
+19:35:57.772 [http-nio-8081-exec-3] INFO  - adding subscription
+19:35:57.773 [http-nio-8081-exec-3] DEBUG - Start subscription creating
+19:35:57.774 [http-nio-8081-exec-3] DEBUG - Problem with creating subscription: null
+19:40:23.976 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:40:23.990 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:40:38.943 [http-nio-8081-exec-5] INFO  - adding subscription
+19:40:38.946 [http-nio-8081-exec-5] DEBUG - Start subscription creating
+19:40:38.948 [http-nio-8081-exec-5] DEBUG - Problem with creating subscription: null
+19:42:24.314 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:42:24.332 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:42:41.865 [http-nio-8081-exec-5] INFO  - adding subscription
+19:42:41.868 [http-nio-8081-exec-5] DEBUG - Start subscription creating
+19:42:41.870 [http-nio-8081-exec-5] DEBUG - Problem with creating subscription: null
+19:43:50.484 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:43:50.489 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:44:32.611 [http-nio-8081-exec-6] INFO  - adding subscription
+19:44:32.614 [http-nio-8081-exec-6] DEBUG - Start subscription creating
+19:44:32.616 [http-nio-8081-exec-6] DEBUG - Problem with creating subscription: null
+19:47:46.459 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:47:46.475 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:48:01.840 [http-nio-8081-exec-5] INFO  - adding subscription
+19:48:01.844 [http-nio-8081-exec-5] DEBUG - Start subscription creating
+19:48:01.846 [http-nio-8081-exec-5] DEBUG - Problem with creating subscription: null
+19:56:36.297 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:56:36.301 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:56:48.765 [http-nio-8081-exec-1] INFO  - adding subscription
+19:56:48.766 [http-nio-8081-exec-1] DEBUG - Start subscription creating
+19:56:48.770 [http-nio-8081-exec-1] DEBUG - Problem with creating subscription: null
+20:10:16.947 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:10:16.969 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:10:33.870 [http-nio-8081-exec-5] INFO  - adding subscription
+20:10:33.873 [http-nio-8081-exec-5] DEBUG - Start subscription creating
+20:10:33.874 [http-nio-8081-exec-5] DEBUG - Problem with creating subscription: null
+20:15:02.926 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:15:02.936 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:15:17.390 [http-nio-8081-exec-5] INFO  - adding subscription
+20:15:17.395 [http-nio-8081-exec-5] DEBUG - Start subscription creating
+20:15:17.398 [http-nio-8081-exec-5] DEBUG - Problem with creating subscription: Unable to obtain LocalDateTime from TemporalAccessor: 2022-06-21 of type java.time.LocalDate
+20:18:20.762 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:18:20.783 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:18:35.240 [http-nio-8081-exec-6] INFO  - adding subscription
+20:18:35.244 [http-nio-8081-exec-6] DEBUG - Start subscription creating
+20:18:35.312 [http-nio-8081-exec-6] DEBUG - subscription created
+20:18:35.313 [http-nio-8081-exec-6] DEBUG - Start  searching all subscriptions...
+20:18:35.315 [http-nio-8081-exec-6] DEBUG - All subscriptions searched

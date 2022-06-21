@@ -35,10 +35,10 @@ public class AddSubscriptionServlet extends HttpServlet {
 
         String name = req.getParameter("name");
 
-        int days_amount = Integer.parseInt(req.getParameter("days_amount"));
 
 
-        SubscriptionDto subscriptionDto = new SubscriptionDto(name, days_amount);
+
+        SubscriptionDto subscriptionDto = new SubscriptionDto(name);
 
 
 

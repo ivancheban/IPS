@@ -164,8 +164,8 @@ SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subsc
 
 </head>
 <body>
-<div class="pt-5 pb-5">
-    <div class="container">
+<%--<div class="pt-5 pb-5">--%>
+<%--    <div class="container">--%>
         <div class="row">
             <div class="section-head col-sm-12">
 
@@ -186,20 +186,20 @@ SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subsc
                     <a href="">Підключити</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_three"><i class="fa fa-users"></i></span>
-                    <h6>Пакет Сімейний</h6>
-                    <p>350 грн</p>
-                    <a href="">Підключити</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_four"><i class="fa fa-phone"></i></span>
-                    <h6>Phone</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean
-                        massa.</p>
-                </div>
-            </div>
+<%--            <div class="col-lg-4 col-sm-6">--%>
+<%--                <div class="item"><span class="icon feature_box_col_three"><i class="fa fa-users"></i></span>--%>
+<%--                    <h6>Пакет Сімейний</h6>--%>
+<%--                    <p>350 грн</p>--%>
+<%--                    <a href="">Підключити</a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-4 col-sm-6">--%>
+<%--                <div class="item"><span class="icon feature_box_col_four"><i class="fa fa-phone"></i></span>--%>
+<%--                    <h6>Phone</h6>--%>
+<%--                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean--%>
+<%--                        massa.</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
 
             <div class="col-lg-4 col-sm-6">
@@ -211,10 +211,10 @@ SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subsc
                     </c:forEach>
 
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

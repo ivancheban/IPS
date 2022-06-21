@@ -59,4 +59,5 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return subscriptionDao.getAllTariffs(sub_id);
     }
 
+
 }

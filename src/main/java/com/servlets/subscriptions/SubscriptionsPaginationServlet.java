@@ -2,9 +2,12 @@ package com.servlets.subscriptions;
 
 import com.dao.SubscriptionDao;
 import com.dao.TariffDao;
+import com.dto.SubscriptionDto;
 import com.exceptions.SubscriptionException;
 import com.model.Subscription;
 import com.model.Tariff;
+import com.service.SubscriptionService;
+import com.service.SubscriptionServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +23,7 @@ import java.util.List;
 public class SubscriptionsPaginationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+    SubscriptionService subscriptionService = new SubscriptionServiceImpl();
 
     public SubscriptionsPaginationServlet() {
         super();

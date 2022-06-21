@@ -1,5 +1,6 @@
 package com.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,6 @@ public class SubscriptionDto {
     private String name;
     private int days_amount;
     private boolean isActive;
-
     private List<TariffDto> tariffs = new ArrayList<>();
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -29,6 +29,10 @@ public class SubscriptionDto {
 
     }
 
+    public SubscriptionDto(String name) {
+        this.name = name;
+    }
+
     public SubscriptionDto(String name, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.name = name;
         this.days_amount = days;
@@ -37,8 +41,7 @@ public class SubscriptionDto {
         this.updated = updated;
     }
 
-    public SubscriptionDto(int id, String name, int days_amount, boolean isActive
-            , LocalDateTime created, LocalDateTime updated, List<TariffDto> tariffs) {
+    public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated, List<TariffDto> tariffs) {
         this.id = id;
         this.name = name;
         this.days_amount = days_amount;
@@ -46,6 +49,9 @@ public class SubscriptionDto {
         this.tariffs = tariffs;
         this.created = created;
         this.updated = updated;
+    }
+
+    public SubscriptionDto(int id, String name, int days_amount, boolean active, LocalDate created, LocalDate updated, List<TariffDto> collect) {
     }
 
     public String getName() {

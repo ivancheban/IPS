@@ -1,6 +1,7 @@
 package com.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -70,16 +71,16 @@ public class Subscription {
         isActive = active;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
+    public LocalDate getCreated() {
+        return created.toLocalDate();
     }
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDateTime getUpdated() {
-        return updated;
+    public LocalDate getUpdated() {
+        return updated.toLocalDate();
     }
 
     public void setUpdated(LocalDateTime updated) {
@@ -87,9 +88,9 @@ public class Subscription {
     }
 
 
-    public Timestamp convertToTimestamp(LocalDateTime date) {
-        if (date == null) date = LocalDateTime.now();
-        return Timestamp.valueOf(date);
+    public Timestamp convertToTimestamp(LocalDate date) {
+        if (date == null) date = LocalDate.now();
+        return Timestamp.valueOf(String.valueOf(date));
     }
 
     public List<Tariff> getTariffs() {

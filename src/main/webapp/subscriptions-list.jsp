@@ -243,15 +243,13 @@
                     <thead>
                     <tr>
                         <th><fmt:message key="list.name.list"/></th>
-                        <th><fmt:message key="list.days_amount.list"/></th>
                         <th><fmt:message key="list.active.list"/></th>
                         <th><fmt:message key="list.created.list"/></th>
                         <th><fmt:message key="list.updated.list"/></th>
-
-                        <th><fmt:message key="list.update.list"/></th>
-                        <th><fmt:message key="list.delete.list"/></th>
                         <th><fmt:message key="list.enabled.list"/></th>
                         <th><fmt:message key="menu.service"/></th>
+                        <th><fmt:message key="list.update.list"/></th>
+                        <th><fmt:message key="list.delete.list"/></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -261,17 +259,30 @@
 
                         <tr>
                             <td>${subscription.getName()}</td>
-                            <td>${subscription.getDays_amount()}</td>
-                            <td>${subscription.isActive()}</td>
+                            <td>
+
+                                <c:if test="${subscription.isActive()}">
+                                    enabled
+
+                                </c:if>
+
+                                <c:if test="${!subscription.isActive()}">
+                                    disabled
+
+                                </c:if>
+
+                            </td>
+
                             <td>${subscription.getCreated()}</td>
                             <td>${subscription.getUpdated()}</td>
 
-                            <td><a href="#updateSubscriptionsModal" class="btn btn-primary" data-toggle="modal">Update</a></td>
-
-                            <td><a href="/add/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
 
                             <td><a href="/enabled" class="btn btn-success">Enabled</a></td>
-                            <td><a href="/open/service?id=${subscription.id}" class="btn btn-success">Menu Service</a></td>
+                            <td><a href="/open/service?id=${subscription.id}" class="btn btn-success">Menu Service</a>
+                            </td>
+                            <td><a href="#updateSubscriptionsModal" class="btn btn-primary"
+                                   data-toggle="modal">Update</a></td>
+                            <td><a href="/add/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
                         </tr>
 
                     </c:forEach>
@@ -317,9 +328,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 
 <%--            <div class="clearfix">--%>
@@ -379,13 +387,6 @@ The when condition does not display a link for the current page--%>
                         <label>Name Subscription</label>
                         <input type="text" name="name" id="name" class="form-control" required>
                         <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
-                        </c:if>
-                    </div>
-                    <div class="form-group">
-                        <label>Days Amount</label>
-                        <input type="text" name="days_amount" id="days_amount" class="form-control"
-                               required>
-                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
                         </c:if>
                     </div>
                 </div>

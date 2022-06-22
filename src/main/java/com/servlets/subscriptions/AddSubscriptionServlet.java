@@ -34,7 +34,7 @@ public class AddSubscriptionServlet extends HttpServlet {
         String name = req.getParameter("name");
 
         SubscriptionDto subscriptionDto = new SubscriptionDto(name);
-        System.out.println("servlet" + subscriptionDto);
+
 
         try {
           subscriptionService.create(subscriptionDto);

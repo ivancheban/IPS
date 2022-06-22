@@ -1,5 +1,6 @@
 package com.dto;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class SubscriptionDto {
         this.days_amount = days;
     }
 
+
     public SubscriptionDto(int id, String name, int days_amount) {
         this.id = id;
         this.name = name;
@@ -29,17 +31,17 @@ public class SubscriptionDto {
 
     }
 
+    public SubscriptionDto(int id, String name, int days_amount, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.days_amount = days_amount;
+        this.isActive = isActive;
+    }
+
     public SubscriptionDto(String name) {
         this.name = name;
     }
 
-    public SubscriptionDto(String name, int days, boolean isActive, LocalDateTime created, LocalDateTime updated) {
-        this.name = name;
-        this.days_amount = days;
-        this.isActive = isActive;
-        this.created = created;
-        this.updated = updated;
-    }
 
     public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated, List<TariffDto> tariffs) {
         this.id = id;
@@ -51,8 +53,8 @@ public class SubscriptionDto {
         this.updated = updated;
     }
 
-    public SubscriptionDto(int id, String name, int days_amount, boolean active, LocalDate created, LocalDate updated, List<TariffDto> collect) {
-    }
+
+
 
     public String getName() {
         return name;
@@ -78,16 +80,16 @@ public class SubscriptionDto {
         isActive = active;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
+    public LocalDate getCreated() {
+        return created.toLocalDate();
     }
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDateTime getUpdated() {
-        return updated;
+    public LocalDate getUpdated() {
+        return updated.toLocalDate();
     }
 
     public void setUpdated(LocalDateTime updated) {
@@ -117,6 +119,7 @@ public class SubscriptionDto {
     public void setTariffs(List<TariffDto> tariffs) {
         this.tariffs = tariffs;
     }
+
 
     @Override
     public String toString() {

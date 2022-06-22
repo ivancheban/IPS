@@ -20,7 +20,7 @@ public class SubscriptionDao implements Dao<Subscription> {
     private static final String FIND_BY_FIELD_QUERY = "select * from subscriptions where name = ?";
     private static final String FIND_BY_ID_QUERY = "select * from subscriptions where id = ?";
     private static final String UPDATE_QUERY = "UPDATE subscriptions SET name= ?, days_amount = ?, isActive = ?, updated = now() WHERE name = ?";
-    private static final String UPDATE_QUERY_ID = "UPDATE subscriptions SET name= ?, days_amount = ?, updated = now() WHERE id = ?";
+    private static final String UPDATE_QUERY_ID = "UPDATE subscriptions SET name=?,days_amount = ?,isActive = ?,updated = now() WHERE id = ?";
     private static final String DELETE_QUERY = "DELETE  FROM subscriptions WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from subscriptions";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from subscriptions limit ?, ?";
@@ -85,7 +85,7 @@ public class SubscriptionDao implements Dao<Subscription> {
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
             pst.setString(1, subscription.getName());
-            pst.setInt(2,subscription.getDays_amount());
+            pst.setInt(2, subscription.getDays_amount());
             pst.setBoolean(3, subscription.isActive());
             pst.setTimestamp(4, subscription.convertToTimestamp(subscription.getCreated()));
             pst.setTimestamp(5, subscription.convertToTimestamp(subscription.getUpdated()));
@@ -161,12 +161,20 @@ public class SubscriptionDao implements Dao<Subscription> {
         logger.debug("Start  subscription updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY_ID);) {
-            pst.setInt(1, sub.getId());
+
+            pst.setString(1, sub.getName());
+            pst.setInt(2, sub.getDays_amount());
+            pst.setBoolean(3, sub.isActive());
+            pst.setInt(4, sub.getId());
 
             subscription.setName(sub.getName());
             subscription.setDays_amount(sub.getDays_amount());
+            subscription.setActive(sub.isActive());
+            subscription.setId(sub.getId());
+
             int status = pst.executeUpdate();
-            if (status != 1) throw new UserException("Updated more than one record!!");
+            if (status != 1) throw new SubscriptionException("Updated more than one record!!");
+
         } catch (Exception ex) {
             logger.error("Problem with updating  subscription: " + ex.getMessage());
         }
@@ -193,7 +201,7 @@ public class SubscriptionDao implements Dao<Subscription> {
             subscription.setActive(sub.isActive());
 
             int status = pst.executeUpdate();
-            if (status != 1) throw new UserException("Updated more than one record!!");
+            if (status != 1) throw new SubscriptionException("Updated more than one record!!");
 
         } catch (Exception ex) {
             logger.debug("Problem with updating  subscription: " + ex.getMessage());
@@ -325,8 +333,8 @@ public class SubscriptionDao implements Dao<Subscription> {
 
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_ALL_BY_SERVICE);) {
-            SubscriptionDao subscriptionDao=new SubscriptionDao();
-                pst.setString(1, findById(id).getName());
+            SubscriptionDao subscriptionDao = new SubscriptionDao();
+            pst.setString(1, findById(id).getName());
 
             ResultSet result = pst.executeQuery();
             Tariff tariff = null;

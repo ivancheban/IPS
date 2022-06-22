@@ -22,6 +22,11 @@ public class Subscription {
         this.name = name;
     }
 
+    public Subscription(String name, boolean isActive) {
+        this.name = name;
+        this.isActive = isActive;
+    }
+
     public Subscription(String name, int days_amount) {
         this.name = name;
         this.days_amount = days_amount;

@@ -35,7 +35,10 @@ public class BusinessMapper {
     }
 
     public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
-        return new Subscription(subscriptionDto.getName(), subscriptionDto.getDays(), subscriptionDto.isActive());
+        return new Subscription(subscriptionDto.getName(),subscriptionDto.isActive());
+    }
+    public static SubscriptionDto convertSubDto(Subscription subscription) {
+        return new SubscriptionDto(subscription.getId(),subscription.getName(), subscription.getDays_amount(), subscription.isActive());
     }
 
     public static SubscriptionDto getSubscriptionDto(Subscription subscription) {

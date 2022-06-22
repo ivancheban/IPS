@@ -280,8 +280,7 @@
                             <td><a href="/enabled" class="btn btn-success">Enabled</a></td>
                             <td><a href="/open/service?id=${subscription.id}" class="btn btn-success">Menu Service</a>
                             </td>
-                            <td><a href="#updateSubscriptionsModal" class="btn btn-primary"
-                                   data-toggle="modal">Update</a></td>
+                            <td><a href="/update/subscription?id=${subscription.id}" class="btn btn-primary">Update</a></td>
                             <td><a href="/add/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
                         </tr>
 

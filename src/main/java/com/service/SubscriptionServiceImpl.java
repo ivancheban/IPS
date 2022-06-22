@@ -7,6 +7,7 @@ import com.mapper.BusinessMapper;
 import com.model.Subscription;
 import com.model.Tariff;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SubscriptionServiceImpl implements SubscriptionService {
     SubscriptionDao subscriptionDao = new SubscriptionDao();
@@ -23,7 +24,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public SubscriptionDto update(SubscriptionDto subscriptionDto) {
         Subscription subscription = subscriptionDao.update(BusinessMapper.convertSubscription(subscriptionDto));
-        return BusinessMapper.getSubscriptionDto(subscription);
+        return BusinessMapper.convertSubDto(subscription);
     }
     @Override
     public boolean delete(int id) {
@@ -46,8 +47,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public List<Subscription> findAll() {
-        return subscriptionDao.findAll();
+    public List<SubscriptionDto> findAll() {
+        return subscriptionDao.findAll().stream().map(subscription -> BusinessMapper.convertSubDto(subscription)).collect(Collectors.toList());
     }
 
     @Override

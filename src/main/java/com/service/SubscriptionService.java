@@ -23,7 +23,7 @@ public interface SubscriptionService {
 
     SubscriptionDto findById (int id);
 
-    List<Subscription> findAll();
+    List<SubscriptionDto> findAll();
 
     void addTariff(int subId, int tariffId) throws SubscriptionException;
 

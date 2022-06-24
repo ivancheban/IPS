@@ -1,11 +1,8 @@
 package com.servlets.subscriptions;
 
 import com.dao.SubscriptionDao;
-import com.dao.TariffDao;
 import com.dto.SubscriptionDto;
-import com.exceptions.SubscriptionException;
 import com.model.Subscription;
-import com.model.Tariff;
 import com.service.SubscriptionService;
 import com.service.SubscriptionServiceImpl;
 
@@ -31,6 +28,7 @@ public class SubscriptionsPaginationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        SubscriptionService subscriptionService = new SubscriptionServiceImpl();
         HttpSession session = req.getSession(true);
 
         int page = 1;

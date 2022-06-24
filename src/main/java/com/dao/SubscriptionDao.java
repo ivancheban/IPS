@@ -20,7 +20,7 @@ public class SubscriptionDao implements Dao<Subscription> {
     private static final String FIND_BY_FIELD_QUERY = "select * from subscriptions where name = ?";
     private static final String FIND_BY_ID_QUERY = "select * from subscriptions where id = ?";
     private static final String UPDATE_QUERY = "UPDATE subscriptions SET name= ?, days_amount = ?, isActive = ?, updated = now() WHERE name = ?";
-    private static final String UPDATE_QUERY_ID = "UPDATE subscriptions SET name=?,days_amount = ?,isActive = ?,updated = now() WHERE id = ?";
+    private static final String UPDATE_QUERY_ID = "UPDATE subscriptions SET name=?,days_amount = ?,isActive = ? WHERE id = ?";
     private static final String DELETE_QUERY = "DELETE  FROM subscriptions WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from subscriptions";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from subscriptions limit ?, ?";
@@ -157,7 +157,7 @@ public class SubscriptionDao implements Dao<Subscription> {
 
     @Override
     public Subscription update(Subscription sub) {
-        Subscription subscription = new Subscription();
+
         logger.debug("Start  subscription updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY_ID);) {
@@ -167,10 +167,6 @@ public class SubscriptionDao implements Dao<Subscription> {
             pst.setBoolean(3, sub.isActive());
             pst.setInt(4, sub.getId());
 
-            subscription.setName(sub.getName());
-            subscription.setDays_amount(sub.getDays_amount());
-            subscription.setActive(sub.isActive());
-            subscription.setId(sub.getId());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new SubscriptionException("Updated more than one record!!");
@@ -179,7 +175,7 @@ public class SubscriptionDao implements Dao<Subscription> {
             logger.error("Problem with updating  subscription: " + ex.getMessage());
         }
         logger.debug(" subscription updated");
-        return subscription;
+        return sub;
     }
 
     public Subscription updateSub(Subscription sub, String oldName) {

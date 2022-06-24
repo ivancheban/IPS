@@ -20,4 +20,8 @@ public interface TariffService {
 
     List<Tariff> findAll();
 
+    List<TariffDto> sortedByPrice();
+
+    List<TariffDto> sortedByName();
+
 }

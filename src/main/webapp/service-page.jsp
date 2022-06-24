@@ -33,7 +33,7 @@
 
 <body>
 <div class="container">
-    <div class="col-xs-7">
+    <div class="col-xs-12">
         <a href="#addTariffModal"  class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>
             <span><fmt:message key="new.tariffs.add"/></span></a>
     </div>

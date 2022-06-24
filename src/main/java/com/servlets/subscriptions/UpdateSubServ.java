@@ -23,10 +23,11 @@ public class UpdateSubServ extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
+
         String name = request.getParameter("name");
         int days_amount = Integer.parseInt(request.getParameter("days_amount"));
         boolean isActive = Boolean.parseBoolean(request.getParameter("isActive"));
+        int id  = Integer.parseInt(request.getParameter("id"));
 
         SubscriptionDto subscriptionDto = new SubscriptionDto(id,name,days_amount,isActive);
 

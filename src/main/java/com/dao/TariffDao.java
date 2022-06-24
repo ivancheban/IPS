@@ -24,6 +24,8 @@ public class TariffDao implements Dao<Tariff> {
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM tariffs";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from tariffs limit ?, ?";
+    private static final String SORTED_BY_PRICE = "SELECT * FROM tariffs  WHERE  service_type =? ORDER BY price_per_day";
+    private static final String SORTED_BY_NAME = "SELECT * FROM tariffs  WHERE  service_type =? ORDER BY name";
     private static Logger logger = LogManager.getLogger(TariffDao.class);
 
     private int noOfRecords;
@@ -219,10 +221,7 @@ public class TariffDao implements Dao<Tariff> {
         } catch (Exception ex) {
             logger.debug("Problem with searching all tariffs: " + ex.getMessage());
         }
-
         logger.debug("All Tariffs searched");
-        System.out.println(tariffsList + "dao");
-
         return tariffsList;
     }
 
@@ -289,5 +288,61 @@ public class TariffDao implements Dao<Tariff> {
 
     public int getNoOfRecords() {
         return noOfRecords;
+    }
+
+    public List<Tariff> sortedByPrice(){
+        logger.debug("Start sorted all tariffs....");
+        List<Tariff> tariffsList = null;
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(SORTED_BY_PRICE);) {
+            ResultSet result = pst.executeQuery();
+            tariffsList = new ArrayList<>();
+
+            while (result.next()) {
+                Tariff tariff  = new Tariff();
+                tariff.setId(result.getInt("id"));
+                tariff.setName(result.getString("name"));
+                tariff.setType(ServiceType.valueOf(result.getString("service_type")));
+                tariff.setPricePerDay(result.getInt("price_per_day"));
+                tariff.setActive(result.getBoolean("isActive"));
+                tariff.setCreated(result.getTimestamp("created").toLocalDateTime());
+                tariff.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+
+                tariffsList.add(tariff);
+            }
+        } catch (Exception ex) {
+            logger.debug("Problem with sorted all tariffs: " + ex.getMessage());
+        }
+
+        logger.debug("All Tariffs searched and sorted");
+        return tariffsList;
+    }
+    public List<Tariff> sortedByName(){
+        logger.debug("Start sorted all tariffs....");
+        List<Tariff> tariffsList = null;
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(SORTED_BY_NAME);) {
+            ResultSet result = pst.executeQuery();
+            tariffsList = new ArrayList<>();
+
+            while (result.next()) {
+                Tariff tariff  = new Tariff();
+                tariff.setId(result.getInt("id"));
+                tariff.setName(result.getString("name"));
+                tariff.setType(ServiceType.valueOf(result.getString("service_type")));
+                tariff.setPricePerDay(result.getInt("price_per_day"));
+                tariff.setActive(result.getBoolean("isActive"));
+                tariff.setCreated(result.getTimestamp("created").toLocalDateTime());
+                tariff.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+                tariffsList.add(tariff);
+            }
+        } catch (Exception ex) {
+            logger.debug("Problem with sorted all tariffs: " + ex.getMessage());
+        }
+
+        logger.debug("All Tariffs searched and sorted");
+        return tariffsList;
     }
 }

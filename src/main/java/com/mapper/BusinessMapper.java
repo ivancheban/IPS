@@ -35,10 +35,10 @@ public class BusinessMapper {
     }
 
     public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
-        return new Subscription(subscriptionDto.getName(),subscriptionDto.isActive());
+        return new Subscription(subscriptionDto.getId(),subscriptionDto.getName(), subscriptionDto.getDays(), subscriptionDto.isActive());
     }
     public static SubscriptionDto convertSubDto(Subscription subscription) {
-        return new SubscriptionDto(subscription.getId(),subscription.getName(), subscription.getDays_amount(), subscription.isActive());
+        return new SubscriptionDto(subscription.getId(), subscription.getName(), subscription.getDays_amount(), subscription.isActive(),subscription.getCreated(),subscription.getUpdated());
     }
 
     public static SubscriptionDto getSubscriptionDto(Subscription subscription) {
@@ -52,7 +52,7 @@ public class BusinessMapper {
     }
 
     public static Tariff getTariff(TariffDto tariffDto) {
-        return new Tariff(tariffDto.getName(), tariffDto.getType(), tariffDto.getPricePerDay());
+        return new Tariff(tariffDto.getId(),tariffDto.getName(), tariffDto.getType(), tariffDto.getPricePerDay(), tariffDto.isActive(), tariffDto.getCreated(),tariffDto.getUpdated());
     }
 
     public static Tariff convertTariff(TariffDto tariffDto) {
@@ -60,7 +60,7 @@ public class BusinessMapper {
     }
 
     public static TariffDto getTariffDto(Tariff tariff) {
-        return new TariffDto(tariff.getName(), tariff.getType(), tariff.getPricePerDay(), tariff.isActive(), tariff.getCreated(), tariff.getUpdated());
+        return new TariffDto(tariff.getId(),tariff.getName(), tariff.getType(), tariff.getPricePerDay(), tariff.isActive(), tariff.getCreated(), tariff.getUpdated());
     }
 
     public Limit getLimit(LimitDto limitDto) {

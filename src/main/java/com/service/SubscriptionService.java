@@ -5,7 +5,6 @@ import com.dto.SubscriptionDto;
 import com.exceptions.SubscriptionException;
 
 
-import com.model.Subscription;
 import com.model.Tariff;
 
 
@@ -28,4 +27,5 @@ public interface SubscriptionService {
     void addTariff(int subId, int tariffId) throws SubscriptionException;
 
     List<Tariff> getAllByService(int id);
+
 }

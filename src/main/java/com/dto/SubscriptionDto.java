@@ -24,18 +24,20 @@ public class SubscriptionDto {
     }
 
 
-    public SubscriptionDto(int id, String name, int days_amount) {
-        this.id = id;
-        this.name = name;
-        this.days_amount = days_amount;
-
-    }
-
-    public SubscriptionDto(int id, String name, int days_amount, boolean isActive) {
+    public SubscriptionDto(int id, String name, int days_amount,boolean isActive) {
         this.id = id;
         this.name = name;
         this.days_amount = days_amount;
         this.isActive = isActive;
+
+    }
+
+    public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created,LocalDateTime updated) {
+        this.id = id;
+        this.name = name;
+        this.days_amount = days_amount;
+        this.isActive = isActive;
+
     }
 
     public SubscriptionDto(String name) {
@@ -52,8 +54,6 @@ public class SubscriptionDto {
         this.created = created;
         this.updated = updated;
     }
-
-
 
 
     public String getName() {
@@ -80,16 +80,16 @@ public class SubscriptionDto {
         isActive = active;
     }
 
-    public LocalDate getCreated() {
-        return created.toLocalDate();
+    public LocalDateTime getCreated() {
+        return created;
     }
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getUpdated() {
-        return updated.toLocalDate();
+    public LocalDateTime getUpdated() {
+        return updated;
     }
 
     public void setUpdated(LocalDateTime updated) {
@@ -124,14 +124,14 @@ public class SubscriptionDto {
     @Override
     public String toString() {
 
-            return "Subscription{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", days_amount=" + days_amount +
-                    ", isActive=" + isActive +
-                    ", created=" + created +
-                    ", updated=" + updated +
-                    '}';
-        }
+        return "Subscription{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", days_amount=" + days_amount +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
+}
 

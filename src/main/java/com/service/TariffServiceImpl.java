@@ -7,7 +7,9 @@ import com.mapper.BusinessMapper;
 import com.model.Tariff;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class TariffServiceImpl implements TariffService {
@@ -61,5 +63,15 @@ public class TariffServiceImpl implements TariffService {
 
 
         return tariffDao.findAll();
+    }
+
+    @Override
+    public List<TariffDto> sortedByPrice() {
+        return tariffDao.sortedByPrice().stream().map(tariff -> BusinessMapper.getTariffDto(tariff)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TariffDto> sortedByName() {
+        return tariffDao.sortedByName().stream().map(tariff -> BusinessMapper.getTariffDto(tariff)).collect(Collectors.toList());
     }
 }

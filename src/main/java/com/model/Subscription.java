@@ -38,6 +38,13 @@ public class Subscription {
         this.isActive = isActive;
     }
 
+    public Subscription(int id , String name, int days_amount, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.days_amount = days_amount;
+        this.isActive = isActive;
+    }
+
     public Subscription(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;

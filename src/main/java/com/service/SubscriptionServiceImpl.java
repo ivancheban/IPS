@@ -46,9 +46,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return subscriptionDao.getAllByService(id);
     }
 
+
     @Override
     public List<SubscriptionDto> findAll() {
-        return subscriptionDao.findAll().stream().map(subscription -> BusinessMapper.convertSubDto(subscription)).collect(Collectors.toList());
+        return subscriptionDao.findAll().stream().map(subscription -> BusinessMapper.getSubscriptionDto(subscription)).collect(Collectors.toList());
     }
 
     @Override

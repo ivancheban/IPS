@@ -18,17 +18,11 @@ import java.util.List;
 @WebServlet(name = "select-tariff", urlPatterns = "/select/tariff")
 public class SelectTariffForService extends HttpServlet {
     SubscriptionService service = new SubscriptionServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
         int id = Integer.valueOf(req.getParameter("id"));
         SubscriptionDto subscriptionDto = service.findById(id);
-
-        //List<Tariff> subTariffs = service.getAllTariffs(id);
-
-//        if(subTariffs != null){
-//            resp.sendRedirect("/tariffs");
-//        }
-
     }
 }

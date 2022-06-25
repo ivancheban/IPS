@@ -1,4 +1,4 @@
-package com.servlets;
+package com.servlets.subscriptions;
 import com.dto.SubscriptionDto;
 import com.model.Tariff;
 import com.service.SubscriptionService;

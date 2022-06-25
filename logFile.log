@@ -2961,3 +2961,121 @@
 16:04:43.240 [http-nio-8081-exec-4] DEBUG - User searched
 16:04:51.085 [http-nio-8081-exec-8] DEBUG - Start user updating....
 16:04:51.095 [http-nio-8081-exec-8] DEBUG - User updated
+16:24:29.222 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+16:24:29.234 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+16:24:48.401 [http-nio-8081-exec-7] DEBUG - Start user searching....
+16:24:48.406 [http-nio-8081-exec-7] DEBUG - User searched
+16:25:01.606 [http-nio-8081-exec-1] DEBUG - Start user deleting....
+16:25:01.620 [http-nio-8081-exec-1] DEBUG - User deleted
+16:57:00.835 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+16:57:00.844 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+16:58:03.718 [http-nio-8081-exec-7] INFO  - Customer registration
+16:58:03.721 [http-nio-8081-exec-7] DEBUG - Start user searching....
+16:58:03.814 [http-nio-8081-exec-7] DEBUG - User searched
+16:58:03.816 [http-nio-8081-exec-7] DEBUG - Start user creating
+16:58:03.837 [http-nio-8081-exec-7] DEBUG - User created
+16:58:03.839 [http-nio-8081-exec-7] DEBUG - Start customer creating
+16:58:03.975 [http-nio-8081-exec-7] DEBUG - Customer created
+17:01:44.228 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:01:44.232 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:03:13.477 [http-nio-8081-exec-6] INFO  - Customer registration
+17:03:13.480 [http-nio-8081-exec-6] DEBUG - Start user searching....
+17:03:13.567 [http-nio-8081-exec-6] DEBUG - User searched
+17:03:13.569 [http-nio-8081-exec-6] DEBUG - Start user creating
+17:03:13.588 [http-nio-8081-exec-6] DEBUG - User created
+17:03:13.590 [http-nio-8081-exec-6] DEBUG - Start customer creating
+17:03:13.594 [http-nio-8081-exec-6] DEBUG - Customer created
+17:19:45.779 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:19:45.788 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:20:41.786 [http-nio-8081-exec-7] INFO  - Customer registration
+17:20:41.790 [http-nio-8081-exec-7] DEBUG - Start user searching....
+17:20:41.867 [http-nio-8081-exec-7] DEBUG - User searched
+17:20:41.869 [http-nio-8081-exec-7] DEBUG - Start user creating
+17:20:41.889 [http-nio-8081-exec-7] DEBUG - User created
+17:20:41.889 [http-nio-8081-exec-7] DEBUG - Start customer creating
+17:20:41.895 [http-nio-8081-exec-7] DEBUG - Customer created
+17:24:41.209 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:24:41.219 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:26:02.718 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:26:02.726 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:26:56.909 [http-nio-8081-exec-9] INFO  - Customer registration
+17:26:56.912 [http-nio-8081-exec-9] DEBUG - Start user searching....
+17:26:56.996 [http-nio-8081-exec-9] DEBUG - User searched
+17:26:57.000 [http-nio-8081-exec-9] DEBUG - Start user creating
+17:26:57.022 [http-nio-8081-exec-9] DEBUG - User created
+17:26:57.022 [http-nio-8081-exec-9] DEBUG - Start customer creating
+17:26:57.027 [http-nio-8081-exec-9] DEBUG - Customer created
+17:27:34.416 [http-nio-8081-exec-8] DEBUG - Start user searching....
+17:27:34.422 [http-nio-8081-exec-8] DEBUG - User searched
+17:27:43.557 [http-nio-8081-exec-2] DEBUG - Start user updating....
+17:27:43.564 [http-nio-8081-exec-2] DEBUG - User updated
+17:31:20.911 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:31:20.921 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:42:11.996 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:42:12.011 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:46:41.983 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+17:46:41.995 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+18:04:23.935 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+18:04:23.947 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+18:14:35.904 [http-nio-8081-exec-7] INFO  - Customer registration
+18:14:35.909 [http-nio-8081-exec-7] DEBUG - Start user searching....
+18:14:35.914 [http-nio-8081-exec-7] DEBUG - User searched
+18:14:35.916 [http-nio-8081-exec-7] DEBUG - Start user creating
+18:14:35.954 [http-nio-8081-exec-7] DEBUG - User created
+18:14:35.955 [http-nio-8081-exec-7] DEBUG - Start customer creating
+18:14:35.962 [http-nio-8081-exec-7] DEBUG - Customer created
+18:16:01.596 [http-nio-8081-exec-7] INFO  - Customer registration
+18:16:01.597 [http-nio-8081-exec-7] DEBUG - Start user searching....
+18:16:01.600 [http-nio-8081-exec-7] DEBUG - User searched
+18:16:01.601 [http-nio-8081-exec-7] DEBUG - Start user creating
+18:16:01.608 [http-nio-8081-exec-7] DEBUG - User created
+18:16:01.608 [http-nio-8081-exec-7] DEBUG - Start customer creating
+18:16:01.613 [http-nio-8081-exec-7] DEBUG - Customer created
+18:22:48.588 [http-nio-8081-exec-2] DEBUG - Start subscription searching....
+18:22:48.597 [http-nio-8081-exec-2] DEBUG - Start  searching all tariffs ...
+18:22:48.603 [http-nio-8081-exec-2] DEBUG - Start tariff searching....
+18:22:48.612 [http-nio-8081-exec-2] DEBUG - Tariff searched
+18:22:48.612 [http-nio-8081-exec-2] DEBUG - Start tariff searching....
+18:22:48.615 [http-nio-8081-exec-2] DEBUG - Tariff searched
+18:22:48.615 [http-nio-8081-exec-2] DEBUG - All tariffs for subscription found
+18:22:48.615 [http-nio-8081-exec-2] DEBUG - subscription searched
+18:22:48.620 [http-nio-8081-exec-2] DEBUG - Start  searching all tariffs...
+18:22:48.621 [http-nio-8081-exec-2] DEBUG - Start subscription searching....
+18:22:48.625 [http-nio-8081-exec-2] DEBUG - Start  searching all tariffs ...
+18:22:48.626 [http-nio-8081-exec-2] DEBUG - Start tariff searching....
+18:22:48.630 [http-nio-8081-exec-2] DEBUG - Tariff searched
+18:22:48.631 [http-nio-8081-exec-2] DEBUG - Start tariff searching....
+18:22:48.632 [http-nio-8081-exec-2] DEBUG - Tariff searched
+18:22:48.632 [http-nio-8081-exec-2] DEBUG - All tariffs for subscription found
+18:22:48.633 [http-nio-8081-exec-2] DEBUG - subscription searched
+18:22:48.636 [http-nio-8081-exec-2] DEBUG - All tariffs searched
+18:22:53.406 [http-nio-8081-exec-6] DEBUG - Start subscription searching....
+18:22:53.408 [http-nio-8081-exec-6] DEBUG - Start  searching all tariffs ...
+18:22:53.412 [http-nio-8081-exec-6] DEBUG - All tariffs for subscription found
+18:22:53.412 [http-nio-8081-exec-6] DEBUG - subscription searched
+18:22:53.413 [http-nio-8081-exec-6] DEBUG - Start  searching all tariffs...
+18:22:53.413 [http-nio-8081-exec-6] DEBUG - Start subscription searching....
+18:22:53.415 [http-nio-8081-exec-6] DEBUG - Start  searching all tariffs ...
+18:22:53.417 [http-nio-8081-exec-6] DEBUG - All tariffs for subscription found
+18:22:53.417 [http-nio-8081-exec-6] DEBUG - subscription searched
+18:22:53.420 [http-nio-8081-exec-6] DEBUG - All tariffs searched
+18:22:57.359 [http-nio-8081-exec-8] DEBUG - Start subscription searching....
+18:22:57.361 [http-nio-8081-exec-8] DEBUG - Start  searching all tariffs ...
+18:22:57.363 [http-nio-8081-exec-8] DEBUG - All tariffs for subscription found
+18:22:57.364 [http-nio-8081-exec-8] DEBUG - subscription searched
+18:22:57.364 [http-nio-8081-exec-8] DEBUG - Start  searching all tariffs...
+18:22:57.364 [http-nio-8081-exec-8] DEBUG - Start subscription searching....
+18:22:57.367 [http-nio-8081-exec-8] DEBUG - Start  searching all tariffs ...
+18:22:57.368 [http-nio-8081-exec-8] DEBUG - All tariffs for subscription found
+18:22:57.369 [http-nio-8081-exec-8] DEBUG - subscription searched
+18:22:57.372 [http-nio-8081-exec-8] DEBUG - All tariffs searched
+18:23:01.460 [http-nio-8081-exec-10] DEBUG - Start subscription searching....
+18:23:01.462 [http-nio-8081-exec-10] DEBUG - Start  searching all tariffs ...
+18:23:01.464 [http-nio-8081-exec-10] DEBUG - All tariffs for subscription found
+18:23:01.465 [http-nio-8081-exec-10] DEBUG - subscription searched
+18:23:01.465 [http-nio-8081-exec-10] DEBUG - Start  searching all tariffs...
+18:23:01.465 [http-nio-8081-exec-10] DEBUG - Start subscription searching....
+18:23:01.467 [http-nio-8081-exec-10] DEBUG - Start  searching all tariffs ...
+18:23:01.469 [http-nio-8081-exec-10] DEBUG - All tariffs for subscription found
+18:23:01.470 [http-nio-8081-exec-10] DEBUG - subscription searched
+18:23:01.472 [http-nio-8081-exec-10] DEBUG - All tariffs searched

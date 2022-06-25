@@ -23,12 +23,9 @@ import java.util.List;
 @WebServlet(name = "registration", urlPatterns = {"/user/registration"})
 public class UserRegistrationServlet extends HttpServlet {
     private static Logger logger = LogManager.getLogger(UserRegistrationServlet.class);
-
-    private UserService userService = new UserServiceImpl();
-
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserService userService = new UserServiceImpl();
         logger.info("Customer registration");
         HttpSession session = req.getSession(true);
         PrintWriter message = resp.getWriter();
@@ -53,11 +50,9 @@ public class UserRegistrationServlet extends HttpServlet {
         String confirm_password = req.getParameter("confirm_password");
         System.out.println(confirm_password);
 
-
         CustomerCreateRequestDto customerCreateRequestDto = new CustomerCreateRequestDto(name,surname,email,phone, password,confirm_password);
         session.setAttribute("customerCreateRequestDto", customerCreateRequestDto);
         List<String> response =userService.registration(customerCreateRequestDto);
-
         session.setAttribute("errorMessages",response);
         resp.sendRedirect("/response_registration");
 

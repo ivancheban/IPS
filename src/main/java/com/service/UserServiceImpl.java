@@ -41,21 +41,16 @@ public class UserServiceImpl implements UserService {
     public List<String> registration(CustomerCreateRequestDto customerCreateRequestDto) {
         List<String> validation = userValidation(customerCreateRequestDto);
 
-
         if (validation.isEmpty()) {
 
-
             User user = BusinessMapper.conversationRegisterUserDto(customerCreateRequestDto);
+            user.setRole(Role.CLIENT);
             Customer customer = BusinessMapper.conversationRegisterDto(customerCreateRequestDto);
 
-
-
-            userDao.create(user);
-            customerDao.create(customer);
-
+          userDao.create(user);
+          customerDao.create(customer);
         }
         return validation;
-
     }
 
     private List<String> userValidation(CustomerCreateRequestDto createRequestDto) {

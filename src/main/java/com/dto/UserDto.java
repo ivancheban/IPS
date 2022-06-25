@@ -71,7 +71,7 @@ public class UserDto {
     }
 
     public void setRole(Role role) {
-        this.role = role;
+        this.role =role;
     }
 
     public LocalDateTime getCreated() {

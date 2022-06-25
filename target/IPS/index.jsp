@@ -67,7 +67,7 @@
 
 
             <div>
-                <a href="/registration.jsp" class="btn btn-success"><fmt:message key="index.button.signUP" /></a>
+                <a href="registration.jsp" class="btn btn-success"><fmt:message key="index.button.signUP" /></a>
                 <a href="/login.jsp" class="btn btn-dark"><fmt:message key="index.button.login" /></a>
             </div>
         </div>

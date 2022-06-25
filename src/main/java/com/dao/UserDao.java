@@ -17,7 +17,7 @@ public class UserDao implements Dao<User> {
     private static final String FIND_BY_FIELD_QUERY = "select *  FROM users WHERE phone =?";
     private static final String FIND_BY_ID = "select *  FROM users WHERE id =?";
     private static final String UPDATE_QUERY = "UPDATE users SET phone=?,password=?,isActive=?,role=? WHERE id=?";
-    private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
+    private static final String DELETE_QUERY = "DELETE FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from users limit ?, ?";
     private static Logger logger = LogManager.getLogger(UserDao.class);
@@ -41,6 +41,7 @@ public class UserDao implements Dao<User> {
         }
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
+
             pst.setInt(1, user.getId());
             pst.setString(2, user.getPhone());
             pst.setString(3, user.getPassword());

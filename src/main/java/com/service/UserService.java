@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dto.CustomerCreateRequestDto;
+import com.dto.UserDto;
 import com.model.Role;
 import com.model.User;
 
@@ -11,7 +12,9 @@ public interface UserService {
 
     List<String> registration(CustomerCreateRequestDto createRequestDto);
 
-    User findByPhoneNumber(String phone);
+    UserDto findByPhoneNumber(String phone);
+
+    UserDto findById(int id);
 
     int promoteUser(String phone);
 
@@ -19,7 +22,8 @@ public interface UserService {
 
     List<User> findAll();
 
-    Role identy (String phoneNumber, String password);
+    Role identy(String phoneNumber, String password);
 
+    UserDto update(UserDto userDto);
 
 }

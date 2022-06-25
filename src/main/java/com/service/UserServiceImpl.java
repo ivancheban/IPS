@@ -4,6 +4,7 @@ import com.dao.CustomerDao;
 import com.dao.DataSource;
 import com.dao.UserDao;
 import com.dto.CustomerCreateRequestDto;
+import com.dto.UserDto;
 import com.mapper.BusinessMapper;
 import com.model.Customer;
 import com.model.Role;
@@ -136,11 +137,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByPhoneNumber(String phone) {
-        User user = new User();
-        user = userDao.findByField(phone);
-        System.out.println(user);
-        return user;
+    public UserDto findByPhoneNumber(String phone) {
+        User user = userDao.findByField(phone);
+        return BusinessMapper.getUserDto(user);
+    }
+
+    @Override
+    public UserDto findById(int id) {
+        User user = userDao.findById(id);
+        return BusinessMapper.getUserDto(user);
     }
 
     @Override
@@ -164,13 +169,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Role identy(String phoneNumber, String password) {
-        User user = findByPhoneNumber(phoneNumber);
+        UserDto user = findByPhoneNumber(phoneNumber);
         if (user != null){
             if(user.getPassword().equals(password)){
                 return user.getRole();
             }
         }
         return null;
+    }
+
+    @Override
+    public UserDto update(UserDto userDto) {
+        User userEdit = userDao.update(BusinessMapper.getUser(userDto));
+        return BusinessMapper.getUserDto(userEdit) ;
     }
 }
 

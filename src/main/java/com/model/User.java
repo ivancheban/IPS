@@ -31,13 +31,13 @@ public class User  {
         this.updated = updated;
     }
 
-    public User(String phone, String password, boolean isActive, Role role, LocalDateTime created, LocalDateTime updated) {
+    public User(int id,String phone, String password, boolean isActive, Role role) {
+        this.id = id;
         this.phone = phone;
         this.password = password;
         this.isActive = isActive;
         this.role = role;
-        this.created = created;
-        this.updated = updated;
+
     }
 
     public Timestamp convertToTimestamp(LocalDateTime date){

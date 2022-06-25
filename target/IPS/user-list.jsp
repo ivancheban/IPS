@@ -232,7 +232,7 @@
                         <td>${user.getCreated()}</td>
                         <td>${user.getUpdated()}</td>
 
-                        <td> <a href="/user/update"  class="btn btn-info" >Update</a></td>
+                        <td> <a href="/user/update?id=${user.id}"  class="btn btn-info" >Update</a></td>
                         <td> <a href="/user/delete" class="btn btn-danger">Delete</a></td>
                     </tr>
 

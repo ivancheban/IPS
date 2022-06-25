@@ -17,19 +17,12 @@ import java.io.IOException;
 public class UserFindServlet extends HttpServlet {
 
     private UserService userService = new UserServiceImpl();
-   // private UserDao userDao = new UserDao();
+    // private UserDao userDao = new UserDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String phone = req.getParameter("phone");
 
-        User user = userService.findByPhoneNumber(phone);
-        System.out.println(user);
-
 
     }
-//    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("user-start.jsp");
-//        dispatcher.forward(request, response);
-//    }
 }

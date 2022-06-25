@@ -5,6 +5,15 @@ import com.model.Role;
 import java.time.LocalDateTime;
 
 public class UserDto {
+
+    private int id;
+    private String phone;
+    private String password;
+    private boolean isActive;
+    private Role role;
+    private LocalDateTime created;
+    private LocalDateTime updated;
+
     public UserDto() {
     }
 
@@ -17,13 +26,13 @@ public class UserDto {
         this.updated = updated;
     }
 
-    private int id;
-    private String phone;
-    private String password;
-    private boolean isActive;
-    private Role role;
-    private LocalDateTime created;
-    private LocalDateTime updated;
+    public UserDto(int id, String phone, String password, boolean isActive, Role role) {
+        this.id = id;
+        this.phone = phone;
+        this.password = password;
+        this.isActive = isActive;
+        this.role = role;
+    }
 
     public int getId() {
         return id;
@@ -79,5 +88,18 @@ public class UserDto {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                ", isActive=" + isActive +
+                ", role=" + role +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }

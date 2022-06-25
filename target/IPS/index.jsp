@@ -48,10 +48,10 @@
                        Послуги
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/open/service?id=${subscription.id}">Інтернет</a>
-                        <a class="dropdown-item" href="#">Мобільний звя'зок</a>
-                        <a class="dropdown-item" href="#">Кабельне телебачення</a>
-                        <a class="dropdown-item" href="#">Цифрове телебачення</a>
+                        <a class="dropdown-item" href="/open/service?id=13&name=INTERNET">Інтернет</a>
+                        <a class="dropdown-item" href="/open/service?id=14">Мобільний звя'зок</a>
+                        <a class="dropdown-item" href="/open/service?id=16">Цифрове телебачення</a>
+                        <a class="dropdown-item" href="/open/service?id=20">Кабельне телебачення</a>
                         <div class="dropdown-divider"></div>
 
                     </div>

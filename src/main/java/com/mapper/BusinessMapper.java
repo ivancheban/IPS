@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 public class BusinessMapper {
 
     public static User getUser(UserDto userDto) {
-        return new User(userDto.getPhone(), userDto.getPassword(), userDto.isActive(), userDto.getRole(), userDto.getCreated(), userDto.getUpdated());
+        return new User(userDto.getId(), userDto.getPhone(), userDto.getPassword(), userDto.isActive(), userDto.getRole());
     }
     public static UserDto getUserDto(User user) {
-        return new UserDto(user.getPhone(), user.getPassword(), user.isActive(), user.getRole(), user.getCreated(), user.getUpdated());
+        return new UserDto(user.getId(), user.getPhone(), user.getPassword(), user.isActive(), user.getRole());
     }
 
     public static User conversationRegisterUserDto(CustomerCreateRequestDto createRequestDto) {
@@ -63,13 +63,7 @@ public class BusinessMapper {
         return new TariffDto(tariff.getId(),tariff.getName(), tariff.getType(), tariff.getPricePerDay(), tariff.isActive(), tariff.getCreated(), tariff.getUpdated());
     }
 
-    public Limit getLimit(LimitDto limitDto) {
-        return new Limit(limitDto.getName(), limitDto.getAmount(), limitDto.isActive(), limitDto.getCreated(), limitDto.getUpdated());
-    }
 
-    public LimitDto getLimitDto(Limit limit) {
-        return new LimitDto(limit.getName(), limit.getAmount(), limit.isActive(), limit.getCreated(), limit.getUpdated());
-    }
 
     public static Customer getCustomer(CustomerDto customerDto) {
         Customer customer = new Customer();

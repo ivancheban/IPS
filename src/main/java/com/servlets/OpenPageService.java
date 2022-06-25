@@ -1,4 +1,5 @@
 package com.servlets;
+import com.dto.SubscriptionDto;
 import com.model.Tariff;
 import com.service.SubscriptionService;
 import com.service.SubscriptionServiceImpl;
@@ -20,9 +21,11 @@ public class OpenPageService extends HttpServlet {
         String sid = req.getParameter("id");
         int id = Integer.valueOf(sid);
 
+        SubscriptionDto subscriptionDto = subscriptionService.findById(id);
         List<Tariff> tariffList = subscriptionService.getAllByService(id);
         if (tariffList != null) {
             session.setAttribute("subscription", tariffList);
+            session.setAttribute("subscriptionDto",subscriptionDto);
             resp.sendRedirect("/service-page.jsp");
         }
     }

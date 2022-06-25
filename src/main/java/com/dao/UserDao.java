@@ -15,15 +15,14 @@ import java.util.List;
 public class UserDao implements Dao<User> {
     private static final String CREATE_QUERY = "insert into users(id,phone,password,isActive,role,created,updated) values (?,?,?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select *  FROM users WHERE phone =?";
-    private static final String UPDATE_QUERY = "UPDATE users SET item=? WHERE id=?";
+    private static final String FIND_BY_ID = "select *  FROM users WHERE id =?";
+    private static final String UPDATE_QUERY = "UPDATE users SET phone=?,password=?,isActive=?,role=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM users WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from users";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from users limit ?, ?";
     private static Logger logger = LogManager.getLogger(UserDao.class);
 
-
     private int noOfRecords;
-
     Connection connection;
 
     public UserDao(Connection connection) {
@@ -31,7 +30,6 @@ public class UserDao implements Dao<User> {
     }
 
     public UserDao() throws SQLException {
-
     }
 
     @Override
@@ -41,8 +39,6 @@ public class UserDao implements Dao<User> {
             logger.error("user not found");
             throw new UserException("user is not found");
         }
-
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
             pst.setInt(1, user.getId());
@@ -59,28 +55,18 @@ public class UserDao implements Dao<User> {
         } catch (Exception ex) {
             logger.debug("Problem with creating user: " + ex.getMessage());
         }
-
         logger.debug("User created");
-
-
         return user;
     }
 
     @Override
     public User findByField(String phone) {
-
         logger.debug("Start user searching....");
-
         User user = new User();
-
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
-
             pst.setString(1, phone);
-
             ResultSet resultSet = pst.executeQuery();
-
             while (resultSet.next()) {
 
                 user.setId(resultSet.getInt("id"));
@@ -91,51 +77,59 @@ public class UserDao implements Dao<User> {
                 Role role = Role.valueOf(String.valueOf(user.getRole()));
                 LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
                 LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
-
-
-
             }
-
         } catch (SQLException ex) {
             logger.error("Problem with searching user ", ex);
         }
-
         logger.debug("User searched");
-
-
         return user;
-
     }
+    public User findById(int id) {
+        logger.debug("Start user searching....");
+        User user = new User();
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_BY_ID);) {
+            pst.setInt(1, id);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
 
+                user.setId(resultSet.getInt("id"));
+                user.setPhone(resultSet.getString("phone"));
+                user.setPassword(resultSet.getString("password"));
+                user.setActive(resultSet.getBoolean("isActive"));
+                user.setRole(Role.valueOf(resultSet.getString("role")));
+                Role role = Role.valueOf(String.valueOf(user.getRole()));
+                LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
+            }
+        } catch (SQLException ex) {
+            logger.error("Problem with searching user ", ex);
+        }
+        logger.debug("User searched");
+        return user;
+    }
 
     @Override
     public User update(User user) {
-        User user1 = new User();
-
-
         logger.debug("Start user updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
-            pst.setInt(1, user.getId());
 
-            user1.setPhone(user.getPhone());
-            user1.setPassword(user.getPassword());
-            user1.setActive(user.isActive());
-            user1.setRole(Role.valueOf(String.valueOf(user.getRole())));
-            user1.setCreated(user.getCreated());
-            user1.setUpdated(user.getUpdated());
+            pst.setString(1, user.getPhone());
+            pst.setString(2, user.getPassword());
+            pst.setBoolean(3, user.isActive());
+            pst.setString(4, String.valueOf(Role.valueOf(String.valueOf(user.getRole()))));
+            pst.setInt(5, user.getId());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");
 
-
         } catch (Exception ex) {
-
             logger.debug("Problem with updating user: " + ex.getMessage());
         }
 
         logger.debug("User updated");
-        return user1;
+        return user;
     }
 
     @Override
@@ -164,16 +158,11 @@ public class UserDao implements Dao<User> {
 
     @Override
     public List<User> findAll() {
-
-
         logger.debug("Start  searching all users....");
         List<User> userList = new ArrayList<>();
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
             ResultSet result = pst.executeQuery();
-
-
             while (result.next()) {
 
                 int id = result.getInt("id");
@@ -184,20 +173,14 @@ public class UserDao implements Dao<User> {
                 LocalDateTime created = result.getTimestamp("created").toLocalDateTime();
                 LocalDateTime updated = result.getTimestamp("updated").toLocalDateTime();
 
-
                 User user = new User(id, phone, password, isActive, role, created, updated);
                 userList.add(user);
-
             }
-
-
         } catch (Exception ex) {
             logger.debug("Problem with searching all users: " + ex.getMessage());
         }
-
         logger.debug("All Users searched");
         System.out.println(userList + "userList in DAO");
-
         return userList;
     }
 
@@ -260,10 +243,7 @@ public class UserDao implements Dao<User> {
         return usersList;
 
     }
-
     public int getNoOfRecords() {
         return noOfRecords;
     }
-
-
 }

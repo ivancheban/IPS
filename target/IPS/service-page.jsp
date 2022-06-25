@@ -11,6 +11,7 @@
 <jsp:useBean id="SubscriptionDao" class="com.dao.SubscriptionDao"/>
 <jsp:useBean id="SubscriptionDto" class="com.dto.SubscriptionDto"/>
 
+
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="resources"/>
 <html lang="${sessionScope.lang}">
@@ -31,70 +32,55 @@
 
 </head>
 
-<body>
-<div class="container">
-    <div class="col-xs-12">
-        <a href="#addTariffModal"  class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>
-            <span><fmt:message key="new.tariffs.add"/></span></a>
-    </div>
-    <form action="/addTariff" method="post">
-        <div id="addTariffModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Add Tariff</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Name Tariff</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
+<br>
 
-                            </div>
-                            <div class="form-group">
-                                <label>Type Tariff</label>
-                                <input type="text" name="type" id="type" class="form-control" required>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label>Price Tariff</label>
-                                <input type="text" name="price" id="price" class="form-control" required>
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add">
-                        </div>
-                    </form>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                 <h1>${subscriptionDto.getName()}</h1>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled"></a>
+                </li>
+            </ul>
         </div>
-
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    </div>
+</nav>
+<br>
+    <div class="row row-cols-2 row-cols-md-5 g-3">
         <c:forEach var="tariff" items="${subscription}">
 
             <div class="col">
                 <div class="card">
                     <div class="card-header">
                             ${tariff.name}
+
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"></h5>
-                        <p class="card-text">Знижка 25% відсотків на будь-яку послугу при оплаті за рік одним платежем</p>
-                        <a href="#" class="btn btn-primary">Підключитись</a>
+
                     </div>
                     <div class="card-footer text-muted">
-                        <h6>вартість користування за один місяц - ${tariff.getPricePerDay()} гривень</h6>
+                        <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
+                        <a href="#" >Підключитись</a>
 
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
-    </form>
-</div>
+
 </body>
 </html>

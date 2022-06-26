@@ -48,7 +48,7 @@
                        Послуги
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/open/service?id=13&name=INTERNET">Інтернет</a>
+                        <a class="dropdown-item" href="/open/service?id=21">Інтернет</a>
                         <a class="dropdown-item" href="/open/service?id=14">Мобільний звя'зок</a>
                         <a class="dropdown-item" href="/open/service?id=16">Цифрове телебачення</a>
                         <a class="dropdown-item" href="/open/service?id=20">Кабельне телебачення</a>
@@ -65,11 +65,16 @@
             </ul>
         </li>
 
+            <c:if test="${sessionScope.get('fullName')!=null}">
+                <div>${sessionScope.get('fullName')}</div>
+            </c:if>
+            <c:if test="${sessionScope.get('fullName')==null}">
+                <div>
+                    <a href="registration.jsp" class="btn btn-success"><fmt:message key="index.button.signUP" /></a>
+                    <a href="/login.jsp" class="btn btn-dark"><fmt:message key="index.button.login" /></a>
+                </div>
+            </c:if>
 
-            <div>
-                <a href="registration.jsp" class="btn btn-success"><fmt:message key="index.button.signUP" /></a>
-                <a href="/login.jsp" class="btn btn-dark"><fmt:message key="index.button.login" /></a>
-            </div>
         </div>
 
 </nav>

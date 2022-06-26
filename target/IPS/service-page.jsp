@@ -46,10 +46,10 @@
                  <h1>${subscriptionDto.getName()}</h1>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
+                    <a class="nav-link" href="/sort/tariffs?sortBy=name">Sort By Name</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
+                    <a class="nav-link" href="/sort/tariffs?sortBy=price">Price Sorting</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled"></a>

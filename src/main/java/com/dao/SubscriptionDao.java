@@ -247,7 +247,6 @@ public class SubscriptionDao implements Dao<Subscription> {
                 subscription.setActive(result.getBoolean("isActive"));
                 subscription.setCreated(result.getTimestamp("created").toLocalDateTime());
                 subscription.setUpdated(result.getTimestamp("updated").toLocalDateTime());
-
                 subscriptionsList.add(subscription);
             }
         } catch (Exception ex) {

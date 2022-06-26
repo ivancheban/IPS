@@ -281,7 +281,7 @@
                             <td><a href="/open/service?id=${subscription.id}" class="btn btn-success">Menu Service</a>
                             </td>
                             <td><a href="/update/subscription?id=${subscription.id}" class="btn btn-primary">Update</a></td>
-                            <td><a href="/add/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
+                            <td><a href="/delete/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
                         </tr>
 
                     </c:forEach>

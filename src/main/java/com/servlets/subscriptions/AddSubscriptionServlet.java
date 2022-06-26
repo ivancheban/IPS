@@ -32,10 +32,7 @@ public class AddSubscriptionServlet extends HttpServlet {
         logger.info("adding subscription");
         HttpSession session = req.getSession(true);
         String name = req.getParameter("name");
-
         SubscriptionDto subscriptionDto = new SubscriptionDto(name);
-
-
         try {
           subscriptionService.create(subscriptionDto);
                 session.setAttribute("subscriptions", subscriptionService.findAll());
@@ -45,17 +42,7 @@ public class AddSubscriptionServlet extends HttpServlet {
                 session.setAttribute("errorMessage", e.getMessage());
         }
     }
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String sid=request.getParameter("id");
-        int id=Integer.valueOf(sid);
-        subscriptionService.delete(id);
-        response.sendRedirect("/subscriptions");
-
-    }
-
-
-    }
+}
 
 
 

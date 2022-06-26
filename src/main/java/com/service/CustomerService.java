@@ -9,12 +9,11 @@ import java.util.List;
 public interface CustomerService {
 
 
+    Customer findByPhoneNumber(String phone);
 
-  Customer findByPhoneNumber(String phone);
+    int promoteCustomer(String phone);
 
-    int promoteCustomer (String phone);
-
-    boolean deleteCustomer (int id);
+    boolean deleteCustomer(int id);
 
     List<Customer> findAll();
 }

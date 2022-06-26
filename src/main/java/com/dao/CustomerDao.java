@@ -93,9 +93,6 @@ public class CustomerDao implements Dao<Customer> {
             customer.setSurname(resultSet.getString("surname"));
             customer.setPhone(resultSet.getString("phone_number"));
             customer.setEmail(resultSet.getString("email"));
-           // customer.setWallet(resultSet.getObject("wallet", Wallet.class));
-            //customer.setServices(resultSet.getObject("subscriptions", ArrayList<Subscription.class>);
-
             customer.setActive(resultSet.getBoolean("isActive"));
             customer.setCreated(LocalDateTime.parse(resultSet.getString("created")));
             customer.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));

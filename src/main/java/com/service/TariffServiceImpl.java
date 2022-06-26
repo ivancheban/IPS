@@ -11,43 +11,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class TariffServiceImpl implements TariffService {
-
     TariffDao tariffDao = new TariffDao();
     @Override
     public boolean create(TariffDto tariffDto) throws TariffException {
-
         Tariff newTariff = BusinessMapper.convertTariff(tariffDto);
-
         tariffDao.create(newTariff);
-
         if (newTariff.getId() == 0) {
-
             throw new TariffException("tariff is not create");
         }
-
         return true;
     }
 
     @Override
     public TariffDto update(TariffDto tariffDto) {
         Tariff tariff = tariffDao.update(BusinessMapper.getTariff(tariffDto));
-
         return  BusinessMapper.getTariffDto(tariff);
     }
 
     @Override
     public boolean delete(int id) {
-
         return tariffDao.delete(id);
     }
 
     @Override
     public TariffDto findByName(String name) {
-
         Tariff tariff = tariffDao.findByField(name);
-
         return BusinessMapper.getTariffDto(tariff);
     }
 
@@ -57,11 +46,8 @@ public class TariffServiceImpl implements TariffService {
 
         return BusinessMapper.getTariffDto(tariff);
     }
-
     @Override
     public List<Tariff> findAll() {
-
-
         return tariffDao.findAll();
     }
 

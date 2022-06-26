@@ -44,8 +44,6 @@ public class CustomerDao implements Dao<Customer> {
             logger.error("customer not found");
             throw new UserException("customer is not found");
         }
-
-
         try (
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
 
@@ -54,36 +52,23 @@ public class CustomerDao implements Dao<Customer> {
             pst.setString(3, customer.getPhone());
             pst.setString(4, customer.getEmail());
 
-            // pst.setString(6, customer.getServices());
-            // pst.setString(7, customer.getWallet());
-//            pst.setBoolean(8, customer.isActive());
-//
-//            pst.setTimestamp(9, customer.convertToTimestamp(customer.getCreated()));
-//            pst.setTimestamp(10, customer.convertToTimestamp(customer.getUpdated()));
-
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Created more than one record!!");
 
         } catch (Exception ex) {
             logger.debug("Problem with creating customer: " + ex.getMessage());
         }
-
         logger.debug("Customer created");
-
-        System.out.println(customer.toString());
         return customer;
     }
 
     @Override
     public Customer findByField(String value) {
         Customer customer = new Customer();
-
         logger.debug("Start customer searching....");
-
 
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
-
             pst.setString(1, value);
 
             ResultSet resultSet = pst.executeQuery();
@@ -99,25 +84,18 @@ public class CustomerDao implements Dao<Customer> {
 
             if (customer == null) {
                 throw new UserException("customer not found");
-
             }
 
         } catch (Exception ex) {
             logger.debug("Problem with searching customer: " + ex.getMessage());
         }
-
         logger.debug("Customer searched");
-
-
         return customer;
     }
 
     @Override
     public Customer update(Customer item) {
-
         Customer customer = new Customer();
-
-
         logger.debug("Start customer updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
@@ -134,9 +112,7 @@ public class CustomerDao implements Dao<Customer> {
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");
 
-
         } catch (Exception ex) {
-
             logger.debug("Problem with updating customer: " + ex.getMessage());
         }
 
@@ -148,7 +124,6 @@ public class CustomerDao implements Dao<Customer> {
     public boolean delete(int id) {
         boolean status_boolean = false;
         logger.debug("Start customer deleting....");
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(DELETE_QUERY);) {
             pst.setInt(1, id);
@@ -188,11 +163,9 @@ public class CustomerDao implements Dao<Customer> {
                 customer.setActive(result.getBoolean("isActive"));
                 customer.setCreated(result.getTimestamp("created").toLocalDateTime());
                 customer.setUpdated(result.getTimestamp("updated").toLocalDateTime());
-
                 customersList.add(customer);
 
             }
-
 
         } catch (Exception ex) {
             logger.debug("Problem with searching all customers: " + ex.getMessage());
@@ -200,7 +173,6 @@ public class CustomerDao implements Dao<Customer> {
 
         logger.debug("All Customers searched");
         System.out.println(customersList);
-
         return customersList;
     }
 

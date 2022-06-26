@@ -172,7 +172,7 @@
 
 
 
-            <form action="/login" class="form-horizontal"  method="post" style="scroll-margin-right: 20px" >
+            <form action="/login" class="form-horizontal" method="post" style="scroll-margin-right: 20px" >
 
                 <span class="heading"><fmt:message key="signIn.label.signIn"/></span>
                 <div class="form-group">

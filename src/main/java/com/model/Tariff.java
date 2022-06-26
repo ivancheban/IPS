@@ -31,19 +31,6 @@ public class Tariff {
         this.updated = updated;
     }
 
-    @Override
-    public String toString() {
-        return "Tariff{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", pricePerDay=" + pricePerDay +
-                ", isActive=" + isActive +
-                ", created=" + created +
-                ", updated=" + updated +
-                '}';
-    }
-
     public Tariff(int id, String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;
@@ -127,5 +114,17 @@ public class Tariff {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+    @Override
+    public String toString() {
+        return "Tariff{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", pricePerDay=" + pricePerDay +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }

@@ -21,11 +21,7 @@ public class AppContextListener implements ServletContextListener {
         String password = ctx.getInitParameter("DBPWD");
         String driver = ctx.getInitParameter("DBDRIVER");
 
-       innitConfiguration(driver, url, userName, password);
-
-
-
-
+        innitConfiguration(driver, url, userName, password);
 
         String path = ctx.getRealPath("/WEB-INF/log4j2.log");
         System.setProperty("logFile", path);

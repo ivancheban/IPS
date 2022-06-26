@@ -9,16 +9,13 @@ import com.model.Customer;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService{
-
     CustomerDao customerDao = new CustomerDao();
     private BusinessMapper businessMapper;
-
 
     @Override
     public String toString() {
         return super.toString();
     }
-
 
     @Override
     public Customer findByPhoneNumber(String phone) {

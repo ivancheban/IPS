@@ -67,33 +67,25 @@ public class BusinessMapper {
 
     public static Customer getCustomer(CustomerDto customerDto) {
         Customer customer = new Customer();
-
         customer.setName(customerDto.getName());
         customer.setSurname(customerDto.getSurname());
         customer.setPhone(customerDto.getPhone());
         customer.setEmail(customerDto.getEmail());
-//        customer.setServices(collectionToList(customerDto.getServicesDto(), SubscriptionToEntity));
-//        customer.setWallet(getWallet(customerDto.getWalletDto()));
         customer.setActive(customerDto.isActive());
         customer.setCreated(customerDto.getCreated());
         customer.setUpdated(customerDto.getUpdated());
-
         return customer;
     }
 
     public static CustomerDto getCustomerDto(Customer customer) {
         CustomerDto customerDto = new CustomerDto();
-
         customerDto.setName(customer.getName());
         customerDto.setSurname(customerDto.getSurname());
         customerDto.setPhone(customer.getPhone());
         customerDto.setEmail(customerDto.getEmail());
-//        customerDto.setServicesDto(collectionToList(customer.getServices(), SubscriptionToDto));
-        // customerDto.setWalletDto(getWalletDto(customer.getWallet()));
         customerDto.setActive(customer.isActive());
         customerDto.setCreated(customer.getCreated());
         customerDto.setUpdated(customer.getUpdated());
-
         return customerDto;
     }
 }

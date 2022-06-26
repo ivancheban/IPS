@@ -24,7 +24,6 @@ public class WalletDao implements Dao<Wallet>{
 
     private int noOfRecords;
 
-
     @Override
     public Wallet create(Wallet wallet) throws WalletException {
         logger.debug("Start wallet creating");
@@ -33,16 +32,10 @@ public class WalletDao implements Dao<Wallet>{
             logger.error("wallet  not found");
             throw new WalletException("wallet  is not found");
         }
-
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY,PreparedStatement.RETURN_GENERATED_KEYS);) {
-
             pst.setString(1, wallet.getNumber());
             pst.setDouble(2, wallet.getBalance());
-
-
-
             int statusUpdate = pst.executeUpdate();
 
             if (statusUpdate != 1) throw new WalletException("Created more than one record!!");
@@ -70,7 +63,6 @@ public class WalletDao implements Dao<Wallet>{
         logger.debug("Start wallet searching....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
-
             pst.setString(1, value);
 
             ResultSet resultSet = pst.executeQuery();
@@ -105,10 +97,7 @@ public class WalletDao implements Dao<Wallet>{
         } catch(Exception ex){
             logger.debug("Problem with searching wallet: " + ex.getMessage());
         }
-
         logger.debug("wallet searched");
-
-
         return wallet;
     }
 
@@ -141,17 +130,12 @@ public class WalletDao implements Dao<Wallet>{
                 wallet.setBalance(result.getInt("balance"));
 
                 walletsList.add(wallet);
-
-            }
-
-
+           }
         } catch (Exception ex) {
             logger.debug("Problem with searching all wallets: " + ex.getMessage());
         }
-
         logger.debug("All wallets searched");
         System.out.println(walletsList);
-
         return walletsList;
     }
 
@@ -211,11 +195,7 @@ public class WalletDao implements Dao<Wallet>{
             }
         }
         return walletsList;
-
     }
-
-
-
     public int getNoOfRecords() {
         return noOfRecords;
     }

@@ -81,22 +81,6 @@ public class Customer {
         this.email = email;
     }
 
-//    public List<Subscription> getServices() {
-//        return services;
-//    }
-//
-//    public void setServices(List<Subscription> services) {
-//        this.services = services;
-//    }
-//
-//    public Wallet getWallet() {
-//        return wallet;
-//    }
-//
-//    public void setWallet(Wallet wallet) {
-//        this.wallet = wallet;
-//    }
-
     public boolean isActive() {
         return isActive;
     }

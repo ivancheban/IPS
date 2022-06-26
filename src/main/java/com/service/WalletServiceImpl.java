@@ -10,8 +10,6 @@ import java.util.List;
 
 public class WalletServiceImpl implements WalletService{
     WalletDao walletDao = new WalletDao();
-
-
     @Override
     public boolean create(WalletDto walletDto) throws WalletException {
         Wallet wallet = BusinessMapper.walletConversation(walletDto);

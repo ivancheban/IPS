@@ -198,7 +198,7 @@
                         <h2><fmt:message key="list.users.list"/></h2>
                     </div>
                     <div class="col-xs-7">
-                        <a href="/registration.jsp" class="btn btn-primary"><i class="material-icons"style="color:green">&#xE147;</i> <span><fmt:message key="button.addUser.list"/></span></a>
+                        <a href="/client/registration.jsp" class="btn btn-primary"><i class="material-icons" style="color:green">&#xE147;</i> <span><fmt:message key="button.addUser.list"/></span></a>
 
 
                     </div>

@@ -94,8 +94,5 @@ public class Limit {
         this.tariff_id = tariff_id;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
+
 }

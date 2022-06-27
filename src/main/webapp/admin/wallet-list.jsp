@@ -257,24 +257,18 @@
                                     <div class="form-group">
                                         <label>Number wallet</label>
                                         <input type="text" name="number" id="number" class="form-control" required>
-                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('number') }">
-                                        </c:if>
                                     </div>
                                     <div class="form-group">
                                         <label>Balance</label>
-                                        <input type="text" name="balance" id="balance" class="form-control"
+                                        <input type="number" name="balance" id="balance" class="form-control"
                                                required>
-                                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('balance') }">
-                                        </c:if>
                                     </div>
-<%--                                    <div class="modal-body">--%>
-<%--                                        <div class="form-group">--%>
-<%--                                            <label>Customers_Id</label>--%>
-<%--                                            <input type="text" name="customers_id" id="customers_id" class="form-control" required>--%>
-<%--                                            <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('customers_id') }">--%>
-<%--                                            </c:if>--%>
-<%--                                        </div>--%>
-<%--                                </div>--%>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Customers_Id</label>
+                                            <input type="number" name="customers_id" id="customers_id" class="form-control" required>
+                                        </div>
+                                </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                                     <input type="submit" class="btn btn-success" value="Add">
@@ -313,7 +307,7 @@
 
 
                             <td> <a href="/subscription/update"  class="btn btn-info" >Update</a></td>
-                            <td> <a href="/delete? id=${wallet.id}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
+                            <td> <a href="/delete?id=${wallet.id}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
                             <td> <a href="/subscription/enabled" class="btn btn-success">add Money</a></td>
                         </tr>
 

@@ -9,10 +9,20 @@ public class WalletDto {
     public WalletDto() {
     }
 
-    public WalletDto(String number, double balance) {
+    public WalletDto(int id,String number, double balance,int customerId) {
+        this.id = id;
         this.number = number;
         this.balance = balance;
+        this.customerId = customerId;
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNumber() {
@@ -41,6 +51,11 @@ public class WalletDto {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "WalletDto{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", balance=" + balance +
+                ", customerId=" + customerId +
+                '}';
     }
 }

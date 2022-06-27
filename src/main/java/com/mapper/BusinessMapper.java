@@ -23,15 +23,15 @@ public class BusinessMapper {
     }
 
     public static Wallet walletConversation(WalletDto walletDto) {
-        return new Wallet(walletDto.getNumber(), walletDto.getBalance());
+        return new Wallet(walletDto.getId(),walletDto.getNumber(), walletDto.getBalance(),walletDto.getCustomerId());
     }
 
     public static Wallet getWallet(WalletDto walletDto) {
-        return new Wallet(walletDto.getNumber(), walletDto.getBalance());
+        return new Wallet(walletDto.getId(),walletDto.getNumber(), walletDto.getBalance(), walletDto.getCustomerId());
     }
 
     public static WalletDto getWalletDto(Wallet wallet) {
-        return new WalletDto(wallet.getNumber(), wallet.getBalance());
+        return new WalletDto(wallet.getId(),wallet.getNumber(), wallet.getBalance(), wallet.getCustomerId());
     }
 
     public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
@@ -66,26 +66,12 @@ public class BusinessMapper {
 
 
     public static Customer getCustomer(CustomerDto customerDto) {
-        Customer customer = new Customer();
-        customer.setName(customerDto.getName());
-        customer.setSurname(customerDto.getSurname());
-        customer.setPhone(customerDto.getPhone());
-        customer.setEmail(customerDto.getEmail());
-        customer.setActive(customerDto.isActive());
-        customer.setCreated(customerDto.getCreated());
-        customer.setUpdated(customerDto.getUpdated());
-        return customer;
+        return new Customer(customerDto.getId(), customerDto.getName(), customerDto.getSurname(), customerDto.getPhone(), customerDto.getEmail(),
+              customerDto.isActive(),customerDto.getCreated(),customerDto.getUpdated(),customerDto.getBalance());
     }
 
     public static CustomerDto getCustomerDto(Customer customer) {
-        CustomerDto customerDto = new CustomerDto();
-        customerDto.setName(customer.getName());
-        customerDto.setSurname(customerDto.getSurname());
-        customerDto.setPhone(customer.getPhone());
-        customerDto.setEmail(customerDto.getEmail());
-        customerDto.setActive(customer.isActive());
-        customerDto.setCreated(customer.getCreated());
-        customerDto.setUpdated(customer.getUpdated());
-        return customerDto;
+       return  new CustomerDto(customer.getId(), customer.getName(), customer.getSurname(), customer.getPhone(), customer.getEmail(),
+               customer.isActive(), customer.getCreated(),customer.getUpdated(), customer.getBalance());
     }
 }

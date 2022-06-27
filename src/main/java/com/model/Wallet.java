@@ -10,9 +10,11 @@ public class Wallet {
     public Wallet() {
     }
 
-    public Wallet(String number, double balance) {
+    public Wallet(int id,String number, double balance, int customerId) {
+        this.id = id;
         this.number = number;
         this.balance = balance;
+        this.customerId = customerId;
     }
 
     public int getId() {

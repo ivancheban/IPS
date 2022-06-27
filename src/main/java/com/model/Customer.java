@@ -11,35 +11,43 @@ public class Customer {
     private String surname;
     private String phone;
     private String email;
-//    private List<Subscription> services;
-//    private Wallet wallet;
+    //    private List<Subscription> services;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
+    private int balance;
 
     public Customer() {
 
     }
+
 
     public Customer(String name, String surname, String phone, String email) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
+
     }
 
-    public Customer(int id, String name, String surname, String phone, String email, List<Subscription> services, Wallet wallet, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public Customer(int id, String name, String surname, String phone, String email, boolean isActive, LocalDateTime created, LocalDateTime updated,int balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
 //        this.services = services;
-//        this.wallet = wallet;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
+        this.balance = balance;
     }
+
+
+
+    public int getBalance() {return balance;}
+
+    public void setBalance(int balance) {this.balance = balance;}
 
     public int getId() {
         return id;
@@ -105,14 +113,23 @@ public class Customer {
         this.updated = updated;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public Timestamp convertToTimestamp(LocalDateTime date) {
+        if (date == null) date = LocalDateTime.now();
+        return Timestamp.valueOf(date);
     }
 
-
-    public Timestamp convertToTimestamp(LocalDateTime date){
-        if(date == null) date = LocalDateTime.now();
-        return Timestamp.valueOf(date);
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", balance=" + balance +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }

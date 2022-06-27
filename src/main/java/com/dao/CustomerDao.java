@@ -15,11 +15,13 @@ import java.util.List;
 
 public class CustomerDao implements Dao<Customer> {
 
-    private static final String CREATE_QUERY = "insert into customers(name,surname, phone,email) values (?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into customers(name,surname, phone,email,balance) values (?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from customers where phone = ?";
-    private static final String UPDATE_QUERY = "UPDATE customers SET item=? WHERE id=?";
+    private static final String FIND_BY_ID = "select * from customers where id = ?";
+    private static final String UPDATE_QUERY = "UPDATE customers SET name=?,surname=?,phone=?,email=?,isActive=?,balance=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from customers";
+    private static final String REPLENISH_QUERY = "UPDATE customers SET balance = ? WHERE id =?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
@@ -28,7 +30,7 @@ public class CustomerDao implements Dao<Customer> {
 
     public CustomerDao(Connection con) {
         try {
-            this.con  = DataSource.getConnection();
+            this.con = DataSource.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,12 +47,13 @@ public class CustomerDao implements Dao<Customer> {
             throw new UserException("customer is not found");
         }
         try (
-             PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
+                PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
 
             pst.setString(1, customer.getName());
             pst.setString(2, customer.getSurname());
             pst.setString(3, customer.getPhone());
             pst.setString(4, customer.getEmail());
+            pst.setInt(5, customer.getBalance());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Created more than one record!!");
@@ -81,7 +84,37 @@ public class CustomerDao implements Dao<Customer> {
             customer.setActive(resultSet.getBoolean("isActive"));
             customer.setCreated(LocalDateTime.parse(resultSet.getString("created")));
             customer.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+            customer.setBalance(resultSet.getInt("balance"));
+            if (customer == null) {
+                throw new UserException("customer not found");
+            }
 
+        } catch (Exception ex) {
+            logger.debug("Problem with searching customer: " + ex.getMessage());
+        }
+        logger.debug("Customer searched");
+        return customer;
+    }
+
+    public Customer findByID(int id) {
+        Customer customer = new Customer();
+        logger.debug("Start customer searching....");
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_BY_ID);) {
+            pst.setInt(1, id);
+
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+
+            customer.setName(resultSet.getString("name"));
+            customer.setSurname(resultSet.getString("surname"));
+            customer.setPhone(resultSet.getString("phone_number"));
+            customer.setEmail(resultSet.getString("email"));
+            customer.setActive(resultSet.getBoolean("isActive"));
+            customer.setCreated(LocalDateTime.parse(resultSet.getString("created")));
+            customer.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+            customer.setBalance(resultSet.getInt("balance"));
             if (customer == null) {
                 throw new UserException("customer not found");
             }
@@ -108,6 +141,7 @@ public class CustomerDao implements Dao<Customer> {
             customer.setActive(item.isActive());
             customer.setCreated(item.getCreated());
             customer.setUpdated(item.getUpdated());
+            customer.setBalance(item.getBalance());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");
@@ -152,7 +186,7 @@ public class CustomerDao implements Dao<Customer> {
              PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {
             ResultSet result = pst.executeQuery();
             customersList = new ArrayList<>();
-            Customer customer= null;
+            Customer customer = null;
             while (result.next()) {
                 customer = new Customer();
                 customer.setId(result.getInt("id"));
@@ -163,18 +197,38 @@ public class CustomerDao implements Dao<Customer> {
                 customer.setActive(result.getBoolean("isActive"));
                 customer.setCreated(result.getTimestamp("created").toLocalDateTime());
                 customer.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+                customer.setBalance(result.getInt("balance"));
                 customersList.add(customer);
-
             }
-
         } catch (Exception ex) {
             logger.debug("Problem with searching all customers: " + ex.getMessage());
         }
-
         logger.debug("All Customers searched");
         System.out.println(customersList);
         return customersList;
     }
 
+    public boolean addBalance(int customer_id,int money) {
+        boolean status_replenish = false;
+        logger.debug("Start replenish amount....");
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(REPLENISH_QUERY);) {
+            pst.setInt(1, customer_id);
+            pst.setInt(2,money);
+            Customer customer = findByID(customer_id);
+            int newBalance = customer.getBalance() + money;
 
+            int status = pst.executeUpdate();
+            if (status == 1) {
+                status_replenish = true;
+            }
+            if (status != 1) throw new UserException("do not replenish!!");
+            con.close();
+        } catch (Exception ex) {
+            logger.debug("Problem with replenish amount: " + ex.getMessage());
+        }
+
+        logger.debug("replenished amount");
+        return status_replenish;
+    }
 }

@@ -18,30 +18,22 @@ import java.io.IOException;
 
 @WebServlet(name = "wallet", urlPatterns = "/add/wallet")
 public class AddWalletServlet extends HttpServlet {
-
     private static Logger logger = LogManager.getLogger(AddWalletServlet.class);
     private BusinessMapper businessMapper;
 
-    private WalletService walletService = new WalletServiceImpl();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        WalletService walletService = new WalletServiceImpl();
         logger.info("adding wallet");
         HttpSession session = req.getSession(true);
-
+        int id = Integer.parseInt(req.getParameter("id"));
         String number = req.getParameter("number");
-        System.out.println(number);
         double balance = Double.parseDouble(req.getParameter("balance"));
-        System.out.println(balance);
+        int customers_id = Integer.parseInt(req.getParameter("customers_id"));
 
-
-        WalletDto walletDto= new WalletDto(number,balance);
-        System.out.println("dto");
-
+        WalletDto walletDto = new WalletDto(id,number, balance,customers_id);
         try {
-            if( walletService.create(walletDto)){
-
+            if (walletService.create(walletDto)) {
                 resp.sendRedirect("/wallets");
             }
         } catch (WalletException e) {

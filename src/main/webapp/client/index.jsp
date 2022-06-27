@@ -1,3 +1,5 @@
+<%@ page import="com.dto.CustomerCreateRequestDto" %>
+<%@ page import="com.dto.CustomerDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -9,7 +11,10 @@
 <fmt:setBundle basename="resources" />
 
 <html lang="${sessionScope.lang}">
+<%
 
+    CustomerDto customerDto = ((CustomerDto) session.getAttribute("customerDto"));
+%>
 
 <head>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -39,7 +44,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="?lang=en" class="btn btn-success"><fmt:message key="label.lang.en" /></a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="/add/balance?id=${sessionScope.get('id')}">Add Balance</a>
+                </li>
 
 
 
@@ -59,11 +66,9 @@
 
 
 <%--             </li>--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link disabled">Disabled</a>--%>
-<%--                </li>--%>
-            </ul>
-        </li>
+<%--               --%>
+<%--            </ul>--%>
+<%--        </li>--%>
 
             <c:if test="${sessionScope.get('fullName')!=null}">
                 <div>${sessionScope.get('fullName')}</div>

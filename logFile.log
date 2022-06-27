@@ -3452,3 +3452,114 @@
 17:41:29.285 [http-nio-8081-exec-5] INFO  - adding tariff
 17:41:29.286 [http-nio-8081-exec-5] DEBUG - Start tariff creating
 17:41:29.292 [http-nio-8081-exec-5] DEBUG - Tariff created
+22:41:04.796 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:41:04.811 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:42:05.348 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:42:05.355 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:41:04.796 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:41:04.811 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:42:05.348 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:42:05.355 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:43:55.124 [localhost-startStop-2] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:43:55.127 [localhost-startStop-2] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:44:31.444 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:44:31.455 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:45:58.886 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:45:58.902 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:47:31.594 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:47:31.613 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:49:06.243 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:49:06.263 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:51:03.948 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:51:03.964 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:53:43.925 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:53:43.942 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:55:46.468 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:55:46.479 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:57:35.031 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+22:57:35.037 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:06:32.999 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:06:33.018 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:08:40.585 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:08:40.598 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:12:18.230 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:12:18.240 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:17:21.292 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:17:21.304 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:18:05.098 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:18:05.110 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:20:29.313 [RMI TCP Connection(2)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:20:29.326 [RMI TCP Connection(2)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:25:29.838 [localhost-startStop-2] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:25:29.849 [localhost-startStop-2] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:31:59.570 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:31:59.584 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+23:32:09.729 [http-nio-8081-exec-9] DEBUG - Start subscription searching....
+23:32:09.891 [http-nio-8081-exec-9] DEBUG - Start  searching all tariffs ...
+23:32:09.926 [http-nio-8081-exec-9] DEBUG - All tariffs for subscription found
+23:32:09.926 [http-nio-8081-exec-9] DEBUG - subscription searched
+23:32:09.932 [http-nio-8081-exec-9] DEBUG - Start  searching all tariffs...
+23:32:09.932 [http-nio-8081-exec-9] DEBUG - Start subscription searching....
+23:32:09.934 [http-nio-8081-exec-9] DEBUG - Start  searching all tariffs ...
+23:32:09.937 [http-nio-8081-exec-9] DEBUG - All tariffs for subscription found
+23:32:09.938 [http-nio-8081-exec-9] DEBUG - subscription searched
+23:32:09.954 [http-nio-8081-exec-9] DEBUG - All tariffs searched
+10:41:35.953 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+10:41:35.984 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+10:41:46.249 [http-nio-8081-exec-4] DEBUG - Start subscription searching....
+10:41:46.369 [http-nio-8081-exec-4] DEBUG - Start  searching all tariffs ...
+10:41:46.385 [http-nio-8081-exec-4] DEBUG - All tariffs for subscription found
+10:41:46.385 [http-nio-8081-exec-4] DEBUG - subscription searched
+10:41:46.393 [http-nio-8081-exec-4] DEBUG - Start  searching all tariffs...
+10:41:46.393 [http-nio-8081-exec-4] DEBUG - Start subscription searching....
+10:41:46.393 [http-nio-8081-exec-4] DEBUG - Start  searching all tariffs ...
+10:41:46.393 [http-nio-8081-exec-4] DEBUG - All tariffs for subscription found
+10:41:46.393 [http-nio-8081-exec-4] DEBUG - subscription searched
+10:41:46.401 [http-nio-8081-exec-4] DEBUG - All tariffs searched
+11:05:40.508 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+11:05:40.508 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+11:49:14.341 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+11:49:14.363 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+11:50:38.066 [http-nio-8081-exec-4] INFO  - Customer registration
+11:50:38.071 [http-nio-8081-exec-4] DEBUG - Start user searching....
+11:50:38.224 [http-nio-8081-exec-4] DEBUG - User searched
+11:50:38.231 [http-nio-8081-exec-4] DEBUG - Start user creating
+11:50:38.267 [http-nio-8081-exec-4] DEBUG - User created
+11:50:38.267 [http-nio-8081-exec-4] DEBUG - Start customer creating
+11:50:38.273 [http-nio-8081-exec-4] DEBUG - Customer created
+14:50:52.995 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:50:53.007 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:52:13.674 [http-nio-8081-exec-7] DEBUG - Start user searching....
+14:52:13.839 [http-nio-8081-exec-7] DEBUG - User searched
+14:52:14.521 [http-nio-8081-exec-7] DEBUG - Start customer searching....
+14:52:14.537 [http-nio-8081-exec-7] DEBUG - Problem with searching customer: Illegal operation on empty result set.
+14:52:14.537 [http-nio-8081-exec-7] DEBUG - Customer searched
+14:53:49.919 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:53:49.932 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:02:41.468 [http-nio-8081-exec-4] DEBUG - Start user searching....
+15:02:41.632 [http-nio-8081-exec-4] DEBUG - User searched
+15:02:42.386 [http-nio-8081-exec-4] DEBUG - Start customer searching....
+15:02:42.397 [http-nio-8081-exec-4] DEBUG - Problem with searching customer: Column 'phone_number' not found.
+15:02:42.397 [http-nio-8081-exec-4] DEBUG - Customer searched
+15:05:02.292 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:05:02.311 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:09:04.714 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:09:04.733 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:14:11.688 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:14:11.706 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:15:32.633 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:15:32.669 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:17:05.914 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:17:05.935 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:18:03.205 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:18:03.216 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:19:16.695 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:19:16.707 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:20:24.691 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:20:24.701 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:21:34.864 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:21:34.879 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:22:34.813 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:22:34.827 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:26:18.636 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:26:18.648 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log

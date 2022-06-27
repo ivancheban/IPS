@@ -1,7 +1,6 @@
 package com.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class CustomerDto {
     private int id;
@@ -9,26 +8,31 @@ public class CustomerDto {
     private String surname;
     private String phone;
     private String email;
-    private List<SubscriptionDto> servicesDto;
-    private WalletDto walletDto;
+    //private List<SubscriptionDto> servicesDto;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
+    private int balance;
 
-    public CustomerDto() {
+    public CustomerDto(CustomerDto customerDto) {
     }
 
-    public CustomerDto(int id, String name, String surname, String phone, String email, List<SubscriptionDto> servicesDto, WalletDto walletDto, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public CustomerDto(int id, int balance) {
+        this.id = id;
+        this.balance = balance;
+    }
+
+    public CustomerDto(int id, String name, String surname, String phone, String email, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
-        this.servicesDto = servicesDto;
-        this.walletDto = walletDto;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
+        this.balance = balance;
+
     }
 
     public int getId() {
@@ -71,21 +75,9 @@ public class CustomerDto {
         this.email = email;
     }
 
-    public List<SubscriptionDto> getServicesDto() {
-        return servicesDto;
-    }
+    public int getBalance() {return balance;}
 
-    public void setServicesDto(List<SubscriptionDto> servicesDto) {
-        this.servicesDto = servicesDto;
-    }
-
-    public WalletDto getWalletDto() {
-        return walletDto;
-    }
-
-    public void setWalletDto(WalletDto walletDto) {
-        this.walletDto = walletDto;
-    }
+    public void setBalance(int balance) {this.balance = balance;}
 
     public boolean isActive() {
         return isActive;
@@ -109,5 +101,20 @@ public class CustomerDto {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", balance=" + balance +
+                ", isActive=" + isActive +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }

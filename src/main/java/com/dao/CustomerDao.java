@@ -9,14 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDao implements Dao<Customer> {
 
     private static final String CREATE_QUERY = "insert into customers(name,surname, phone,email,balance) values (?,?,?,?,?)";
-    private static final String FIND_BY_FIELD_QUERY = "select * from customers where phone = ?";
+    private static final String FIND_BY_PHONE_NUMBER = "select * from customers where phone = ?";
     private static final String FIND_BY_ID = "select * from customers where id = ?";
     private static final String UPDATE_QUERY = "UPDATE customers SET name=?,surname=?,phone=?,email=?,isActive=?,balance=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
@@ -71,24 +70,24 @@ public class CustomerDao implements Dao<Customer> {
         logger.debug("Start customer searching....");
 
         try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {
+             PreparedStatement pst = con.prepareStatement(FIND_BY_PHONE_NUMBER);) {
             pst.setString(1, value);
 
             ResultSet resultSet = pst.executeQuery();
-            resultSet.next();
-
-            customer.setName(resultSet.getString("name"));
-            customer.setSurname(resultSet.getString("surname"));
-            customer.setPhone(resultSet.getString("phone_number"));
-            customer.setEmail(resultSet.getString("email"));
-            customer.setActive(resultSet.getBoolean("isActive"));
-            customer.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-            customer.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
-            customer.setBalance(resultSet.getInt("balance"));
-            if (customer == null) {
-                throw new UserException("customer not found");
+            while (resultSet.next()) {
+                customer.setId(resultSet.getInt("id"));
+                customer.setName(resultSet.getString("name"));
+                customer.setSurname(resultSet.getString("surname"));
+                customer.setPhone(resultSet.getString("phone"));
+                customer.setEmail(resultSet.getString("email"));
+                customer.setActive(resultSet.getBoolean("isActive"));
+                customer.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+                customer.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
+                customer.setBalance(resultSet.getInt("balance"));
+                if (customer == null) {
+                    throw new UserException("customer not found");
+                }
             }
-
         } catch (Exception ex) {
             logger.debug("Problem with searching customer: " + ex.getMessage());
         }
@@ -105,20 +104,20 @@ public class CustomerDao implements Dao<Customer> {
             pst.setInt(1, id);
 
             ResultSet resultSet = pst.executeQuery();
-            resultSet.next();
+            while (resultSet.next()) {
 
-            customer.setName(resultSet.getString("name"));
-            customer.setSurname(resultSet.getString("surname"));
-            customer.setPhone(resultSet.getString("phone_number"));
-            customer.setEmail(resultSet.getString("email"));
-            customer.setActive(resultSet.getBoolean("isActive"));
-            customer.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-            customer.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
-            customer.setBalance(resultSet.getInt("balance"));
-            if (customer == null) {
-                throw new UserException("customer not found");
+                customer.setName(resultSet.getString("name"));
+                customer.setSurname(resultSet.getString("surname"));
+                customer.setPhone(resultSet.getString("phone"));
+                customer.setEmail(resultSet.getString("email"));
+                customer.setActive(resultSet.getBoolean("isActive"));
+                customer.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+                customer.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
+                customer.setBalance(resultSet.getInt("balance"));
+                if (customer == null) {
+                    throw new UserException("customer not found");
+                }
             }
-
         } catch (Exception ex) {
             logger.debug("Problem with searching customer: " + ex.getMessage());
         }
@@ -208,23 +207,26 @@ public class CustomerDao implements Dao<Customer> {
         return customersList;
     }
 
-    public boolean addBalance(int customer_id,int money) {
+    public boolean addBalance(int customer_id, int money) {
         boolean status_replenish = false;
         logger.debug("Start replenish amount....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(REPLENISH_QUERY);) {
-            pst.setInt(1, customer_id);
-            pst.setInt(2,money);
+
             Customer customer = findByID(customer_id);
             int newBalance = customer.getBalance() + money;
+            pst.setInt(1, newBalance);
+            pst.setInt(2, customer_id);
 
             int status = pst.executeUpdate();
+            System.out.println("status ==> " + status);
             if (status == 1) {
                 status_replenish = true;
             }
-            if (status != 1) throw new UserException("do not replenish!!");
+            if (status != 1) throw new SQLException();
             con.close();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             logger.debug("Problem with replenish amount: " + ex.getMessage());
         }
 

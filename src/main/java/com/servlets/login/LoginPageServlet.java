@@ -48,14 +48,24 @@ public class LoginPageServlet extends HttpServlet {
             ServletContext context = request.getServletContext();
             context.setAttribute(token, token);
             request.getSession().setAttribute("token", token);
+            request.getSession().setAttribute("phone", phone);
 
             if (userRole.equals(Role.ADMIN)) {
                 response.sendRedirect("/admin.jsp");
             } else if (userRole.equals(Role.CLIENT)) {
                 Customer customer = customerService.findByPhoneNumber(phone);
+
                 String fullName = customer.getName() + " " + customer.getSurname();
+                String phoneNumber = customer.getPhone();
+                String email = customer.getEmail();
+                int balance = customer.getBalance();
+
                 request.getSession().setAttribute("fullName", fullName);
-                response.sendRedirect("/index.jsp");
+                request.getSession().setAttribute("phoneNumber", phoneNumber);
+                request.getSession().setAttribute("email", email);
+                request.getSession().setAttribute("balance",balance);
+
+                response.sendRedirect("/user/cabinet");
             }
         } else {
             request.getSession().setAttribute("loginError", "Wrong email or password");

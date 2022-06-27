@@ -11,7 +11,7 @@ public class Customer {
     private String surname;
     private String phone;
     private String email;
-    //    private List<Subscription> services;
+    private List<Subscription> services;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;

@@ -18,7 +18,6 @@ public class AddFormBalanceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.sendRedirect("/balance-update.jsp");
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CustomerService customerService = new CustomerServiceImpl();
@@ -34,4 +33,5 @@ public class AddFormBalanceServlet extends HttpServlet {
             new ServletException("did not updated balance for customer ");
         }
     }
+
 }

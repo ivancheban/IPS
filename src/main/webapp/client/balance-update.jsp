@@ -29,7 +29,7 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <form  method="POST" action="/customer/update/form" >
+        <form  method="POST" action="/add/balance" >
             <input type="number" class="form-control" placeholder="id" name="id" id="id" value="<%=customerDto!=null?customerDto.getId():""%>" hidden="hidden">
 
             <div alight="left">

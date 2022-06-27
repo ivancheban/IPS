@@ -80,7 +80,7 @@
         </div>
         <div>
             ${sessionScope.get('balance')}
-                ${sessionScope.get('newBalance')}
+<%--                ${sessionScope.get('newBalance')}--%>
         </div>
         <div>
         <a class="navbar-brand" href="/add/balance">Add Balance</a>

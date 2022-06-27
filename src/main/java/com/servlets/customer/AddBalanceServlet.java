@@ -22,7 +22,7 @@ public class AddBalanceServlet extends HttpServlet {
         String balance = req.getParameter("balance");
         customerService.addBalance(id, Integer.parseInt(balance));
         int newBalance = customerService.findByPhoneNumber(phoneNumber).getBalance();
-        req.getSession().setAttribute("newBalance", newBalance);
+        req.getSession().setAttribute("balance", newBalance);
 
         resp.sendRedirect("/user/cabinet");
     }

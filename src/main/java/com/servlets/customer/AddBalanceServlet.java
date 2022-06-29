@@ -29,7 +29,7 @@ public class AddBalanceServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/client/balance-update.jsp");
+        resp.sendRedirect("/balance-update.jsp");
 
     }
 }

@@ -4,8 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page session="true" %>
-<jsp:useBean id="TariffService" class="com.service.TariffServiceImpl"/>
-<jsp:useBean id="TariffDao" class="com.dao.TariffDao"/>
+<jsp:useBean id="userService" class="com.service.UserServiceImpl"/>
+<jsp:useBean id="userDao" class="com.dao.UserDao"/>
 <fmt:setLocale value="${sessionScope.lang}" />
 <fmt:setBundle basename="resources" />
 <html lang="${sessionScope.lang}">
@@ -188,7 +188,6 @@
     </script>
 </head>
 <body>
-
 <div class="container">
     <div class="table-responsive">
         <div class="table-wrapper">
@@ -196,60 +195,23 @@
                 <div class="row">
                     <div class="col-xs-5">
 
-                        <h2><fmt:message key="list.tariffs.list"/></h2>
+                        <h2><fmt:message key="list.users.list"/></h2>
                     </div>
                     <div class="col-xs-7">
-                        <a href="#addTariffModal"  class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i>
-                            <span><fmt:message key="new.tariffs.add"/></span></a>
+                        <a href="/registration.jsp" class="btn btn-primary"><i class="material-icons" style="color:green">&#xE147;</i> <span><fmt:message key="button.addUser.list"/></span></a>
+
+
                     </div>
                 </div>
             </div>
-<%--#ADD Tariff--%>
-            <form action="/addTariff" method="post">
-                <div id="addTariffModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Add Tariff</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Name Tariff</label>
-                                        <input type="text" name="name" id="name" class="form-control" required>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Type Tariff</label>
-                                        <input type="text" name="type" id="type" class="form-control" required>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Price Tariff</label>
-                                        <input type="text" name="price" id="price" class="form-control" required>
-
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-
             <table class="table table-striped table-hover">
 
                 <thead>
                 <tr>
-                    <th><fmt:message key="list.name.list"/></th>
-                    <th><fmt:message key="list.type.list"/></th>
-                    <th><fmt:message key="list.price.list"/></th>
+                    <th><fmt:message key="list.phone.list"/></th>
+                    <th><fmt:message key="list.password.list"/></th>
                     <th><fmt:message key="list.active.list"/></th>
+                    <th><fmt:message key="list.role.list"/></th>
                     <th><fmt:message key="list.created.list"/></th>
                     <th><fmt:message key="list.updated.list"/></th>
 
@@ -260,45 +222,38 @@
                 <tbody>
 
 
-
-                <c:forEach var="tariff" items="${tariffsList}" >
+                <c:forEach var="user" items="${userList}" >
 
                     <tr>
-                        <td>${tariff.getName()}</td>
-                        <td>${tariff.getType()}</td>
-                        <td>${tariff.getPricePerDay()}</td>
-                        <td>${tariff.isActive()}</td>
-                        <td>${tariff.getCreated()}</td>
-                        <td>${tariff.getUpdated()}</td>
+                        <td>${user.getPhone()}</td>
+                        <td>${user.getPassword()}</td>
+                        <td>${user.isActive()}</td>
+                        <td>${user.getRole()}</td>
+                        <td>${user.getCreated()}</td>
+                        <td>${user.getUpdated()}</td>
 
-                        <td><a href="#editTariffModal" class="edit" data-toggle="modal">
-                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>
-                        <td> <a href="/delete/tariff?id=${tariff.id}" class="btn btn-danger">Delete</a></td>
-
+                        <td> <a href="/user/update?id=${user.id}"  class="btn btn-info" >Update</a></td>
+                        <td> <a href="/user/delete?id=${user.id}" class="btn btn-danger">Delete</a></td>
                     </tr>
 
                 </c:forEach>
                 </tbody>
             </table>
-            <%--            <div class="clearfix">--%>
-            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <ul class="pagination">--%>
-            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                </ul>--%>
-            <%--            </div>--%>
+<%--            <div class="clearfix">--%>
+<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+<%--                <ul class="pagination">--%>
+<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
             <%--For displaying Previous link except for the 1st page --%>
-
-
-
-
             <c:if test="${currentPage != 1}">
-                <td><a href="tariffs?page=${currentPage - 1}">Previous</a></td>
+                <td><a href="user.do?page=${currentPage - 1}">Previous</a></td>
             </c:if>
 
             <%--For displaying Page numbers.
@@ -311,7 +266,7 @@
                                 <td>${i}</td>
                             </c:when>
                             <c:otherwise>
-                                <td><a href="tariffs?page=${i}">${i}</a></td>
+                                <td><a href="user.do?page=${i}">${i}</a></td>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -320,16 +275,11 @@
 
             <%--For displaying Next link --%>
             <c:if test="${currentPage lt noOfPages}">
-                <td><a href="tariffs?page=${currentPage+ 1}">Next</a></td>
+                <td><a href="user.do?page=${currentPage+ 1}">Next</a></td>
             </c:if>
 
         </div>
     </div>
 </div>
-
-
-
 </body>
-
-
 </html>

@@ -24,6 +24,12 @@ public class TariffServiceImpl implements TariffService {
     }
 
     @Override
+    public List<TariffDto> findAllSubscription(int customerId) {
+       List <Tariff> tariffs = tariffDao.getAllSubscribedTariffs(customerId);
+       return tariffs.stream().map(e -> BusinessMapper.getTariffDto(e)).collect(Collectors.toList());
+    }
+
+    @Override
     public TariffDto update(TariffDto tariffDto) {
         Tariff tariff = tariffDao.update(BusinessMapper.getTariff(tariffDto));
         return  BusinessMapper.getTariffDto(tariff);

@@ -10,6 +10,8 @@ public interface TariffService {
 
     boolean create(TariffDto tariffDto) throws TariffException;
 
+    List<TariffDto> findAllSubscription(int customerId);
+
     TariffDto update(TariffDto tariffDto);
 
     boolean delete(int id);

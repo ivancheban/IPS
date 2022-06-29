@@ -28,6 +28,7 @@ public class DataSource {
     private DataSource() {}
 
     public static Connection getConnection() throws SQLException {
+//        innitConfiguration("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/internet_provider_base", "root", "root");
         return ds.getConnection();
     }
 }

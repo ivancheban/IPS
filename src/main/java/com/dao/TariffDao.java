@@ -1,12 +1,9 @@
 package com.dao;
 
-import com.dto.TariffDto;
 import com.exceptions.TariffException;
 import com.exceptions.UserException;
-import com.model.Role;
 import com.model.ServiceType;
 import com.model.Tariff;
-import com.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,9 +23,33 @@ public class TariffDao implements Dao<Tariff> {
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from tariffs limit ?, ?";
     private static final String SORTED_BY_PRICE = "SELECT * FROM tariffs  WHERE  service_type =? ORDER BY price_per_day";
     private static final String SORTED_BY_NAME = "SELECT * FROM tariffs  WHERE  service_type =? ORDER BY name";
+    private static final String FIND_ALL_BY_SUBSCRIPTION = "select * from customers_tariffs where customers_id =?";
     private static Logger logger = LogManager.getLogger(TariffDao.class);
 
     private int noOfRecords;
+    public List<Tariff> getAllSubscribedTariffs(int customerId) {
+        logger.debug("Start  searching all tariffs...");
+        List<Tariff> tariffList = new ArrayList<>();
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_ALL_BY_SUBSCRIPTION);) {
+
+            pst.setInt(1, customerId);
+
+            ResultSet result = pst.executeQuery();
+            Tariff tariff = new Tariff();
+            while (result.next()) {
+//                tariff = new Tariff();
+                int id = result.getInt("tariffs_id");
+                tariff = findById(id);
+                tariffList.add(tariff);
+            }
+        } catch (Exception ex) {
+            logger.debug("Problem with searching all tariffs: " + ex.getMessage());
+        }
+        logger.debug("All tariffs searched");
+        return tariffList;
+    }
 
     @Override
     public String toString() {

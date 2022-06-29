@@ -1,47 +1,29 @@
 package com.dao;
 
 import com.dto.CustomerCreateRequestDto;
+import com.dto.TariffDto;
 import com.model.Customer;
+import com.model.Tariff;
 import com.model.User;
+import com.service.TariffService;
+import com.service.TariffServiceImpl;
 import com.service.UserServiceImpl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TestClass {
     public static void main(String[] args) {
-        CustomerDao customerDao = null;
-        UserDao userDao = null;
-        Connection connection;
-        try {
-            connection = DataSource.getConnection();
-             userDao = new UserDao(connection);
-             customerDao = new CustomerDao(connection);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        TariffDao tariffDao = new TariffDao();
+        TariffService tariffService = new TariffServiceImpl();
+//        Tariff tariff = tariffDao.findById(4);
+//        System.out.println(tariff);
+        List<Tariff> list = tariffDao.getAllSubscribedTariffs(20);
+        List<TariffDto> list2 = tariffService.findAllSubscription(20);
+        for (TariffDto t : list2){
+            System.out.println(t);
         }
-
-        UserServiceImpl userService = new UserServiceImpl();
-        String name = "Igor";
-        String surname = "Timoshenko";
-        String phoneNumber = "+380952356459";
-        String email = "borysko@gmail.com";
-        String password = "123456Q@q";
-        String confirmPassword = "123456Q@q";
-
-        CustomerCreateRequestDto customerCreateRequestDto = new CustomerCreateRequestDto(name, surname, email, phoneNumber, password, confirmPassword);
-        userService.registration(customerCreateRequestDto);
-
-
-        User user = new User();
-        user = userDao.findByField("380501236547");
-        System.out.println(user);
-
-//        User user = new User("380662315698","1233");
-//        userDao.create(user);
-//
-//        customerDao.create(new Customer("andrew","Wayna","380507097355","andrew@com.ua"));
 
     }
 }

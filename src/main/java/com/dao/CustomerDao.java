@@ -23,7 +23,7 @@ public class CustomerDao implements Dao<Customer> {
     private static final String FIND_ALL_QUERY = "select * from customers";
     private static final String REPLENISH_QUERY = "UPDATE customers SET balance = ? WHERE id =?";
     private static final String ADD_SERVICE_QUERY = "insert into customers_subscriptions(customers_id,subscriptions_id ) values (?,?)";
-    private static final String FIND_ALL_SERVICE = "select *from subscriptions where id=?";
+    private static final String FIND_ALL_SERVICE = "select *from subscriptions where customers_id=?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
@@ -252,33 +252,7 @@ public class CustomerDao implements Dao<Customer> {
             logger.debug("Problem with adding subscription to customer: " + ex.getMessage());
             throw new SQLException(ex.getMessage(), ex);
         }
-        logger.debug("service created");
+        logger.debug("customer payment tariff of service ");
     }
-    public List<Subscription> findAllService(int id) {
-        logger.debug("Start  searching all service...");
-        List<Subscription> serviceList = new ArrayList<>();
 
-        try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(FIND_ALL_SERVICE);) {
-           CustomerDao customerDao = new CustomerDao();
-            pst.setString(1, findByID(id).getName());
-
-            ResultSet result = pst.executeQuery();
-            Subscription subscription = null;
-            while (result.next()) {
-                subscription = new Subscription();
-                subscription.setId(result.getInt("id"));
-                subscription.setName(result.getString("name"));
-                subscription.setDays_amount(result.getInt("days_amount"));
-                subscription.setActive(result.getBoolean("isActive"));
-                subscription.setCreated(result.getTimestamp("created").toLocalDateTime());
-                subscription.setUpdated(result.getTimestamp("updated").toLocalDateTime());
-                serviceList.add(subscription);
-            }
-        } catch (Exception ex) {
-            logger.debug("Problem with searching all services: " + ex.getMessage());
-        }
-        logger.debug("All services searched");
-        return serviceList;
-    }
 }

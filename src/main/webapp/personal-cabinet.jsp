@@ -87,6 +87,29 @@
         </div>
     </c:if>
 </form>
+<div class="row row-cols-2 row-cols-md-5 g-3">
+    <c:forEach var="tariff" items="${sessionScope.get('tariffsSubscriptions')}">
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                        ${tariff.name}
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+
+                </div>
+                <div class="card-footer text-muted">
+                    <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
+                    <a href="#" >Підключитись</a>
+
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
+
 
 </body>
 </html>

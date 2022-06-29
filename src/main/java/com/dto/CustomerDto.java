@@ -1,6 +1,7 @@
 package com.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class CustomerDto {
     private int id;
@@ -8,7 +9,7 @@ public class CustomerDto {
     private String surname;
     private String phone;
     private String email;
-    //private List<SubscriptionDto> servicesDto;
+    private List<SubscriptionDto> servicesDto;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -22,12 +23,13 @@ public class CustomerDto {
         this.balance = balance;
     }
 
-    public CustomerDto(int id, String name, String surname, String phone, String email, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
+    public CustomerDto(int id, String name, String surname, String phone, String email,List<SubscriptionDto> servicesDto, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
+        this.servicesDto=servicesDto;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;

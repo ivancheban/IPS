@@ -30,24 +30,38 @@ public class Customer {
 
     }
 
-    public Customer(int id, String name, String surname, String phone, String email, boolean isActive, LocalDateTime created, LocalDateTime updated,int balance) {
+    public Customer(int id, String name, String surname, String phone, String email,List<Subscription> services, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
-//        this.services = services;
+        this.services = services;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
         this.balance = balance;
     }
 
+    public Customer(int id, String name, String surname, String phone, String email, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+        this.balance = balance;
+    }
 
+    public int getBalance() {
+        return balance;
+    }
 
-    public int getBalance() {return balance;}
-
-    public void setBalance(int balance) {this.balance = balance;}
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
     public int getId() {
         return id;
@@ -79,6 +93,14 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Subscription> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Subscription> services) {
+        this.services = services;
     }
 
     public String getEmail() {

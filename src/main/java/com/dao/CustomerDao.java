@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.exceptions.SubscriptionException;
 import com.exceptions.UserException;
 import com.model.*;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,8 @@ public class CustomerDao implements Dao<Customer> {
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from customers";
     private static final String REPLENISH_QUERY = "UPDATE customers SET balance = ? WHERE id =?";
+    private static final String ADD_SERVICE_QUERY = "insert into customers_subscriptions(customers_id,subscriptions_id ) values (?,?)";
+    private static final String FIND_ALL_SERVICE = "select *from subscriptions where id=?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
@@ -232,5 +235,50 @@ public class CustomerDao implements Dao<Customer> {
 
         logger.debug("replenished amount");
         return status_replenish;
+    }
+    public void addService(int customers_id, int subscriptions_id) throws SubscriptionException, SQLException {
+        logger.debug("Start service creating");
+        if (subscriptions_id == 0) {
+            logger.error("Illegal Argument!!!");
+            throw new IllegalArgumentException();
+        }
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(ADD_SERVICE_QUERY);) {
+            pst.setInt(1, customers_id);
+            pst.setInt(2, subscriptions_id);
+            int status = pst.executeUpdate();
+            if (status != 1) throw new SubscriptionException("Created more than one record!!");
+        } catch (Exception ex) {
+            logger.debug("Problem with adding subscription to customer: " + ex.getMessage());
+            throw new SQLException(ex.getMessage(), ex);
+        }
+        logger.debug("service created");
+    }
+    public List<Subscription> findAllService(int id) {
+        logger.debug("Start  searching all service...");
+        List<Subscription> serviceList = new ArrayList<>();
+
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(FIND_ALL_SERVICE);) {
+           CustomerDao customerDao = new CustomerDao();
+            pst.setString(1, findByID(id).getName());
+
+            ResultSet result = pst.executeQuery();
+            Subscription subscription = null;
+            while (result.next()) {
+                subscription = new Subscription();
+                subscription.setId(result.getInt("id"));
+                subscription.setName(result.getString("name"));
+                subscription.setDays_amount(result.getInt("days_amount"));
+                subscription.setActive(result.getBoolean("isActive"));
+                subscription.setCreated(result.getTimestamp("created").toLocalDateTime());
+                subscription.setUpdated(result.getTimestamp("updated").toLocalDateTime());
+                serviceList.add(subscription);
+            }
+        } catch (Exception ex) {
+            logger.debug("Problem with searching all services: " + ex.getMessage());
+        }
+        logger.debug("All services searched");
+        return serviceList;
     }
 }

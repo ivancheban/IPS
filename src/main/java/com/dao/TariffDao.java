@@ -30,16 +30,12 @@ public class TariffDao implements Dao<Tariff> {
     public List<Tariff> getAllSubscribedTariffs(int customerId) {
         logger.debug("Start  searching all tariffs...");
         List<Tariff> tariffList = new ArrayList<>();
-
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_ALL_BY_SUBSCRIPTION);) {
-
             pst.setInt(1, customerId);
-
             ResultSet result = pst.executeQuery();
             Tariff tariff = new Tariff();
             while (result.next()) {
-//                tariff = new Tariff();
                 int id = result.getInt("tariffs_id");
                 tariff = findById(id);
                 tariffList.add(tariff);
@@ -49,11 +45,6 @@ public class TariffDao implements Dao<Tariff> {
         }
         logger.debug("All tariffs searched");
         return tariffList;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     @Override
@@ -70,7 +61,6 @@ public class TariffDao implements Dao<Tariff> {
             pst.setString(2, String.valueOf(tariff.getType()));
             pst.setInt(3, tariff.getPricePerDay());
             pst.setBoolean(4, tariff.isActive());
-
 
             int status = pst.executeUpdate();
 

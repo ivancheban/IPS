@@ -74,7 +74,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
-                        <a href="#" >Підключитись</a>
+                        <a href="/add/tariff/customer?customer_id=${sessionScope.get('customerId')}&tariff_id=${tariff.id}" >Підключитись</a>
 
                     </div>
                 </div>

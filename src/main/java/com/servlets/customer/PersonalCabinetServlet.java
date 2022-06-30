@@ -21,8 +21,22 @@ public class PersonalCabinetServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TariffService tariffService = new TariffServiceImpl();
         CustomerService customerService = new CustomerServiceImpl();
+
         String phone = (String) req.getSession().getAttribute("phone");
         int customerId = customerService.findByPhoneNumber(phone).getId();
+
+        Customer customer = customerService.findByPhoneNumber(phone);
+
+        String fullName = customer.getName() + " " + customer.getSurname();
+        String phoneNumber = customer.getPhone();
+        String email = customer.getEmail();
+        int balance = customer.getBalance();
+
+        req.getSession().setAttribute("fullName", fullName);
+        req.getSession().setAttribute("phoneNumber", phoneNumber);
+        req.getSession().setAttribute("email", email);
+        req.getSession().setAttribute("balance",balance);
+
         List<TariffDto> tariffDtoList = tariffService.findAllSubscription(customerId);
         req.getSession().setAttribute("tariffsSubscriptions", tariffDtoList);
 

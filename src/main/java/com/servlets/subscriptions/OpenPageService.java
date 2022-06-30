@@ -1,6 +1,8 @@
 package com.servlets.subscriptions;
 import com.dto.SubscriptionDto;
 import com.model.Tariff;
+import com.service.CustomerService;
+import com.service.CustomerServiceImpl;
 import com.service.SubscriptionService;
 import com.service.SubscriptionServiceImpl;
 import javax.servlet.ServletException;
@@ -16,10 +18,14 @@ import java.util.List;
 public class OpenPageService extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        CustomerService customerService = new CustomerServiceImpl();
         SubscriptionService subscriptionService = new SubscriptionServiceImpl();
         HttpSession session = req.getSession(true);
         String sid = req.getParameter("id");
         int id = Integer.valueOf(sid);
+        String phoneNumber = (String) session.getAttribute("phone");
+        int customerId = customerService.findByPhoneNumber(phoneNumber).getId();
+        session.setAttribute("customerId",customerId);
 
         SubscriptionDto subscriptionDto = subscriptionService.findById(id);
         List<Tariff> tariffList = subscriptionService.getAllByService(id);

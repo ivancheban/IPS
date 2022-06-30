@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.exceptions.SubscriptionException;
+import com.exceptions.TariffException;
 import com.exceptions.UserException;
 import com.model.*;
 import org.apache.logging.log4j.LogManager;
@@ -21,8 +21,8 @@ public class CustomerDao implements Dao<Customer> {
     private static final String UPDATE_QUERY = "UPDATE customers SET name=?,surname=?,phone=?,email=?,isActive=?,balance=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from customers";
-    private static final String REPLENISH_QUERY = "UPDATE customers SET balance = ? WHERE id =?";
-    private static final String ADD_SERVICE_QUERY = "insert into customers_subscriptions(customers_id,subscriptions_id ) values (?,?)";
+    private static final String UPDATE_BALANCE = "UPDATE customers SET balance = ? WHERE id =?";
+    private static final String ADD_TARIFF_QUERY = "insert into customers_tariffs(customers_id,tariffs_id ) values (?,?)";
     private static final String FIND_ALL_SERVICE = "select *from subscriptions where customers_id=?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
@@ -214,7 +214,7 @@ public class CustomerDao implements Dao<Customer> {
         boolean status_replenish = false;
         logger.debug("Start replenish amount....");
         try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(REPLENISH_QUERY);) {
+             PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {
 
             Customer customer = findByID(customer_id);
             int newBalance = customer.getBalance() + money;
@@ -236,21 +236,48 @@ public class CustomerDao implements Dao<Customer> {
         logger.debug("replenished amount");
         return status_replenish;
     }
-    public void addService(int customers_id, int subscriptions_id) throws SubscriptionException, SQLException {
-        logger.debug("Start service creating");
-        if (subscriptions_id == 0) {
+
+    public boolean withdrawBalance(int customer_id, int money) {
+        boolean status_replenish = false;
+        logger.debug("Start replenish amount....");
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {
+
+            Customer customer = findByID(customer_id);
+            int newBalance = customer.getBalance() - money;
+            pst.setInt(1, newBalance);
+            pst.setInt(2, customer_id);
+
+            int status = pst.executeUpdate();
+            System.out.println("status ==> " + status);
+            if (status == 1) {
+                status_replenish = true;
+            }
+            if (status != 1) throw new SQLException();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            logger.debug("Problem with replenish amount: " + ex.getMessage());
+        }
+
+        logger.debug("replenished amount");
+        return status_replenish;
+    }
+    public void addTariffCustomer(int customersId, int tariffId)  {
+        logger.debug("Start tariff creating");
+        if (tariffId == 0) {
             logger.error("Illegal Argument!!!");
             throw new IllegalArgumentException();
         }
         try (Connection con = DataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(ADD_SERVICE_QUERY);) {
-            pst.setInt(1, customers_id);
-            pst.setInt(2, subscriptions_id);
+             PreparedStatement pst = con.prepareStatement(ADD_TARIFF_QUERY);) {
+            pst.setInt(1, customersId);
+            pst.setInt(2, tariffId);
             int status = pst.executeUpdate();
-            if (status != 1) throw new SubscriptionException("Created more than one record!!");
-        } catch (Exception ex) {
-            logger.debug("Problem with adding subscription to customer: " + ex.getMessage());
-            throw new SQLException(ex.getMessage(), ex);
+            if (status != 1) throw new TariffException("Created more than one record!!");
+        } catch ( SQLException | TariffException ex) {
+            logger.debug("Problem with adding tariff to customer: " + ex.getMessage());
+           // throw new SQLException(ex.getMessage(), ex);
         }
         logger.debug("customer payment tariff of service ");
     }

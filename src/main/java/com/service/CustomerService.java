@@ -20,5 +20,9 @@ public interface CustomerService {
 
     List<Customer> findAll();
 
-    boolean addBalance(int customer_id, int money);
+    boolean addBalance(int customerId, int money);
+
+    boolean withdrawBalance(int customerId, int money);
+
+    void addTariffCustomer(int customerId, int tariffId);
 }

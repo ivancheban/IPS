@@ -3,10 +3,12 @@ package com.service;
 import com.dao.CustomerDao;
 
 import com.dto.CustomerDto;
+import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.Customer;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService{
@@ -38,8 +40,22 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public boolean addBalance(int customer_id, int money) {
+    public boolean addBalance(int customerId, int money) {
         boolean status = false;
-        return customerDao.addBalance(customer_id,money);
+        return customerDao.addBalance(customerId,money);
+    }
+
+    @Override
+    public boolean withdrawBalance(int customerId, int money) {
+        boolean status = false;
+        return customerDao.withdrawBalance(customerId,money);
+    }
+
+    @Override
+    public void addTariffCustomer(int customerId, int tariffId) {
+
+            customerDao.addTariffCustomer(customerId,tariffId);
+
+
     }
 }

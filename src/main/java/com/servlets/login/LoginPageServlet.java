@@ -53,18 +53,6 @@ public class LoginPageServlet extends HttpServlet {
             if (userRole.equals(Role.ADMIN)) {
                 response.sendRedirect("/admin.jsp");
             } else if (userRole.equals(Role.CLIENT)) {
-                Customer customer = customerService.findByPhoneNumber(phone);
-
-                String fullName = customer.getName() + " " + customer.getSurname();
-                String phoneNumber = customer.getPhone();
-                String email = customer.getEmail();
-                int balance = customer.getBalance();
-
-                request.getSession().setAttribute("fullName", fullName);
-                request.getSession().setAttribute("phoneNumber", phoneNumber);
-                request.getSession().setAttribute("email", email);
-                request.getSession().setAttribute("balance",balance);
-
                 response.sendRedirect("/user/cabinet");
             }
         } else {
@@ -75,7 +63,7 @@ public class LoginPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/logIn.jsp");
+        resp.sendRedirect("/login.jsp");
     }
 
     private Map<String, String> userTableInfo(String phoneNumber, String password) {

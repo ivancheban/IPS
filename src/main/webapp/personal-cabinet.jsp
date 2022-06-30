@@ -66,27 +66,35 @@
         </li>
     </div>
 </nav>
-<form>
-    <c:if test="${sessionScope.get('fullName')!=null}">
-        <div>
-                ${sessionScope.get('fullName')}
-        </div>
 
-        <div>
-                ${sessionScope.get('phoneNumber')}
-        </div>
-        <div>
-                ${sessionScope.get('email')}
-        </div>
-        <div>
-            ${sessionScope.get('balance')}
-<%--                ${sessionScope.get('newBalance')}--%>
-        </div>
-        <div>
-        <a class="navbar-brand" href="/add/balance">Add Balance</a>
-        </div>
-    </c:if>
-</form>
+    <div class="card">
+        <div class="card-body"><!-- Начало текстового контента -->
+            <div class="row row-cols-2 row-cols-md-5 g-3">
+
+                    <c:if test="${sessionScope.get('fullName')!=null}">
+                        <div>
+                                ${sessionScope.get('fullName')}
+                        </div>
+
+                        <div>
+                                ${sessionScope.get('phoneNumber')}
+                        </div>
+                        <div>
+                                ${sessionScope.get('email')}
+                        </div>
+                        <div>
+                                ${sessionScope.get('balance')}
+                                <%--                ${sessionScope.get('newBalance')}--%>
+                        </div>
+                        <div>
+                            <a class="navbar-brand" href="/add/balance">Add Balance</a>
+                        </div>
+                    </c:if>
+        </div><!-- Конец текстового контента -->
+    </div>
+    </div><!-- Конец карточки -->
+
+<form>
 <div class="row row-cols-2 row-cols-md-5 g-3">
     <c:forEach var="tariff" items="${sessionScope.get('tariffsSubscriptions')}">
 
@@ -94,22 +102,20 @@
             <div class="card">
                 <div class="card-header">
                         ${tariff.name}
-
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"></h5>
-
                 </div>
                 <div class="card-footer text-muted">
                     <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
-                    <a href="#" >Підключитись</a>
+                    <h1> ${tariff.getType()}</h1>
+                    <a href="#" >Bідключитись</a>
 
                 </div>
             </div>
         </div>
     </c:forEach>
 </div>
-
+</form>
 
 </body>
 </html>

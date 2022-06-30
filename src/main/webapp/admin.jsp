@@ -18,15 +18,8 @@
 <fmt:setBundle basename="resources"/>
 
 <html lang="${sessionScope.lang}">
-
-    <%
-
-TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));
-%>
-        <%
-
-SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subscriptionDto"));
-%>
+    <%TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));%>
+        <%SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subscriptionDto"));%>
 
 
 <head>
@@ -168,7 +161,6 @@ SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subsc
 <%--    <div class="container">--%>
         <div class="row">
             <div class="section-head col-sm-12">
-
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="item"><span class="icon feature_box_col_one"><i class="fa fa-globe"></i></span>
@@ -177,10 +169,10 @@ SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subsc
                     <a href="">Підключити</a>
                 </div>
             </div>
+
             <div class="col-lg-4 col-sm-6">
                 <div class="item">
-
-                                      <span class="icon feature_box_col_two"><i class="fa fa-home"></i></span>
+                    <span class="icon feature_box_col_two"><i class="fa fa-home"></i></span>
                     <h6>Пакет Домашній</h6>
                     <p>300 грн</p>
                     <a href="">Підключити</a>

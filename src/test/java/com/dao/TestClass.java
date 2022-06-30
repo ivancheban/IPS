@@ -15,15 +15,9 @@ import java.util.List;
 
 public class TestClass {
     public static void main(String[] args) {
-        TariffDao tariffDao = new TariffDao();
-        TariffService tariffService = new TariffServiceImpl();
-//        Tariff tariff = tariffDao.findById(4);
-//        System.out.println(tariff);
-        List<Tariff> list = tariffDao.getAllSubscribedTariffs(20);
-        List<TariffDto> list2 = tariffService.findAllSubscription(20);
-        for (TariffDto t : list2){
-            System.out.println(t);
-        }
+        //16
+       CustomerDao customerDao = new CustomerDao();
+       customerDao.deleteTariffCustomer(16, 1);
 
     }
 }

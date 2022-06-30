@@ -53,9 +53,11 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public void addTariffCustomer(int customerId, int tariffId) {
+        customerDao.addTariffCustomer(customerId,tariffId);
+    }
 
-            customerDao.addTariffCustomer(customerId,tariffId);
-
-
+    @Override
+    public void deleteTariffCustomer(int customersId, int tariffId) {
+        customerDao.deleteTariffCustomer(customersId,tariffId);
     }
 }

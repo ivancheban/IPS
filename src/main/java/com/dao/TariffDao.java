@@ -115,6 +115,7 @@ public class TariffDao implements Dao<Tariff> {
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
 
+            tariff.setId(resultSet.getInt("id"));
             tariff.setName(resultSet.getString("name"));
             tariff.setType(ServiceType.valueOf(resultSet.getString("service_type")));
             tariff.setPricePerDay(resultSet.getInt("price_per_day"));

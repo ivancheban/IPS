@@ -24,6 +24,7 @@ public class CustomerDao implements Dao<Customer> {
     private static final String UPDATE_BALANCE = "UPDATE customers SET balance = ? WHERE id =?";
     private static final String ADD_TARIFF_QUERY = "insert into customers_tariffs(customers_id,tariffs_id ) values (?,?)";
     private static final String FIND_ALL_SERVICE = "select *from subscriptions where customers_id=?";
+    private  static  final String DELETE_TARIFF_OF_CUSTOMER_QUERY ="DELETE FROM customers_tariffs where customers_id = ? and tariffs_id = ?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
@@ -280,6 +281,23 @@ public class CustomerDao implements Dao<Customer> {
            // throw new SQLException(ex.getMessage(), ex);
         }
         logger.debug("customer payment tariff of service ");
+    }
+    public void deleteTariffCustomer(int customersId, int tariffId)  {
+        logger.debug("Start tariff delete");
+//        if (tariffId == 0) {
+//            logger.error("Illegal Argument!!!");
+//            throw new IllegalArgumentException();
+//        }
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(DELETE_TARIFF_OF_CUSTOMER_QUERY);) {
+            pst.setInt(1, customersId);
+            pst.setInt(2, tariffId);
+            int status = pst.executeUpdate();
+            if (status != 1) throw new TariffException("Created more than one record!!");
+        } catch ( SQLException | TariffException ex) {
+            logger.debug("Problem with delete tariff to customer: " + ex.getMessage());
+        }
+        logger.debug(" delete tariff of customer ");
     }
 
 }

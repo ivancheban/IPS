@@ -84,15 +84,15 @@
                         </div>
                         <div>
                                 ${sessionScope.get('balance')}
-                                <%--                ${sessionScope.get('newBalance')}--%>
+
                         </div>
                         <div>
                             <a class="navbar-brand" href="/add/balance">Add Balance</a>
                         </div>
                     </c:if>
-        </div><!-- Конец текстового контента -->
+        </div>
     </div>
-    </div><!-- Конец карточки -->
+    </div>
 
 <form>
 <div class="row row-cols-2 row-cols-md-5 g-3">
@@ -108,7 +108,7 @@
                 <div class="card-footer text-muted">
                     <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
                     <h1> ${tariff.getType()}</h1>
-                    <a href="#" >Bідключитись</a>
+                    <a href="/delete/tariff-customer?tariffs_id=${tariff.id}" >Bідключитись</a>
 
                 </div>
             </div>

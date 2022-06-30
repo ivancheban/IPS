@@ -23,10 +23,22 @@
 
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <title>Responsive Our Service Section Design with html css and Bootstrap | Website Design tutorial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
 
@@ -61,161 +73,12 @@
         <div><a href="/tariffs" class="btn btn-success"><fmt:message key="all.wallets.admin"/></a>
             <a href="/user.do" class="btn btn-success"><fmt:message key="all.users.admin"/></a>
             <a href="/subscriptions" class="btn btn-success"><fmt:message key="all.subscriptions.admin"/></a>
-
-
-
         </div>
     </div>
 
 </nav>
-
-<%--#Tariff--%>
-<form action="/addTariff" method="post">
-<div id="addTariffModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Tariff</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name Tariff</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
-                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
-                        </c:if>
-                    </div>
-                    <div class="form-group">
-                        <label>Type Tariff</label>
-                        <input type="text" name="type" id="type" class="form-control" required>
-                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('type') }">
-                        </c:if>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Price Tariff</label>
-                        <input type="text" name="price" id="price" class="form-control" required>
-                        <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('price') }">
-                        </c:if>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<%--    #Subscription--%>
-
-    <form action="/add/subscription" method="post">
-        <div id="addSubscriptionModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Add Subscription</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Name Subscription</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
-                                <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('name') }">
-                                </c:if>
-                            </div>
-                            <div class="form-group">
-                                <label>Days Amount</label>
-                                <input type="text" name="days_amount" id="days_amount" class="form-control" required>
-                                <c:if test="${sessionScope.get('errorMessages') != null && sessionScope.get('errorMessages').contains('days_amount') }">
-                                </c:if>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Responsive Our Service Section Design with html css and Bootstrap | Website Design tutorial</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-<%--<div class="pt-5 pb-5">--%>
-<%--    <div class="container">--%>
-        <div class="row">
-            <div class="section-head col-sm-12">
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_one"><i class="fa fa-globe"></i></span>
-                    <h6>Пакет Базовий</h6>
-                    <p>250 грн</p>
-                    <a href="">Підключити</a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="item">
-                    <span class="icon feature_box_col_two"><i class="fa fa-home"></i></span>
-                    <h6>Пакет Домашній</h6>
-                    <p>300 грн</p>
-                    <a href="">Підключити</a>
-                </div>
-            </div>
-<%--            <div class="col-lg-4 col-sm-6">--%>
-<%--                <div class="item"><span class="icon feature_box_col_three"><i class="fa fa-users"></i></span>--%>
-<%--                    <h6>Пакет Сімейний</h6>--%>
-<%--                    <p>350 грн</p>--%>
-<%--                    <a href="">Підключити</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-4 col-sm-6">--%>
-<%--                <div class="item"><span class="icon feature_box_col_four"><i class="fa fa-phone"></i></span>--%>
-<%--                    <h6>Phone</h6>--%>
-<%--                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor Aenean--%>
-<%--                        massa.</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="item"><span class="icon feature_box_col_six"><i class="fa fa-tv"></i></span>
-
-                    <c:forEach var="subscriptions" items="${subscriptionsList}" >
-                        ${subscriptions.getName()}
-                        ${subscriptions.getDays_amount()}
-                    </c:forEach>
-
-                </div>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-
-
+</body>
+    <body>
 <style>
     * {
         margin: 0;
@@ -355,11 +218,7 @@
         color: #2f2f2f;
     }
 
-
 </style>
-
 </body>
-</html>
-
-
 </form>
+</html>

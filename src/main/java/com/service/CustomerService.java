@@ -25,4 +25,6 @@ public interface CustomerService {
     boolean withdrawBalance(int customerId, int money);
 
     void addTariffCustomer(int customerId, int tariffId);
+
+    void deleteTariffCustomer(int customersId, int tariffId);
 }

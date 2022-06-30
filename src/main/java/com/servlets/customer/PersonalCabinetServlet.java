@@ -32,6 +32,7 @@ public class PersonalCabinetServlet extends HttpServlet {
         String email = customer.getEmail();
         int balance = customer.getBalance();
 
+        req.getSession().setAttribute("customerId", customerId);
         req.getSession().setAttribute("fullName", fullName);
         req.getSession().setAttribute("phoneNumber", phoneNumber);
         req.getSession().setAttribute("email", email);

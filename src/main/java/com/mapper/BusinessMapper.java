@@ -19,14 +19,6 @@ public class BusinessMapper {
     public static Customer conversationRegisterDto(CustomerCreateRequestDto createRequestDto) {
         return new Customer(createRequestDto.getName(), createRequestDto.getSurname(), createRequestDto.getPhone(), createRequestDto.getEmail());
     }
-    public static Wallet walletConversation(WalletDto walletDto) {
-        return new Wallet(walletDto.getId(),walletDto.getNumber(), walletDto.getBalance(),walletDto.getCustomerId());
-    }
-    public static Wallet getWallet(WalletDto walletDto) {
-        return new Wallet(walletDto.getId(),walletDto.getNumber(), walletDto.getBalance(), walletDto.getCustomerId());
-    }public static WalletDto getWalletDto(Wallet wallet) {
-        return new WalletDto(wallet.getId(),wallet.getNumber(), wallet.getBalance(), wallet.getCustomerId());
-    }
     public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
         return new Subscription(subscriptionDto.getId(),subscriptionDto.getName(), subscriptionDto.getDays(), subscriptionDto.isActive());
     }

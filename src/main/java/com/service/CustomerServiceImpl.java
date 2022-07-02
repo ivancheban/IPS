@@ -2,10 +2,14 @@ package com.service;
 
 import com.dao.CustomerDao;
 
+import com.dao.UserDao;
+import com.dto.CustomerCreateRequestDto;
 import com.dto.CustomerDto;
+import com.dto.UserDto;
 import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.Customer;
+import com.model.User;
 
 
 import java.sql.SQLException;
@@ -13,6 +17,8 @@ import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService{
     CustomerDao customerDao = new CustomerDao();
+     public UserDao userDao;
+
     @Override
     public Customer findByPhoneNumber(String phone) {
         return customerDao.findByField(phone);

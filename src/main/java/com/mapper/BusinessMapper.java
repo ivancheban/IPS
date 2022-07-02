@@ -44,12 +44,13 @@ public class BusinessMapper {
         return new TariffDto(tariff.getId(),tariff.getName(), tariff.getType(), tariff.getPricePerDay(), tariff.isActive(), tariff.getCreated(), tariff.getUpdated());
     }
     public static Customer getCustomer(CustomerDto customerDto) {
-        return new Customer(customerDto.getId(), customerDto.getName(), customerDto.getSurname(), customerDto.getPhone(), customerDto.getEmail(),
-              customerDto.isActive(),customerDto.getCreated(),customerDto.getUpdated(),customerDto.getBalance());
+        return new Customer(customerDto.getId(), customerDto.getName(), customerDto.getSurname(), customerDto.getPhone(), customerDto.getEmail());
+//                customerDto.getTariffs().stream().map(tariffDto -> getTariff(tariffDto)).collect(Collectors.toList()),
+//              customerDto.isActive(),customerDto.getCreated(),customerDto.getUpdated(),customerDto.getBalance());
     }
     public static CustomerDto getCustomerDto(Customer customer) {
-       return  new CustomerDto(customer.getId(), customer.getName(), customer.getSurname(), customer.getPhone(), customer.getEmail(),
-               customer.getServices().stream().map(subscription -> getSubscriptionDto(subscription)).collect(Collectors.toList()),
-               customer.isActive(), customer.getCreated(),customer.getUpdated(), customer.getBalance());
+       return new CustomerDto(customer.getId(), customer.getName(), customer.getSurname(), customer.getPhone(), customer.getEmail());
+//               customer.getTariffs().stream().map(tariff -> getTariffDto(tariff)).collect(Collectors.toList()),
+//               customer.isActive(), customer.getCreated(),customer.getUpdated(), customer.getBalance());
     }
 }

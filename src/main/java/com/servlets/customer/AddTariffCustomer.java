@@ -18,14 +18,14 @@ public class AddTariffCustomer extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CustomerService customerService = new CustomerServiceImpl();
         TariffService tariffService =new TariffServiceImpl();
+
         String custId = req.getParameter("customer_id");
-        System.out.println(custId);
-        String tarrId = req.getParameter("tariff_id");
-        System.out.println(tarrId);
-        int price = tariffService.findById(Integer.parseInt(tarrId)).getPricePerDay();
-        if (custId != null && tarrId != null) {
+        String tarId = req.getParameter("tariff_id");
+
+        int price = tariffService.findById(Integer.parseInt(tarId)).getPricePerDay();
+        if (custId != null && tarId != null) {
             int customerId = Integer.parseInt(custId);
-            int tariffId = Integer.parseInt(tarrId);
+            int tariffId = Integer.parseInt(tarId);
             customerService.addTariffCustomer(customerId, tariffId);
 
             customerService.withdrawBalance(customerId, price);

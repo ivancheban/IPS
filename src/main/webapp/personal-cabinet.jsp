@@ -89,6 +89,9 @@
                         <div>
                             <a class="navbar-brand" href="/add/balance">Add Balance</a>
                         </div>
+                        <div>
+                            <a class="navbar-brand" href="/update/profile/customer?id=${sessionScope.get('customerId')}">Update Profile</a>
+                        </div>
                     </c:if>
         </div>
     </div>

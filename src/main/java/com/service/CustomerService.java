@@ -14,7 +14,7 @@ public interface CustomerService {
 
     CustomerDto findDyID(int id);
 
-    int promoteCustomer(String phone);
+    CustomerDto updateProfile(CustomerDto customerDto);
 
     boolean deleteCustomer(int id);
 

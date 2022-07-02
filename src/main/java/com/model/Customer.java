@@ -11,7 +11,7 @@ public class Customer {
     private String surname;
     private String phone;
     private String email;
-    private List<Subscription> services;
+    private List<Tariff> tariffs;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -23,6 +23,7 @@ public class Customer {
 
 
     public Customer(String name, String surname, String phone, String email) {
+
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -30,13 +31,21 @@ public class Customer {
 
     }
 
-    public Customer(int id, String name, String surname, String phone, String email,List<Subscription> services, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
+    public Customer(int id, String name, String surname, String phone, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
-        this.services = services;
+    }
+
+    public Customer(int id, String name, String surname, String phone, String email, List<Tariff> tariffs, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.tariffs = tariffs;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
@@ -95,12 +104,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public List<Subscription> getServices() {
-        return services;
+    public List<Tariff> getTariffs() {
+        return tariffs;
     }
 
-    public void setServices(List<Subscription> services) {
-        this.services = services;
+    public void setTariffs(List<Tariff> tariffs) {
+        this.tariffs = tariffs;
     }
 
     public String getEmail() {
@@ -148,10 +157,11 @@ public class Customer {
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", balance=" + balance +
+                ", tariffs=" + tariffs +
                 ", isActive=" + isActive +
                 ", created=" + created +
                 ", updated=" + updated +
+                ", balance=" + balance +
                 '}';
     }
 }

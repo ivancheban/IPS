@@ -31,10 +31,6 @@ public class SubscriptionDao implements Dao<Subscription> {
 
     private int noOfRecords;
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 
     public List<Tariff> getAllTariffs(int subs) {
         logger.debug("Start  searching all tariffs ...");

@@ -21,12 +21,13 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public CustomerDto findDyID(int id) {
         Customer customer =customerDao.findByID(id);
-        return new CustomerDto(BusinessMapper.getCustomerDto(customer));
+        return BusinessMapper.getCustomerDto(customer);
     }
 
     @Override
-    public int promoteCustomer(String phone) {
-        return 0;
+    public CustomerDto updateProfile(CustomerDto customerDto) {
+        Customer editCustomer = customerDao.update(BusinessMapper.getCustomer(customerDto));
+        return BusinessMapper.getCustomerDto(editCustomer);
     }
 
     @Override

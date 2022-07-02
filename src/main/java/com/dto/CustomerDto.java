@@ -9,7 +9,7 @@ public class CustomerDto {
     private String surname;
     private String phone;
     private String email;
-    private List<SubscriptionDto> servicesDto;
+    private List<TariffDto> tariffs;
     private boolean isActive;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -23,13 +23,21 @@ public class CustomerDto {
         this.balance = balance;
     }
 
-    public CustomerDto(int id, String name, String surname, String phone, String email,List<SubscriptionDto> servicesDto, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
+    public CustomerDto(int id,String name, String surname, String phone, String email) {
+        this.id=id;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public CustomerDto(int id, String name, String surname, String phone, String email, List<TariffDto> tariffs, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
-        this.servicesDto=servicesDto;
+        this.tariffs = tariffs;
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
@@ -103,6 +111,14 @@ public class CustomerDto {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public List<TariffDto> getTariffs() {
+        return tariffs;
+    }
+
+    public void setTariffs(List<TariffDto> tariffDto) {
+        this.tariffs = tariffDto;
     }
 
     @Override

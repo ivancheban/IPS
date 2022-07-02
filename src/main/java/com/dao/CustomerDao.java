@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,16 +19,18 @@ public class CustomerDao implements Dao<Customer> {
     private static final String CREATE_QUERY = "insert into customers(name,surname, phone,email,balance) values (?,?,?,?,?)";
     private static final String FIND_BY_PHONE_NUMBER = "select * from customers where phone = ?";
     private static final String FIND_BY_ID = "select * from customers where id = ?";
-    private static final String UPDATE_QUERY = "UPDATE customers SET name=?,surname=?,phone=?,email=?,isActive=?,balance=? WHERE id=?";
+    private static final String UPDATE_QUERY = "UPDATE customers SET name=?,surname=?,phone=?,email=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM customers WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from customers";
     private static final String UPDATE_BALANCE = "UPDATE customers SET balance = ? WHERE id =?";
     private static final String ADD_TARIFF_QUERY = "insert into customers_tariffs(customers_id,tariffs_id ) values (?,?)";
     private static final String FIND_ALL_SERVICE = "select *from subscriptions where customers_id=?";
+    private static final String SELECT_ALL_TARIFFS_CUSTOMER = "select * from customers_tariffs where customers_id=?";
     private  static  final String DELETE_TARIFF_OF_CUSTOMER_QUERY ="DELETE FROM customers_tariffs where customers_id = ? and tariffs_id = ?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
+    private TariffDao tariffDao;
 
     private Connection con;
 
@@ -109,15 +112,16 @@ public class CustomerDao implements Dao<Customer> {
 
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-
+                customer.setId(resultSet.getInt("id"));
                 customer.setName(resultSet.getString("name"));
                 customer.setSurname(resultSet.getString("surname"));
                 customer.setPhone(resultSet.getString("phone"));
                 customer.setEmail(resultSet.getString("email"));
                 customer.setActive(resultSet.getBoolean("isActive"));
-                customer.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
-                customer.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
+                LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
+                LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
                 customer.setBalance(resultSet.getInt("balance"));
+                customer.setTariffs(getAllTariffs(customer.getId()));
                 if (customer == null) {
                     throw new UserException("customer not found");
                 }
@@ -130,21 +134,15 @@ public class CustomerDao implements Dao<Customer> {
     }
 
     @Override
-    public Customer update(Customer item) {
-        Customer customer = new Customer();
+    public Customer update(Customer customer) {
         logger.debug("Start customer updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
-            pst.setInt(1, customer.getId());
-
-            customer.setName(item.getName());
-            customer.setSurname(item.getSurname());
-            customer.setPhone(item.getPhone());
-            customer.setEmail(item.getEmail());
-            customer.setActive(item.isActive());
-            customer.setCreated(item.getCreated());
-            customer.setUpdated(item.getUpdated());
-            customer.setBalance(item.getBalance());
+            pst.setString(1, customer.getName());
+            pst.setString(2,customer.getSurname());
+            pst.setString(3,customer.getPhone());
+            pst.setString(4, customer.getEmail());
+            pst.setInt(5,customer.getId());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");
@@ -278,16 +276,16 @@ public class CustomerDao implements Dao<Customer> {
             if (status != 1) throw new TariffException("Created more than one record!!");
         } catch ( SQLException | TariffException ex) {
             logger.debug("Problem with adding tariff to customer: " + ex.getMessage());
-           // throw new SQLException(ex.getMessage(), ex);
+
         }
         logger.debug("customer payment tariff of service ");
     }
     public void deleteTariffCustomer(int customersId, int tariffId)  {
         logger.debug("Start tariff delete");
-//        if (tariffId == 0) {
-//            logger.error("Illegal Argument!!!");
-//            throw new IllegalArgumentException();
-//        }
+        if (tariffId == 0) {
+            logger.error("Illegal Argument!!!");
+            throw new IllegalArgumentException();
+        }
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(DELETE_TARIFF_OF_CUSTOMER_QUERY);) {
             pst.setInt(1, customersId);
@@ -298,6 +296,23 @@ public class CustomerDao implements Dao<Customer> {
             logger.debug("Problem with delete tariff to customer: " + ex.getMessage());
         }
         logger.debug(" delete tariff of customer ");
+    }
+    public List<Tariff> getAllTariffs(int customer) {
+        logger.debug("Start  searching all tariffs ...");
+        List<Tariff> tariffs = new ArrayList<>();
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(SELECT_ALL_TARIFFS_CUSTOMER);) {
+            pst.setInt(1, customer);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("tariff_id");
+                tariffs.add(tariffDao.findById(id));
+            }
+        } catch (Exception ex) {
+            logger.debug("Problem with getting all tariffs of customer: " + ex.getMessage());
+        }
+        logger.debug("All tariffs off customer found");
+        return tariffs;
     }
 
 }

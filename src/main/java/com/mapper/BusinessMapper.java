@@ -49,8 +49,14 @@ public class BusinessMapper {
 //              customerDto.isActive(),customerDto.getCreated(),customerDto.getUpdated(),customerDto.getBalance());
     }
     public static CustomerDto getCustomerDto(Customer customer) {
-       return new CustomerDto(customer.getId(), customer.getName(), customer.getSurname(), customer.getPhone(), customer.getEmail());
-//               customer.getTariffs().stream().map(tariff -> getTariffDto(tariff)).collect(Collectors.toList()),
-//               customer.isActive(), customer.getCreated(),customer.getUpdated(), customer.getBalance());
+        CustomerDto customerDto =new CustomerDto();
+        customerDto.setId(customer.getId());
+        customerDto.setName(customer.getName());
+        customerDto.setSurname(customer.getSurname());
+        customerDto.setPhone(customer.getPhone());
+        customerDto.setEmail(customer.getEmail());
+        customerDto.setBalance(customer.getBalance());
+       return customerDto;
+
     }
 }

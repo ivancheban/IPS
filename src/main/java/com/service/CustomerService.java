@@ -22,9 +22,11 @@ public interface CustomerService {
 
     boolean addBalance(int customerId, int money);
 
-    boolean withdrawBalance(int customerId, int money);
+   boolean withdrawBalance(int customerId, int money);
 
     void addTariffCustomer(int customerId, int tariffId);
 
     void deleteTariffCustomer(int customersId, int tariffId);
+
+    boolean checkSubscription(int customerId, int tariffId);
 }

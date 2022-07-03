@@ -52,7 +52,7 @@
                     <a class="nav-link" href="/sort/tariffs?sortBy=price">Price Sorting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled"></a>
+                    <a class="nav-link" href="/user/cabinet">Back</a>
                 </li>
             </ul>
         </div>

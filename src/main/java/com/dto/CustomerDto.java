@@ -15,7 +15,8 @@ public class CustomerDto {
     private LocalDateTime updated;
     private int balance;
 
-    public CustomerDto(CustomerDto customerDto) {
+
+    public CustomerDto() {
     }
 
     public CustomerDto(int id, int balance) {

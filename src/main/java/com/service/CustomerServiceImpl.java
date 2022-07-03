@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.CustomerDao;
 
+import com.dao.TariffDao;
 import com.dao.UserDao;
 import com.dto.CustomerCreateRequestDto;
 import com.dto.CustomerDto;
@@ -9,14 +10,18 @@ import com.dto.UserDto;
 import com.exceptions.TariffException;
 import com.mapper.BusinessMapper;
 import com.model.Customer;
+import com.model.ServiceType;
+import com.model.Tariff;
 import com.model.User;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService{
     CustomerDao customerDao = new CustomerDao();
+    TariffDao tariffDao = new TariffDao();
      public UserDao userDao;
 
     @Override
@@ -53,8 +58,21 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public boolean checkSubscription(int customerId, int tariffId) {
+
+        ServiceType type = tariffDao.findById(tariffId).getType();
+        List<Tariff> list = tariffDao.getAllSubscribedTariffs(customerId);;
+        System.out.println(list);
+        for (Tariff t : list){
+            if (t.getType().equals(type)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public boolean withdrawBalance(int customerId, int money) {
-        boolean status = false;
         return customerDao.withdrawBalance(customerId,money);
     }
 

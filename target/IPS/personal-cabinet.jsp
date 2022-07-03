@@ -33,6 +33,7 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
 
     <div class="container-fluid">
+        <a class="navbar-brand" href="">Personal Cabinet</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,60 +65,75 @@
                     </div>
             </ul>
         </li>
+        <a href="/IPS" class="btn btn-danger">LogOut</a>
+        <a href="/update/profile/customer?id=${sessionScope.get('customerId')}" class="btn btn-warning">Update Profile</a>
+        <a href="/add/balance" class="btn btn-success">Add Balance</a>
     </div>
+
 </nav>
 
-    <div class="card">
-        <div class="card-body"><!-- Начало текстового контента -->
-            <div class="row row-cols-2 row-cols-md-5 g-3">
+<div class="card">
+    <div class="card-body"><!-- Начало текстового контента -->
+        <div class="row row-cols-2 row-cols-md-5 g-3">
 
-                    <c:if test="${sessionScope.get('fullName')!=null}">
-                        <div>
-                                ${sessionScope.get('fullName')}
-                        </div>
+            <c:if test="${sessionScope.get('fullName')!=null}">
+            <div>
+                    ${sessionScope.get('fullName')}
+            </div>
 
-                        <div>
-                                ${sessionScope.get('phoneNumber')}
-                        </div>
-                        <div>
-                                ${sessionScope.get('email')}
-                        </div>
-                        <div>
-                                ${sessionScope.get('balance')}
+            <div>
+                    ${sessionScope.get('phoneNumber')}
+            </div>
+            <div>
+                    ${sessionScope.get('email')}
+            </div>
+            <div>
+                    ${sessionScope.get('balance')}
 
-                        </div>
-                        <div>
-                            <a class="navbar-brand" href="/add/balance">Add Balance</a>
-                        </div>
-                        <div>
-                            <a class="navbar-brand" href="/update/profile/customer?id=${sessionScope.get('customerId')}">Update Profile</a>
-                        </div>
-                    </c:if>
-        </div>
+            </div>
+
+            </c:if>
+
     </div>
+</div>
+</div>
+<c:if test="${sessionScope.get('SubscriptionErrorMessage') != null
+        && sessionScope.get('SubscriptionErrorMessage').contains('NotEnoughMoney')}">
+    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+        You haven't enough money. Please top up your balance!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-
+    ${sessionScope.remove("SubscriptionErrorMessage") }
+</c:if>
+<c:if test="${sessionScope.get('SubscriptionErrorMessage') != null
+        && sessionScope.get('SubscriptionErrorMessage').contains('youAreAlreadySubscribed')}">
+    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+        You are already subscribed to this service!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    ${sessionScope.remove("SubscriptionErrorMessage") }
+</c:if>
 <form>
-<div class="row row-cols-2 row-cols-md-5 g-3">
-    <c:forEach var="tariff" items="${sessionScope.get('tariffsSubscriptions')}">
+    <div class="row row-cols-2 row-cols-md-5 g-3">
+        <c:forEach var="tariff" items="${sessionScope.get('tariffsSubscriptions')}">
 
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                        ${tariff.name}
-                </div>
-                <div class="card-body">
-                </div>
-                <div class="card-footer text-muted">
-                    <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
-                    <h1> ${tariff.getType()}</h1>
-                    <a href="/delete/tariff-customer?tariffs_id=${tariff.id}" >Bідключитись</a>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                            ${tariff.name}
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="card-footer text-muted">
+                        <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
+                        <h1> ${tariff.getType()}</h1>
+                        <a href="/delete/tariff-customer?tariffs_id=${tariff.id}">Bідключитись</a>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </c:forEach>
-</div>
+        </c:forEach>
+    </div>
 </form>
 
 </body>

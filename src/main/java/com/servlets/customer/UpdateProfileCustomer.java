@@ -19,7 +19,6 @@ public class UpdateProfileCustomer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CustomerService customerService = new CustomerServiceImpl();
-        UserService userService = new UserServiceImpl();
         String customerID = req.getParameter("id");
         if (customerID != null) {
             int id = Integer.parseInt(customerID);

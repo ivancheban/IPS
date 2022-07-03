@@ -33,6 +33,13 @@ public class TariffDto {
         this.pricePerDay = pricePerDay;
     }
 
+    public TariffDto(int id, String name, ServiceType type, int pricePerDay) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.pricePerDay = pricePerDay;
+    }
+
     public TariffDto(int id, String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;

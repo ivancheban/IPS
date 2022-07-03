@@ -17,7 +17,7 @@ public class TariffDao implements Dao<Tariff> {
     private static final String CREATE_QUERY = "insert into tariffs(name,service_type,  price_per_day,isActive) values (?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from tariffs where name = ?";
     private static final String FIND_BY_ID_QUERY = "select * from tariffs where id = ?";
-    private static final String UPDATE_QUERY = "UPDATE tariffs SET item=? WHERE name=?";
+    private static final String UPDATE_QUERY = "UPDATE tariffs SET name=?,service_type=?,price_per_day=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM tariffs";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from tariffs limit ?, ?";
@@ -27,6 +27,7 @@ public class TariffDao implements Dao<Tariff> {
     private static Logger logger = LogManager.getLogger(TariffDao.class);
 
     private int noOfRecords;
+
     public List<Tariff> getAllSubscribedTariffs(int customerId) {
         logger.debug("Start  searching all tariffs...");
         List<Tariff> tariffList = new ArrayList<>();
@@ -105,6 +106,7 @@ public class TariffDao implements Dao<Tariff> {
         logger.debug("Tariff searched");
         return tariff;
     }
+
     public Tariff findById(int id) {
         Tariff tariff = new Tariff();
         logger.debug("Start tariff searching....");
@@ -131,19 +133,15 @@ public class TariffDao implements Dao<Tariff> {
     }
 
     @Override
-    public Tariff update(Tariff item) {
-        Tariff tariff = new Tariff();
+    public Tariff update(Tariff tariff) {
         logger.debug("Start tariff updating....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
-            pst.setInt(1, tariff.getId());
 
-            tariff.setName(item.getName());
-            tariff.setType(item.getType());
-            tariff.setPricePerDay(item.getPricePerDay());
-            tariff.setActive(item.isActive());
-            tariff.setCreated(item.getCreated());
-            tariff.setUpdated(item.getUpdated());
+            pst.setString(1,tariff.getName());
+            pst.setString(2, String.valueOf(ServiceType.valueOf(String.valueOf(tariff.getType()))));
+            pst.setInt(3,tariff.getPricePerDay());
+            pst.setInt(4, tariff.getId());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");
@@ -271,7 +269,7 @@ public class TariffDao implements Dao<Tariff> {
         return noOfRecords;
     }
 
-    public List<Tariff> sortedByPrice(){
+    public List<Tariff> sortedByPrice() {
         logger.debug("Start sorted all tariffs....");
         List<Tariff> tariffsList = null;
 
@@ -281,7 +279,7 @@ public class TariffDao implements Dao<Tariff> {
             tariffsList = new ArrayList<>();
 
             while (result.next()) {
-                Tariff tariff  = new Tariff();
+                Tariff tariff = new Tariff();
                 tariff.setId(result.getInt("id"));
                 tariff.setName(result.getString("name"));
                 tariff.setType(ServiceType.valueOf(result.getString("service_type")));
@@ -299,7 +297,8 @@ public class TariffDao implements Dao<Tariff> {
         logger.debug("All Tariffs searched and sorted");
         return tariffsList;
     }
-    public List<Tariff> sortedByName(){
+
+    public List<Tariff> sortedByName() {
         logger.debug("Start sorted all tariffs....");
         List<Tariff> tariffsList = null;
 
@@ -309,7 +308,7 @@ public class TariffDao implements Dao<Tariff> {
             tariffsList = new ArrayList<>();
 
             while (result.next()) {
-                Tariff tariff  = new Tariff();
+                Tariff tariff = new Tariff();
                 tariff.setId(result.getInt("id"));
                 tariff.setName(result.getString("name"));
                 tariff.setType(ServiceType.valueOf(result.getString("service_type")));

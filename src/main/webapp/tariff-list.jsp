@@ -271,7 +271,7 @@
                         <td>${tariff.getCreated()}</td>
                         <td>${tariff.getUpdated()}</td>
 
-                        <td><a href="#editTariffModal" class="edit" data-toggle="modal">
+                        <td><a href="/update/tariff?id=${tariff.id}" class="edit" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>
                         <td> <a href="/delete/tariff?id=${tariff.id}" class="btn btn-danger">Delete</a></td>
 

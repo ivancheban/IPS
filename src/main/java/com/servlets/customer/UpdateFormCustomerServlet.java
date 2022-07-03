@@ -26,7 +26,6 @@ public class UpdateFormCustomerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CustomerService customerService = new CustomerServiceImpl();
-        UserService userService = new UserServiceImpl();
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String phoneNumber = req.getParameter("phone");
@@ -34,7 +33,7 @@ public class UpdateFormCustomerServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
 
        CustomerDto customerDto = new CustomerDto(id, surname, name, phoneNumber, email);
-        CustomerDto editCustomer = customerService.updateProfile(customerDto);
+       CustomerDto editCustomer = customerService.updateProfile(customerDto);
 
 
         if (editCustomer != null) {

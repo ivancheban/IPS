@@ -31,40 +31,83 @@
 </head>
 <body>
 
+<%--<div class="cnt-block equal-hight" style="height:369px">--%>
+<%--<div class="row">--%>
+<%--    <div class="col-sm-4">--%>
+<%--        <form  method="POST" action="/edit/form" >--%>
+<%--            <input type="number" class="form-control" placeholder="id" name="id" id="id" value="<%=userDto!=null?userDto.getId():""%>" hidden="hidden">--%>
 
-<div class="row">
-    <div class="col-sm-4">
-        <form  method="POST" action="/edit/form" >
-            <input type="number" class="form-control" placeholder="id" name="id" id="id" value="<%=userDto!=null?userDto.getId():""%>" hidden="hidden">
+<%--            <div alight="left">--%>
+<%--                <label class="form-label">Phone</label>--%>
+<%--                <input type="text" class="form-control" placeholder="phone" name="phone" id="phone" value="<%=userDto!=null?userDto.getPhone():""%>" required>--%>
+<%--            </div>--%>
 
-            <div alight="left">
-                <label class="form-label">Phone</label>
-                <input type="text" class="form-control" placeholder="phone" name="phone" id="phone" value="<%=userDto!=null?userDto.getPhone():""%>" required>
-            </div>
+<%--            <div alight="left">--%>
+<%--                <label class="form-label">Password</label>--%>
+<%--                <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%=userDto!=null?userDto.getPassword():""%>" required>--%>
+<%--            </div>--%>
 
-            <div alight="left">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%=userDto!=null?userDto.getPassword():""%>" required>
-            </div>
+<%--            <div alight="left">--%>
+<%--                <label class="form-label">isActive</label>--%>
+<%--                <input type="text" class="form-control" placeholder="isActive" name="isActive" id="isActive" value="<%=userDto!=null?userDto.isActive():""%>" required >--%>
+<%--            </div>--%>
+<%--            <div alight="left">--%>
+<%--                <label class="form-label">Role</label>--%>
+<%--                <input type="text" class="form-control" placeholder="role" name="role" id="role" value="<%=userDto!=null?userDto.getRole():""%>" required >--%>
+<%--            </div>--%>
+<%--            </br>--%>
 
-            <div alight="left">
-                <label class="form-label">isActive</label>
-                <input type="text" class="form-control" placeholder="isActive" name="isActive" id="isActive" value="<%=userDto!=null?userDto.isActive():""%>" required >
-            </div>
-            <div alight="left">
-                <label class="form-label">Role</label>
-                <input type="text" class="form-control" placeholder="role" name="role" id="role" value="<%=userDto!=null?userDto.getRole():""%>" required >
-            </div>
-            </br>
+<%--            <div alight="right">--%>
+<%--                <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">--%>
+<%--                <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">--%>
+<%--            </div>--%>
 
-            <div alight="right">
-                <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
-                <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
-            </div>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form action="/edit/form" class="form-horizontal" method="post" style="scroll-margin-right: 20px" >
 
-        </form>
+                <span class="heading"></span>
+                <div class="form-group">
+
+                    <input type="number" class="form-control" placeholder="id" name="id" id="id" value="<%=userDto!=null?userDto.getId():""%>" hidden="hidden">
+
+                                <div alight="left">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" class="form-control" placeholder="phone" name="phone" id="phone" value="<%=userDto!=null?userDto.getPhone():""%>" required>
+                                </div>
+
+                                <div alight="left">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%=userDto!=null?userDto.getPassword():""%>" required>
+                                </div>
+
+                                <div alight="left">
+                                    <label class="form-label">isActive</label>
+                                    <input type="text" class="form-control" placeholder="isActive" name="isActive" id="isActive" value="<%=userDto!=null?userDto.isActive():""%>" required >
+                                </div>
+                                <div alight="left">
+                                    <label class="form-label">Role</label>
+                                    <input type="text" class="form-control" placeholder="role" name="role" id="role" value="<%=userDto!=null?userDto.getRole():""%>" required >
+                                </div>
+                                </br>
+
+                                <div alight="right">
+                                    <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
+                                    <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
+                                </div>
+                                </div>
+
+
+            </form>
+        </div>
+
+
     </div>
-</div>
-
+</div>>
 </body>
 </html>

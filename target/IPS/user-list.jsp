@@ -193,17 +193,16 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-
                     <div class="col-xs-5">
                         <h2><fmt:message key="list.users.list"/></h2>
+                       <h4> <a href="/admin.jsp">Back</a></h4>
+
                     </div>
 
                     <div class="col-xs-7">
                         <a href="/registration.jsp" class="btn btn-primary"><i class="material-icons" style="color:green">&#xE147;</i> <span><fmt:message key="button.addUser.list"/></span></a>
                     </div>
-                    <div class="col-xs-2">
-                        <a href="/admin.jsp" class="btn btn-danger">Back</a>
-                    </div>
+
                 </div>
 
             </div>
@@ -254,13 +253,10 @@
 <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
 <%--                </ul>--%>
 <%--            </div>--%>
-            <%--For displaying Previous link except for the 1st page --%>
+
             <c:if test="${currentPage != 1}">
                 <td><a href="user.do?page=${currentPage - 1}">Previous</a></td>
             </c:if>
-
-            <%--For displaying Page numbers.
-            The when condition does not display a link for the current page--%>
             <table border="1" cellpadding="5" cellspacing="5">
                 <tr>
                     <c:forEach begin="1" end="${noOfPages}" var="i">
@@ -275,8 +271,6 @@
                     </c:forEach>
                 </tr>
             </table>
-
-            <%--For displaying Next link --%>
             <c:if test="${currentPage lt noOfPages}">
                 <td><a href="user.do?page=${currentPage+ 1}">Next</a></td>
             </c:if>

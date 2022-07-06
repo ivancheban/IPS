@@ -26,33 +26,40 @@ public class AuthenticationFilter implements Filter {
 //    }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException {
-        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
-        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-        HttpSession session = httpRequest.getSession();
-        JWTService jwtService = new JWTService();
-        UserService userService = new UserServiceImpl();
-
-        try {
-
-            String jwt = (String) session.getAttribute("token");
-
-            if (jwt != null && !jwt.isEmpty()) {
-                Payload payload = jwtService.verifyToken(jwt);
-                String phone= payload.getClaims().get("phone");
-
-                filterChain.doFilter(servletRequest, servletResponse);
-
-            } else {
-                httpResponse.sendRedirect("/login");
-            }
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
 
-        } catch (final Exception e) {
-            logger.debug("Failed logging in with security token");
-            httpResponse.sendRedirect("/login.jsp");
-        }
     }
+
+
+//    @Override
+//    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException {
+//        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+//        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+//        HttpSession session = httpRequest.getSession();
+//        JWTService jwtService = new JWTService();
+//        UserService userService = new UserServiceImpl();
+//
+//        try {
+//
+//            String jwt = (String) session.getAttribute("token");
+//
+//            if (jwt != null && !jwt.isEmpty()) {
+//                Payload payload = jwtService.verifyToken(jwt);
+//                String phone= payload.getClaims().get("phone");
+//
+//                filterChain.doFilter(servletRequest, servletResponse);
+//
+//            } else {
+//                httpResponse.sendRedirect("/login");
+//            }
+//
+//
+//        } catch (final Exception e) {
+//            logger.debug("Failed logging in with security token");
+//            httpResponse.sendRedirect("/login.jsp");
+//        }
+//    }
 
 
 }

@@ -10956,3 +10956,11 @@
 19:18:20.797 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
 19:19:33.178 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
 19:19:33.196 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:24:54.729 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:24:54.747 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:46:56.668 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:46:56.692 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:51:10.192 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+19:51:10.212 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+20:06:22.229 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+20:06:22.252 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log

@@ -174,6 +174,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean validateIsBlocked(String phoneNumber) {
+        boolean statusUser = findByPhoneNumber(phoneNumber).isActive();
+        return statusUser;
+    }
+
+    @Override
     public UserDto update(UserDto userDto) {
         User userEdit = userDao.update(BusinessMapper.getUser(userDto));
         return BusinessMapper.getUserDto(userEdit) ;

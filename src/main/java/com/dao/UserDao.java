@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserDao implements Dao<User> {
     private static final String CREATE_QUERY = "insert into users(id,phone,password,isActive,role,created,updated) values (?,?,?,?,?,?,?)";
-    private static final String FIND_BY_FIELD_QUERY = "select *  FROM users WHERE phone =?";
+    private static final String FIND_BY_FIELD_QUERY = "select *  FROM users WHERE phone =? and isActive=true";
     private static final String FIND_BY_ID = "select *  FROM users WHERE id =?";
     private static final String UPDATE_QUERY = "UPDATE users SET phone=?,password=?,isActive=?,role=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM users WHERE id=?";
@@ -75,7 +75,6 @@ public class UserDao implements Dao<User> {
                 user.setPassword(resultSet.getString("password"));
                 user.setActive(resultSet.getBoolean("isActive"));
                 user.setRole(Role.valueOf(resultSet.getString("role")));
-                Role role = Role.valueOf(String.valueOf(user.getRole()));
                 LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
                 LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
             }

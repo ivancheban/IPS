@@ -39,8 +39,9 @@ public class LoginPageServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
 
-
-        Role userRole = userServiceImpl.identy(phone, password);
+        boolean statusUser = userServiceImpl.validateIsBlocked(phone);
+        if(statusUser!=false){
+            Role userRole = userServiceImpl.identy(phone, password);
         if (userRole != null) {
             Map<String, String> infoTable = userTableInfo(phone, password);
             String token = jwtService.createToken(infoTable, 1);
@@ -55,8 +56,9 @@ public class LoginPageServlet extends HttpServlet {
             } else if (userRole.equals(Role.CLIENT)) {
                 response.sendRedirect("/user/cabinet");
             }
+        }
         } else {
-            request.getSession().setAttribute("loginError", "Wrong email or password");
+            request.getSession().setAttribute("loginError", "Wrong phone or password or isBlocked");
             response.sendRedirect("/login");
         }
     }

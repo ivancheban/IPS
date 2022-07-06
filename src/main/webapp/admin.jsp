@@ -41,7 +41,9 @@
     <meta charset="UTF-8">
 </head>
 <body>
-
+<style>
+    body{background: url(https://funart.pro/uploads/posts/2020-04/1587635815_10-p-priyatnie-foni-22.jpg);}
+</style>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
 
     <div class="container-fluid">

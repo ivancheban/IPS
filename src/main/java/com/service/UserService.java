@@ -26,4 +26,6 @@ public interface UserService {
 
     UserDto update(UserDto userDto);
 
+   boolean validateIsBlocked(String phoneNumber);
+
 }

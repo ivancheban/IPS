@@ -165,12 +165,19 @@
 
 <div class="container">
 
-    <div class="row">
 
+       <div class="row">
 
         <div class="col-md-offset-3 col-md-6">
 
+            <div class="row main-form">
+                <c:if test="${sessionScope.get('loginError') !=null}">
+                    <div class="alert alert-danger" role="alert">
 
+                        <fmt:message key="label.validBlocked"/>
+
+                    </div>
+                </c:if>
 
             <form action="/login" class="form-horizontal" method="post" style="scroll-margin-right: 20px" >
 
@@ -191,7 +198,7 @@
 
             </form>
         </div>
-
+        </div>
     </div><!-- /.row -->
 </div><!-- /.container -->
 

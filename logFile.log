@@ -10964,3 +10964,193 @@
 19:51:10.212 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
 20:06:22.229 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
 20:06:22.252 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:49:20.708 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:49:20.731 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:52:06.669 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:52:06.679 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:53:08.235 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:53:08.255 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:55:24.170 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+12:55:24.201 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:01:25.634 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:01:25.651 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:02:38.369 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:02:38.386 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:05:28.665 [RMI TCP Connection(6)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:05:28.673 [RMI TCP Connection(6)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:07:05.856 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:07:05.963 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:07:07.186 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:07:07.210 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:08:15.327 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:09:07.088 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:11:12.102 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:12:26.507 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:12:58.406 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:14:14.279 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:14:38.769 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:15:40.581 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:17:51.460 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:17:56.479 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:20:27.397 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:20:27.406 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:22:03.688 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:22:03.707 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+13:23:58.823 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:23:58.841 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:24:11.589 [http-nio-8081-exec-6] DEBUG - Start customer searching....
+13:24:11.733 [http-nio-8081-exec-6] DEBUG - Customer searched
+13:24:11.735 [http-nio-8081-exec-6] DEBUG - Start subscription searching....
+13:24:11.748 [http-nio-8081-exec-6] DEBUG - Start  searching all tariffs ...
+13:24:11.762 [http-nio-8081-exec-6] DEBUG - All tariffs for subscription found
+13:24:11.762 [http-nio-8081-exec-6] DEBUG - subscription searched
+13:24:11.766 [http-nio-8081-exec-6] DEBUG - Start  searching all tariffs...
+13:24:11.766 [http-nio-8081-exec-6] DEBUG - Start subscription searching....
+13:24:11.768 [http-nio-8081-exec-6] DEBUG - Start  searching all tariffs ...
+13:24:11.769 [http-nio-8081-exec-6] DEBUG - All tariffs for subscription found
+13:24:11.770 [http-nio-8081-exec-6] DEBUG - subscription searched
+13:24:11.784 [http-nio-8081-exec-6] DEBUG - All tariffs searched
+13:24:16.772 [http-nio-8081-exec-10] DEBUG - Start customer searching....
+13:24:16.774 [http-nio-8081-exec-10] DEBUG - Customer searched
+13:24:16.774 [http-nio-8081-exec-10] DEBUG - Start customer searching....
+13:24:16.776 [http-nio-8081-exec-10] DEBUG - Customer searched
+13:24:16.777 [http-nio-8081-exec-10] DEBUG - Start  searching all tariffs...
+13:24:16.787 [http-nio-8081-exec-10] DEBUG - All tariffs searched
+13:25:05.818 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:25:05.836 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:44:01.898 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+13:44:01.913 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:07:18.326 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:07:18.337 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:08:58.026 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:08:58.052 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:09:54.079 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:09:54.093 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:11:33.954 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:11:33.976 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:12:52.095 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:12:52.108 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:14:44.394 [RMI TCP Connection(2)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:14:44.405 [RMI TCP Connection(2)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:16:43.018 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:16:43.030 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+14:17:21.739 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:17:21.755 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:18:08.363 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:18:08.381 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:18:54.024 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:18:54.039 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:25:08.920 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:25:08.937 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:29:12.953 [http-nio-8080-exec-2] DEBUG - Start user searching....
+14:29:12.970 [http-nio-8080-exec-2] DEBUG - User searched
+14:43:42.168 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:43:42.192 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:43:54.707 [http-nio-8080-exec-9] DEBUG - Start user searching....
+14:43:54.712 [http-nio-8080-exec-9] DEBUG - User searched
+14:48:04.127 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:48:04.143 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:48:17.587 [http-nio-8080-exec-2] DEBUG - Start user searching....
+14:48:17.590 [http-nio-8080-exec-2] DEBUG - User searched
+14:49:24.047 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:49:24.073 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:49:36.478 [http-nio-8080-exec-9] DEBUG - Start user searching....
+14:49:36.481 [http-nio-8080-exec-9] DEBUG - User searched
+14:55:46.581 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:55:46.587 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:55:57.038 [http-nio-8080-exec-9] DEBUG - Start user searching....
+14:55:57.041 [http-nio-8080-exec-9] DEBUG - User searched
+14:56:08.914 [http-nio-8080-exec-10] DEBUG - Start user updating....
+14:56:08.935 [http-nio-8080-exec-10] DEBUG - User updated
+14:56:13.698 [http-nio-8080-exec-8] DEBUG - Start user searching....
+14:56:13.702 [http-nio-8080-exec-8] DEBUG - User searched
+14:57:50.204 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:57:50.233 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+14:58:07.007 [http-nio-8080-exec-9] DEBUG - Start user searching....
+14:58:07.011 [http-nio-8080-exec-9] DEBUG - User searched
+15:00:38.565 [RMI TCP Connection(4)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:00:38.573 [RMI TCP Connection(4)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:00:50.506 [http-nio-8080-exec-10] DEBUG - Start user searching....
+15:00:50.509 [http-nio-8080-exec-10] DEBUG - User searched
+15:04:24.143 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:04:24.154 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:04:35.015 [http-nio-8080-exec-8] DEBUG - Start user searching....
+15:04:35.019 [http-nio-8080-exec-8] DEBUG - User searched
+15:05:09.194 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:05:09.211 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:05:19.928 [http-nio-8080-exec-9] DEBUG - Start user searching....
+15:05:19.931 [http-nio-8080-exec-9] DEBUG - User searched
+15:07:08.154 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:07:08.171 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Install\apache-tomcat-8.5.76\webapps\ROOT\WEB-INF\log4j2.log
+15:07:19.959 [http-nio-8080-exec-9] DEBUG - Start user searching....
+15:07:19.962 [http-nio-8080-exec-9] DEBUG - User searched
+15:18:49.342 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:18:49.360 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:20:05.095 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:20:05.103 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:21:32.710 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:21:32.719 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:22:45.150 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:22:45.161 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:24:47.944 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:24:47.955 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:26:09.130 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:26:09.147 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:26:57.840 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:26:57.860 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:27:48.680 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\apache-tomcat-9.0.64\apache-tomcat-9.0.64\webapps\ROOT\WEB-INF\log4j2.log
+15:27:48.689 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\apache-tomcat-9.0.64\apache-tomcat-9.0.64\webapps\ROOT\WEB-INF\log4j2.log
+15:28:09.168 [http-nio-8080-exec-10] DEBUG - Start user searching....
+15:28:09.173 [http-nio-8080-exec-10] DEBUG - User searched
+15:28:33.735 [http-nio-8080-exec-9] DEBUG - Start subscription searching....
+15:28:33.739 [http-nio-8080-exec-9] DEBUG - Start  searching all tariffs ...
+15:28:33.763 [http-nio-8080-exec-9] DEBUG - All tariffs for subscription found
+15:28:33.763 [http-nio-8080-exec-9] DEBUG - subscription searched
+15:28:37.766 [http-nio-8080-exec-3] DEBUG - Start customer searching....
+15:28:37.779 [http-nio-8080-exec-3] DEBUG - Customer searched
+15:28:37.779 [http-nio-8080-exec-3] DEBUG - Start subscription searching....
+15:28:37.780 [http-nio-8080-exec-3] DEBUG - Start  searching all tariffs ...
+15:28:37.782 [http-nio-8080-exec-3] DEBUG - All tariffs for subscription found
+15:28:37.782 [http-nio-8080-exec-3] DEBUG - subscription searched
+15:28:37.783 [http-nio-8080-exec-3] DEBUG - Start  searching all tariffs...
+15:28:37.783 [http-nio-8080-exec-3] DEBUG - Start subscription searching....
+15:28:37.785 [http-nio-8080-exec-3] DEBUG - Start  searching all tariffs ...
+15:28:37.788 [http-nio-8080-exec-3] DEBUG - All tariffs for subscription found
+15:28:37.788 [http-nio-8080-exec-3] DEBUG - subscription searched
+15:28:37.808 [http-nio-8080-exec-3] DEBUG - All tariffs searched
+15:28:48.210 [http-nio-8080-exec-6] DEBUG - Start tariff searching....
+15:28:48.214 [http-nio-8080-exec-6] DEBUG - Tariff searched
+15:54:44.616 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+15:54:44.632 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:00:38.216 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:00:38.227 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:01:27.558 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:01:27.579 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:01:58.207 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:01:58.215 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:02:56.763 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:02:56.769 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:04:06.119 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:04:06.136 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:05:01.295 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:05:01.322 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:06:42.952 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:06:42.974 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:08:13.919 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:08:13.938 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:09:21.776 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:09:21.794 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:10:13.941 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:10:13.941 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:11:25.714 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:11:25.735 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:12:35.601 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:12:35.617 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:14:04.462 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:14:04.476 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:15:54.404 [RMI TCP Connection(4)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:15:54.419 [RMI TCP Connection(4)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:17:45.534 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:17:45.559 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:20:15.052 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log
+16:20:15.084 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = C:\Users\eduar\IdeaProjects\IPS\target\IPS\WEB-INF\log4j2.log

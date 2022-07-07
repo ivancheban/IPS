@@ -18,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class UserDaoTest {
-
+    @BeforeAll
+    static void dbInit(){
+        DataSource.innitConfiguration("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/internet_provider_base", "root", "root");
+    }
     UserDao userDao;
 
     {

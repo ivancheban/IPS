@@ -27,83 +27,67 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="/css/style-for-update.css">
 </head>
-<body>
-<%--<form action="/update/form" method="post">--%>
-<%--    <div class="modal-dialog">--%>
-<%--                                <div class="modal-content">--%>
-<%--                                    <form>--%>
-<%--                                        <div class="modal-header">--%>
-<%--                                            <h4 class="modal-title">Update Subscription</h4>--%>
-<%--                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">--%>
-<%--                                                &times--%>
-<%--                                            </button>--%>
-<%--                                        </div>--%>
+<div class="container">
+    <div class="row main-form">
+        <form action="/update/form" method="post">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h1>Update Service</h1>
+                </div>
 
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="id" name="id" id="id"
+                           value="<%=subscriptionDto!=null?subscriptionDto.getId():""%>" hidden="hidden">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                        </div>
+                    </div>
+                </div>
 
-<%--    <div class="form-group">--%>
-<%--        <label>ID Subscription</label>--%>
-<%--        <input type="number" name="id" id="id" class="form-control" value="<%=subscriptionDto!=null?subscriptionDto.getId():""%>" required>--%>
-<%--    </div>--%>
-
-<%--        <div class="form-group">--%>
-<%--            <label>Name Subscription</label>--%>
-<%--            <input type="text" name="name" id="name" class="form-control" value="<%=subscriptionDto!=null?subscriptionDto.getName():""%>" required>--%>
-
-<%--        </div>--%>
-<%--        <div class="form-group">--%>
-<%--            <label>Days Amount</label>--%>
-<%--            <input type="number" name="days_amount" id="days_amount" class="form-control" value="<%=subscriptionDto!=null?subscriptionDto.getDays_amount():""%>" required>--%>
-<%--        </div>--%>
-<%--    <div class="form-group">--%>
-<%--        <label>Status</label>--%>
-<%--        <input type="text" name="isActive" id="isActive" class="form-control" value="<%=subscriptionDto!=null?subscriptionDto.isActive():""%>" required>--%>
-
-<%--    </div>--%>
-<%--    --%>
-
-<%--        <div>--%>
-<%--            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">--%>
-<%--            <input type="submit" class="btn btn-success" value="Save">--%>
-<%--        </div>--%>
-<%--                                    </form>--%>
-<%--        </div>--%>
-<%--        </div>--%>
-
-
-
-
-
-<div class="row">
-    <div class="col-sm-4">
-        <form  method="POST" action="/update/form" >
-            <input type="text" class="form-control" placeholder="name" name="id" id="id" value="<%=subscriptionDto!=null?subscriptionDto.getId():""%>" hidden="hidden">
-
-            <div alight="left">
-                <label class="form-label">Subscription Name</label>
-                <input type="text" class="form-control" placeholder="name" name="name" id="name" value="<%=subscriptionDto!=null?subscriptionDto.getName():""%>" required>
+                <div class="form-group">
+                    <label class="form-label" for="name"><fmt:message key="name.label.name"/></label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" placeholder="name" name="name" id="name"
+                                   value="<%=subscriptionDto != null ? subscriptionDto.getName() : ""%>" required>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div alight="left">
-                <label class="form-label">days_amount</label>
-                <input type="text" class="form-control" placeholder="days_amount" name="days_amount" id="days_amount" value="<%=subscriptionDto!=null?subscriptionDto.getDays_amount():""%>" required>
-            </div>
+            <div class="form-group">
+                <label class="form-label" for="isActive">Amount</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" placeholder="days_amount" name="days_amount"
+                               id="days_amount"
+                               value="<%=subscriptionDto!=null?subscriptionDto.getDays_amount():""%>" required>
+                    </div>
 
-            <div alight="left">
-                <label class="form-label">isActive</label>
-                <input type="text" class="form-control" placeholder="isActive" name="isActive" id="isActive" value="<%=subscriptionDto!=null?subscriptionDto.isActive():""%>" required >
-            </div>
-            </br>
+                    <div class="form-group">
+                        <label class="form-label" for="isActive">Status</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" placeholder="isActive" name="isActive"
+                                       id="isActive"
+                                       value="<%=subscriptionDto!=null?subscriptionDto.isActive():""%>" required>
+                            </div>
+                        </div>
+                    </div>
 
-            <div alight="right">
-                <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
-                <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
+                    </br>
+                    <div alight="right">
+                        <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
+                        <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
+                    </div>
+                </div>
             </div>
-
         </form>
     </div>
-    </div>
-
-</body>
+</div>
 </html>

@@ -1,9 +1,6 @@
 <%@ page import="com.dto.TariffDto" %>
-<%@ page import="com.dto.CustomerCreateRequestDto" %>
 <%@ page import="com.dto.SubscriptionDto" %>
 <% request.setCharacterEncoding("UTF-8");%>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -21,8 +18,7 @@
     <%TariffDto tariffDto = ((TariffDto) session.getAttribute("tariffDto"));%>
         <%SubscriptionDto subscriptionDto = ((SubscriptionDto) session.getAttribute("subscriptionDto"));%>
 
-
-<head>
+    <head>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -64,12 +60,6 @@
                     <a class="nav-link active" aria-current="page" href="?lang=en" class="btn btn-success"><fmt:message
                             key="label.lang.en"/></a>
                 </li>
-
-
-                <%--             </li>--%>
-                <%--                <li class="nav-item">--%>
-                <%--                    <a class="nav-link disabled">Disabled</a>--%>
-                <%--                </li>--%>
             </ul>
         </li>
         <div><a href="/tariffs" class="btn btn-success"><fmt:message key="all.wallets.admin"/></a>
@@ -77,150 +67,7 @@
             <a href="/subscriptions" class="btn btn-success"><fmt:message key="all.subscriptions.admin"/></a>
         </div>
     </div>
-
 </nav>
 </body>
-    <body>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    span {
-        display: inline-block;
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .section-head {
-        margin-bottom: 60px;
-    }
-
-    .section-head h4 {
-        position: relative;
-        padding: 0;
-        color: lightblue;
-        line-height: 1;
-        letter-spacing: 0.3px;
-        font-size: 34px;
-        font-weight: 700;
-        text-align: center;
-        text-transform: none;
-        margin-bottom: 30px;
-    }
-
-    .section-head h4::before {
-        content: '';
-        width: 60px;
-        height: 3px;
-        background: lightblue;
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-    }
-
-    .section-head h4 span {
-        font-weight: 700;
-        padding-bottom: 5px;
-        color: #2f2f2f;
-    }
-
-    .section-head p {
-        color: #818181;
-        font-size: 16px;
-        line-height: 28px;
-        text-align: center;
-    }
-
-    .item {
-        background: #fff;
-        text-align: center;
-        padding: 30px 25px;
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.07);
-        border-radius: 20px;
-        margin-bottom: 30px;
-        border: 5px solid rgba(0, 0, 0, 0.07);
-        -webkit-transition: all 0.5s ease 0s;
-        transition: all 0.5s ease 0s;
-    }
-
-    .item:hover {
-        background: lightblue;
-        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
-        -webkit-transition: all 0.5s ease 0s;
-        transition: all 0.5s ease 0s;
-    }
-
-    .item:hover .item,
-    .item:hover span.icon {
-        background: #fff;
-        border-radius: 10px;
-        -webkit-transition: all 0.5s ease 0s;
-        transition: all 0.5s ease 0s;
-    }
-
-    .item:hover h6,
-    .item:hover p {
-        color: #fff;
-        -webkit-transition: all 0.5s ease 0s;
-        transition: all 0.5s ease 0s;
-    }
-
-    .item .icon {
-        font-size: 40px;
-        margin-bottom: 25px;
-        color: lightblue;
-        width: 90px;
-        height: 90px;
-        line-height: 96px;
-        border-radius: 50px;
-    }
-
-    .item .feature_box_col_one {
-        background: rgba(247, 198, 5, 0.2);
-        color: lightblue;
-    }
-
-    .item .feature_box_col_two {
-        background: rgba(255, 77, 28, 0.15);
-        color: lightblue;
-    }
-
-    .item .feature_box_col_three {
-        background: rgba(0, 147, 38, 0.15);
-        color: lightblue;
-    }
-
-    .item .feature_box_col_four {
-        background: rgba(0, 108, 255, 0.15);
-        color: lightblue;
-    }
-
-    .item .feature_box_col_five {
-        background: rgba(146, 39, 255, 0.15);
-        color: lightblue;
-    }
-
-    .item .feature_box_col_six {
-        background: rgba(23, 39, 246, 0.15);
-        color: lightblue;
-    }
-
-    .item p {
-        font-size: 15px;
-        line-height: 26px;
-    }
-
-    .item h6 {
-        margin-bottom: 20px;
-        color: #2f2f2f;
-    }
-
-</style>
-</body>
-</form>
+    </form>
 </html>

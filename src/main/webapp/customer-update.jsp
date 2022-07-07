@@ -27,113 +27,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style-for-update.css">
 
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Caveat:700');
 
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        background: url(https://look.com.ua/pic/201805/1920x1080/look.com.ua-282297.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-family: 'Caveat', sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    section {
-        background: rgba(0, 0, 0, .6);
-        border-radius: 5px;
-        left: 50%;
-        padding: 40px;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        width: 400px;
-    }
-
-    section h2 {
-        color: #fff;
-        font-family: 'Caveat', sans-serif;
-        font-size: 30px;
-        margin: 0 0 30px;
-        padding: 0;
-        text-align: center;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    label {
-        margin-bottom: 15px;
-    }
-
-    input,
-    input::-webkit-input-placeholder {
-        font-size: 11px;
-        padding-top: 3px;
-    }
-
-    .form-control {
-        height: auto !important;
-        padding: 8px 12px !important;
-    }
-
-    .input-group {
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21) !important;
-    }
-
-    #button {
-        border: 1px solid #ccc;
-        margin-top: 28px;
-        padding: 6px 12px;
-        color: #666;
-        text-shadow: 0 1px #fff;
-        cursor: pointer;
-        border-radius: 3px 3px;
-        box-shadow: 0 1px #fff inset, 0 1px #ddd;
-        background: #f5f5f5;
-        background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
-        background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-        background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-        background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-        background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
-    }
-
-    .main-form {
-        margin-top: 30px;
-        margin: 20px auto;
-        max-width: 400px;
-        padding: 10px 40px;
-        background: #009edf;
-        color: #FFF;
-        text-shadow: none;
-        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
-    }
-
-    span.input-group-addon i {
-        color: #009edf;
-        font-size: 17px;
-    }
-
-    .login-button {
-        margin-top: 5px;
-    }
-
-</style>
 <div class="container">
     <div class="row main-form">
         <form action="/update-form/customer" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Update User</h1>
+                    <h1>Update Customer</h1>
                 </div>
                 <div class="panel-body">
 
@@ -148,7 +51,6 @@
                     </div>
 
                     <div class="form-group">
-
                         <label class="form-label" for="name"><fmt:message key="name.label.name"/></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -161,7 +63,6 @@
                 </div>
 
                 <div class="form-group">
-
                     <label class="form-label" for="surname"><fmt:message key="surname.label.surname"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -171,8 +72,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
 
+                <div class="form-group">
                     <label class="form-label" for="phone"><fmt:message key="phone.label.phone"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -185,8 +86,7 @@
             </div>
 
                 <div class="form-group">
-
-                            <label class="form-label" for="email"><fmt:message key="email.label.email"/></label>
+                    <label class="form-label" for="email"><fmt:message key="email.label.email"/></label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
@@ -195,13 +95,8 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
-
+            <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
         </form>
     </div>
 </div>
-
-
 </html>

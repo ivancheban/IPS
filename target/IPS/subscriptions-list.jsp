@@ -74,10 +74,10 @@
                             </td>
                             <td>${subscription.getCreated()}</td>
                             <td>${subscription.getUpdated()}</td>
-                            <td><a href="/open/service?id=${subscription.id}" class="btn btn-success">Menu Service</a>
+                            <td><a href="/open/service?id=${subscription.id}" class="btn btn-success"><fmt:message key="button.service"/></a>
                             </td>
-                            <td><a href="/update/subscription?id=${subscription.id}" class="btn btn-primary">Update</a></td>
-                            <td><a href="/delete/subscription?id=${subscription.id}" class="btn btn-danger">Delete</a></td>
+                            <td><a href="/update/subscription?id=${subscription.id}" class="btn btn-primary"><fmt:message key="button.update"/></a></td>
+                            <td><a href="/delete/subscription?id=${subscription.id}" class="btn btn-danger"><fmt:message key="button.delete"/></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

@@ -54,20 +54,20 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/subscriptions" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Послуги
+                        <fmt:message key="index.service"/>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/open/service?id=21">Інтернет</a>
-                        <a class="dropdown-item" href="/open/service?id=14">Мобільний звя'зок</a>
-                        <a class="dropdown-item" href="/open/service?id=16">Цифрове телебачення</a>
-                        <a class="dropdown-item" href="/open/service?id=20">Кабельне телебачення</a>
+                        <a class="dropdown-item" href="/open/service?id=21"><fmt:message key="service.internet"/></a>
+                        <a class="dropdown-item" href="/open/service?id=14"><fmt:message key="service.mobile"/></a>
+                        <a class="dropdown-item" href="/open/service?id=16"><fmt:message key="service.IPTV"/></a>
+                        <a class="dropdown-item" href="/open/service?id=20"><fmt:message key="service.cableTv"/></a>
                         <div class="dropdown-divider"></div>
                     </div>
             </ul>
         </li>
-        <a href="/IPS" class="btn btn-danger">LogOut</a>
-        <a href="/update/profile/customer?id=${sessionScope.get('customerId')}" class="btn btn-warning">Update Profile</a>
-        <a href="/add/balance" class="btn btn-success">Add Balance</a>
+        <a href="/IPS" class="btn btn-danger"><fmt:message key="button.logout"/></a>
+        <a href="/update/profile/customer?id=${sessionScope.get('customerId')}" class="btn btn-warning"><fmt:message key="button.updateProfile"/></a>
+        <a href="/add/balance" class="btn btn-success"><fmt:message key="add.balance"/></a>
     </div>
 
 </nav>

@@ -1,3 +1,4 @@
+<%@ page import="com.dto.SubscriptionDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,6 +10,8 @@
 <jsp:useBean id="SubscriptionService" class="com.service.SubscriptionServiceImpl"/>
 <jsp:useBean id="SubscriptionDao" class="com.dao.SubscriptionDao"/>
 <jsp:useBean id="SubscriptionDto" class="com.dto.SubscriptionDto"/>
+
+
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="resources"/>
 <html lang="${sessionScope.lang}">
@@ -21,12 +24,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
 </head>
+
 <br>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href=""></a>
@@ -54,18 +61,31 @@
 <br>
     <div class="row row-cols-2 row-cols-md-5 g-3">
         <c:forEach var="tariff" items="${subscription}">
-        <div class="col">
+
+            <div class="col">
                 <div class="card">
                     <div class="card-header">
                             ${tariff.name}
-                        <div class="card-footer text-muted">
+
+                    </div>
+<%--                    <div class="card-body">--%>
+<%--                        <h5 class="card-title"></h5>--%>
+
+<%--                    </div>--%>
+                    <div class="card-footer text-muted">
                         <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
                         <a href="/add/tariff/customer?customer_id=${sessionScope.get('customerId')}&tariff_id=${tariff.id}" >Підключитись</a>
-                        </div>
+
+                    </div>
                 </div>
             </div>
-            </c:forEach>
-        </div>
-        </div>
+
+
+
+                    </c:forEach>
+
+    </div>
+
             </body>
-</html>
+
+            </html>

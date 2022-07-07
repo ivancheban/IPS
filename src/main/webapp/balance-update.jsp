@@ -26,7 +26,7 @@
         <form action="/add/balance" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Add Balance</h1>
+                    <h1><fmt:message key="add.balance"/></h1>
                 </div>
                 <div class="form-group">
                         <input type="number" class="form-control" placeholder="id" name="id" id="id"
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 <div class="form-group">
-                <label class="form-label" for="balance">Balance</label>
+                <label class="form-label" for="balance"><fmt:message key="balance"/></label>
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -48,8 +48,8 @@
             </div>
             </br>
             <div alight="right">
-                <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
-                <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
+                <button class="btn btn-primary" type="submit"><fmt:message key="add.button"/></button>
+                <button class="btn btn-warning" type="reset"><fmt:message key="reset.button"/></button>
             </div>
             </div>
         </form>

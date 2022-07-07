@@ -62,7 +62,7 @@
                 </li>
             </ul>
         </li>
-        <div><a href="/tariffs" class="btn btn-success"><fmt:message key="all.wallets.admin"/></a>
+        <div><a href="/tariffs" class="btn btn-success"><fmt:message key="all.tariffs.admin"/></a>
             <a href="/user.do" class="btn btn-success"><fmt:message key="all.users.admin"/></a>
             <a href="/subscriptions" class="btn btn-success"><fmt:message key="all.subscriptions.admin"/></a>
         </div>

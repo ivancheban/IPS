@@ -67,8 +67,8 @@
                         <td>${user.getCreated()}</td>
                         <td>${user.getUpdated()}</td>
 
-                        <td><a href="/user/update?id=${user.id}" class="btn btn-info">Update</a></td>
-                        <td><a href="/user/delete?id=${user.id}" class="btn btn-danger">Delete</a></td>
+                        <td><a href="/user/update?id=${user.id}" class="btn btn-info"><fmt:message key="button.update"/></a></td>
+                        <td><a href="/user/delete?id=${user.id}" class="btn btn-danger"><fmt:message key="button.delete"/></a></td>
                     </tr>
 
                 </c:forEach>

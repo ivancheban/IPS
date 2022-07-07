@@ -24,20 +24,13 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpRequest.getSession();
-
-
-
         try {
-
             String jwt = (String) session.getAttribute("token");
-
             if (jwt != null && !jwt.isEmpty()) {
                 filterChain.doFilter(servletRequest, servletResponse);
-
             } else {
                 httpResponse.sendRedirect("/login");
             }
-
 
         } catch (final Exception e) {
             logger.debug("Failed logging in with security token");

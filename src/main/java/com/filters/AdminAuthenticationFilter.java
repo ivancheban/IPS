@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/user-list.jsp","/add/subscription","/add/tariff/service","/delete/subscription","/subscriptions","/update/subscription","/update/form",
-        "/addTariff","/delete/tariff","/tariffs","/user/delete","/user/find","/user.do","/user/update"})
+@WebFilter(urlPatterns = {"/admin.jsp","/user-list.jsp","/user-update.jsp","/tariff-update.jsp","/tariff-list.jsp","/subscriptions-list.jsp",
+        "/subscription-update.jsp","/add/subscription","/add/tariff/service","/delete/subscription","/subscriptions","/update/subscription","/update/form",
+        "/addTariff","/delete/tariff","/tariffs","/update-tariff/form","/update/tariff","/user/delete","/user/find","/user.do",
+        "/user/update","/edit/form"})
 public class AdminAuthenticationFilter implements Filter {
     private static Logger logger = LogManager.getLogger(AdminAuthenticationFilter.class);
     private static final int STATUS_CODE_UNAUTHORIZED = 401;

@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/user/cabinet"})
+@WebFilter(urlPatterns = {"/user/cabinet","/update-form/customer","/update/profile/customer","/delete/tariff-customer",
+        "/add/tariff/customer","/customer/update/form","/add/balance","/balance-update.jsp","/customer-update","/personal-cabinet.jsp",})
 public class AuthenticationFilter implements Filter {
     private static final Logger logger = LogManager.getLogger(AuthenticationFilter.class);
 

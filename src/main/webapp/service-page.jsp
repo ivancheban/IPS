@@ -37,55 +37,49 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                 <h1>${subscriptionDto.getName()}</h1>
+                    <h1>${subscriptionDto.getName()}</h1>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/sort/tariffs?sortBy=name">Sort By Name</a>
+                    <a class="nav-link" href="/sort/tariffs?sortBy=name"><fmt:message key="sorting.name"/></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/sort/tariffs?sortBy=price">Price Sorting</a>
+                    <a class="nav-link" href="/sort/tariffs?sortBy=price"><fmt:message key="sorting.price"/></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/cabinet">Back</a>
+                    <a class="nav-link" href="/user/cabinet"><fmt:message key="button.back"/></a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <br>
-    <div class="row row-cols-2 row-cols-md-5 g-3">
-        <c:forEach var="tariff" items="${subscription}">
+<div class="row row-cols-2 row-cols-md-5 g-3">
+    <c:forEach var="tariff" items="${subscription}">
 
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                            ${tariff.name}
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                        ${tariff.name}
 
-                    </div>
-<%--                    <div class="card-body">--%>
-<%--                        <h5 class="card-title"></h5>--%>
+                </div>
 
-<%--                    </div>--%>
-                    <div class="card-footer text-muted">
-                        <h6> ${tariff.getPricePerDay()} гривень за один місяц</h6>
-                        <a href="/add/tariff/customer?customer_id=${sessionScope.get('customerId')}&tariff_id=${tariff.id}" >Підключитись</a>
+                <div class="card-footer text-muted">
+                    <h6> ${tariff.getPricePerDay()} <fmt:message key="price.month"/></h6>
+                    <a href="/add/tariff/customer?customer_id=${sessionScope.get('customerId')}&tariff_id=${tariff.id}"><fmt:message key="enabled.status"/></a>
 
-                    </div>
                 </div>
             </div>
+        </div>
 
+    </c:forEach>
+</div>
 
-
-                    </c:forEach>
-
-    </div>
-
-            </body>
-
-            </html>
+</body>
+</html>

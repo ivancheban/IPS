@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.service</a> &gt; <span class="el_source">UserServiceImpl.java</span></div><h1>UserServiceImpl.java</h1><pre class="source lang-java linenums">package com.service;
+
+import com.dao.CustomerDao;
+import com.dao.DataSource;
+import com.dao.UserDao;
+import com.dto.CustomerCreateRequestDto;
+import com.dto.UserDto;
+import com.mapper.BusinessMapper;
+import com.model.Customer;
+import com.model.Role;
+import com.model.User;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+<span class="nc" id="L22">public class UserServiceImpl implements UserService {</span>
+
+    private UserDao userDao;
+    private CustomerDao customerDao;
+    private Connection connection;
+    private BusinessMapper businessMapper;
+
+    {
+        try {
+<span class="nc" id="L31">            connection = DataSource.getConnection();</span>
+<span class="nc" id="L32">            userDao = new UserDao(connection);</span>
+<span class="nc" id="L33">            customerDao = new CustomerDao(connection);</span>
+<span class="nc" id="L34">        } catch (SQLException e) {</span>
+<span class="nc" id="L35">            e.printStackTrace();</span>
+<span class="nc" id="L36">        }</span>
+<span class="nc" id="L37">    }</span>
+
+
+    @Override
+    public List&lt;String&gt; registration(CustomerCreateRequestDto customerCreateRequestDto) {
+<span class="nc" id="L42">        List&lt;String&gt; validation = userValidation(customerCreateRequestDto);</span>
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (validation.isEmpty()) {</span>
+
+<span class="nc" id="L46">            User user = BusinessMapper.conversationRegisterUserDto(customerCreateRequestDto);</span>
+<span class="nc" id="L47">            user.setRole(Role.CLIENT);</span>
+<span class="nc" id="L48">            Customer customer = BusinessMapper.conversationRegisterDto(customerCreateRequestDto);</span>
+
+<span class="nc" id="L50">          userDao.create(user);</span>
+<span class="nc" id="L51">          customerDao.create(customer);</span>
+        }
+<span class="nc" id="L53">        return validation;</span>
+    }
+
+    private List&lt;String&gt; userValidation(CustomerCreateRequestDto createRequestDto) {
+<span class="nc" id="L57">        List&lt;String&gt; validResult = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L59">            validFormatName(createRequestDto.getName());</span>
+<span class="nc" id="L60">        } catch (Exception e) {</span>
+<span class="nc" id="L61">            validResult.add(&quot;name&quot;);</span>
+<span class="nc" id="L62">        }</span>
+        try {
+<span class="nc" id="L64">            validFormatSurName(createRequestDto.getSurname());</span>
+<span class="nc" id="L65">        } catch (Exception e) {</span>
+<span class="nc" id="L66">            validResult.add(&quot;surname&quot;);</span>
+<span class="nc" id="L67">        }</span>
+
+
+        try {
+<span class="nc" id="L71">            validatePhoneNumberFormat(createRequestDto.getPhone());</span>
+<span class="nc" id="L72">        } catch (Exception e) {</span>
+<span class="nc" id="L73">            validResult.add(&quot;phone&quot;);</span>
+<span class="nc" id="L74">        }</span>
+        try {
+<span class="nc" id="L76">            validationPasswordFormat(createRequestDto.getPassword());</span>
+<span class="nc" id="L77">        } catch (Exception e) {</span>
+<span class="nc" id="L78">            validResult.add(&quot;password&quot;);</span>
+<span class="nc" id="L79">        }</span>
+        try {
+<span class="nc" id="L81">            validConfirmPassword(createRequestDto.getPassword(), createRequestDto.getConfirm_password());</span>
+<span class="nc" id="L82">        } catch (Exception e) {</span>
+<span class="nc" id="L83">            validResult.add(&quot;confirm_password&quot;);</span>
+<span class="nc" id="L84">        }</span>
+
+<span class="nc" id="L86">        return validResult;</span>
+
+    }
+
+
+    private void validatePhoneNumberFormat(String phoneNumber) {
+<span class="nc" id="L92">        Pattern pattern = Pattern.compile(&quot;^\\+?(38)?(\\d{10,11})$&quot;);</span>
+<span class="nc" id="L93">        Matcher matcher = pattern.matcher(phoneNumber);</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">        if (userDao.findByField(phoneNumber).equals(phoneNumber)) {</span>
+<span class="nc" id="L95">            throw new RuntimeException(&quot;It looks like this phone has already been registered&quot;);</span>
+        }
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (!matcher.matches()) {</span>
+<span class="nc" id="L98">            throw new RuntimeException(&quot;You enter invalid phone&quot;);</span>
+        }
+<span class="nc" id="L100">    }</span>
+
+    private void validationPasswordFormat(String password) {
+<span class="nc" id="L103">        Pattern pattern = Pattern.compile(&quot;^\\d{4}$&quot;);</span>
+<span class="nc" id="L104">        Matcher matcher = pattern.matcher(password);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        if (!matcher.matches()) {</span>
+<span class="nc" id="L106">            throw new RuntimeException(&quot;You enter invalid password&quot;);</span>
+        }
+<span class="nc" id="L108">    }</span>
+
+    private void validConfirmPassword(String password, String confirm_password) {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if (!password.equals(confirm_password)) {</span>
+<span class="nc" id="L112">            throw new RuntimeException(&quot;You enter invalid confirm password&quot;);</span>
+        }
+<span class="nc" id="L114">    }</span>
+    private void validFormatName(String name) {
+<span class="nc" id="L116">        Pattern pattern = Pattern.compile(&quot;^[а-яА-ЯёЁa-zA-Z0-9]+$&quot;);</span>
+<span class="nc" id="L117">        Matcher matcher = pattern.matcher(name);</span>
+
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        if (!matcher.matches()) {</span>
+<span class="nc" id="L120">            throw new RuntimeException(&quot;You enter invalid name&quot;);</span>
+        }
+
+<span class="nc" id="L123">    }</span>
+    private void validFormatSurName(String surname) {
+<span class="nc" id="L125">        Pattern pattern = Pattern.compile( &quot;^[а-яА-ЯёЁa-zA-Z0-9]+$&quot;);</span>
+<span class="nc" id="L126">        Matcher matcher = pattern.matcher(surname);</span>
+
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        if (!matcher.matches()) {</span>
+<span class="nc" id="L129">            throw new RuntimeException(&quot;You enter invalid surname &quot;);</span>
+        }
+
+<span class="nc" id="L132">    }</span>
+
+    @Override
+    public UserDto findByPhoneNumber(String phone) {
+<span class="nc" id="L136">        User user = userDao.findByField(phone);</span>
+<span class="nc" id="L137">        return BusinessMapper.getUserDto(user);</span>
+    }
+
+    @Override
+    public UserDto findById(int id) {
+<span class="nc" id="L142">        User user = userDao.findById(id);</span>
+<span class="nc" id="L143">        return BusinessMapper.getUserDto(user);</span>
+    }
+
+    @Override
+    public int promoteUser(String phone) {
+<span class="nc" id="L148">        int status = 0;</span>
+<span class="nc" id="L149">        return status;</span>
+    }
+
+    @Override
+    public boolean deleteUser(int id) {
+<span class="nc" id="L154">        return userDao.delete(id);</span>
+    }
+
+    @Override
+    public List&lt;User&gt; findAll() {
+<span class="nc" id="L159">        List&lt;User&gt; usersList = userDao.findAll();</span>
+<span class="nc" id="L160">        System.out.println(&quot;Get All Users&quot; + usersList);</span>
+
+<span class="nc" id="L162">        return usersList;</span>
+    }
+
+    @Override
+    public Role identy(String phoneNumber, String password) {
+<span class="nc" id="L167">        UserDto user = findByPhoneNumber(phoneNumber);</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">        if (user != null){</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">            if(user.getPassword().equals(password)){</span>
+<span class="nc" id="L170">                return user.getRole();</span>
+            }
+        }
+<span class="nc" id="L173">        return null;</span>
+    }
+
+    @Override
+    public boolean validateIsBlocked(String phoneNumber) {
+<span class="nc" id="L178">        boolean statusUser = findByPhoneNumber(phoneNumber).isActive();</span>
+<span class="nc" id="L179">        return statusUser;</span>
+    }
+
+    @Override
+    public UserDto update(UserDto userDto) {
+<span class="nc" id="L184">        User userEdit = userDao.update(BusinessMapper.getUser(userDto));</span>
+<span class="nc" id="L185">        return BusinessMapper.getUserDto(userEdit) ;</span>
+    }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

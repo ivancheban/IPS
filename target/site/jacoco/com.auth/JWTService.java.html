@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JWTService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.auth</a> &gt; <span class="el_source">JWTService.java</span></div><h1>JWTService.java</h1><pre class="source lang-java linenums">package com.auth;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTCreator.Builder;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.exceptions.JWTException;
+
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+<span class="nc" id="L19">public class JWTService implements JWTServiceInterface {</span>
+
+<span class="nc" id="L21">    private String secret = &quot;secret&quot;;</span>
+<span class="nc" id="L22">    private String issuer = &quot;USERSERVICE&quot;;</span>
+<span class="nc" id="L23">    private String subject = &quot;userLoginToken&quot;;</span>
+<span class="nc" id="L24">    private String audience = &quot;APP&quot;;</span>
+
+    public String createToken(Map&lt;String, String&gt; claims, int hour) {
+<span class="nc" id="L27">        Payload payload = new Payload();</span>
+
+<span class="nc" id="L29">        payload.setIssuer(this.issuer);</span>
+<span class="nc" id="L30">        payload.setSubject(this.subject);</span>
+<span class="nc" id="L31">        payload.setAudience(this.audience);</span>
+
+<span class="nc" id="L33">        payload.setIssuedAt(LocalDateTime.now());</span>
+<span class="nc" id="L34">        payload.setExpiresAt(payload.getIssuedAt().plusHours(hour));</span>
+
+
+<span class="nc" id="L37">        payload.setClaims(claims);</span>
+<span class="nc" id="L38">        Algorithm hmac256 = Algorithm.HMAC256(this.secret);</span>
+
+<span class="nc" id="L40">        Builder headBuilder = JWT.create().withHeader(buildJWTHeader(hmac256));</span>
+
+<span class="nc" id="L42">        Builder publicClaimbuilder = addPublicClaimBuilder(headBuilder, payload);</span>
+<span class="nc" id="L43">        Builder privateClaimbuilder = addPrivateClaimbuilder(publicClaimbuilder, payload);</span>
+
+
+<span class="nc" id="L46">        return privateClaimbuilder.sign(hmac256);</span>
+    }
+
+    private Map&lt;String, Object&gt; buildJWTHeader(Algorithm algorithm) {
+<span class="nc" id="L50">        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L51">        map.put(&quot;alg&quot;, algorithm.getName());</span>
+<span class="nc" id="L52">        map.put(&quot;typ&quot;, &quot;JWT&quot;);</span>
+<span class="nc" id="L53">        return map;</span>
+    }
+
+    private Builder addPrivateClaimbuilder(Builder builder, Payload payload) {
+<span class="nc" id="L57">        Map&lt;String, String&gt; claims = payload.getClaims();</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (!claims.isEmpty()) {</span>
+<span class="nc" id="L59">            claims.forEach((k, v) -&gt; builder.withClaim(k, v));</span>
+        }
+<span class="nc" id="L61">        return builder;</span>
+    }
+
+
+    private Builder addPublicClaimBuilder(Builder builder, Payload payload) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (!payload.getIssuer().isEmpty()) {</span>
+<span class="nc" id="L67">            builder.withIssuer(payload.getIssuer());</span>
+        }
+
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (!payload.getSubject().isEmpty()) {</span>
+<span class="nc" id="L71">            builder.withSubject(payload.getSubject());</span>
+        }
+
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (payload.getIssuedAt() != null) {</span>
+<span class="nc" id="L75">            builder.withIssuedAt(Date.from(payload.getIssuedAt().atZone(ZoneId.systemDefault()).toInstant()));</span>
+        }
+
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (payload.getExpiresAt() != null) {</span>
+<span class="nc" id="L79">            builder.withExpiresAt(Date.from(payload.getExpiresAt().atZone(ZoneId.systemDefault()).toInstant()));</span>
+        }
+
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (payload.getAudience().isEmpty()) {</span>
+<span class="nc" id="L83">            payload.getAudience().forEach(s -&gt; builder.withAudience(s));</span>
+        }
+
+<span class="nc" id="L86">        return builder;</span>
+    }
+
+
+    public Payload verifyToken(String token)throws JWTException {
+
+
+        try {
+<span class="nc" id="L94">            DecodedJWT jwt = JWT.require(Algorithm.HMAC256(this.secret)).build().verify(token);</span>
+
+<span class="nc" id="L96">            Payload payload = new Payload();</span>
+<span class="nc" id="L97">            payload.setIssuer(jwt.getIssuer());</span>
+<span class="nc" id="L98">            payload.setSubject(jwt.getSubject());</span>
+<span class="nc" id="L99">            payload.setAudience(jwt.getAudience());</span>
+<span class="nc" id="L100">            payload.setIssuedAt(jwt.getIssuedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());</span>
+<span class="nc" id="L101">            payload.setExpiresAt(jwt.getExpiresAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());</span>
+
+<span class="nc" id="L103">            Map&lt;String, String&gt; claims = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc" id="L104">            jwt.getClaims().forEach((k, v) -&gt; claims.put(k, v.asString()));</span>
+<span class="nc" id="L105">            payload.setClaims(claims);</span>
+
+<span class="nc" id="L107">            return payload;</span>
+<span class="nc" id="L108">        } catch (AlgorithmMismatchException | TokenExpiredException e) {</span>
+<span class="nc" id="L109">            throw new JWTException(e);</span>
+        }
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

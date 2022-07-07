@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SubscriptionDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.dto</a> &gt; <span class="el_source">SubscriptionDto.java</span></div><h1>SubscriptionDto.java</h1><pre class="source lang-java linenums">package com.dto;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SubscriptionDto {
+    private int id;
+    private String name;
+    private int days_amount;
+    private boolean isActive;
+<span class="nc" id="L14">    private List&lt;TariffDto&gt; tariffs = new ArrayList&lt;&gt;();</span>
+    private LocalDateTime created;
+    private LocalDateTime updated;
+
+<span class="nc" id="L18">    public SubscriptionDto() {</span>
+<span class="nc" id="L19">    }</span>
+
+<span class="nc" id="L21">    public SubscriptionDto(String name, int days) {</span>
+<span class="nc" id="L22">        this.name = name;</span>
+<span class="nc" id="L23">        this.days_amount = days;</span>
+<span class="nc" id="L24">    }</span>
+
+
+<span class="nc" id="L27">    public SubscriptionDto(int id, String name, int days_amount,boolean isActive) {</span>
+<span class="nc" id="L28">        this.id = id;</span>
+<span class="nc" id="L29">        this.name = name;</span>
+<span class="nc" id="L30">        this.days_amount = days_amount;</span>
+<span class="nc" id="L31">        this.isActive = isActive;</span>
+
+<span class="nc" id="L33">    }</span>
+
+<span class="nc" id="L35">    public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created,LocalDateTime updated) {</span>
+<span class="nc" id="L36">        this.id = id;</span>
+<span class="nc" id="L37">        this.name = name;</span>
+<span class="nc" id="L38">        this.days_amount = days_amount;</span>
+<span class="nc" id="L39">        this.isActive = isActive;</span>
+
+<span class="nc" id="L41">    }</span>
+
+<span class="nc" id="L43">    public SubscriptionDto(String name) {</span>
+<span class="nc" id="L44">        this.name = name;</span>
+<span class="nc" id="L45">    }</span>
+
+
+<span class="nc" id="L48">    public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated, List&lt;TariffDto&gt; tariffs) {</span>
+<span class="nc" id="L49">        this.id = id;</span>
+<span class="nc" id="L50">        this.name = name;</span>
+<span class="nc" id="L51">        this.days_amount = days_amount;</span>
+<span class="nc" id="L52">        this.isActive = isActive;</span>
+<span class="nc" id="L53">        this.tariffs = tariffs;</span>
+<span class="nc" id="L54">        this.created = created;</span>
+<span class="nc" id="L55">        this.updated = updated;</span>
+<span class="nc" id="L56">    }</span>
+
+
+    public String getName() {
+<span class="nc" id="L60">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L64">        this.name = name;</span>
+<span class="nc" id="L65">    }</span>
+
+    public int getDays() {
+<span class="nc" id="L68">        return days_amount;</span>
+    }
+
+    public void setDays(int days) {
+<span class="nc" id="L72">        this.days_amount = days;</span>
+<span class="nc" id="L73">    }</span>
+
+    public boolean isActive() {
+<span class="nc" id="L76">        return isActive;</span>
+    }
+
+    public void setActive(boolean active) {
+<span class="nc" id="L80">        isActive = active;</span>
+<span class="nc" id="L81">    }</span>
+
+    public LocalDateTime getCreated() {
+<span class="nc" id="L84">        return created;</span>
+    }
+
+    public void setCreated(LocalDateTime created) {
+<span class="nc" id="L88">        this.created = created;</span>
+<span class="nc" id="L89">    }</span>
+
+    public LocalDateTime getUpdated() {
+<span class="nc" id="L92">        return updated;</span>
+    }
+
+    public void setUpdated(LocalDateTime updated) {
+<span class="nc" id="L96">        this.updated = updated;</span>
+<span class="nc" id="L97">    }</span>
+
+    public int getId() {
+<span class="nc" id="L100">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L104">        this.id = id;</span>
+<span class="nc" id="L105">    }</span>
+
+    public int getDays_amount() {
+<span class="nc" id="L108">        return days_amount;</span>
+    }
+
+    public void setDays_amount(int days_amount) {
+<span class="nc" id="L112">        this.days_amount = days_amount;</span>
+<span class="nc" id="L113">    }</span>
+
+    public List&lt;TariffDto&gt; getTariffs() {
+<span class="nc" id="L116">        return tariffs;</span>
+    }
+
+    public void setTariffs(List&lt;TariffDto&gt; tariffs) {
+<span class="nc" id="L120">        this.tariffs = tariffs;</span>
+<span class="nc" id="L121">    }</span>
+
+
+    @Override
+    public String toString() {
+
+<span class="nc" id="L127">        return &quot;Subscription{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                &quot;, days_amount=&quot; + days_amount +
+                &quot;, isActive=&quot; + isActive +
+                &quot;, created=&quot; + created +
+                &quot;, updated=&quot; + updated +
+                '}';
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

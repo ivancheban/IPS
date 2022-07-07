@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.dao.UserDaoTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 2.172 s <<< FAILURE! - in com.dao.UserDaoTest
+findByPhoneNumberPositiveTest  Time elapsed: 0.023 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.dao.UserDaoTest.findByPhoneNumberPositiveTest(UserDaoTest.java:74)
+
+findByPhoneNumberNegativeTest  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.dao.UserDaoTest.findByPhoneNumberNegativeTest(UserDaoTest.java:82)
+
+createNegativeDuplicatePhoneTest  Time elapsed: 0.006 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected com.exceptions.UserException to be thrown, but nothing was thrown.
+	at com.dao.UserDaoTest.createNegativeDuplicatePhoneTest(UserDaoTest.java:69)
+

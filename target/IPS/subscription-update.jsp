@@ -34,7 +34,7 @@
         <form action="/update/form" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Update Service</h1>
+                    <h1><fmt:message key="update.service"/></h1>
                 </div>
 
                 <div class="form-group">
@@ -59,7 +59,7 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="isActive">Amount</label>
+                <label class="form-label" for="days_amount"><fmt:message key="price.month"/></label>
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="isActive">Status</label>
+                        <label class="form-label" for="isActive"><fmt:message key="list.active.list"/></label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -82,8 +82,8 @@
 
                     </br>
                     <div alight="right">
-                        <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
-                        <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
+                        <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
+                        <button class="btn btn-warning" type="reset"><fmt:message key="reset.button"/></button>
                     </div>
                 </div>
             </div>

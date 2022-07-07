@@ -34,7 +34,7 @@
         <form action="/edit/form" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Update User</h1>
+                    <h1><fmt:message key="user.update"/></h1>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="isActive">Status</label>
+                    <label class="form-label" for="isActive"><fmt:message key="list.active.list"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="role">Role</label>
+                            <label class="form-label" for="role"><fmt:message key="user.role"/></label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
+                        <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
                     </div>
                 </div>
             </div>

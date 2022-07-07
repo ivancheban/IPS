@@ -36,7 +36,7 @@
         <form action="/update-form/customer" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Update Customer</h1>
+                    <h1><fmt:message key="customer.update"/></h1>
                 </div>
                 <div class="panel-body">
 
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-            <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
+            <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
         </form>
     </div>
 </div>

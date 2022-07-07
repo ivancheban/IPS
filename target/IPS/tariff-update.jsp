@@ -33,7 +33,7 @@
         <form action="/update/tariff" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
-                    <h1>Update Tariff</h1>
+                    <h1><fmt:message key="update.tariff"/></h1>
                 </div>
                 <div class="panel-body">
 
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="price_per_day"><fmt:message key="list.price.list"/></label>
+                    <label class="form-label" for="price_per_day"><fmt:message key="price.month"/></label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
+            <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
 
         </form>
     </div>

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.dao</a> &gt; <span class="el_source">CustomerDao.java</span></div><h1>CustomerDao.java</h1><pre class="source lang-java linenums">package com.dao;
+
+import com.exceptions.TariffException;
+import com.exceptions.UserException;
+import com.model.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CustomerDao implements Dao&lt;Customer&gt; {
+
+    private static final String CREATE_QUERY = &quot;insert into customers(name,surname, phone,email,balance) values (?,?,?,?,?)&quot;;
+    private static final String FIND_BY_PHONE_NUMBER = &quot;select * from customers where phone = ?&quot;;
+    private static final String FIND_BY_ID = &quot;select * from customers where id = ?&quot;;
+    private static final String UPDATE_QUERY = &quot;UPDATE customers SET name=?,surname=?,phone=?,email=? WHERE id=?&quot;;
+    private static final String DELETE_QUERY = &quot;DELETE  FROM customers WHERE id=?&quot;;
+    private static final String FIND_ALL_QUERY = &quot;select * from customers&quot;;
+    private static final String UPDATE_BALANCE = &quot;UPDATE customers SET balance = ? WHERE id =?&quot;;
+    private static final String ADD_TARIFF_QUERY = &quot;insert into customers_tariffs(customers_id,tariffs_id ) values (?,?)&quot;;
+    private static final String FIND_ALL_SERVICE = &quot;select *from subscriptions where customers_id=?&quot;;
+    private static final String SELECT_ALL_TARIFFS_CUSTOMER = &quot;select * from customers_tariffs where customers_id=?&quot;;
+    private  static  final String DELETE_TARIFF_OF_CUSTOMER_QUERY =&quot;DELETE FROM customers_tariffs where customers_id = ? and tariffs_id = ?&quot;;
+<span class="nc" id="L30">    private static Logger logger = LogManager.getLogger(CustomerDao.class);</span>
+
+    private CustomerDao customerDao;
+    private TariffDao tariffDao;
+
+    private Connection con;
+
+<span class="nc" id="L37">    public CustomerDao(Connection con) {</span>
+        try {
+<span class="nc" id="L39">            this.con = DataSource.getConnection();</span>
+<span class="nc" id="L40">        } catch (SQLException e) {</span>
+<span class="nc" id="L41">            e.printStackTrace();</span>
+<span class="nc" id="L42">        }</span>
+<span class="nc" id="L43">    }</span>
+
+<span class="nc" id="L45">    public CustomerDao() {</span>
+<span class="nc" id="L46">    }</span>
+
+    @Override
+    public Customer create(Customer customer) {
+<span class="nc" id="L50">        logger.debug(&quot;Start customer creating&quot;);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (customer == null) {</span>
+<span class="nc" id="L52">            logger.error(&quot;customer not found&quot;);</span>
+<span class="nc" id="L53">            throw new UserException(&quot;customer is not found&quot;);</span>
+        }
+        try (
+<span class="nc" id="L56">                PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {</span>
+
+<span class="nc" id="L58">            pst.setString(1, customer.getName());</span>
+<span class="nc" id="L59">            pst.setString(2, customer.getSurname());</span>
+<span class="nc" id="L60">            pst.setString(3, customer.getPhone());</span>
+<span class="nc" id="L61">            pst.setString(4, customer.getEmail());</span>
+<span class="nc" id="L62">            pst.setInt(5, customer.getBalance());</span>
+
+<span class="nc" id="L64">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            if (status != 1) throw new UserException(&quot;Created more than one record!!&quot;);</span>
+
+<span class="nc" id="L67">        } catch (Exception ex) {</span>
+<span class="nc" id="L68">            logger.debug(&quot;Problem with creating customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L69">        }</span>
+<span class="nc" id="L70">        logger.debug(&quot;Customer created&quot;);</span>
+<span class="nc" id="L71">        return customer;</span>
+    }
+
+    @Override
+    public Customer findByField(String value) {
+<span class="nc" id="L76">        Customer customer = new Customer();</span>
+<span class="nc" id="L77">        logger.debug(&quot;Start customer searching....&quot;);</span>
+
+<span class="nc" id="L79">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L80">             PreparedStatement pst = con.prepareStatement(FIND_BY_PHONE_NUMBER);) {</span>
+<span class="nc" id="L81">            pst.setString(1, value);</span>
+
+<span class="nc" id="L83">            ResultSet resultSet = pst.executeQuery();</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">            while (resultSet.next()) {</span>
+<span class="nc" id="L85">                customer.setId(resultSet.getInt(&quot;id&quot;));</span>
+<span class="nc" id="L86">                customer.setName(resultSet.getString(&quot;name&quot;));</span>
+<span class="nc" id="L87">                customer.setSurname(resultSet.getString(&quot;surname&quot;));</span>
+<span class="nc" id="L88">                customer.setPhone(resultSet.getString(&quot;phone&quot;));</span>
+<span class="nc" id="L89">                customer.setEmail(resultSet.getString(&quot;email&quot;));</span>
+<span class="nc" id="L90">                customer.setActive(resultSet.getBoolean(&quot;isActive&quot;));</span>
+<span class="nc" id="L91">                customer.setCreated(resultSet.getTimestamp(&quot;created&quot;).toLocalDateTime());</span>
+<span class="nc" id="L92">                customer.setUpdated(resultSet.getTimestamp(&quot;updated&quot;).toLocalDateTime());</span>
+<span class="nc" id="L93">                customer.setBalance(resultSet.getInt(&quot;balance&quot;));</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                if (customer == null) {</span>
+<span class="nc" id="L95">                    throw new UserException(&quot;customer not found&quot;);</span>
+                }
+            }
+<span class="nc" id="L98">        } catch (Exception ex) {</span>
+<span class="nc" id="L99">            logger.debug(&quot;Problem with searching customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L100">        }</span>
+<span class="nc" id="L101">        logger.debug(&quot;Customer searched&quot;);</span>
+<span class="nc" id="L102">        return customer;</span>
+    }
+
+    public Customer findByID(int id) {
+<span class="nc" id="L106">        Customer customer = new Customer();</span>
+<span class="nc" id="L107">        logger.debug(&quot;Start customer searching....&quot;);</span>
+
+<span class="nc" id="L109">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L110">             PreparedStatement pst = con.prepareStatement(FIND_BY_ID);) {</span>
+<span class="nc" id="L111">            pst.setInt(1, id);</span>
+
+<span class="nc" id="L113">            ResultSet resultSet = pst.executeQuery();</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">            while (resultSet.next()) {</span>
+<span class="nc" id="L115">                customer.setId(resultSet.getInt(&quot;id&quot;));</span>
+<span class="nc" id="L116">                customer.setName(resultSet.getString(&quot;name&quot;));</span>
+<span class="nc" id="L117">                customer.setSurname(resultSet.getString(&quot;surname&quot;));</span>
+<span class="nc" id="L118">                customer.setPhone(resultSet.getString(&quot;phone&quot;));</span>
+<span class="nc" id="L119">                customer.setEmail(resultSet.getString(&quot;email&quot;));</span>
+<span class="nc" id="L120">                customer.setActive(resultSet.getBoolean(&quot;isActive&quot;));</span>
+<span class="nc" id="L121">                LocalDateTime created = resultSet.getTimestamp(&quot;created&quot;).toLocalDateTime();</span>
+<span class="nc" id="L122">                LocalDateTime updated = resultSet.getTimestamp(&quot;updated&quot;).toLocalDateTime();</span>
+<span class="nc" id="L123">                customer.setBalance(resultSet.getInt(&quot;balance&quot;));</span>
+<span class="nc" id="L124">                customer.setTariffs(getAllTariffs(customer.getId()));</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">                if (customer == null) {</span>
+<span class="nc" id="L126">                    throw new UserException(&quot;customer not found&quot;);</span>
+                }
+<span class="nc" id="L128">            }</span>
+<span class="nc" id="L129">        } catch (Exception ex) {</span>
+<span class="nc" id="L130">            logger.debug(&quot;Problem with searching customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L131">        }</span>
+<span class="nc" id="L132">        logger.debug(&quot;Customer searched&quot;);</span>
+<span class="nc" id="L133">        return customer;</span>
+    }
+
+    @Override
+    public Customer update(Customer customer) {
+<span class="nc" id="L138">        logger.debug(&quot;Start customer updating....&quot;);</span>
+<span class="nc" id="L139">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L140">             PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {</span>
+<span class="nc" id="L141">            pst.setString(1, customer.getName());</span>
+<span class="nc" id="L142">            pst.setString(2,customer.getSurname());</span>
+<span class="nc" id="L143">            pst.setString(3,customer.getPhone());</span>
+<span class="nc" id="L144">            pst.setString(4, customer.getEmail());</span>
+<span class="nc" id="L145">            pst.setInt(5,customer.getId());</span>
+
+<span class="nc" id="L147">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">            if (status != 1) throw new UserException(&quot;Updated more than one record!!&quot;);</span>
+
+<span class="nc" id="L150">        } catch (Exception ex) {</span>
+<span class="nc" id="L151">            logger.debug(&quot;Problem with updating customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L152">        }</span>
+
+<span class="nc" id="L154">        logger.debug(&quot;Customer updated&quot;);</span>
+<span class="nc" id="L155">        return customer;</span>
+    }
+
+    @Override
+    public boolean delete(int id) {
+<span class="nc" id="L160">        boolean status_boolean = false;</span>
+<span class="nc" id="L161">        logger.debug(&quot;Start customer deleting....&quot;);</span>
+<span class="nc" id="L162">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L163">             PreparedStatement pst = con.prepareStatement(DELETE_QUERY);) {</span>
+<span class="nc" id="L164">            pst.setInt(1, id);</span>
+
+<span class="nc" id="L166">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">            if (status == 1) {</span>
+<span class="nc" id="L168">                status_boolean = true;</span>
+            }
+<span class="nc bnc" id="L170" title="All 2 branches missed.">            if (status != 1) throw new UserException(&quot;Deleted more than one record!!&quot;);</span>
+<span class="nc" id="L171">            con.close();</span>
+<span class="nc" id="L172">        } catch (Exception ex) {</span>
+<span class="nc" id="L173">            logger.debug(&quot;Problem with deleting customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L174">        }</span>
+
+<span class="nc" id="L176">        logger.debug(&quot;customer deleted&quot;);</span>
+<span class="nc" id="L177">        return status_boolean;</span>
+    }
+
+    @Override
+    public List&lt;Customer&gt; findAll() {
+
+<span class="nc" id="L183">        logger.debug(&quot;Start  searching all customers....&quot;);</span>
+<span class="nc" id="L184">        List&lt;Customer&gt; customersList = null;</span>
+
+<span class="nc" id="L186">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L187">             PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {</span>
+<span class="nc" id="L188">            ResultSet result = pst.executeQuery();</span>
+<span class="nc" id="L189">            customersList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L190">            Customer customer = null;</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">            while (result.next()) {</span>
+<span class="nc" id="L192">                customer = new Customer();</span>
+<span class="nc" id="L193">                customer.setId(result.getInt(&quot;id&quot;));</span>
+<span class="nc" id="L194">                customer.setName(result.getString(&quot;name&quot;));</span>
+<span class="nc" id="L195">                customer.setSurname(result.getString(&quot;surname&quot;));</span>
+<span class="nc" id="L196">                customer.setPhone(result.getString(&quot;phone&quot;));</span>
+<span class="nc" id="L197">                customer.setEmail(result.getString(&quot;password&quot;));</span>
+<span class="nc" id="L198">                customer.setActive(result.getBoolean(&quot;isActive&quot;));</span>
+<span class="nc" id="L199">                customer.setCreated(result.getTimestamp(&quot;created&quot;).toLocalDateTime());</span>
+<span class="nc" id="L200">                customer.setUpdated(result.getTimestamp(&quot;updated&quot;).toLocalDateTime());</span>
+<span class="nc" id="L201">                customer.setBalance(result.getInt(&quot;balance&quot;));</span>
+<span class="nc" id="L202">                customersList.add(customer);</span>
+            }
+<span class="nc" id="L204">        } catch (Exception ex) {</span>
+<span class="nc" id="L205">            logger.debug(&quot;Problem with searching all customers: &quot; + ex.getMessage());</span>
+<span class="nc" id="L206">        }</span>
+<span class="nc" id="L207">        logger.debug(&quot;All Customers searched&quot;);</span>
+<span class="nc" id="L208">        System.out.println(customersList);</span>
+<span class="nc" id="L209">        return customersList;</span>
+    }
+
+    public boolean addBalance(int customer_id, int money) {
+<span class="nc" id="L213">        boolean status_replenish = false;</span>
+<span class="nc" id="L214">        logger.debug(&quot;Start replenish amount....&quot;);</span>
+<span class="nc" id="L215">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L216">             PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {</span>
+
+<span class="nc" id="L218">            Customer customer = findByID(customer_id);</span>
+<span class="nc" id="L219">            int newBalance = customer.getBalance() + money;</span>
+<span class="nc" id="L220">            pst.setInt(1, newBalance);</span>
+<span class="nc" id="L221">            pst.setInt(2, customer_id);</span>
+
+<span class="nc" id="L223">            int status = pst.executeUpdate();</span>
+<span class="nc" id="L224">            System.out.println(&quot;status ==&gt; &quot; + status);</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">            if (status == 1) {</span>
+<span class="nc" id="L226">                status_replenish = true;</span>
+            }
+<span class="nc bnc" id="L228" title="All 2 branches missed.">            if (status != 1) throw new SQLException();</span>
+<span class="nc" id="L229">            con.close();</span>
+<span class="nc" id="L230">        } catch (SQLException ex) {</span>
+<span class="nc" id="L231">            ex.printStackTrace();</span>
+<span class="nc" id="L232">            logger.debug(&quot;Problem with replenish amount: &quot; + ex.getMessage());</span>
+<span class="nc" id="L233">        }</span>
+
+<span class="nc" id="L235">        logger.debug(&quot;replenished amount&quot;);</span>
+<span class="nc" id="L236">        return status_replenish;</span>
+    }
+
+    public boolean withdrawBalance(int customer_id, int money) {
+<span class="nc" id="L240">        boolean status_replenish = false;</span>
+<span class="nc" id="L241">        logger.debug(&quot;Start replenish amount....&quot;);</span>
+<span class="nc" id="L242">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L243">             PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {</span>
+
+<span class="nc" id="L245">            Customer customer = findByID(customer_id);</span>
+<span class="nc" id="L246">            int newBalance = customer.getBalance() - money;</span>
+<span class="nc" id="L247">            pst.setInt(1, newBalance);</span>
+<span class="nc" id="L248">            pst.setInt(2, customer_id);</span>
+
+<span class="nc" id="L250">            int status = pst.executeUpdate();</span>
+<span class="nc" id="L251">            System.out.println(&quot;status ==&gt; &quot; + status);</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">            if (status == 1) {</span>
+<span class="nc" id="L253">                status_replenish = true;</span>
+            }
+<span class="nc bnc" id="L255" title="All 2 branches missed.">            if (status != 1) throw new SQLException();</span>
+<span class="nc" id="L256">            con.close();</span>
+<span class="nc" id="L257">        } catch (SQLException ex) {</span>
+<span class="nc" id="L258">            ex.printStackTrace();</span>
+<span class="nc" id="L259">            logger.debug(&quot;Problem with replenish amount: &quot; + ex.getMessage());</span>
+<span class="nc" id="L260">        }</span>
+
+<span class="nc" id="L262">        logger.debug(&quot;replenished amount&quot;);</span>
+<span class="nc" id="L263">        return status_replenish;</span>
+    }
+    public void addTariffCustomer(int customersId, int tariffId)  {
+<span class="nc" id="L266">        logger.debug(&quot;Start tariff creating&quot;);</span>
+<span class="nc bnc" id="L267" title="All 2 branches missed.">        if (tariffId == 0) {</span>
+<span class="nc" id="L268">            logger.error(&quot;Illegal Argument!!!&quot;);</span>
+<span class="nc" id="L269">            throw new IllegalArgumentException();</span>
+        }
+<span class="nc" id="L271">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L272">             PreparedStatement pst = con.prepareStatement(ADD_TARIFF_QUERY);) {</span>
+<span class="nc" id="L273">            pst.setInt(1, customersId);</span>
+<span class="nc" id="L274">            pst.setInt(2, tariffId);</span>
+<span class="nc" id="L275">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">            if (status != 1) throw new TariffException(&quot;Created more than one record!!&quot;);</span>
+<span class="nc" id="L277">        } catch ( SQLException | TariffException ex) {</span>
+<span class="nc" id="L278">            logger.debug(&quot;Problem with adding tariff to customer: &quot; + ex.getMessage());</span>
+
+<span class="nc" id="L280">        }</span>
+<span class="nc" id="L281">        logger.debug(&quot;customer payment tariff of service &quot;);</span>
+<span class="nc" id="L282">    }</span>
+    public void deleteTariffCustomer(int customersId, int tariffId)  {
+<span class="nc" id="L284">        logger.debug(&quot;Start tariff delete&quot;);</span>
+<span class="nc bnc" id="L285" title="All 2 branches missed.">        if (tariffId == 0) {</span>
+<span class="nc" id="L286">            logger.error(&quot;Illegal Argument!!!&quot;);</span>
+<span class="nc" id="L287">            throw new IllegalArgumentException();</span>
+        }
+<span class="nc" id="L289">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L290">             PreparedStatement pst = con.prepareStatement(DELETE_TARIFF_OF_CUSTOMER_QUERY);) {</span>
+<span class="nc" id="L291">            pst.setInt(1, customersId);</span>
+<span class="nc" id="L292">            pst.setInt(2, tariffId);</span>
+<span class="nc" id="L293">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L294" title="All 2 branches missed.">            if (status != 1) throw new TariffException(&quot;Created more than one record!!&quot;);</span>
+<span class="nc" id="L295">        } catch ( SQLException | TariffException ex) {</span>
+<span class="nc" id="L296">            logger.debug(&quot;Problem with delete tariff to customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L297">        }</span>
+<span class="nc" id="L298">        logger.debug(&quot; delete tariff of customer &quot;);</span>
+<span class="nc" id="L299">    }</span>
+    public List&lt;Tariff&gt; getAllTariffs(int customer) {
+<span class="nc" id="L301">        logger.debug(&quot;Start  searching all tariffs ...&quot;);</span>
+<span class="nc" id="L302">        List&lt;Tariff&gt; tariffs = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L303">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L304">             PreparedStatement pst = con.prepareStatement(SELECT_ALL_TARIFFS_CUSTOMER);) {</span>
+<span class="nc" id="L305">            pst.setInt(1, customer);</span>
+<span class="nc" id="L306">            ResultSet result = pst.executeQuery();</span>
+<span class="nc bnc" id="L307" title="All 2 branches missed.">            while (result.next()) {</span>
+<span class="nc" id="L308">                int id = result.getInt(&quot;tariff_id&quot;);</span>
+<span class="nc" id="L309">                tariffs.add(tariffDao.findById(id));</span>
+<span class="nc" id="L310">            }</span>
+<span class="nc" id="L311">        } catch (Exception ex) {</span>
+<span class="nc" id="L312">            logger.debug(&quot;Problem with getting all tariffs of customer: &quot; + ex.getMessage());</span>
+<span class="nc" id="L313">        }</span>
+<span class="nc" id="L314">        logger.debug(&quot;All tariffs off customer found&quot;);</span>
+<span class="nc" id="L315">        return tariffs;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

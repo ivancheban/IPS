@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerCreateRequestDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.dto</a> &gt; <span class="el_source">CustomerCreateRequestDto.java</span></div><h1>CustomerCreateRequestDto.java</h1><pre class="source lang-java linenums">package com.dto;
+
+public class CustomerCreateRequestDto {
+    private  int id;
+    private String name;
+    private String surname;
+    private String email;
+    private String phone;
+    private String password;
+    private  String confirm_password;
+
+<span class="nc" id="L12">    public CustomerCreateRequestDto() {</span>
+<span class="nc" id="L13">    }</span>
+
+<span class="nc" id="L15">    public CustomerCreateRequestDto(int id, String name, String surname, String email, String phone, String password, String confirm_password) {</span>
+<span class="nc" id="L16">        this.id = id;</span>
+<span class="nc" id="L17">        this.name = name;</span>
+<span class="nc" id="L18">        this.surname = surname;</span>
+<span class="nc" id="L19">        this.email = email;</span>
+<span class="nc" id="L20">        this.phone = phone;</span>
+<span class="nc" id="L21">        this.password = password;</span>
+<span class="nc" id="L22">        this.confirm_password = confirm_password;</span>
+<span class="nc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public CustomerCreateRequestDto(String name, String surname, String email, String phone, String password, String confirm_password) {</span>
+<span class="nc" id="L26">        this.name = name;</span>
+<span class="nc" id="L27">        this.surname = surname;</span>
+<span class="nc" id="L28">        this.email = email;</span>
+<span class="nc" id="L29">        this.phone = phone;</span>
+<span class="nc" id="L30">        this.password = password;</span>
+<span class="nc" id="L31">        this.confirm_password = confirm_password;</span>
+<span class="nc" id="L32">    }</span>
+
+<span class="nc" id="L34">    public CustomerCreateRequestDto(int id, String name, String surname, String email, String phone) {</span>
+<span class="nc" id="L35">        this.id = id;</span>
+<span class="nc" id="L36">        this.name = name;</span>
+<span class="nc" id="L37">        this.surname = surname;</span>
+<span class="nc" id="L38">        this.email = email;</span>
+<span class="nc" id="L39">        this.phone = phone;</span>
+<span class="nc" id="L40">    }</span>
+
+    public String getName() {
+<span class="nc" id="L43">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L47">        this.name = name;</span>
+<span class="nc" id="L48">    }</span>
+
+    public String getSurname() {
+<span class="nc" id="L51">        return surname;</span>
+    }
+
+    public void setSurname(String surname) {
+<span class="nc" id="L55">        this.surname = surname;</span>
+<span class="nc" id="L56">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L59">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc" id="L63">        this.email = email;</span>
+<span class="nc" id="L64">    }</span>
+
+    public String getPhone() {
+<span class="nc" id="L67">        return phone;</span>
+    }
+
+    public void setPhone(String phone) {
+<span class="nc" id="L71">        this.phone = phone;</span>
+<span class="nc" id="L72">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L75">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L79">        this.password = password;</span>
+<span class="nc" id="L80">    }</span>
+
+    public String getConfirm_password() {
+<span class="nc" id="L83">        return confirm_password;</span>
+    }
+
+    public void setConfirm_password(String confirm_password) {
+<span class="nc" id="L87">        this.confirm_password = confirm_password;</span>
+<span class="nc" id="L88">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

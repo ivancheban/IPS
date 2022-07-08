@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.dao</a> &gt; <span class="el_source">UserDao.java</span></div><h1>UserDao.java</h1><pre class="source lang-java linenums">package com.dao;
+
+import com.dto.UserDto;
+import com.exceptions.UserException;
+import com.model.Role;
+import com.model.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserDao implements Dao&lt;User&gt; {
+    private static final String CREATE_QUERY = &quot;insert into users(id,phone,password,isActive,role,created,updated) values (?,?,?,?,?,?,?)&quot;;
+    private static final String FIND_BY_FIELD_QUERY = &quot;select *  FROM users WHERE phone =? and isActive=true&quot;;
+    private static final String FIND_BY_ID = &quot;select *  FROM users WHERE id =?&quot;;
+    private static final String UPDATE_QUERY = &quot;UPDATE users SET phone=?,password=?,isActive=?,role=? WHERE id=?&quot;;
+    private static final String DELETE_QUERY = &quot;DELETE FROM users WHERE id=?&quot;;
+    private static final String FIND_ALL_QUERY = &quot;select * from users&quot;;
+    private static final String SQL_CALC_FOUND_ROWS = &quot;select SQL_CALC_FOUND_ROWS * from users limit ?, ?&quot;;
+<span class="fc" id="L23">    private static Logger logger = LogManager.getLogger(UserDao.class);</span>
+
+    private int noOfRecords;
+    Connection connection;
+
+<span class="nc" id="L28">    public UserDao(Connection connection) {</span>
+<span class="nc" id="L29">        this.connection = connection;</span>
+<span class="nc" id="L30">    }</span>
+
+<span class="fc" id="L32">    public UserDao() throws SQLException {</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public User create(User user) {
+<span class="fc" id="L37">        logger.debug(&quot;Start user creating&quot;);</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (user == null) {</span>
+<span class="fc" id="L39">            logger.error(&quot;user not found&quot;);</span>
+<span class="fc" id="L40">            throw new UserException(&quot;user is not found&quot;);</span>
+        }
+<span class="fc" id="L42">        try (Connection con = DataSource.getConnection();</span>
+<span class="fc" id="L43">             PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {</span>
+
+<span class="fc" id="L45">            pst.setInt(1, user.getId());</span>
+<span class="fc" id="L46">            pst.setString(2, user.getPhone());</span>
+<span class="fc" id="L47">            pst.setString(3, user.getPassword());</span>
+<span class="fc" id="L48">            pst.setBoolean(4, user.isActive());</span>
+<span class="fc" id="L49">            pst.setString(5, String.valueOf(user.getRole()));</span>
+<span class="fc" id="L50">            pst.setTimestamp(6, user.convertToTimestamp(user.getCreated()));</span>
+<span class="fc" id="L51">            pst.setTimestamp(7, user.convertToTimestamp(user.getUpdated()));</span>
+
+<span class="nc" id="L53">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            if (status != 1) throw new UserException(&quot;Created more than one record!!&quot;);</span>
+
+<span class="fc" id="L56">        } catch (Exception ex) {</span>
+<span class="fc" id="L57">            logger.debug(&quot;Problem with creating user: &quot; + ex.getMessage());</span>
+<span class="nc" id="L58">        }</span>
+<span class="fc" id="L59">        logger.debug(&quot;User created&quot;);</span>
+<span class="fc" id="L60">        return user;</span>
+    }
+
+    @Override
+    public User findByField(String phone) {
+<span class="fc" id="L65">        logger.debug(&quot;Start user searching....&quot;);</span>
+<span class="fc" id="L66">        User user = new User();</span>
+<span class="fc" id="L67">        try (Connection con = DataSource.getConnection();</span>
+<span class="fc" id="L68">             PreparedStatement pst = con.prepareStatement(FIND_BY_FIELD_QUERY);) {</span>
+<span class="fc" id="L69">            pst.setString(1, phone);</span>
+<span class="fc" id="L70">            ResultSet resultSet = pst.executeQuery();</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            while (resultSet.next()) {</span>
+
+<span class="fc" id="L73">                user.setId(resultSet.getInt(&quot;id&quot;));</span>
+<span class="fc" id="L74">                user.setPhone(resultSet.getString(&quot;phone&quot;));</span>
+<span class="fc" id="L75">                user.setPassword(resultSet.getString(&quot;password&quot;));</span>
+<span class="fc" id="L76">                user.setActive(resultSet.getBoolean(&quot;isActive&quot;));</span>
+<span class="fc" id="L77">                user.setRole(Role.valueOf(resultSet.getString(&quot;role&quot;)));</span>
+<span class="fc" id="L78">                LocalDateTime created = resultSet.getTimestamp(&quot;created&quot;).toLocalDateTime();</span>
+<span class="fc" id="L79">                LocalDateTime updated = resultSet.getTimestamp(&quot;updated&quot;).toLocalDateTime();</span>
+<span class="fc" id="L80">            }</span>
+<span class="nc" id="L81">        } catch (SQLException ex) {</span>
+<span class="nc" id="L82">            logger.error(&quot;Problem with searching user &quot;, ex);</span>
+<span class="fc" id="L83">        }</span>
+<span class="fc" id="L84">        logger.debug(&quot;User searched&quot;);</span>
+<span class="fc" id="L85">        return user;</span>
+    }
+    public User findById(int id) {
+<span class="fc" id="L88">        logger.debug(&quot;Start user searching....&quot;);</span>
+<span class="fc" id="L89">        User user = new User();</span>
+<span class="fc" id="L90">        try (Connection con = DataSource.getConnection();</span>
+<span class="fc" id="L91">             PreparedStatement pst = con.prepareStatement(FIND_BY_ID);) {</span>
+<span class="fc" id="L92">            pst.setInt(1, id);</span>
+<span class="fc" id="L93">            ResultSet resultSet = pst.executeQuery();</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            while (resultSet.next()) {</span>
+
+<span class="fc" id="L96">                user.setId(resultSet.getInt(&quot;id&quot;));</span>
+<span class="fc" id="L97">                user.setPhone(resultSet.getString(&quot;phone&quot;));</span>
+<span class="fc" id="L98">                user.setPassword(resultSet.getString(&quot;password&quot;));</span>
+<span class="fc" id="L99">                user.setActive(resultSet.getBoolean(&quot;isActive&quot;));</span>
+<span class="fc" id="L100">                user.setRole(Role.valueOf(resultSet.getString(&quot;role&quot;)));</span>
+<span class="fc" id="L101">                Role role = Role.valueOf(String.valueOf(user.getRole()));</span>
+<span class="fc" id="L102">                LocalDateTime created = resultSet.getTimestamp(&quot;created&quot;).toLocalDateTime();</span>
+<span class="fc" id="L103">                LocalDateTime updated = resultSet.getTimestamp(&quot;updated&quot;).toLocalDateTime();</span>
+<span class="fc" id="L104">            }</span>
+<span class="nc" id="L105">        } catch (SQLException ex) {</span>
+<span class="nc" id="L106">            logger.error(&quot;Problem with searching user &quot;, ex);</span>
+<span class="fc" id="L107">        }</span>
+<span class="fc" id="L108">        logger.debug(&quot;User searched&quot;);</span>
+<span class="fc" id="L109">        return user;</span>
+    }
+
+    @Override
+    public User update(User user) {
+<span class="nc" id="L114">        logger.debug(&quot;Start user updating....&quot;);</span>
+<span class="nc" id="L115">        try (Connection con = DataSource.getConnection();</span>
+<span class="nc" id="L116">             PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {</span>
+
+<span class="nc" id="L118">            pst.setString(1, user.getPhone());</span>
+<span class="nc" id="L119">            pst.setString(2, user.getPassword());</span>
+<span class="nc" id="L120">            pst.setBoolean(3, user.isActive());</span>
+<span class="nc" id="L121">            pst.setString(4, String.valueOf(Role.valueOf(String.valueOf(user.getRole()))));</span>
+<span class="nc" id="L122">            pst.setInt(5, user.getId());</span>
+
+<span class="nc" id="L124">            int status = pst.executeUpdate();</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">            if (status != 1) throw new UserException(&quot;Updated more than one record!!&quot;);</span>
+
+<span class="nc" id="L127">        } catch (Exception ex) {</span>
+<span class="nc" id="L128">            logger.debug(&quot;Problem with updating user: &quot; + ex.getMessage());</span>
+<span class="nc" id="L129">        }</span>
+
+<span class="nc" id="L131">        logger.debug(&quot;User updated&quot;);</span>
+<span class="nc" id="L132">        return user;</span>
+    }
+
+    @Override
+    public boolean delete(int id) {
+
+<span class="fc" id="L138">        boolean statusBoolean = false;</span>
+<span class="fc" id="L139">        logger.debug(&quot;Start user deleting....&quot;);</span>
+
+<span class="fc" id="L141">        try (Connection con = DataSource.getConnection();</span>
+<span class="fc" id="L142">             PreparedStatement pst = con.prepareStatement(DELETE_QUERY);) {</span>
+<span class="fc" id="L143">            pst.setInt(1, id);</span>
+
+<span class="fc" id="L145">            int status = pst.executeUpdate();</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">            if (status == 1) {</span>
+<span class="fc" id="L147">                statusBoolean = true;</span>
+            }
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">            if (status != 1) throw new UserException(&quot;Deleted more than one record!!&quot;);</span>
+<span class="fc" id="L150">            con.close();</span>
+<span class="nc" id="L151">        } catch (Exception ex) {</span>
+<span class="nc" id="L152">            logger.debug(&quot;Problem with deleting user: &quot; + ex.getMessage());</span>
+<span class="fc" id="L153">        }</span>
+
+<span class="fc" id="L155">        logger.debug(&quot;User deleted&quot;);</span>
+<span class="fc" id="L156">        return statusBoolean;</span>
+    }
+
+    @Override
+    public List&lt;User&gt; findAll() {
+<span class="fc" id="L161">        logger.debug(&quot;Start  searching all users....&quot;);</span>
+<span class="fc" id="L162">        List&lt;User&gt; userList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L163">        try (Connection con = DataSource.getConnection();</span>
+<span class="fc" id="L164">             PreparedStatement pst = con.prepareStatement(FIND_ALL_QUERY);) {</span>
+<span class="fc" id="L165">            ResultSet result = pst.executeQuery();</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">            while (result.next()) {</span>
+
+<span class="fc" id="L168">                int id = result.getInt(&quot;id&quot;);</span>
+<span class="fc" id="L169">                String phone = result.getString(&quot;phone&quot;);</span>
+<span class="fc" id="L170">                String password = result.getString(&quot;password&quot;);</span>
+<span class="fc" id="L171">                boolean isActive = result.getBoolean(&quot;isActive&quot;);</span>
+<span class="fc" id="L172">                Role role = Role.valueOf(result.getString(&quot;role&quot;));</span>
+<span class="fc" id="L173">                LocalDateTime created = result.getTimestamp(&quot;created&quot;).toLocalDateTime();</span>
+<span class="fc" id="L174">                LocalDateTime updated = result.getTimestamp(&quot;updated&quot;).toLocalDateTime();</span>
+
+<span class="fc" id="L176">                User user = new User(id, phone, password, isActive, role, created, updated);</span>
+<span class="fc" id="L177">                userList.add(user);</span>
+<span class="fc" id="L178">            }</span>
+<span class="nc" id="L179">        } catch (Exception ex) {</span>
+<span class="nc" id="L180">            logger.debug(&quot;Problem with searching all users: &quot; + ex.getMessage());</span>
+<span class="fc" id="L181">        }</span>
+<span class="fc" id="L182">        logger.debug(&quot;All Users searched&quot;);</span>
+<span class="fc" id="L183">        System.out.println(userList + &quot;userList in DAO&quot;);</span>
+<span class="fc" id="L184">        return userList;</span>
+    }
+
+    public List&lt;User&gt; getAll(int offset, int noOfRecords) {
+
+<span class="nc" id="L189">        Connection con = null;</span>
+<span class="nc" id="L190">        Statement statement = null;</span>
+<span class="nc" id="L191">        PreparedStatement pstmt = null;</span>
+<span class="nc" id="L192">        ResultSet resultSet = null;</span>
+
+        try {
+<span class="nc" id="L195">            con = DataSource.getConnection();</span>
+<span class="nc" id="L196">        } catch (SQLException e) {</span>
+<span class="nc" id="L197">            e.printStackTrace();</span>
+<span class="nc" id="L198">        }</span>
+
+<span class="nc" id="L200">        List&lt;User&gt; usersList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L201">        User user = null;</span>
+        try {
+<span class="nc" id="L203">            pstmt = con.prepareStatement(SQL_CALC_FOUND_ROWS);</span>
+<span class="nc" id="L204">            statement = con.createStatement();</span>
+<span class="nc" id="L205">            pstmt.setInt(1, offset);</span>
+<span class="nc" id="L206">            pstmt.setInt(2, noOfRecords);</span>
+<span class="nc" id="L207">            resultSet = pstmt.executeQuery();</span>
+
+
+<span class="nc bnc" id="L210" title="All 2 branches missed.">            while (resultSet.next()) {</span>
+<span class="nc" id="L211">                int id = resultSet.getInt(&quot;id&quot;);</span>
+<span class="nc" id="L212">                String phone = resultSet.getString(&quot;phone&quot;);</span>
+<span class="nc" id="L213">                String password = resultSet.getString(&quot;password&quot;);</span>
+<span class="nc" id="L214">                boolean isActive = resultSet.getBoolean(&quot;isActive&quot;);</span>
+<span class="nc" id="L215">                Role role = Role.valueOf(resultSet.getString(&quot;role&quot;));</span>
+<span class="nc" id="L216">                LocalDateTime created = resultSet.getTimestamp(&quot;created&quot;).toLocalDateTime();</span>
+<span class="nc" id="L217">                LocalDateTime updated = resultSet.getTimestamp(&quot;updated&quot;).toLocalDateTime();</span>
+
+<span class="nc" id="L219">                user = new User(id, phone, password, isActive, role, created, updated);</span>
+<span class="nc" id="L220">                usersList.add(user);</span>
+<span class="nc" id="L221">            }</span>
+<span class="nc" id="L222">            resultSet = statement.executeQuery(&quot;SELECT FOUND_ROWS()&quot;);</span>
+<span class="nc bnc" id="L223" title="All 2 branches missed.">            if (resultSet.next()) {</span>
+<span class="nc" id="L224">                this.noOfRecords = resultSet.getInt(1);</span>
+            }
+
+<span class="nc" id="L227">        } catch (SQLException e) {</span>
+<span class="nc" id="L228">            e.printStackTrace();</span>
+        } finally {
+            try {
+<span class="nc bnc" id="L231" title="All 2 branches missed.">                if (con != null)</span>
+<span class="nc" id="L232">                    con.close();</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">                if (resultSet != null)</span>
+<span class="nc" id="L234">                    resultSet.close();</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                if (pstmt != null)</span>
+<span class="nc" id="L236">                    pstmt.close();</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">                if (statement != null)</span>
+<span class="nc" id="L238">                    statement.close();</span>
+<span class="nc" id="L239">            } catch (SQLException e) {</span>
+<span class="nc" id="L240">                e.printStackTrace();</span>
+<span class="nc" id="L241">            }</span>
+        }
+<span class="nc" id="L243">        return usersList;</span>
+
+    }
+    public int getNoOfRecords() {
+<span class="nc" id="L247">        return noOfRecords;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

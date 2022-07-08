@@ -13178,3 +13178,59 @@
 19:33:16.502 [http-nio-8080-exec-9] DEBUG - User created
 19:33:16.503 [http-nio-8080-exec-9] DEBUG - Start customer creating
 19:33:16.509 [http-nio-8080-exec-9] DEBUG - Customer created
+19:36:07.778 [main] DEBUG - Start user creating
+19:36:07.947 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+19:36:07.947 [main] DEBUG - User created
+19:36:07.966 [main] DEBUG - Start  searching all users....
+19:36:08.005 [main] DEBUG - All Users searched
+19:36:08.021 [main] DEBUG - Start user creating
+19:36:08.023 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+19:36:08.023 [main] DEBUG - User created
+19:36:08.025 [main] DEBUG - Start user creating
+19:36:08.025 [main] ERROR - user not found
+19:36:08.030 [main] DEBUG - Start user creating
+19:36:08.030 [main] ERROR - user not found
+19:36:08.033 [main] DEBUG - Start user searching....
+19:36:08.036 [main] DEBUG - User searched
+19:36:08.036 [main] DEBUG - Start user searching....
+19:36:08.041 [main] DEBUG - User searched
+19:36:08.044 [main] DEBUG - Start user searching....
+19:36:08.046 [main] DEBUG - User searched
+19:36:08.050 [main] DEBUG - Start user creating
+19:36:08.054 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+19:36:08.054 [main] DEBUG - User created
+19:36:33.335 [main] DEBUG - Start  searching all users....
+19:36:34.474 [main] DEBUG - All Users searched
+19:36:54.702 [main] DEBUG - Start  searching all users....
+19:36:54.830 [main] DEBUG - All Users searched
+19:50:01.378 [main] DEBUG - Start user searching....
+19:50:02.099 [main] DEBUG - User searched
+19:51:05.293 [main] DEBUG - Start user searching....
+19:51:05.386 [main] DEBUG - User searched
+19:56:08.025 [main] DEBUG - Start user creating
+19:56:08.156 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+19:56:08.156 [main] DEBUG - User created
+19:56:08.177 [main] DEBUG - Start  searching all users....
+19:56:08.209 [main] DEBUG - All Users searched
+19:56:08.224 [main] DEBUG - Start user creating
+19:56:08.232 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+19:56:08.232 [main] DEBUG - User created
+19:56:08.232 [main] DEBUG - Start user creating
+19:56:08.232 [main] ERROR - user not found
+19:56:08.238 [main] DEBUG - Start user searching....
+19:56:08.243 [main] DEBUG - User searched
+19:56:08.245 [main] DEBUG - Start user creating
+19:56:08.245 [main] ERROR - user not found
+19:56:08.246 [main] DEBUG - Start user deleting....
+19:56:08.252 [main] DEBUG - User deleted
+19:56:08.255 [main] DEBUG - Start user searching....
+19:56:08.257 [main] DEBUG - User searched
+19:56:08.259 [main] DEBUG - Start user searching....
+19:56:08.261 [main] DEBUG - User searched
+19:56:08.261 [main] DEBUG - Start user searching....
+19:56:08.265 [main] DEBUG - User searched
+19:56:08.267 [main] DEBUG - Start user searching....
+19:56:08.268 [main] DEBUG - User searched
+19:56:08.271 [main] DEBUG - Start user creating
+19:56:08.274 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+19:56:08.274 [main] DEBUG - User created

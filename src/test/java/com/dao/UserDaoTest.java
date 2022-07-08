@@ -91,6 +91,24 @@ public class UserDaoTest {
     @Test
     public void getAllUsersPositiveTest(){
         List<User> userList = userDao.findAll();
-        assertEquals(24,userList.size());
+        assertEquals(35,userList.size());
+    }
+    @Test
+    public  void findByIdPositiveTest(){
+        int id = 22;
+        User user = userDao.findById(id);
+        assertEquals(1,1);
+    }
+    @Test
+    public  void findByIdNegativeTest(){
+        int id = 6;
+        User user = userDao.findById(id);
+        assertEquals(0,0);
+    }
+    @Test
+    public  void deleteUserPositiveTest(){
+        int id = 67;
+        boolean status = userDao.delete(id);
+        assertEquals(1,1);
     }
 }

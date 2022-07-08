@@ -65,10 +65,16 @@
                     </div>
             </ul>
         </li>
+
+                <c:if test="${sessionScope.get('registrationMessage') !=null}">
+
+                        <fmt:message key="label.success.registr"/>
+                </c:if>
         <div>
             <a href="registration.jsp" class="btn btn-success"><fmt:message key="index.button.signUP"/></a>
             <a href="/login.jsp" class="btn btn-dark"><fmt:message key="index.button.login"/></a>
         </div>
+    </div>
     </div>
 </nav>
 

@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
 
 
     private void validatePhoneNumberFormat(String phoneNumber) {
-        Pattern pattern = Pattern.compile("^\\+?(38)?(\\d{10,11})$");
+        Pattern pattern = Pattern.compile("^((\\+?3)?8)?0\\d{9}$");
         Matcher matcher = pattern.matcher(phoneNumber);
         if (userDao.findByField(phoneNumber).equals(phoneNumber)) {
             throw new RuntimeException("It looks like this phone has already been registered");
@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
         }
     }
     private void validFormatName(String name) {
-        Pattern pattern = Pattern.compile("^[а-яА-ЯёЁa-zA-Z0-9]+$");
+        Pattern pattern = Pattern.compile("^[а-яА-ЯёЁa-zA-Z2-9]+$");
         Matcher matcher = pattern.matcher(name);
 
         if (!matcher.matches()) {
@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 
     }
     private void validFormatSurName(String surname) {
-        Pattern pattern = Pattern.compile( "^[а-яА-ЯёЁa-zA-Z0-9]+$");
+        Pattern pattern = Pattern.compile( "^[а-яА-ЯёЁa-zA-Z2-9]+$");
         Matcher matcher = pattern.matcher(surname);
 
         if (!matcher.matches()) {

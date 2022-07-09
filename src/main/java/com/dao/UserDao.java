@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements Dao<User> {
-    private static final String CREATE_QUERY = "insert into users(id,phone,password,isActive,role,created,updated) values (?,?,?,?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into users(phone,password,isActive,role,created,updated) values (?,?,?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select *  FROM users WHERE phone =? and isActive=true";
     private static final String FIND_BY_ID = "select *  FROM users WHERE id =?";
     private static final String UPDATE_QUERY = "UPDATE users SET phone=?,password=?,isActive=?,role=? WHERE id=?";
@@ -41,14 +41,12 @@ public class UserDao implements Dao<User> {
         }
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
-
-            pst.setInt(1, user.getId());
-            pst.setString(2, user.getPhone());
-            pst.setString(3, user.getPassword());
-            pst.setBoolean(4, user.isActive());
-            pst.setString(5, String.valueOf(user.getRole()));
-            pst.setTimestamp(6, user.convertToTimestamp(user.getCreated()));
-            pst.setTimestamp(7, user.convertToTimestamp(user.getUpdated()));
+            pst.setString(1, user.getPhone());
+            pst.setString(2, user.getPassword());
+            pst.setBoolean(3, user.isActive());
+            pst.setString(4, String.valueOf(user.getRole()));
+            pst.setTimestamp(5, user.convertToTimestamp(user.getCreated()));
+            pst.setTimestamp(6, user.convertToTimestamp(user.getUpdated()));
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Created more than one record!!");

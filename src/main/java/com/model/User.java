@@ -21,7 +21,16 @@ public class User  {
         this.password = password;
     }
 
-    public User(int id, String phone, String password, boolean isActive,Role role, LocalDateTime created, LocalDateTime updated) {
+    public User(String phone, String password, boolean isActive, Role role) {
+        this.phone = phone;
+        this.password = password;
+        this.isActive = isActive;
+        this.role = role;
+
+    }
+
+
+    public User(int id, String phone, String password, boolean isActive, Role role, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.phone = phone;
         this.password = password;

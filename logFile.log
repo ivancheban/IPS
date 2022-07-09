@@ -13234,3 +13234,1132 @@
 19:56:08.271 [main] DEBUG - Start user creating
 19:56:08.274 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
 19:56:08.274 [main] DEBUG - User created
+10:00:13.018 [main] DEBUG - Start user creating
+10:00:13.200 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+10:00:13.200 [main] DEBUG - User created
+10:00:13.225 [main] DEBUG - Start  searching all users....
+10:00:13.261 [main] DEBUG - All Users searched
+10:00:13.277 [main] DEBUG - Start user creating
+10:00:13.279 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+10:00:13.279 [main] DEBUG - User created
+10:00:13.280 [main] DEBUG - Start user creating
+10:00:13.280 [main] ERROR - user not found
+10:00:13.285 [main] DEBUG - Start user searching....
+10:00:13.292 [main] DEBUG - User searched
+10:00:13.295 [main] DEBUG - Start user creating
+10:00:13.295 [main] ERROR - user not found
+10:00:13.298 [main] DEBUG - Start user deleting....
+10:00:13.306 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+10:00:13.306 [main] DEBUG - User deleted
+10:00:13.339 [main] DEBUG - Start user searching....
+10:00:13.342 [main] DEBUG - User searched
+10:00:13.349 [main] DEBUG - Start user searching....
+10:00:13.351 [main] DEBUG - User searched
+10:00:13.351 [main] DEBUG - Start user searching....
+10:00:13.353 [main] DEBUG - User searched
+10:00:13.372 [main] DEBUG - Start user searching....
+10:00:13.373 [main] DEBUG - User searched
+10:00:13.379 [main] DEBUG - Start user creating
+10:00:13.393 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+10:00:13.394 [main] DEBUG - User created
+10:03:24.545 [main] DEBUG - Start  searching all users....
+10:03:24.639 [main] DEBUG - All Users searched
+10:03:42.446 [main] DEBUG - Start  searching all users....
+10:03:42.567 [main] DEBUG - All Users searched
+10:07:37.034 [main] DEBUG - Start user creating
+10:07:37.136 [main] DEBUG - User created
+10:07:37.136 [main] DEBUG - Start  searching all users....
+10:07:37.175 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+10:07:37.175 [main] DEBUG - All Users searched
+10:07:37.176 [main] DEBUG - Start user deleting....
+10:07:37.180 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+10:07:37.181 [main] DEBUG - User deleted
+10:07:37.181 [main] DEBUG - Start  searching all users....
+10:07:37.198 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+10:07:37.198 [main] DEBUG - All Users searched
+10:09:01.114 [main] DEBUG - Start user creating
+10:09:01.201 [main] DEBUG - User created
+10:09:01.201 [main] DEBUG - Start  searching all users....
+10:09:01.255 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+10:09:01.255 [main] DEBUG - All Users searched
+10:09:01.256 [main] DEBUG - Start user deleting....
+10:09:01.258 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+10:09:01.258 [main] DEBUG - User deleted
+10:09:01.258 [main] DEBUG - Start  searching all users....
+10:09:01.266 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+10:09:01.266 [main] DEBUG - All Users searched
+10:10:53.427 [main] DEBUG - Start user creating
+10:10:53.561 [main] DEBUG - User created
+10:10:53.561 [main] DEBUG - Start  searching all users....
+10:10:53.592 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+10:10:53.593 [main] DEBUG - All Users searched
+10:10:53.593 [main] DEBUG - Start user deleting....
+10:10:53.596 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+10:10:53.596 [main] DEBUG - User deleted
+10:10:53.596 [main] DEBUG - Start  searching all users....
+10:10:53.606 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+10:10:53.606 [main] DEBUG - All Users searched
+12:20:07.161 [main] DEBUG - Start user creating
+12:20:07.276 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+12:20:07.277 [main] DEBUG - User created
+12:20:07.283 [main] DEBUG - Start user searching....
+12:20:07.309 [main] DEBUG - User searched
+12:20:07.310 [main] DEBUG - Start user deleting....
+12:20:07.314 [main] DEBUG - User deleted
+12:20:07.332 [main] DEBUG - Start  searching all users....
+12:20:07.347 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:20:07.348 [main] DEBUG - All Users searched
+12:20:07.372 [main] DEBUG - Start user creating
+12:20:07.381 [main] DEBUG - Problem with creating user: Duplicate entry '+380664179245' for key 'users.phone'
+12:20:07.381 [main] DEBUG - User created
+12:20:07.381 [main] DEBUG - Start  searching all users....
+12:20:07.396 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:20:07.397 [main] DEBUG - All Users searched
+12:20:07.402 [main] DEBUG - Start user deleting....
+12:20:07.405 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:20:07.405 [main] DEBUG - User deleted
+12:20:07.405 [main] DEBUG - Start  searching all users....
+12:20:07.412 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:20:07.412 [main] DEBUG - All Users searched
+12:20:07.430 [main] DEBUG - Start user creating
+12:20:07.432 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+12:20:07.432 [main] DEBUG - User created
+12:20:07.435 [main] DEBUG - Start user creating
+12:20:07.435 [main] ERROR - user not found
+12:20:07.438 [main] DEBUG - Start user searching....
+12:20:07.441 [main] DEBUG - User searched
+12:20:07.445 [main] DEBUG - Start user creating
+12:20:07.445 [main] ERROR - user not found
+12:20:07.454 [main] DEBUG - Start user deleting....
+12:20:07.458 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:20:07.458 [main] DEBUG - User deleted
+12:20:07.462 [main] DEBUG - Start user searching....
+12:20:07.464 [main] DEBUG - User searched
+12:20:07.470 [main] DEBUG - Start user searching....
+12:20:07.473 [main] DEBUG - User searched
+12:20:07.473 [main] DEBUG - Start user searching....
+12:20:07.475 [main] DEBUG - User searched
+12:20:07.481 [main] DEBUG - Start user searching....
+12:20:07.483 [main] DEBUG - User searched
+12:20:07.488 [main] DEBUG - Start user creating
+12:20:07.492 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+12:20:07.492 [main] DEBUG - User created
+12:20:49.335 [main] DEBUG - Start user creating
+12:20:49.446 [main] DEBUG - User created
+12:20:59.177 [main] DEBUG - Start user creating
+12:20:59.338 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+12:20:59.338 [main] DEBUG - User created
+12:20:59.363 [main] DEBUG - Start  searching all users....
+12:20:59.392 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:20:59.392 [main] DEBUG - All Users searched
+12:20:59.397 [main] DEBUG - Start user creating
+12:20:59.401 [main] DEBUG - Problem with creating user: Duplicate entry '+380664179245' for key 'users.phone'
+12:20:59.401 [main] DEBUG - User created
+12:20:59.401 [main] DEBUG - Start  searching all users....
+12:20:59.411 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:20:59.411 [main] DEBUG - All Users searched
+12:20:59.412 [main] DEBUG - Start user deleting....
+12:20:59.413 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:20:59.413 [main] DEBUG - User deleted
+12:20:59.413 [main] DEBUG - Start  searching all users....
+12:20:59.425 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:20:59.425 [main] DEBUG - All Users searched
+12:20:59.457 [main] DEBUG - Start user creating
+12:20:59.459 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+12:20:59.459 [main] DEBUG - User created
+12:20:59.461 [main] DEBUG - Start user creating
+12:20:59.461 [main] ERROR - user not found
+12:20:59.465 [main] DEBUG - Start user searching....
+12:20:59.467 [main] DEBUG - User searched
+12:20:59.472 [main] DEBUG - Start user creating
+12:20:59.472 [main] ERROR - user not found
+12:20:59.479 [main] DEBUG - Start user deleting....
+12:20:59.482 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:20:59.482 [main] DEBUG - User deleted
+12:20:59.485 [main] DEBUG - Start user searching....
+12:20:59.489 [main] DEBUG - User searched
+12:20:59.496 [main] DEBUG - Start user searching....
+12:20:59.499 [main] DEBUG - User searched
+12:20:59.499 [main] DEBUG - Start user searching....
+12:20:59.503 [main] DEBUG - User searched
+12:20:59.509 [main] DEBUG - Start user searching....
+12:20:59.538 [main] DEBUG - User searched
+12:20:59.543 [main] DEBUG - Start user creating
+12:20:59.559 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+12:20:59.559 [main] DEBUG - User created
+12:21:12.007 [main] DEBUG - Start user creating
+12:21:12.127 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+12:21:12.127 [main] DEBUG - User created
+12:21:12.145 [main] DEBUG - Start  searching all users....
+12:21:12.171 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:21:12.171 [main] DEBUG - All Users searched
+12:21:12.176 [main] DEBUG - Start user creating
+12:21:12.185 [main] DEBUG - Problem with creating user: Duplicate entry '+380664179245' for key 'users.phone'
+12:21:12.185 [main] DEBUG - User created
+12:21:12.185 [main] DEBUG - Start  searching all users....
+12:21:12.186 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:21:12.186 [main] DEBUG - All Users searched
+12:21:12.186 [main] DEBUG - Start user deleting....
+12:21:12.197 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:21:12.197 [main] DEBUG - User deleted
+12:21:12.198 [main] DEBUG - Start  searching all users....
+12:21:12.203 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:21:12.206 [main] DEBUG - All Users searched
+12:21:12.219 [main] DEBUG - Start user creating
+12:21:12.221 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+12:21:12.221 [main] DEBUG - User created
+12:21:12.222 [main] DEBUG - Start user creating
+12:21:12.222 [main] ERROR - user not found
+12:21:12.224 [main] DEBUG - Start user searching....
+12:21:12.228 [main] DEBUG - User searched
+12:21:12.233 [main] DEBUG - Start user creating
+12:21:12.233 [main] ERROR - user not found
+12:21:12.235 [main] DEBUG - Start user deleting....
+12:21:12.240 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:21:12.240 [main] DEBUG - User deleted
+12:21:12.243 [main] DEBUG - Start user searching....
+12:21:12.244 [main] DEBUG - User searched
+12:21:12.247 [main] DEBUG - Start user searching....
+12:21:12.249 [main] DEBUG - User searched
+12:21:12.249 [main] DEBUG - Start user searching....
+12:21:12.253 [main] DEBUG - User searched
+12:21:12.255 [main] DEBUG - Start user searching....
+12:21:12.257 [main] DEBUG - User searched
+12:21:12.259 [main] DEBUG - Start user creating
+12:21:12.262 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+12:21:12.262 [main] DEBUG - User created
+12:22:51.107 [main] DEBUG - Start  searching all users....
+12:22:51.201 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:22:51.201 [main] DEBUG - All Users searched
+12:22:51.201 [main] DEBUG - Start user deleting....
+12:22:51.203 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:22:51.203 [main] DEBUG - User deleted
+12:22:51.203 [main] DEBUG - Start  searching all users....
+12:22:51.211 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:22:51.211 [main] DEBUG - All Users searched
+12:23:39.918 [main] DEBUG - Start  searching all users....
+12:23:40.001 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:23:40.001 [main] DEBUG - All Users searched
+12:23:40.001 [main] DEBUG - Start user deleting....
+12:23:40.011 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:23:40.011 [main] DEBUG - User deleted
+12:23:40.011 [main] DEBUG - Start  searching all users....
+12:23:40.014 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:23:40.014 [main] DEBUG - All Users searched
+12:24:13.816 [main] DEBUG - Start  searching all users....
+12:24:13.933 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:24:13.934 [main] DEBUG - All Users searched
+12:24:13.935 [main] DEBUG - Start user deleting....
+12:24:13.937 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:24:13.937 [main] DEBUG - User deleted
+12:24:13.937 [main] DEBUG - Start  searching all users....
+12:24:13.950 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:24:13.950 [main] DEBUG - All Users searched
+12:41:09.214 [main] DEBUG - Start  searching all users....
+12:41:09.308 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:41:09.308 [main] DEBUG - All Users searched
+12:41:09.308 [main] DEBUG - Start user deleting....
+12:41:09.308 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+12:41:09.308 [main] DEBUG - User deleted
+12:41:09.308 [main] DEBUG - Start  searching all users....
+12:41:09.323 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+12:41:09.323 [main] DEBUG - All Users searched
+15:02:49.008 [main] DEBUG - Start  searching all users....
+15:02:49.126 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:02:49.127 [main] DEBUG - All Users searched
+15:02:49.127 [main] DEBUG - Start user deleting....
+15:02:49.130 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+15:02:49.131 [main] DEBUG - User deleted
+15:02:49.131 [main] DEBUG - Start  searching all users....
+15:02:49.146 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:02:49.147 [main] DEBUG - All Users searched
+15:23:00.228 [main] DEBUG - Start user searching....
+15:23:00.711 [main] DEBUG - User searched
+15:23:00.712 [main] DEBUG - Start user updating....
+15:23:00.720 [main] DEBUG - User updated
+15:23:00.720 [main] DEBUG - Start user searching....
+15:23:00.721 [main] DEBUG - User searched
+15:23:32.593 [main] DEBUG - Start user searching....
+15:23:32.678 [main] DEBUG - User searched
+15:23:32.678 [main] DEBUG - Start user updating....
+15:23:32.678 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:23:32.678 [main] DEBUG - User updated
+15:23:32.678 [main] DEBUG - Start user searching....
+15:23:32.687 [main] DEBUG - User searched
+15:26:05.857 [main] DEBUG - Start user searching....
+15:26:05.950 [main] DEBUG - User searched
+15:26:05.950 [main] DEBUG - Start user searching....
+15:26:05.950 [main] DEBUG - User searched
+15:26:05.950 [main] DEBUG - Start user updating....
+15:26:05.953 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:26:05.954 [main] DEBUG - User updated
+15:26:05.954 [main] DEBUG - Start user searching....
+15:26:05.957 [main] DEBUG - User searched
+15:32:00.550 [main] DEBUG - Start user searching....
+15:32:00.684 [main] DEBUG - User searched
+15:32:00.685 [main] DEBUG - Start user updating....
+15:32:00.687 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:32:00.688 [main] DEBUG - User updated
+15:32:00.688 [main] DEBUG - Start user searching....
+15:32:00.691 [main] DEBUG - User searched
+15:33:37.452 [main] DEBUG - Start user searching....
+15:33:37.538 [main] DEBUG - User searched
+15:33:37.538 [main] DEBUG - Start user updating....
+15:33:37.542 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:33:37.542 [main] DEBUG - User updated
+15:33:37.542 [main] DEBUG - Start user searching....
+15:33:37.545 [main] DEBUG - User searched
+15:35:55.505 [main] DEBUG - Start user searching....
+15:35:55.601 [main] DEBUG - User searched
+15:35:55.601 [main] DEBUG - Start user updating....
+15:35:55.602 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:35:55.602 [main] DEBUG - User updated
+15:35:55.602 [main] DEBUG - Start user searching....
+15:35:55.603 [main] DEBUG - User searched
+15:36:17.573 [main] DEBUG - Start user searching....
+15:36:17.666 [main] DEBUG - User searched
+15:36:17.666 [main] DEBUG - Start user updating....
+15:36:17.666 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:36:17.666 [main] DEBUG - User updated
+15:36:17.666 [main] DEBUG - Start user searching....
+15:36:17.670 [main] DEBUG - User searched
+15:36:57.397 [main] DEBUG - Start user searching....
+15:36:58.291 [main] DEBUG - User searched
+15:36:58.296 [main] DEBUG - Start user updating....
+15:36:58.296 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:36:58.296 [main] DEBUG - User updated
+15:36:58.296 [main] DEBUG - Start user searching....
+15:36:58.313 [main] DEBUG - User searched
+15:38:03.800 [main] DEBUG - Start user searching....
+15:38:03.869 [main] DEBUG - User searched
+15:38:03.869 [main] DEBUG - Start user updating....
+15:38:03.869 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:38:03.869 [main] DEBUG - User updated
+15:38:03.869 [main] DEBUG - Start user searching....
+15:38:03.875 [main] DEBUG - User searched
+15:38:55.887 [main] DEBUG - Start user deleting....
+15:38:55.955 [main] DEBUG - User deleted
+15:43:57.791 [main] DEBUG - Start user searching....
+15:43:57.868 [main] DEBUG - User searched
+15:43:57.868 [main] DEBUG - Start user updating....
+15:43:57.871 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:43:57.871 [main] DEBUG - User updated
+15:43:57.871 [main] DEBUG - Start user searching....
+15:43:57.872 [main] DEBUG - User searched
+15:45:40.469 [main] DEBUG - Start user creating
+15:45:40.599 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+15:45:40.599 [main] DEBUG - User created
+15:45:40.615 [main] DEBUG - Start  searching all users....
+15:45:40.649 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:45:40.649 [main] DEBUG - All Users searched
+15:45:40.654 [main] DEBUG - Start user creating
+15:45:40.657 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+15:45:40.657 [main] DEBUG - User created
+15:45:40.659 [main] DEBUG - Start user creating
+15:45:40.659 [main] ERROR - user not found
+15:45:40.663 [main] DEBUG - Start user searching....
+15:45:40.664 [main] DEBUG - User searched
+15:45:40.668 [main] DEBUG - Start user creating
+15:45:40.669 [main] ERROR - user not found
+15:45:40.671 [main] DEBUG - Start user deleting....
+15:45:40.672 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+15:45:40.673 [main] DEBUG - User deleted
+15:45:40.674 [main] DEBUG - Start user searching....
+15:45:40.676 [main] DEBUG - User searched
+15:45:40.679 [main] DEBUG - Start user searching....
+15:45:40.681 [main] DEBUG - User searched
+15:45:40.682 [main] DEBUG - Start user updating....
+15:45:40.684 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:45:40.684 [main] DEBUG - User updated
+15:45:40.684 [main] DEBUG - Start user searching....
+15:45:40.685 [main] DEBUG - User searched
+15:45:40.698 [main] DEBUG - Start  searching all users....
+15:45:40.708 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:45:40.708 [main] DEBUG - All Users searched
+15:45:40.709 [main] DEBUG - Start user deleting....
+15:45:40.709 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+15:45:40.710 [main] DEBUG - User deleted
+15:45:40.712 [main] DEBUG - Start user searching....
+15:45:40.714 [main] DEBUG - User searched
+15:45:40.714 [main] DEBUG - Start user searching....
+15:45:40.716 [main] DEBUG - User searched
+15:45:40.718 [main] DEBUG - Start user searching....
+15:45:40.721 [main] DEBUG - User searched
+15:45:40.722 [main] DEBUG - Start user creating
+15:45:40.733 [main] DEBUG - User created
+15:46:16.266 [main] DEBUG - Start  searching all users....
+15:46:17.171 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:46:17.171 [main] DEBUG - All Users searched
+15:48:21.626 [main] DEBUG - Start user searching....
+15:48:21.717 [main] DEBUG - User searched
+15:48:21.717 [main] DEBUG - Start user updating....
+15:48:21.727 [main] DEBUG - User updated
+15:48:21.727 [main] DEBUG - Start user searching....
+15:48:21.729 [main] DEBUG - User searched
+15:51:34.936 [main] DEBUG - Start user searching....
+15:51:35.030 [main] DEBUG - User searched
+15:51:35.031 [main] DEBUG - Start user updating....
+15:51:35.032 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:51:35.033 [main] DEBUG - User updated
+15:51:35.033 [main] DEBUG - Start user searching....
+15:51:35.036 [main] DEBUG - User searched
+15:54:14.301 [main] DEBUG - Start user creating
+15:54:14.416 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+15:54:14.416 [main] DEBUG - User created
+15:54:14.438 [main] DEBUG - Start  searching all users....
+15:54:14.470 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:54:14.470 [main] DEBUG - All Users searched
+15:54:14.475 [main] DEBUG - Start user creating
+15:54:14.477 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+15:54:14.477 [main] DEBUG - User created
+15:54:14.480 [main] DEBUG - Start user creating
+15:54:14.480 [main] ERROR - user not found
+15:54:14.484 [main] DEBUG - Start user searching....
+15:54:14.485 [main] DEBUG - User searched
+15:54:14.489 [main] DEBUG - Start user creating
+15:54:14.489 [main] ERROR - user not found
+15:54:14.492 [main] DEBUG - Start user deleting....
+15:54:14.493 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+15:54:14.494 [main] DEBUG - User deleted
+15:54:14.497 [main] DEBUG - Start user searching....
+15:54:14.498 [main] DEBUG - User searched
+15:54:14.502 [main] DEBUG - Start user searching....
+15:54:14.503 [main] DEBUG - User searched
+15:54:14.504 [main] DEBUG - Start user updating....
+15:54:14.505 [main] DEBUG - Problem with updating user: Updated more than one record!!
+15:54:14.505 [main] DEBUG - User updated
+15:54:14.505 [main] DEBUG - Start user searching....
+15:54:14.507 [main] DEBUG - User searched
+15:54:14.518 [main] DEBUG - Start  searching all users....
+15:54:14.528 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+15:54:14.528 [main] DEBUG - All Users searched
+15:54:14.528 [main] DEBUG - Start user deleting....
+15:54:14.529 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+15:54:14.529 [main] DEBUG - User deleted
+15:54:14.534 [main] DEBUG - Start user searching....
+15:54:14.535 [main] DEBUG - User searched
+15:54:14.535 [main] DEBUG - Start user updating....
+15:54:14.536 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+15:54:14.536 [main] DEBUG - User updated
+15:54:14.536 [main] DEBUG - Start user searching....
+15:54:14.537 [main] DEBUG - User searched
+15:54:14.539 [main] DEBUG - Start user searching....
+15:54:14.541 [main] DEBUG - User searched
+15:54:14.541 [main] DEBUG - Start user searching....
+15:54:14.543 [main] DEBUG - User searched
+15:54:14.546 [main] DEBUG - Start user searching....
+15:54:14.547 [main] DEBUG - User searched
+15:54:14.550 [main] DEBUG - Start user creating
+15:54:14.554 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+15:54:14.554 [main] DEBUG - User created
+15:58:25.422 [main] DEBUG - Start user searching....
+15:58:25.519 [main] DEBUG - User searched
+15:58:25.520 [main] DEBUG - Start user updating....
+15:58:25.522 [main] DEBUG - Problem with updating user: Updated more than one record!!
+15:58:25.522 [main] DEBUG - User updated
+15:58:25.522 [main] DEBUG - Start user searching....
+15:58:25.526 [main] DEBUG - User searched
+16:02:35.301 [main] DEBUG - Start user creating
+16:02:35.411 [main] DEBUG - User created
+16:02:35.411 [main] DEBUG - Start user searching....
+16:02:35.435 [main] DEBUG - User searched
+16:02:35.436 [main] DEBUG - Start user updating....
+16:02:35.437 [main] DEBUG - Problem with updating user: Updated more than one record!!
+16:02:35.437 [main] DEBUG - User updated
+16:02:35.437 [main] DEBUG - Start user searching....
+16:02:35.439 [main] DEBUG - User searched
+16:02:35.443 [main] DEBUG - Start user deleting....
+16:02:35.445 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:02:35.445 [main] DEBUG - User deleted
+16:02:48.129 [main] DEBUG - Start user creating
+16:02:48.239 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+16:02:48.239 [main] DEBUG - User created
+16:02:48.270 [main] DEBUG - Start  searching all users....
+16:02:48.302 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+16:02:48.302 [main] DEBUG - All Users searched
+16:02:48.307 [main] DEBUG - Start user creating
+16:02:48.309 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+16:02:48.310 [main] DEBUG - User created
+16:02:48.312 [main] DEBUG - Start user creating
+16:02:48.312 [main] ERROR - user not found
+16:02:48.315 [main] DEBUG - Start user searching....
+16:02:48.318 [main] DEBUG - User searched
+16:02:48.322 [main] DEBUG - Start user creating
+16:02:48.322 [main] ERROR - user not found
+16:02:48.327 [main] DEBUG - Start user deleting....
+16:02:48.329 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:02:48.329 [main] DEBUG - User deleted
+16:02:48.332 [main] DEBUG - Start user searching....
+16:02:48.334 [main] DEBUG - User searched
+16:02:48.337 [main] DEBUG - Start user creating
+16:02:48.340 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+16:02:48.340 [main] DEBUG - User created
+16:02:48.341 [main] DEBUG - Start user searching....
+16:02:48.342 [main] DEBUG - User searched
+16:02:48.342 [main] DEBUG - Start user updating....
+16:02:48.344 [main] DEBUG - Problem with updating user: Updated more than one record!!
+16:02:48.344 [main] DEBUG - User updated
+16:02:48.345 [main] DEBUG - Start user searching....
+16:02:48.346 [main] DEBUG - User searched
+16:02:48.346 [main] DEBUG - Start user deleting....
+16:02:48.348 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:02:48.348 [main] DEBUG - User deleted
+16:02:48.350 [main] DEBUG - Start  searching all users....
+16:02:48.362 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+16:02:48.362 [main] DEBUG - All Users searched
+16:02:48.362 [main] DEBUG - Start user deleting....
+16:02:48.363 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:02:48.364 [main] DEBUG - User deleted
+16:02:48.366 [main] DEBUG - Start user searching....
+16:02:48.370 [main] DEBUG - User searched
+16:02:48.370 [main] DEBUG - Start user updating....
+16:02:48.370 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+16:02:48.370 [main] DEBUG - User updated
+16:02:48.370 [main] DEBUG - Start user searching....
+16:02:48.373 [main] DEBUG - User searched
+16:02:48.377 [main] DEBUG - Start user searching....
+16:02:48.378 [main] DEBUG - User searched
+16:02:48.379 [main] DEBUG - Start user searching....
+16:02:48.382 [main] DEBUG - User searched
+16:02:48.390 [main] DEBUG - Start user searching....
+16:02:48.396 [main] DEBUG - User searched
+16:02:48.398 [main] DEBUG - Start user creating
+16:02:48.402 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+16:02:48.402 [main] DEBUG - User created
+16:03:44.452 [main] DEBUG - Start user creating
+16:03:44.621 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+16:03:44.621 [main] DEBUG - User created
+16:03:44.651 [main] DEBUG - Start  searching all users....
+16:03:44.704 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+16:03:44.704 [main] DEBUG - All Users searched
+16:03:44.710 [main] DEBUG - Start user creating
+16:03:44.711 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+16:03:44.713 [main] DEBUG - User created
+16:03:44.714 [main] DEBUG - Start user creating
+16:03:44.714 [main] ERROR - user not found
+16:03:44.719 [main] DEBUG - Start user searching....
+16:03:44.721 [main] DEBUG - User searched
+16:03:44.725 [main] DEBUG - Start user creating
+16:03:44.725 [main] ERROR - user not found
+16:03:44.727 [main] DEBUG - Start user deleting....
+16:03:44.728 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:03:44.728 [main] DEBUG - User deleted
+16:03:44.731 [main] DEBUG - Start user searching....
+16:03:44.734 [main] DEBUG - User searched
+16:03:44.735 [main] DEBUG - Start user creating
+16:03:44.741 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+16:03:44.741 [main] DEBUG - User created
+16:03:44.741 [main] DEBUG - Start user searching....
+16:03:44.741 [main] DEBUG - User searched
+16:03:44.741 [main] DEBUG - Start user updating....
+16:03:44.741 [main] DEBUG - Problem with updating user: Updated more than one record!!
+16:03:44.741 [main] DEBUG - User updated
+16:03:44.741 [main] DEBUG - Start user searching....
+16:03:44.741 [main] DEBUG - User searched
+16:03:44.741 [main] DEBUG - Start user deleting....
+16:03:44.741 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:03:44.741 [main] DEBUG - User deleted
+16:03:44.751 [main] DEBUG - Start  searching all users....
+16:03:44.762 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+16:03:44.763 [main] DEBUG - All Users searched
+16:03:44.763 [main] DEBUG - Start user deleting....
+16:03:44.763 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:03:44.763 [main] DEBUG - User deleted
+16:03:44.763 [main] DEBUG - Start user searching....
+16:03:44.763 [main] DEBUG - User searched
+16:03:44.763 [main] DEBUG - Start user updating....
+16:03:44.763 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+16:03:44.763 [main] DEBUG - User updated
+16:03:44.763 [main] DEBUG - Start user searching....
+16:03:44.775 [main] DEBUG - User searched
+16:03:44.775 [main] DEBUG - Start user searching....
+16:03:44.781 [main] DEBUG - User searched
+16:03:44.782 [main] DEBUG - Start user searching....
+16:03:44.786 [main] DEBUG - User searched
+16:03:44.786 [main] DEBUG - Start user searching....
+16:03:44.786 [main] DEBUG - User searched
+16:03:44.786 [main] DEBUG - Start user creating
+16:03:44.800 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+16:03:44.800 [main] DEBUG - User created
+16:10:31.989 [main] DEBUG - Start user searching....
+16:10:32.070 [main] DEBUG - User searched
+16:11:07.889 [main] DEBUG - Start user searching....
+16:11:07.966 [main] DEBUG - User searched
+16:12:32.956 [main] DEBUG - Start user creating
+16:12:33.078 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+16:12:33.078 [main] DEBUG - User created
+16:12:33.078 [main] DEBUG - Start user searching....
+16:12:33.108 [main] DEBUG - User searched
+16:12:33.108 [main] DEBUG - Start user deleting....
+16:12:33.110 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+16:12:33.110 [main] DEBUG - User deleted
+16:14:09.618 [main] DEBUG - Start user searching....
+16:14:09.679 [main] DEBUG - User searched
+16:14:57.253 [main] DEBUG - Start user searching....
+16:14:57.353 [main] DEBUG - User searched
+17:02:59.156 [main] DEBUG - Start  searching all users....
+17:02:59.252 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:02:59.252 [main] DEBUG - All Users searched
+17:02:59.252 [main] DEBUG - Start user creating
+17:02:59.291 [main] DEBUG - User created
+17:02:59.291 [main] DEBUG - Start  searching all users....
+17:02:59.300 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:02:59.300 [main] DEBUG - All Users searched
+17:03:54.569 [main] DEBUG - Start  searching all users....
+17:03:54.670 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:03:54.670 [main] DEBUG - All Users searched
+17:03:54.670 [main] DEBUG - Start user creating
+17:03:54.729 [main] DEBUG - Problem with creating user: Duplicate entry '+3080449874123' for key 'users.phone'
+17:03:54.729 [main] DEBUG - User created
+17:03:54.729 [main] DEBUG - Start  searching all users....
+17:03:54.742 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:03:54.742 [main] DEBUG - All Users searched
+17:05:44.135 [main] DEBUG - Start  searching all users....
+17:05:44.248 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:05:44.248 [main] DEBUG - All Users searched
+17:05:44.250 [main] DEBUG - Start user creating
+17:05:44.287 [main] DEBUG - Problem with creating user: Duplicate entry '+3080449874123' for key 'users.phone'
+17:05:44.287 [main] DEBUG - User created
+17:05:44.287 [main] DEBUG - Start  searching all users....
+17:05:44.300 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:05:44.300 [main] DEBUG - All Users searched
+17:05:44.303 [main] DEBUG - Start user deleting....
+17:05:44.305 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:05:44.305 [main] DEBUG - User deleted
+17:07:05.271 [main] DEBUG - Start  searching all users....
+17:07:05.362 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:07:05.362 [main] DEBUG - All Users searched
+17:07:05.364 [main] DEBUG - Start user creating
+17:07:05.412 [main] DEBUG - Problem with creating user: Duplicate entry '+3080449874123' for key 'users.phone'
+17:07:05.412 [main] DEBUG - User created
+17:07:05.412 [main] DEBUG - Start  searching all users....
+17:07:05.419 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:07:05.419 [main] DEBUG - All Users searched
+17:09:18.838 [main] DEBUG - Start  searching all users....
+17:09:18.949 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:09:18.949 [main] DEBUG - All Users searched
+17:09:18.951 [main] DEBUG - Start user creating
+17:09:18.982 [main] DEBUG - User created
+17:09:18.982 [main] DEBUG - Start  searching all users....
+17:09:18.989 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:09:18.989 [main] DEBUG - All Users searched
+17:09:18.990 [main] DEBUG - Start user searching....
+17:09:18.991 [main] DEBUG - User searched
+17:11:25.941 [main] DEBUG - Start  searching all users....
+17:11:26.023 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:11:26.023 [main] DEBUG - All Users searched
+17:11:26.023 [main] DEBUG - Start user creating
+17:11:26.074 [main] DEBUG - Problem with creating user: Duplicate entry '+3080440000022' for key 'users.phone'
+17:11:26.074 [main] DEBUG - User created
+17:11:26.074 [main] DEBUG - Start  searching all users....
+17:11:26.084 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:11:26.084 [main] DEBUG - All Users searched
+17:11:26.084 [main] DEBUG - Start user searching....
+17:11:26.089 [main] DEBUG - User searched
+17:13:21.199 [main] DEBUG - Start user creating
+17:13:21.309 [main] DEBUG - Problem with creating user: Duplicate entry '380507087133' for key 'users.phone'
+17:13:21.309 [main] DEBUG - User created
+17:13:21.314 [main] DEBUG - Start user searching....
+17:13:21.331 [main] DEBUG - User searched
+17:13:21.332 [main] DEBUG - Start user deleting....
+17:13:21.333 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:13:21.333 [main] DEBUG - User deleted
+17:13:21.346 [main] DEBUG - Start  searching all users....
+17:13:21.354 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:13:21.354 [main] DEBUG - All Users searched
+17:13:21.357 [main] DEBUG - Start  searching all users....
+17:13:21.366 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:13:21.366 [main] DEBUG - All Users searched
+17:13:21.367 [main] DEBUG - Start user creating
+17:13:21.370 [main] DEBUG - Problem with creating user: Duplicate entry '+3080440000022' for key 'users.phone'
+17:13:21.370 [main] DEBUG - User created
+17:13:21.370 [main] DEBUG - Start  searching all users....
+17:13:21.378 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:13:21.378 [main] DEBUG - All Users searched
+17:13:21.378 [main] DEBUG - Start user searching....
+17:13:21.380 [main] DEBUG - User searched
+17:13:21.394 [main] DEBUG - Start user creating
+17:13:21.395 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+17:13:21.395 [main] DEBUG - User created
+17:13:21.397 [main] DEBUG - Start user creating
+17:13:21.397 [main] ERROR - user not found
+17:13:21.400 [main] DEBUG - Start user searching....
+17:13:21.402 [main] DEBUG - User searched
+17:13:21.407 [main] DEBUG - Start user creating
+17:13:21.407 [main] ERROR - user not found
+17:13:21.410 [main] DEBUG - Start user creating
+17:13:21.413 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+17:13:21.413 [main] DEBUG - User created
+17:13:21.413 [main] DEBUG - Start user searching....
+17:13:21.414 [main] DEBUG - User searched
+17:13:21.414 [main] DEBUG - Start user deleting....
+17:13:21.415 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:13:21.416 [main] DEBUG - User deleted
+17:13:21.419 [main] DEBUG - Start user searching....
+17:13:21.422 [main] DEBUG - User searched
+17:13:21.427 [main] DEBUG - Start user creating
+17:13:21.435 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+17:13:21.435 [main] DEBUG - User created
+17:13:21.435 [main] DEBUG - Start user searching....
+17:13:21.436 [main] DEBUG - User searched
+17:13:21.436 [main] DEBUG - Start user updating....
+17:13:21.437 [main] DEBUG - Problem with updating user: Updated more than one record!!
+17:13:21.437 [main] DEBUG - User updated
+17:13:21.437 [main] DEBUG - Start user searching....
+17:13:21.439 [main] DEBUG - User searched
+17:13:21.440 [main] DEBUG - Start user deleting....
+17:13:21.441 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:13:21.441 [main] DEBUG - User deleted
+17:13:21.445 [main] DEBUG - Start  searching all users....
+17:13:21.450 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:13:21.450 [main] DEBUG - All Users searched
+17:13:21.450 [main] DEBUG - Start user deleting....
+17:13:21.454 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:13:21.454 [main] DEBUG - User deleted
+17:13:21.460 [main] DEBUG - Start user searching....
+17:13:21.465 [main] DEBUG - User searched
+17:13:21.466 [main] DEBUG - Start user updating....
+17:13:21.466 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+17:13:21.466 [main] DEBUG - User updated
+17:13:21.466 [main] DEBUG - Start user searching....
+17:13:21.468 [main] DEBUG - User searched
+17:13:21.469 [main] DEBUG - Start user searching....
+17:13:21.471 [main] DEBUG - User searched
+17:13:21.471 [main] DEBUG - Start user searching....
+17:13:21.474 [main] DEBUG - User searched
+17:13:21.478 [main] DEBUG - Start user searching....
+17:13:21.480 [main] DEBUG - User searched
+17:13:21.487 [main] DEBUG - Start user creating
+17:13:21.492 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+17:13:21.492 [main] DEBUG - User created
+17:14:33.869 [main] DEBUG - Start user creating
+17:14:33.961 [main] DEBUG - User created
+17:14:33.964 [main] DEBUG - Start user searching....
+17:14:33.981 [main] DEBUG - User searched
+17:14:33.981 [main] DEBUG - Start user deleting....
+17:14:33.983 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:14:33.983 [main] DEBUG - User deleted
+17:19:05.489 [main] DEBUG - Start user creating
+17:19:05.600 [main] DEBUG - Problem with creating user: Duplicate entry '380507087137' for key 'users.phone'
+17:19:05.600 [main] DEBUG - User created
+17:19:05.604 [main] DEBUG - Start user deleting....
+17:19:05.606 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:19:05.606 [main] DEBUG - User deleted
+17:19:33.490 [main] DEBUG - Start user creating
+17:19:33.603 [main] DEBUG - Problem with creating user: Duplicate entry '380507087137' for key 'users.phone'
+17:19:33.603 [main] DEBUG - User created
+17:19:33.609 [main] DEBUG - Start user deleting....
+17:19:33.611 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:19:33.611 [main] DEBUG - User deleted
+17:22:58.082 [main] DEBUG - Start user searching....
+17:22:58.184 [main] DEBUG - User searched
+17:22:58.197 [main] DEBUG - Start user searching....
+17:22:58.207 [main] DEBUG - User searched
+17:23:58.593 [main] DEBUG - Start user searching....
+17:23:58.671 [main] DEBUG - User searched
+17:23:58.676 [main] DEBUG - Start user searching....
+17:23:58.678 [main] DEBUG - User searched
+17:25:05.761 [main] DEBUG - Start user creating
+17:25:05.873 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+17:25:05.873 [main] DEBUG - User created
+17:26:36.662 [main] DEBUG - Start user creating
+17:26:36.753 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+17:26:36.753 [main] DEBUG - User created
+17:26:36.753 [main] DEBUG - Start user searching....
+17:26:36.775 [main] DEBUG - User searched
+17:26:36.775 [main] DEBUG - Start user deleting....
+17:26:36.778 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:26:36.778 [main] DEBUG - User deleted
+17:27:10.865 [main] DEBUG - Start user searching....
+17:27:10.990 [main] DEBUG - User searched
+17:28:32.576 [main] DEBUG - Start  searching all users....
+17:28:32.667 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:28:32.667 [main] DEBUG - All Users searched
+17:29:42.991 [main] DEBUG - Start user creating
+17:29:43.101 [main] DEBUG - Problem with creating user: Duplicate entry '380507087137' for key 'users.phone'
+17:29:43.102 [main] DEBUG - User created
+17:31:38.402 [main] DEBUG - Start  searching all users....
+17:31:38.582 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:31:38.583 [main] DEBUG - All Users searched
+17:31:38.585 [main] DEBUG - Start user creating
+17:31:38.660 [main] DEBUG - Problem with creating user: Column count doesn't match value count at row 1
+17:31:38.660 [main] DEBUG - User created
+17:31:38.661 [main] DEBUG - Start  searching all users....
+17:31:38.676 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+17:31:38.676 [main] DEBUG - All Users searched
+17:31:38.677 [main] DEBUG - Start user searching....
+17:31:38.679 [main] DEBUG - User searched
+17:32:03.616 [main] DEBUG - Start user creating
+17:32:03.777 [main] DEBUG - Problem with creating user: Column count doesn't match value count at row 1
+17:32:03.777 [main] DEBUG - User created
+17:32:03.786 [main] DEBUG - Start user deleting....
+17:32:03.786 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:32:03.786 [main] DEBUG - User deleted
+17:33:17.449 [main] DEBUG - Start user creating
+17:33:17.553 [main] DEBUG - Problem with creating user: Parameter index out of range (7 > number of parameters, which is 6).
+17:33:17.553 [main] DEBUG - User created
+17:33:17.558 [main] DEBUG - Start user deleting....
+17:33:17.558 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:33:17.558 [main] DEBUG - User deleted
+17:35:02.141 [main] DEBUG - Start user creating
+17:35:02.333 [main] DEBUG - Problem with creating user: Duplicate entry '380507087137' for key 'users.phone'
+17:35:02.333 [main] DEBUG - User created
+17:35:02.352 [main] DEBUG - Start user deleting....
+17:35:02.354 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:35:02.354 [main] DEBUG - User deleted
+17:37:32.740 [main] DEBUG - Start user creating
+17:37:32.936 [main] DEBUG - User created
+17:37:32.945 [main] DEBUG - Start user deleting....
+17:37:32.947 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:37:32.947 [main] DEBUG - User deleted
+17:39:45.963 [main] DEBUG - Start user creating
+17:39:46.053 [main] DEBUG - User created
+17:39:46.068 [main] DEBUG - Start user deleting....
+17:39:46.070 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:39:46.070 [main] DEBUG - User deleted
+17:42:20.552 [main] DEBUG - Start  searching all users....
+17:42:20.625 [main] DEBUG - All Users searched
+17:43:30.512 [main] DEBUG - Start  searching all users....
+17:43:30.621 [main] DEBUG - All Users searched
+17:44:13.920 [main] DEBUG - Start  searching all users....
+17:44:14.070 [main] DEBUG - All Users searched
+17:46:38.704 [main] DEBUG - Start user creating
+17:46:38.803 [main] DEBUG - Problem with creating user: Duplicate entry '+380508889900' for key 'users.phone'
+17:46:38.803 [main] DEBUG - User created
+17:46:38.809 [main] DEBUG - Start user deleting....
+17:46:38.812 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:46:38.812 [main] DEBUG - User deleted
+17:47:27.502 [main] DEBUG - Start user creating
+17:47:27.631 [main] DEBUG - Problem with creating user: Duplicate entry '+380508889900' for key 'users.phone'
+17:47:27.631 [main] DEBUG - User created
+17:47:27.636 [main] DEBUG - Start user deleting....
+17:47:27.638 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:47:27.638 [main] DEBUG - User deleted
+17:52:19.156 [main] DEBUG - Start user creating
+17:52:19.301 [main] DEBUG - Problem with creating user: Duplicate entry '+380508889900' for key 'users.phone'
+17:52:19.301 [main] DEBUG - User created
+17:52:19.306 [main] DEBUG - Start user deleting....
+17:52:19.308 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+17:52:19.308 [main] DEBUG - User deleted
+18:02:09.103 [main] DEBUG - Start user creating
+18:02:09.194 [main] DEBUG - User created
+18:02:09.194 [main] DEBUG - Start user searching....
+18:02:09.214 [main] DEBUG - User searched
+18:02:09.218 [main] DEBUG - Start user deleting....
+18:02:09.223 [main] DEBUG - User deleted
+18:04:15.488 [main] DEBUG - Start user creating
+18:04:15.572 [main] DEBUG - User created
+18:04:15.573 [main] DEBUG - Start user searching....
+18:04:15.584 [main] DEBUG - User searched
+18:04:15.599 [main] DEBUG - Start user deleting....
+18:04:15.606 [main] DEBUG - User deleted
+18:05:09.794 [main] DEBUG - Start  searching all users....
+18:05:09.892 [main] DEBUG - All Users searched
+18:05:09.893 [main] DEBUG - Start user creating
+18:05:09.929 [main] DEBUG - Problem with creating user: Duplicate entry '+3080440000022' for key 'users.phone'
+18:05:09.934 [main] DEBUG - User created
+18:05:09.934 [main] DEBUG - Start  searching all users....
+18:05:09.941 [main] DEBUG - All Users searched
+18:05:09.943 [main] DEBUG - Start user searching....
+18:05:09.945 [main] DEBUG - User searched
+18:05:20.210 [main] DEBUG - Start user creating
+18:05:20.355 [main] DEBUG - User created
+18:05:20.355 [main] DEBUG - Start user searching....
+18:05:20.383 [main] DEBUG - User searched
+18:05:20.390 [main] DEBUG - Start user deleting....
+18:05:20.395 [main] DEBUG - User deleted
+18:05:20.410 [main] DEBUG - Start  searching all users....
+18:05:20.424 [main] DEBUG - All Users searched
+18:05:20.429 [main] DEBUG - Start  searching all users....
+18:05:20.438 [main] DEBUG - All Users searched
+18:05:20.441 [main] DEBUG - Start user creating
+18:05:20.462 [main] DEBUG - Problem with creating user: Duplicate entry '+3080440000022' for key 'users.phone'
+18:05:20.462 [main] DEBUG - User created
+18:05:20.462 [main] DEBUG - Start  searching all users....
+18:05:20.473 [main] DEBUG - All Users searched
+18:05:20.474 [main] DEBUG - Start user searching....
+18:05:20.475 [main] DEBUG - User searched
+18:05:20.491 [main] DEBUG - Start user creating
+18:05:20.493 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+18:05:20.494 [main] DEBUG - User created
+18:05:20.496 [main] DEBUG - Start user creating
+18:05:20.496 [main] ERROR - user not found
+18:05:20.500 [main] DEBUG - Start user searching....
+18:05:20.501 [main] DEBUG - User searched
+18:05:20.507 [main] DEBUG - Start user creating
+18:05:20.507 [main] ERROR - user not found
+18:05:20.514 [main] DEBUG - Start user creating
+18:05:20.517 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:05:20.517 [main] DEBUG - User created
+18:05:20.517 [main] DEBUG - Start user searching....
+18:05:20.520 [main] DEBUG - User searched
+18:05:20.520 [main] DEBUG - Start user deleting....
+18:05:20.524 [main] DEBUG - User deleted
+18:05:20.525 [main] DEBUG - Start user searching....
+18:05:20.528 [main] DEBUG - User searched
+18:05:20.532 [main] DEBUG - Start user creating
+18:05:20.538 [main] DEBUG - User created
+18:05:20.538 [main] DEBUG - Start user searching....
+18:05:20.540 [main] DEBUG - User searched
+18:05:20.540 [main] DEBUG - Start user updating....
+18:05:20.541 [main] DEBUG - Problem with updating user: Updated more than one record!!
+18:05:20.541 [main] DEBUG - User updated
+18:05:20.542 [main] DEBUG - Start user searching....
+18:05:20.543 [main] DEBUG - User searched
+18:05:20.543 [main] DEBUG - Start user deleting....
+18:05:20.545 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:05:20.545 [main] DEBUG - User deleted
+18:05:20.550 [main] DEBUG - Start  searching all users....
+18:05:20.554 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:05:20.554 [main] DEBUG - All Users searched
+18:05:20.554 [main] DEBUG - Start user deleting....
+18:05:20.563 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:05:20.563 [main] DEBUG - User deleted
+18:05:20.567 [main] DEBUG - Start user searching....
+18:05:20.569 [main] DEBUG - User searched
+18:05:20.569 [main] DEBUG - Start user updating....
+18:05:20.569 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+18:05:20.569 [main] DEBUG - User updated
+18:05:20.569 [main] DEBUG - Start user searching....
+18:05:20.571 [main] DEBUG - User searched
+18:05:20.575 [main] DEBUG - Start user searching....
+18:05:20.577 [main] DEBUG - User searched
+18:05:20.577 [main] DEBUG - Start user searching....
+18:05:20.579 [main] DEBUG - User searched
+18:05:20.584 [main] DEBUG - Start user searching....
+18:05:20.585 [main] DEBUG - User searched
+18:05:20.588 [main] DEBUG - Start user creating
+18:05:20.592 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+18:05:20.592 [main] DEBUG - User created
+18:06:34.640 [main] DEBUG - Start  searching all users....
+18:06:34.722 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:06:34.722 [main] DEBUG - All Users searched
+18:06:34.724 [main] DEBUG - Start user creating
+18:06:34.758 [main] DEBUG - Problem with creating user: Duplicate entry '+3080440000022' for key 'users.phone'
+18:06:34.758 [main] DEBUG - User created
+18:06:34.758 [main] DEBUG - Start  searching all users....
+18:06:34.765 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:06:34.765 [main] DEBUG - All Users searched
+18:06:34.765 [main] DEBUG - Start user searching....
+18:06:34.768 [main] DEBUG - User searched
+18:09:56.458 [main] DEBUG - Start  searching all users....
+18:09:56.556 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:09:56.556 [main] DEBUG - All Users searched
+18:09:56.557 [main] DEBUG - Start user creating
+18:09:56.592 [main] DEBUG - User created
+18:09:56.592 [main] DEBUG - Start  searching all users....
+18:09:56.600 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:09:56.600 [main] DEBUG - All Users searched
+18:09:56.602 [main] DEBUG - Start user searching....
+18:09:56.604 [main] DEBUG - User searched
+18:14:03.731 [main] DEBUG - Start  searching all users....
+18:14:03.855 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:14:03.855 [main] DEBUG - All Users searched
+18:14:03.855 [main] DEBUG - Start user creating
+18:14:03.903 [main] DEBUG - Problem with creating user: Duplicate entry '+380440000091' for key 'users.phone'
+18:14:03.903 [main] DEBUG - User created
+18:14:03.903 [main] DEBUG - Start user searching....
+18:14:03.903 [main] DEBUG - User searched
+18:14:03.903 [main] DEBUG - Start  searching all users....
+18:14:03.921 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:14:03.921 [main] DEBUG - All Users searched
+18:16:00.469 [main] DEBUG - Start  searching all users....
+18:16:00.583 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:16:00.583 [main] DEBUG - All Users searched
+18:16:00.584 [main] DEBUG - Start user creating
+18:16:00.629 [main] DEBUG - Problem with creating user: Duplicate entry '+380440000091' for key 'users.phone'
+18:16:00.629 [main] DEBUG - User created
+18:16:00.629 [main] DEBUG - Start user searching....
+18:16:00.636 [main] DEBUG - User searched
+18:16:00.637 [main] DEBUG - Start  searching all users....
+18:16:00.641 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:16:00.641 [main] DEBUG - All Users searched
+18:17:28.575 [main] DEBUG - Start user creating
+18:17:28.680 [main] DEBUG - User created
+18:17:28.680 [main] DEBUG - Start user searching....
+18:17:28.708 [main] DEBUG - User searched
+18:17:28.713 [main] DEBUG - Start user deleting....
+18:17:28.718 [main] DEBUG - User deleted
+18:17:28.736 [main] DEBUG - Start  searching all users....
+18:17:28.749 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:17:28.749 [main] DEBUG - All Users searched
+18:17:28.753 [main] DEBUG - Start user creating
+18:17:28.769 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+18:17:28.771 [main] DEBUG - User created
+18:17:28.772 [main] DEBUG - Start user creating
+18:17:28.772 [main] ERROR - user not found
+18:17:28.775 [main] DEBUG - Start user searching....
+18:17:28.778 [main] DEBUG - User searched
+18:17:28.780 [main] DEBUG - Start user creating
+18:17:28.781 [main] ERROR - user not found
+18:17:28.783 [main] DEBUG - Start user creating
+18:17:28.787 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:17:28.787 [main] DEBUG - User created
+18:17:28.787 [main] DEBUG - Start user searching....
+18:17:28.790 [main] DEBUG - User searched
+18:17:28.790 [main] DEBUG - Start user deleting....
+18:17:28.791 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:17:28.791 [main] DEBUG - User deleted
+18:17:28.794 [main] DEBUG - Start user searching....
+18:17:28.797 [main] DEBUG - User searched
+18:17:28.801 [main] DEBUG - Start user creating
+18:17:28.804 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:17:28.804 [main] DEBUG - User created
+18:17:28.804 [main] DEBUG - Start user searching....
+18:17:28.806 [main] DEBUG - User searched
+18:17:28.806 [main] DEBUG - Start user updating....
+18:17:28.808 [main] DEBUG - Problem with updating user: Updated more than one record!!
+18:17:28.808 [main] DEBUG - User updated
+18:17:28.808 [main] DEBUG - Start user searching....
+18:17:28.809 [main] DEBUG - User searched
+18:17:28.809 [main] DEBUG - Start user deleting....
+18:17:28.810 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:17:28.810 [main] DEBUG - User deleted
+18:17:28.812 [main] DEBUG - Start  searching all users....
+18:17:28.821 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:17:28.821 [main] DEBUG - All Users searched
+18:17:28.821 [main] DEBUG - Start user deleting....
+18:17:28.824 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:17:28.824 [main] DEBUG - User deleted
+18:17:28.828 [main] DEBUG - Start user searching....
+18:17:28.830 [main] DEBUG - User searched
+18:17:28.830 [main] DEBUG - Start user updating....
+18:17:28.830 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+18:17:28.830 [main] DEBUG - User updated
+18:17:28.830 [main] DEBUG - Start user searching....
+18:17:28.830 [main] DEBUG - User searched
+18:17:28.838 [main] DEBUG - Start user searching....
+18:17:28.841 [main] DEBUG - User searched
+18:17:28.841 [main] DEBUG - Start user searching....
+18:17:28.843 [main] DEBUG - User searched
+18:17:28.849 [main] DEBUG - Start user searching....
+18:17:28.851 [main] DEBUG - User searched
+18:17:28.855 [main] DEBUG - Start user creating
+18:17:28.861 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+18:17:28.862 [main] DEBUG - User created
+18:18:05.629 [main] DEBUG - Start user creating
+18:18:05.795 [main] DEBUG - User created
+18:18:05.795 [main] DEBUG - Start user searching....
+18:18:05.855 [main] DEBUG - User searched
+18:18:05.868 [main] DEBUG - Start user deleting....
+18:18:05.872 [main] DEBUG - User deleted
+18:18:05.885 [main] DEBUG - Start  searching all users....
+18:18:05.912 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:18:05.912 [main] DEBUG - All Users searched
+18:18:05.917 [main] DEBUG - Start user creating
+18:18:05.986 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+18:18:05.986 [main] DEBUG - User created
+18:18:05.986 [main] DEBUG - Start user creating
+18:18:05.986 [main] ERROR - user not found
+18:18:05.991 [main] DEBUG - Start user searching....
+18:18:05.996 [main] DEBUG - User searched
+18:18:05.996 [main] DEBUG - Start user creating
+18:18:05.996 [main] ERROR - user not found
+18:18:06.001 [main] DEBUG - Start user creating
+18:18:06.005 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:18:06.005 [main] DEBUG - User created
+18:18:06.005 [main] DEBUG - Start user searching....
+18:18:06.006 [main] DEBUG - User searched
+18:18:06.006 [main] DEBUG - Start user deleting....
+18:18:06.008 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:18:06.008 [main] DEBUG - User deleted
+18:18:06.012 [main] DEBUG - Start user searching....
+18:18:06.013 [main] DEBUG - User searched
+18:18:06.017 [main] DEBUG - Start user creating
+18:18:06.025 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:18:06.025 [main] DEBUG - User created
+18:18:06.025 [main] DEBUG - Start user searching....
+18:18:06.027 [main] DEBUG - User searched
+18:18:06.027 [main] DEBUG - Start user updating....
+18:18:06.028 [main] DEBUG - Problem with updating user: Updated more than one record!!
+18:18:06.028 [main] DEBUG - User updated
+18:18:06.028 [main] DEBUG - Start user searching....
+18:18:06.032 [main] DEBUG - User searched
+18:18:06.032 [main] DEBUG - Start user deleting....
+18:18:06.033 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:18:06.033 [main] DEBUG - User deleted
+18:18:06.036 [main] DEBUG - Start  searching all users....
+18:18:06.050 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:18:06.051 [main] DEBUG - All Users searched
+18:18:06.052 [main] DEBUG - Start user deleting....
+18:18:06.053 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:18:06.053 [main] DEBUG - User deleted
+18:18:06.054 [main] DEBUG - Start user searching....
+18:18:06.062 [main] DEBUG - User searched
+18:18:06.063 [main] DEBUG - Start user updating....
+18:18:06.063 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+18:18:06.064 [main] DEBUG - User updated
+18:18:06.064 [main] DEBUG - Start user searching....
+18:18:06.071 [main] DEBUG - User searched
+18:18:06.074 [main] DEBUG - Start user searching....
+18:18:06.077 [main] DEBUG - User searched
+18:18:06.077 [main] DEBUG - Start user searching....
+18:18:06.079 [main] DEBUG - User searched
+18:18:06.081 [main] DEBUG - Start user searching....
+18:18:06.083 [main] DEBUG - User searched
+18:18:06.083 [main] DEBUG - Start user creating
+18:18:06.089 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+18:18:06.089 [main] DEBUG - User created
+18:20:23.673 [main] DEBUG - Start user creating
+18:20:23.789 [main] DEBUG - User created
+18:20:23.789 [main] DEBUG - Start user searching....
+18:20:23.807 [main] DEBUG - User searched
+18:20:23.817 [main] DEBUG - Start user deleting....
+18:20:23.822 [main] DEBUG - User deleted
+18:20:23.837 [main] DEBUG - Start  searching all users....
+18:20:23.851 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:20:23.851 [main] DEBUG - All Users searched
+18:20:23.856 [main] DEBUG - Start user creating
+18:20:23.874 [main] DEBUG - Problem with creating user: Column 'phone' cannot be null
+18:20:23.875 [main] DEBUG - User created
+18:20:23.875 [main] DEBUG - Start user creating
+18:20:23.875 [main] ERROR - user not found
+18:20:23.879 [main] DEBUG - Start user searching....
+18:20:23.883 [main] DEBUG - User searched
+18:20:23.890 [main] DEBUG - Start user creating
+18:20:23.890 [main] ERROR - user not found
+18:20:23.893 [main] DEBUG - Start user creating
+18:20:23.896 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:20:23.896 [main] DEBUG - User created
+18:20:23.897 [main] DEBUG - Start user searching....
+18:20:23.899 [main] DEBUG - User searched
+18:20:23.899 [main] DEBUG - Start user deleting....
+18:20:23.900 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:20:23.900 [main] DEBUG - User deleted
+18:20:23.903 [main] DEBUG - Start user searching....
+18:20:23.906 [main] DEBUG - User searched
+18:20:23.909 [main] DEBUG - Start user creating
+18:20:23.914 [main] DEBUG - Problem with creating user: Duplicate entry '+380442003040' for key 'users.phone'
+18:20:23.914 [main] DEBUG - User created
+18:20:23.914 [main] DEBUG - Start user searching....
+18:20:23.916 [main] DEBUG - User searched
+18:20:23.916 [main] DEBUG - Start user updating....
+18:20:23.918 [main] DEBUG - Problem with updating user: Updated more than one record!!
+18:20:23.918 [main] DEBUG - User updated
+18:20:23.918 [main] DEBUG - Start user searching....
+18:20:23.920 [main] DEBUG - User searched
+18:20:23.920 [main] DEBUG - Start user deleting....
+18:20:23.921 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:20:23.922 [main] DEBUG - User deleted
+18:20:23.924 [main] DEBUG - Start  searching all users....
+18:20:23.935 [main] DEBUG - Problem with searching all users: No enum constant com.model.Role.null
+18:20:23.935 [main] DEBUG - All Users searched
+18:20:23.936 [main] DEBUG - Start user deleting....
+18:20:23.936 [main] DEBUG - Problem with deleting user: Deleted more than one record!!
+18:20:23.936 [main] DEBUG - User deleted
+18:20:23.940 [main] DEBUG - Start user searching....
+18:20:23.943 [main] DEBUG - User searched
+18:20:23.944 [main] DEBUG - Start user updating....
+18:20:23.944 [main] DEBUG - Problem with updating user: No enum constant com.model.Role.null
+18:20:23.944 [main] DEBUG - User updated
+18:20:23.944 [main] DEBUG - Start user searching....
+18:20:23.951 [main] DEBUG - User searched
+18:20:23.954 [main] DEBUG - Start user searching....
+18:20:23.957 [main] DEBUG - User searched
+18:20:23.957 [main] DEBUG - Start user searching....
+18:20:23.959 [main] DEBUG - User searched
+18:20:23.970 [main] DEBUG - Start user searching....
+18:20:23.971 [main] DEBUG - User searched
+18:20:23.974 [main] DEBUG - Start user creating
+18:20:23.977 [main] DEBUG - Problem with creating user: Duplicate entry '+380632323233' for key 'users.phone'
+18:20:23.977 [main] DEBUG - User created

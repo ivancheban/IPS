@@ -15106,3 +15106,38 @@
 20:11:31.980 [http-nio-8080-exec-8] DEBUG - Start tariff searching....
 20:11:31.982 [http-nio-8080-exec-8] DEBUG - Tariff searched
 20:11:31.983 [http-nio-8080-exec-8] DEBUG - All tariffs searched
+20:22:26.458 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:22:26.465 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:23:16.644 [http-nio-8080-exec-10] INFO  - Customer registration
+20:23:16.649 [http-nio-8080-exec-10] DEBUG - Start user searching....
+20:23:16.803 [http-nio-8080-exec-10] DEBUG - User searched
+20:23:16.811 [http-nio-8080-exec-10] DEBUG - Start user creating
+20:23:16.826 [http-nio-8080-exec-10] DEBUG - User created
+20:23:16.826 [http-nio-8080-exec-10] DEBUG - Start customer creating
+20:23:16.862 [http-nio-8080-exec-10] DEBUG - Problem with creating customer: Unknown column 'balance' in 'field list'
+20:23:16.862 [http-nio-8080-exec-10] DEBUG - Customer created
+20:23:24.438 [http-nio-8080-exec-4] DEBUG - Start user searching....
+20:23:24.444 [http-nio-8080-exec-4] DEBUG - User searched
+20:29:27.761 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:29:27.784 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:30:10.899 [http-nio-8080-exec-9] INFO  - Customer registration
+20:30:10.908 [http-nio-8080-exec-9] DEBUG - Start user searching....
+20:30:11.057 [http-nio-8080-exec-9] DEBUG - User searched
+20:30:11.069 [http-nio-8080-exec-9] DEBUG - Start user creating
+20:30:11.086 [http-nio-8080-exec-9] DEBUG - User created
+20:30:11.086 [http-nio-8080-exec-9] DEBUG - Start customer creating
+20:30:11.099 [http-nio-8080-exec-9] DEBUG - Customer created
+20:30:18.198 [http-nio-8080-exec-3] DEBUG - Start user searching....
+20:30:18.203 [http-nio-8080-exec-3] DEBUG - User searched
+20:31:04.184 [http-nio-8080-exec-8] DEBUG - Start user searching....
+20:31:04.186 [http-nio-8080-exec-8] DEBUG - User searched
+20:31:58.557 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:31:58.574 [RMI TCP Connection(5)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:32:41.601 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:32:41.623 [RMI TCP Connection(3)-127.0.0.1] DEBUG - path = D:\Apache Tomcat 9.0.56\apache-tomcat-9.0.56\webapps\ROOT\WEB-INF\log4j2.log
+20:32:52.282 [http-nio-8080-exec-7] DEBUG - Start user searching....
+20:32:52.423 [http-nio-8080-exec-7] DEBUG - User searched
+20:32:52.427 [http-nio-8080-exec-7] DEBUG - Start user searching....
+20:32:52.430 [http-nio-8080-exec-7] DEBUG - User searched
+20:32:53.244 [http-nio-8080-exec-8] DEBUG - Start user searching....
+20:32:53.250 [http-nio-8080-exec-8] DEBUG - User searched

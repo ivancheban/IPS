@@ -20,24 +20,17 @@ create table users
 
 create table customers
 (
-    id           int(10) primary key auto_increment,
-    name         varchar(25) not null,
-    surname      varchar(25) not null,
-    phone varchar(13) not null unique,
-    email        varchar(25) not null unique,
-    isActive     boolean   default true,
-    created      timestamp default now(),
-    updated      timestamp default now() on update NOW()
+    id       int(10) primary key auto_increment,
+    name     varchar(25) not null,
+    surname  varchar(25) not null,
+    phone    varchar(13) not null unique,
+    email    varchar(25) not null unique,
+    isActive boolean   default true,
+    created  timestamp default now(),
+    updated  timestamp default now() on update NOW(),
+    balance  int(10) default null
 );
 
-create table wallets
-(
-    id           int(10) primary key auto_increment,
-    number       varchar(25)  not null unique,
-    balance      double(5, 2) not null,
-    customers_id int(10),
-    foreign key (customers_id) references customers (id)
-);
 
 create table tariffs
 (
@@ -50,17 +43,7 @@ create table tariffs
     updated       timestamp default now() on update NOW()
 
 );
-create table limits
-(
-    id         int(10) primary key auto_increment,
-    name       varchar(25) not null unique,
-    amount     int(10)     not null,
-    isActive   boolean   default true,
-    created    timestamp default now(),
-    updated    timestamp default now() on update NOW(),
-    tariffs_id int(10),
-    foreign key (tariffs_id) references tariffs (id)
-);
+
 
 
 create table subscriptions
@@ -87,4 +70,12 @@ create table subscs_tarfiffs
     foreign key (tar_id) references tariffs (id)
 );
 
+create table customers_tariffs
+(
+    customers_id int(10) not null,
+    tariffs_id   int(10) not null,
+    primary key (customers_id, tariffs_id),
+    foreign key (customers_id) references customers (id),
+    foreign key (tariffs_id) references tariffs (id)
+);
 

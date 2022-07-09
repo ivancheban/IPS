@@ -30,7 +30,7 @@
 </head>
 <div class="container">
     <div class="row main-form">
-        <form action="/update/tariff" method="post">
+        <form action="/update-tariff/form" method="post">
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
                     <h1><fmt:message key="update.tariff"/></h1>
@@ -80,7 +80,8 @@
                     </div>
                 </div>
             </div>
-            <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
+            <button type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></button>
+<%--            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="button.update"/></button>--%>
 
         </form>
     </div>

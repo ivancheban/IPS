@@ -82,8 +82,7 @@
 
                     </br>
                     <div alight="right">
-                        <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
-                        <button class="btn btn-warning" type="reset"><fmt:message key="reset.button"/></button>
+                        <button type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></button>
                     </div>
                 </div>
             </div>

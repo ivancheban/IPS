@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-            <a type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></a>
+            <button type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></button>
         </form>
     </div>
 </div>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.service</a> &gt; <span class="el_source">CustomerServiceImpl.java</span></div><h1>CustomerServiceImpl.java</h1><pre class="source lang-java linenums">package com.service;
+
+import com.dao.CustomerDao;
+
+import com.dao.TariffDao;
+import com.dao.UserDao;
+import com.dto.CustomerCreateRequestDto;
+import com.dto.CustomerDto;
+import com.dto.UserDto;
+import com.exceptions.TariffException;
+import com.mapper.BusinessMapper;
+import com.model.Customer;
+import com.model.ServiceType;
+import com.model.Tariff;
+import com.model.User;
+
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="nc" id="L22">public class CustomerServiceImpl implements CustomerService{</span>
+<span class="nc" id="L23">    CustomerDao customerDao = new CustomerDao();</span>
+<span class="nc" id="L24">    TariffDao tariffDao = new TariffDao();</span>
+     public UserDao userDao;
+
+    @Override
+    public Customer findByPhoneNumber(String phone) {
+<span class="nc" id="L29">        return customerDao.findByField(phone);</span>
+    }
+
+    @Override
+    public CustomerDto findDyID(int id) {
+<span class="nc" id="L34">        Customer customer =customerDao.findByID(id);</span>
+<span class="nc" id="L35">        return BusinessMapper.getCustomerDto(customer);</span>
+    }
+
+    @Override
+    public CustomerDto updateProfile(CustomerDto customerDto) {
+<span class="nc" id="L40">        Customer editCustomer = customerDao.update(BusinessMapper.getCustomer(customerDto));</span>
+<span class="nc" id="L41">        return BusinessMapper.getCustomerDto(editCustomer);</span>
+    }
+
+    @Override
+    public boolean deleteCustomer(int id) {
+<span class="nc" id="L46">        return customerDao.delete(id);</span>
+    }
+
+    @Override
+    public List&lt;Customer&gt; findAll() {
+<span class="nc" id="L51">        return customerDao.findAll();</span>
+    }
+
+    @Override
+    public boolean addBalance(int customerId, int money) {
+<span class="nc" id="L56">        boolean status = false;</span>
+<span class="nc" id="L57">        return customerDao.addBalance(customerId,money);</span>
+    }
+
+    @Override
+    public boolean checkSubscription(int customerId, int tariffId) {
+
+<span class="nc" id="L63">        ServiceType type = tariffDao.findById(tariffId).getType();</span>
+<span class="nc" id="L64">        List&lt;Tariff&gt; list = tariffDao.getAllSubscribedTariffs(customerId);;</span>
+<span class="nc" id="L65">        System.out.println(list);</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (Tariff t : list){</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (t.getType().equals(type)){</span>
+<span class="nc" id="L68">                return true;</span>
+            }
+<span class="nc" id="L70">        }</span>
+<span class="nc" id="L71">        return false;</span>
+    }
+
+    @Override
+    public boolean withdrawBalance(int customerId, int money) {
+<span class="nc" id="L76">        return customerDao.withdrawBalance(customerId,money);</span>
+    }
+
+    @Override
+    public void addTariffCustomer(int customerId, int tariffId) {
+<span class="nc" id="L81">        customerDao.addTariffCustomer(customerId,tariffId);</span>
+<span class="nc" id="L82">    }</span>
+
+    @Override
+    public void deleteTariffCustomer(int customersId, int tariffId) {
+<span class="nc" id="L86">        customerDao.deleteTariffCustomer(customersId,tariffId);</span>
+<span class="nc" id="L87">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

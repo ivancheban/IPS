@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SubscriptionsPaginationServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.servlets.subscriptions</a> &gt; <span class="el_source">SubscriptionsPaginationServlet.java</span></div><h1>SubscriptionsPaginationServlet.java</h1><pre class="source lang-java linenums">package com.servlets.subscriptions;
+
+import com.dao.SubscriptionDao;
+import com.dto.SubscriptionDto;
+import com.model.Subscription;
+import com.service.SubscriptionService;
+import com.service.SubscriptionServiceImpl;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet(name = &quot;subscriptions&quot;, urlPatterns = &quot;/subscriptions&quot;)
+public class SubscriptionsPaginationServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+<span class="nc" id="L23">    SubscriptionService subscriptionService = new SubscriptionServiceImpl();</span>
+
+    public SubscriptionsPaginationServlet() {
+<span class="nc" id="L26">        super();</span>
+<span class="nc" id="L27">    }</span>
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<span class="nc" id="L31">        SubscriptionService subscriptionService = new SubscriptionServiceImpl();</span>
+<span class="nc" id="L32">        HttpSession session = req.getSession(true);</span>
+
+<span class="nc" id="L34">        int page = 1;</span>
+<span class="nc" id="L35">        int recordsPerPage = 5;</span>
+
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (req.getParameter(&quot;page&quot;) != null) {</span>
+<span class="nc" id="L38">            page = Integer.parseInt(req.getParameter(&quot;page&quot;));</span>
+        }
+
+<span class="nc" id="L41">        SubscriptionDao subscriptionDao = null;</span>
+        try {
+<span class="nc" id="L43">            subscriptionDao = new SubscriptionDao();</span>
+<span class="nc" id="L44">        } catch (Exception e) {</span>
+<span class="nc" id="L45">            System.out.println(e.getMessage());</span>
+<span class="nc" id="L46">        }</span>
+
+
+<span class="nc" id="L49">        List&lt;Subscription&gt; subscriptionsList = subscriptionDao.getAll((page - 1) * recordsPerPage,</span>
+                recordsPerPage);
+<span class="nc" id="L51">        int noOfRecords = subscriptionDao.getNoOfRecords();</span>
+<span class="nc" id="L52">        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);</span>
+
+<span class="nc" id="L54">        req.setAttribute(&quot;subscriptionsList&quot;, subscriptionsList);</span>
+<span class="nc" id="L55">        req.setAttribute(&quot;noOfPages&quot;, noOfPages);</span>
+<span class="nc" id="L56">        req.setAttribute(&quot;currentPage&quot;, page);</span>
+<span class="nc" id="L57">        RequestDispatcher view = req.getRequestDispatcher(&quot;subscriptions-list.jsp&quot;);</span>
+<span class="nc" id="L58">        view.forward(req, resp);</span>
+<span class="nc" id="L59">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

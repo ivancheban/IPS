@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UpdateTariffServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.servlets.tariff</a> &gt; <span class="el_source">UpdateTariffServlet.java</span></div><h1>UpdateTariffServlet.java</h1><pre class="source lang-java linenums">package com.servlets.tariff;
+
+import com.dto.TariffDto;
+import com.service.TariffService;
+import com.service.TariffServiceImpl;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(urlPatterns = &quot;/update/tariff&quot;)
+<span class="nc" id="L15">public class UpdateTariffServlet extends HttpServlet {</span>
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<span class="nc" id="L18">        TariffService tariffService = new TariffServiceImpl();</span>
+<span class="nc" id="L19">       String tariffId = req.getParameter(&quot;id&quot;);</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">       if(tariffId!=null){</span>
+<span class="nc" id="L21">           int id = Integer.parseInt(tariffId);</span>
+<span class="nc" id="L22">           TariffDto tariffDto = tariffService.findById(id);</span>
+<span class="nc" id="L23">           req.getSession().setAttribute(&quot;tariffDto&quot;,tariffDto);</span>
+<span class="nc" id="L24">           resp.sendRedirect(&quot;/update-tariff/form&quot;);</span>
+<span class="nc" id="L25">       }</span>
+        else{
+<span class="nc" id="L27">            new ServletException(&quot;tariff did not found for update&quot;);</span>
+       }
+<span class="nc" id="L29">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

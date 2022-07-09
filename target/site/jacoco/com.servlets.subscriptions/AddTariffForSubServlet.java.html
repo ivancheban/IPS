@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddTariffForSubServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IPS Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.servlets.subscriptions</a> &gt; <span class="el_source">AddTariffForSubServlet.java</span></div><h1>AddTariffForSubServlet.java</h1><pre class="source lang-java linenums">package com.servlets.subscriptions;
+
+import com.dao.SubscriptionDao;
+import com.dao.TariffDao;
+import com.dto.SubscriptionDto;
+import com.dto.TariffDto;
+import com.exceptions.SubscriptionException;
+import com.mapper.BusinessMapper;
+import com.model.Subscription;
+import com.model.Tariff;
+import com.service.SubscriptionService;
+import com.service.SubscriptionServiceImpl;
+import com.service.TariffService;
+import com.service.TariffServiceImpl;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+@WebServlet(name = &quot;addTS&quot;, urlPatterns = &quot;/add/tariff/service&quot;)
+<span class="nc" id="L25">public class AddTariffForSubServlet extends HttpServlet {</span>
+<span class="nc" id="L26">    SubscriptionService subscriptionService = new SubscriptionServiceImpl();</span>
+<span class="nc" id="L27">    TariffService tariffService = new TariffServiceImpl();</span>
+<span class="nc" id="L28">    SubscriptionDao subscriptionDao = new SubscriptionDao();</span>
+<span class="nc" id="L29">    TariffDao tariffDao = new TariffDao();</span>
+    private BusinessMapper businessMapper;
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<span class="nc" id="L34">        HttpSession session = req.getSession(true);</span>
+<span class="nc" id="L35">        int sub_id = Integer.parseInt(req.getParameter(&quot;sub_id&quot;));</span>
+<span class="nc" id="L36">        int tar_id = Integer.parseInt(req.getParameter(&quot;tar_id&quot;));</span>
+
+
+<span class="nc" id="L39">        Subscription subscription = subscriptionDao.findById(sub_id);</span>
+<span class="nc" id="L40">        Tariff tariff = tariffDao.findById(tar_id);</span>
+<span class="nc" id="L41">        SubscriptionDto subscriptionDto = BusinessMapper.getSubscriptionDto(subscription);</span>
+<span class="nc" id="L42">        TariffDto tariffDto = businessMapper.getTariffDto(tariff);</span>
+
+        try {
+<span class="nc" id="L45">            subscriptionService.addTariff(sub_id, tar_id);</span>
+<span class="nc" id="L46">            session.setAttribute(&quot;subscriptionDto&quot;, subscriptionDto);</span>
+<span class="nc" id="L47">            session.setAttribute(&quot;tariffDto&quot;, tariffDto);</span>
+<span class="nc" id="L48">            resp.sendRedirect(&quot;/service-page.jsp&quot;);</span>
+<span class="nc" id="L49">        } catch (SubscriptionException e) {</span>
+<span class="nc" id="L50">            System.out.println(&quot;error&quot; + e);</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

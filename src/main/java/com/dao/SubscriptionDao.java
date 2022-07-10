@@ -16,11 +16,11 @@ import java.util.List;
 
 public class SubscriptionDao implements Dao<Subscription> {
     private static final String FIND_ALL_BY_SERVICE = "select *from tariffs where service_type=?";
-    private static final String CREATE_QUERY = "insert into subscriptions(name,days_amount,isActive,created, updated) values (?,?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into subscriptions(name,isActive,created, updated) values (?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from subscriptions where name = ?";
     private static final String FIND_BY_ID_QUERY = "select * from subscriptions where id = ?";
-    private static final String UPDATE_QUERY = "UPDATE subscriptions SET name= ?, days_amount = ?, isActive = ?, updated = now() WHERE name = ?";
-    private static final String UPDATE_QUERY_ID = "UPDATE subscriptions SET name=?,days_amount = ?,isActive = ? WHERE id = ?";
+    private static final String UPDATE_QUERY = "UPDATE subscriptions SET name= ?, isActive = ?, updated = now() WHERE name = ?";
+    private static final String UPDATE_QUERY_ID = "UPDATE subscriptions SET name=?,isActive = ? WHERE id = ?";
     private static final String DELETE_QUERY = "DELETE  FROM subscriptions WHERE id=?";
     private static final String FIND_ALL_QUERY = "select * from subscriptions";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from subscriptions limit ?, ?";
@@ -81,10 +81,9 @@ public class SubscriptionDao implements Dao<Subscription> {
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
             pst.setString(1, subscription.getName());
-            pst.setInt(2, subscription.getDays_amount());
-            pst.setBoolean(3, subscription.isActive());
-            pst.setTimestamp(4, subscription.convertToTimestamp(subscription.getCreated()));
-            pst.setTimestamp(5, subscription.convertToTimestamp(subscription.getUpdated()));
+            pst.setBoolean(2, subscription.isActive());
+            pst.setTimestamp(3, subscription.convertToTimestamp(subscription.getCreated()));
+            pst.setTimestamp(4, subscription.convertToTimestamp(subscription.getUpdated()));
 
             int status = pst.executeUpdate();
 
@@ -115,7 +114,6 @@ public class SubscriptionDao implements Dao<Subscription> {
             resultSet.next();
             subscription.setId(resultSet.getInt("id"));
             subscription.setName(resultSet.getString("name"));
-            subscription.setDays_amount(resultSet.getInt("days_amount"));
             subscription.setActive(resultSet.getBoolean("isActive"));
             subscription.setCreated(LocalDateTime.parse(resultSet.getString("created")));
             subscription.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
@@ -138,7 +136,6 @@ public class SubscriptionDao implements Dao<Subscription> {
             resultSet.next();
             subscription.setId(resultSet.getInt("id"));
             subscription.setName(resultSet.getString("name"));
-            subscription.setDays_amount(resultSet.getInt("days_amount"));
             subscription.setActive(resultSet.getBoolean("isActive"));
             subscription.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
             subscription.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
@@ -159,9 +156,8 @@ public class SubscriptionDao implements Dao<Subscription> {
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY_ID);) {
 
             pst.setString(1, sub.getName());
-            pst.setInt(2, sub.getDays_amount());
-            pst.setBoolean(3, sub.isActive());
-            pst.setInt(4, sub.getId());
+            pst.setBoolean(2, sub.isActive());
+            pst.setInt(3, sub.getId());
 
 
             int status = pst.executeUpdate();
@@ -182,14 +178,10 @@ public class SubscriptionDao implements Dao<Subscription> {
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
 
             pst.setString(1, sub.getName());
-            logger.debug("set name ==> " + sub.getName());
-            pst.setInt(2, sub.getDays_amount());
-            pst.setBoolean(3, sub.isActive());
-            pst.setString(4, oldName);
-            logger.debug("set old name ==> " + oldName);
+            pst.setBoolean(2, sub.isActive());
+            pst.setString(3, oldName);
 
             subscription.setName(sub.getName());
-            subscription.setDays_amount(sub.getDays_amount());
             subscription.setActive(sub.isActive());
 
             int status = pst.executeUpdate();
@@ -239,7 +231,6 @@ public class SubscriptionDao implements Dao<Subscription> {
                 subscription = new Subscription();
                 subscription.setId(result.getInt("id"));
                 subscription.setName(result.getString("name"));
-                subscription.setId(result.getInt("days_amount"));
                 subscription.setActive(result.getBoolean("isActive"));
                 subscription.setCreated(result.getTimestamp("created").toLocalDateTime());
                 subscription.setUpdated(result.getTimestamp("updated").toLocalDateTime());
@@ -281,12 +272,11 @@ public class SubscriptionDao implements Dao<Subscription> {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                int days_amount = resultSet.getInt("days_amount");
                 boolean isActive = resultSet.getBoolean("isActive");
                 LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
                 LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
 
-                subscription = new Subscription(id, name, days_amount, isActive, created, updated);
+                subscription = new Subscription(id, name, isActive, created, updated);
                 subscriptionList.add(subscription);
             }
             resultSet = statement.executeQuery("SELECT FOUND_ROWS()");
@@ -333,8 +323,8 @@ public class SubscriptionDao implements Dao<Subscription> {
                 tariff = new Tariff();
                 tariff.setId(result.getInt("id"));
                 tariff.setName(result.getString("name"));
-                tariff.setType(ServiceType.valueOf(result.getString("service_type")));
                 tariff.setPricePerDay(result.getInt("price_per_day"));
+                tariff.setType(ServiceType.valueOf(result.getString("service_type")));
                 tariff.setActive(result.getBoolean("isActive"));
                 tariff.setCreated(result.getTimestamp("created").toLocalDateTime());
                 tariff.setUpdated(result.getTimestamp("updated").toLocalDateTime());

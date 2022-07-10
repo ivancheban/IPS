@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private void validationPasswordFormat(String password) {
-        Pattern pattern = Pattern.compile("^\\d{4}$");
+        Pattern pattern = Pattern.compile("^\\d{8}$");
         Matcher matcher = pattern.matcher(password);
         if (!matcher.matches()) {
             throw new RuntimeException("You enter invalid password");

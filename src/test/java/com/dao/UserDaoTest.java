@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,7 +31,7 @@ public class UserDaoTest {
 
     @Test
     public void createUserPositiveTest() {
-        User user = new User("+380508889911", "1100",true,Role.CLIENT);
+        User user = new User("+380508889911", "11003388",true,Role.CLIENT);
         user.setRole(Role.CLIENT);
         userDao.create(user);
         int id = userDao.findByField("+380508889911").getId();
@@ -42,7 +41,7 @@ public class UserDaoTest {
 
     @Test()
     public void createNegativeNullPhoneTest() {
-        User user = new User(null, "4123");
+        User user = new User(null, "41234587");
         userDao.create(user);
         Assertions.assertThrows(UserException.class, () -> userDao.create(null));
     }
@@ -50,7 +49,7 @@ public class UserDaoTest {
     @Test()
     public void createNegativeNullPasswordTest() {
         User user = new User();
-        user.setPhone("380669507700");
+        user.setPhone("+380669507700");
         user.setPassword(null);
         assertThrows(UserException.class, () -> userDao.create(null));
     }
@@ -58,8 +57,8 @@ public class UserDaoTest {
     @Test
     public void createNegativeDuplicatePhoneTest() {
         User user = new User();
-        user.setPhone("+380632323233");
-        user.setPassword("4130");
+        user.setPhone("+380667475521");
+        user.setPassword("21101984");
         User newUser = userDao.create(user);
         int id = newUser.getId();
         assertEquals(0, id);
@@ -67,9 +66,9 @@ public class UserDaoTest {
 
     @Test
     public void findByPhoneNumberPositiveTest() {
-        User user = userDao.findByField("+380632323233");
-        assertEquals("+380632323233", "+380632323233");
-        int id = userDao.findByField("+380632323233").getId();
+        User user = userDao.findByField("+380667475521");
+        assertEquals(1, 1);
+        int id = userDao.findByField("+380667475521").getId();
         Assertions.assertNotNull(id);
         assertEquals(id, id);
 
@@ -110,14 +109,14 @@ public class UserDaoTest {
 
     @Test
     public void findByIdPositiveTest() {
-        int id = 22;
+        int id = 2;
         User user = userDao.findById(id);
         assertEquals(1, 1);
     }
 
     @Test
     public void findByIdNegativeTest() {
-        int id = 6;
+        int id = 22;
         User user = userDao.findById(id);
         Assertions.assertNotEquals(1, 0);
     }
@@ -134,7 +133,7 @@ public class UserDaoTest {
     @Test
     void deleteUserNegativeTest() {
         int listUserSize = userDao.findAll().size();
-        int id = 2;
+        int id = 22;
         userDao.delete(id);
         Assertions.assertNotEquals(listUserSize, listUserSize - 1);
     }
@@ -152,8 +151,8 @@ public class UserDaoTest {
     }
     @Test
     void updateUserNegativeTest() {
-        int idOldUser= userDao.findByField("+380735556321").getId();
-        User user = new User("+380631111100","4000");
+        int idOldUser= userDao.findByField("+380667475521").getId();
+        User user = new User("+380631111100","40001289");
         User editUser = userDao.update(user);
         int idNewUser = userDao.findByField("+380631111100").getId();
         Assertions.assertNotEquals(idOldUser, idNewUser);

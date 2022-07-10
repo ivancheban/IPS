@@ -53,7 +53,7 @@
                     <a class="nav-link" href="/sort/tariffs?sortBy=price"><fmt:message key="sorting.price"/></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/cabinet"><fmt:message key="button.back"/></a>
+                    <a class="nav-link" href="/IPS"><fmt:message key="button.back"/></a>
                 </li>
             </ul>
         </div>
@@ -67,11 +67,11 @@
             <div class="card">
                 <div class="card-header">
                         ${tariff.name}
-
                 </div>
 
                 <div class="card-footer text-muted">
                     <h6> ${tariff.getPricePerDay()} <fmt:message key="price.month"/></h6>
+                    <h1> ${tariff.getType()}</h1>
                     <a href="/add/tariff/customer?customer_id=${sessionScope.get('customerId')}&tariff_id=${tariff.id}"><fmt:message key="enabled.status"/></a>
 
                 </div>

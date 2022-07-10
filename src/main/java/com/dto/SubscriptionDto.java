@@ -9,7 +9,6 @@ import java.util.List;
 public class SubscriptionDto {
     private int id;
     private String name;
-    private int days_amount;
     private boolean isActive;
     private List<TariffDto> tariffs = new ArrayList<>();
     private LocalDateTime created;
@@ -18,24 +17,19 @@ public class SubscriptionDto {
     public SubscriptionDto() {
     }
 
-    public SubscriptionDto(String name, int days) {
-        this.name = name;
-        this.days_amount = days;
-    }
 
 
-    public SubscriptionDto(int id, String name, int days_amount,boolean isActive) {
+
+    public SubscriptionDto(int id, String name,boolean isActive) {
         this.id = id;
         this.name = name;
-        this.days_amount = days_amount;
         this.isActive = isActive;
 
     }
 
-    public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created,LocalDateTime updated) {
+    public SubscriptionDto(int id, String name, boolean isActive, LocalDateTime created,LocalDateTime updated) {
         this.id = id;
         this.name = name;
-        this.days_amount = days_amount;
         this.isActive = isActive;
 
     }
@@ -45,10 +39,9 @@ public class SubscriptionDto {
     }
 
 
-    public SubscriptionDto(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated, List<TariffDto> tariffs) {
+    public SubscriptionDto(int id, String name, boolean isActive, LocalDateTime created, LocalDateTime updated, List<TariffDto> tariffs) {
         this.id = id;
         this.name = name;
-        this.days_amount = days_amount;
         this.isActive = isActive;
         this.tariffs = tariffs;
         this.created = created;
@@ -63,15 +56,6 @@ public class SubscriptionDto {
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getDays() {
-        return days_amount;
-    }
-
-    public void setDays(int days) {
-        this.days_amount = days;
-    }
-
     public boolean isActive() {
         return isActive;
     }
@@ -104,14 +88,6 @@ public class SubscriptionDto {
         this.id = id;
     }
 
-    public int getDays_amount() {
-        return days_amount;
-    }
-
-    public void setDays_amount(int days_amount) {
-        this.days_amount = days_amount;
-    }
-
     public List<TariffDto> getTariffs() {
         return tariffs;
     }
@@ -127,7 +103,6 @@ public class SubscriptionDto {
         return "Subscription{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", days_amount=" + days_amount +
                 ", isActive=" + isActive +
                 ", created=" + created +
                 ", updated=" + updated +

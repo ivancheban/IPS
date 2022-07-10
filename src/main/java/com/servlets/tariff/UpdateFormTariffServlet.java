@@ -25,13 +25,14 @@ public class UpdateFormTariffServlet extends HttpServlet {
         String name = req.getParameter("name");
         String serviceType = req.getParameter("service_type");
         String price = req.getParameter("price_per_day");
+        boolean status = Boolean.parseBoolean(req.getParameter("isActive"));
         String tariffId = req.getParameter("id");
         int id = Integer.parseInt(tariffId);
         ServiceType type = ServiceType.valueOf(serviceType);
         int priceTariff = Integer.parseInt(price);
 
 
-        TariffDto tariffDto = new TariffDto(id,name, type, priceTariff);
+        TariffDto tariffDto = new TariffDto(id,name, type, priceTariff,status);
         System.out.println(tariffDto);
         TariffDto editTariff = tariffService.update(tariffDto);
         System.out.println(editTariff);

@@ -25,11 +25,10 @@ public class UpdateSubServ extends HttpServlet {
 
 
         String name = request.getParameter("name");
-        int days_amount = Integer.parseInt(request.getParameter("days_amount"));
         boolean isActive = Boolean.parseBoolean(request.getParameter("isActive"));
         int id  = Integer.parseInt(request.getParameter("id"));
 
-        SubscriptionDto subscriptionDto = new SubscriptionDto(id,name,days_amount,isActive);
+        SubscriptionDto subscriptionDto = new SubscriptionDto(id,name,isActive);
 
         SubscriptionDto subNewDto = subscriptionService.update(subscriptionDto);
         if (subNewDto!= null){

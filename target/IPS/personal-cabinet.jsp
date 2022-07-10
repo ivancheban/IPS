@@ -52,17 +52,16 @@
 
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/subscriptions" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="/IPS" class="btn btn-info">
                         <fmt:message key="index.service"/>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/open/service?id=21"><fmt:message key="service.internet"/></a>
-                        <a class="dropdown-item" href="/open/service?id=14"><fmt:message key="service.mobile"/></a>
-                        <a class="dropdown-item" href="/open/service?id=16"><fmt:message key="service.IPTV"/></a>
-                        <a class="dropdown-item" href="/open/service?id=20"><fmt:message key="service.cableTv"/></a>
-                        <div class="dropdown-divider"></div>
-                    </div>
+<%--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+<%--                        <a class="dropdown-item" href="/open/service?id=1"><fmt:message key="service.internet"/></a>--%>
+<%--                        <a class="dropdown-item" href="/open/service?id=2"><fmt:message key="service.mobile"/></a>--%>
+<%--                        <a class="dropdown-item" href="/open/service?id=3"><fmt:message key="service.IPTV"/></a>--%>
+<%--                        <a class="dropdown-item" href="/open/service?id=4"><fmt:message key="service.cableTv"/></a>--%>
+<%--                        <div class="dropdown-divider"></div>--%>
+<%--                    </div>--%>
             </ul>
         </li>
         <a href="/IPS" class="btn btn-danger"><fmt:message key="button.logout"/></a>

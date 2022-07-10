@@ -9,7 +9,6 @@ import java.util.List;
 public class Subscription {
     private int id;
     private String name;
-    private int days_amount;//List<Tariffs> tariffs;
     private List<Tariff> tariffs;
     private boolean isActive;
     private LocalDateTime created;
@@ -22,33 +21,22 @@ public class Subscription {
         this.name = name;
     }
 
-    public Subscription(String name, boolean isActive) {
+
+    public Subscription(String name,boolean isActive) {
         this.name = name;
         this.isActive = isActive;
     }
 
-    public Subscription(String name, int days_amount) {
-        this.name = name;
-        this.days_amount = days_amount;
-    }
-
-    public Subscription(String name, int days_amount, boolean isActive) {
-        this.name = name;
-        this.days_amount = days_amount;
-        this.isActive = isActive;
-    }
-
-    public Subscription(int id , String name, int days_amount, boolean isActive) {
+    public Subscription(int id , String name,boolean isActive) {
         this.id = id;
         this.name = name;
-        this.days_amount = days_amount;
         this.isActive = isActive;
     }
 
-    public Subscription(int id, String name, int days_amount, boolean isActive, LocalDateTime created, LocalDateTime updated) {
+    public Subscription(int id, String name,boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;
-        this.days_amount = days_amount;
+
         this.isActive = isActive;
         this.created = created;
         this.updated = updated;
@@ -68,15 +56,6 @@ public class Subscription {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-    public int getDays_amount() {
-        return days_amount;
-    }
-
-    public void setDays_amount(int days_amount) {
-        this.days_amount = days_amount;
     }
 
     public boolean isActive() {
@@ -122,7 +101,6 @@ public class Subscription {
         return "Subscription{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", days_amount=" + days_amount +
                 ", isActive=" + isActive +
                 ", created=" + created +
                 ", updated=" + updated +

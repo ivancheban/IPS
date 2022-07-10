@@ -57,36 +57,25 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-                <label class="form-label" for="days_amount"><fmt:message key="price.month"/></label>
+                <label class="form-label" for="isActive"><fmt:message key="list.active.list"/></label>
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="days_amount" name="days_amount"
-                               id="days_amount"
-                               value="<%=subscriptionDto!=null?subscriptionDto.getDays_amount():""%>" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="isActive"><fmt:message key="list.active.list"/></label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" placeholder="isActive" name="isActive"
-                                       id="isActive"
-                                       value="<%=subscriptionDto!=null?subscriptionDto.isActive():""%>" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    </br>
-                    <div alight="right">
-                        <button type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></button>
+                        <input type="text" class="form-control" placeholder="isActive" name="isActive"
+                               id="isActive"
+                               value="<%=subscriptionDto!=null?subscriptionDto.isActive():""%>" required>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+
+            </br>
+            <div alight="right">
+                <button type="submit" id="submit" value="submit" class="btn btn-info"><fmt:message
+                        key="button.update"/></button>
+
+</div>
+</form>
+</div>
 </div>
 </html>

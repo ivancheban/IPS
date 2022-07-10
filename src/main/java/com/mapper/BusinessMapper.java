@@ -20,14 +20,13 @@ public class BusinessMapper {
         return new Customer(createRequestDto.getName(), createRequestDto.getSurname(), createRequestDto.getPhone(), createRequestDto.getEmail());
     }
     public static Subscription convertSubscription(SubscriptionDto subscriptionDto) {
-        return new Subscription(subscriptionDto.getId(),subscriptionDto.getName(), subscriptionDto.getDays(), subscriptionDto.isActive());
+        return new Subscription(subscriptionDto.getId(),subscriptionDto.getName(), subscriptionDto.isActive());
     }
     public static SubscriptionDto convertSubDto(Subscription subscription) {
-        return new SubscriptionDto(subscription.getId(), subscription.getName(), subscription.getDays_amount(), subscription.isActive(),subscription.getCreated(),subscription.getUpdated());
+        return new SubscriptionDto(subscription.getId(), subscription.getName(), subscription.isActive(),subscription.getCreated(),subscription.getUpdated());
     }
     public static SubscriptionDto getSubscriptionDto(Subscription subscription) {
         return new SubscriptionDto(subscription.getId(), subscription.getName(),
-                subscription.getDays_amount(),
                 subscription.isActive(),
                 subscription.getCreated(),
                 subscription.getUpdated(),

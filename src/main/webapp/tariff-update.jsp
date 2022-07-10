@@ -80,9 +80,17 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="form-label" for="isActive"><fmt:message key="list.active.list"/></label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" placeholder="isActive" name="isActive" id="isActive"
+                               value="<%=tariffDto!=null?tariffDto.isActive():""%>"  required>
+                    </div>
+                </div>
+            </div>
             <button type="submit" id="submit" value="submit"  class="btn btn-info"><fmt:message key="button.update"/></button>
-<%--            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="button.update"/></button>--%>
-
         </form>
     </div>
 </div>

@@ -14,10 +14,10 @@ import java.util.List;
 
 public class TariffDao implements Dao<Tariff> {
 
-    private static final String CREATE_QUERY = "insert into tariffs(name,service_type,  price_per_day,isActive) values (?,?,?,?)";
+    private static final String CREATE_QUERY = "insert into tariffs(name,service_type,price_per_day,isActive) values (?,?,?,?)";
     private static final String FIND_BY_FIELD_QUERY = "select * from tariffs where name = ?";
     private static final String FIND_BY_ID_QUERY = "select * from tariffs where id = ?";
-    private static final String UPDATE_QUERY = "UPDATE tariffs SET name=?,service_type=?,price_per_day=? WHERE id=?";
+    private static final String UPDATE_QUERY = "UPDATE tariffs SET name=?,service_type=?,price_per_day=?,isActive=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE  FROM tariffs WHERE id=?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM tariffs";
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from tariffs limit ?, ?";
@@ -141,7 +141,8 @@ public class TariffDao implements Dao<Tariff> {
             pst.setString(1,tariff.getName());
             pst.setString(2, String.valueOf(ServiceType.valueOf(String.valueOf(tariff.getType()))));
             pst.setInt(3,tariff.getPricePerDay());
-            pst.setInt(4, tariff.getId());
+            pst.setBoolean(4,tariff.isActive());
+            pst.setInt(5, tariff.getId());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");

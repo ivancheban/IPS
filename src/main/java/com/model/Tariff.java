@@ -35,7 +35,6 @@ public class Tariff {
         this.id = id;
         this.name = name;
         this.type = type;
-
         this.pricePerDay = pricePerDay;
         this.isActive = isActive;
         this.created = created;

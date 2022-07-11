@@ -6,6 +6,7 @@ import com.model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class UserDaoTest {
 
     @Test
     public void createUserPositiveTest() {
-        User user = new User("+380508889911", "11003388",true,Role.CLIENT);
+        User user = new User("+380508889911", "11003388", true, Role.CLIENT);
         user.setRole(Role.CLIENT);
         userDao.create(user);
         int id = userDao.findByField("+380508889911").getId();
@@ -42,16 +43,15 @@ public class UserDaoTest {
     @Test()
     public void createNegativeNullPhoneTest() {
         User user = new User(null, "41234587");
-        userDao.create(user);
-        Assertions.assertThrows(UserException.class, () -> userDao.create(null));
+        int id = userDao.create(user).getId();
+        Assertions.assertNotEquals(1, id);
     }
 
     @Test()
     public void createNegativeNullPasswordTest() {
-        User user = new User();
-        user.setPhone("+380669507700");
-        user.setPassword(null);
-        assertThrows(UserException.class, () -> userDao.create(null));
+        User user = new User("+380669507700",null);
+        int id = userDao.create(user).getId();
+        Assertions.assertNotEquals(1, id);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class UserDaoTest {
         assertEquals(1, 1);
         int id = userDao.findByField("+380667475521").getId();
         Assertions.assertNotNull(id);
-        assertEquals(id, id);
+
 
     }
 
@@ -123,9 +123,9 @@ public class UserDaoTest {
 
     @Test
     public void deleteUserPositiveTest() {
-        User newUser = new User("+380442003040","0000");
+        User newUser = new User("+380442003040", "0000");
         userDao.create(newUser);
-        int id= userDao.findByField("+380442003040").getId();
+        int id = userDao.findByField("+380442003040").getId();
         boolean status = userDao.delete(id);
         assertEquals(true, true);
     }
@@ -140,19 +140,20 @@ public class UserDaoTest {
 
     @Test
     void updateUserPositiveTest() {
-        User newUser = new User("+380442003040","0000");
+        User newUser = new User("+380442003040", "0000");
         userDao.create(newUser);
-        int idOldUser= userDao.findByField("+380442003040").getId();
-        User user = new User(idOldUser,"+380665556655","9000",true,Role.CLIENT);
+        int idOldUser = userDao.findByField("+380442003040").getId();
+        User user = new User(idOldUser, "+380665556655", "9000", true, Role.CLIENT);
         User editUser = userDao.update(user);
         int idNewUser = userDao.findByField("+380665556655").getId();
         assertEquals(idOldUser, idNewUser);
         userDao.delete(idNewUser);
     }
+
     @Test
     void updateUserNegativeTest() {
-        int idOldUser= userDao.findByField("+380667475521").getId();
-        User user = new User("+380631111100","40001289");
+        int idOldUser = userDao.findByField("+380667475521").getId();
+        User user = new User("+380631111100", "40001289");
         User editUser = userDao.update(user);
         int idNewUser = userDao.findByField("+380631111100").getId();
         Assertions.assertNotEquals(idOldUser, idNewUser);

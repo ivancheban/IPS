@@ -20,7 +20,7 @@ create table users
 
 create table customers
 (
-    id       int(10) primary key auto_increment,
+    id       int(10) auto_increment,
     name     varchar(25) not null,
     surname  varchar(25) not null,
     phone    varchar(13) not null unique,
@@ -28,20 +28,21 @@ create table customers
     isActive boolean   default true,
     created  timestamp default now(),
     updated  timestamp default now() on update NOW(),
-    balance  int(10) default null
+    balance  int(10) default null,
+    primary key (id)
 );
 
 
 create table tariffs
 (
-    id            int(10) primary key auto_increment,
+    id            int(10) auto_increment,
     name          varchar(25)                            not null unique,
     service_type  enum ('TV','INTERNET','IPTV','MOBILE') not null,
     price_per_day int(10)                                not null,
     isActive      boolean   default true,
     created       timestamp default now(),
-    updated       timestamp default now() on update NOW()
-
+    updated       timestamp default now() on update NOW(),
+    primary key (id)
 );
 
 

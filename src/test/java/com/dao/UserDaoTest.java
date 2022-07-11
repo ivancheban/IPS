@@ -36,6 +36,7 @@ public class UserDaoTest {
         user.setRole(Role.CLIENT);
         userDao.create(user);
         int id = userDao.findByField("+380508889911").getId();
+        System.out.println(id);
         assertEquals("+380508889911", user.getPhone());
         userDao.delete(id);
     }
@@ -50,7 +51,8 @@ public class UserDaoTest {
     @Test()
     public void createNegativeNullPasswordTest() {
         User user = new User("+380669507700",null);
-        int id = userDao.create(user).getId();
+        userDao.create(user);
+        int id = userDao.findByField("+380669507700").getId();
         Assertions.assertNotEquals(1, id);
     }
 

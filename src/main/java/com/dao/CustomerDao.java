@@ -52,7 +52,7 @@ public class CustomerDao implements Dao<Customer> {
             logger.error("customer not found");
             throw new UserException("customer is not found");
         }
-        try (
+        try (Connection con = DataSource.getConnection();
                 PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
 
             pst.setString(1, customer.getName());
@@ -194,7 +194,7 @@ public class CustomerDao implements Dao<Customer> {
                 customer.setName(result.getString("name"));
                 customer.setSurname(result.getString("surname"));
                 customer.setPhone(result.getString("phone"));
-                customer.setEmail(result.getString("password"));
+                customer.setEmail(result.getString("email"));
                 customer.setActive(result.getBoolean("isActive"));
                 customer.setCreated(result.getTimestamp("created").toLocalDateTime());
                 customer.setUpdated(result.getTimestamp("updated").toLocalDateTime());
@@ -210,18 +210,21 @@ public class CustomerDao implements Dao<Customer> {
     }
 
     public boolean addBalance(int customer_id, int money) {
+        if(money<0){
+             money = 0;
+        }
         boolean status_replenish = false;
         logger.debug("Start replenish amount....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {
 
             Customer customer = findByID(customer_id);
+
             int newBalance = customer.getBalance() + money;
             pst.setInt(1, newBalance);
             pst.setInt(2, customer_id);
 
             int status = pst.executeUpdate();
-            System.out.println("status ==> " + status);
             if (status == 1) {
                 status_replenish = true;
             }
@@ -243,12 +246,14 @@ public class CustomerDao implements Dao<Customer> {
              PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {
 
             Customer customer = findByID(customer_id);
+            if(money < 0 || money > customer.getBalance()){
+                money=0;
+            }
             int newBalance = customer.getBalance() - money;
             pst.setInt(1, newBalance);
             pst.setInt(2, customer_id);
 
             int status = pst.executeUpdate();
-            System.out.println("status ==> " + status);
             if (status == 1) {
                 status_replenish = true;
             }

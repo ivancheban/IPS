@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,10 +29,10 @@ class CustomerDaoTest {
 
     @Test
     void customerCreatePositiveTest() {
-        Customer customer = new Customer("Ivan", "Burchenko", "+380639274235", "burchenko@gmal.com");
+        Customer customer = new Customer("Ivan", "Burchenko", "+380440000000", "burchenko@gmal.com",0);
         Customer newCustomer = customerDao.create(customer);
-        String email = newCustomer.getEmail();
-        int id = newCustomer.getId();
+        String email = customerDao.findByField("+380440000000").getEmail();
+        int id = customerDao.findByField("+380440000000").getId();
         assertEquals(1, 1);
         assertEquals("burchenko@gmal.com", "burchenko@gmal.com");
         customerDao.delete(id);
@@ -39,28 +40,30 @@ class CustomerDaoTest {
 
     @Test
     void customerNotNameNegativeTest() {
-        Customer customer = new Customer("null", "Burchenko", "+380639274235", "burchenko@gmal.com");
-        int id = customerDao.create(customer).getId();
+        Customer customer = new Customer("", "Burchenko", "+380639274235", "burchenko@gmal.com",0);
+        customerDao.create(customer);
+        int id = customerDao.findByField("+380639274235").getId();
         Assertions.assertNotEquals(1, id);
     }
 
     @Test
-    void customerNotCreateNegativeTest() {
-        Customer customer = new Customer("Ivan", "null", "+380639274235", "burchenko@gmal.com");
-        int id = customerDao.create(customer).getId();
+    void customerNotSurnameCreateNegativeTest() {
+        Customer customer = new Customer("Ivan", "null", "+380639274235", "burchenko@gmal.com",0);
+        customerDao.create(customer);
+        int id = customerDao.findByField("+380639274235").getId();
         Assertions.assertNotEquals(1, id);
     }
 
     @Test
     void customerNotPhoneCreateNegativeTest() {
-        Customer customer = new Customer("Ivan", "Pisarchuk", "null", "burchenko@gmal.com");
+        Customer customer = new Customer("Ivan", "Pisarchuk", "null", "burchenko@gmal.com",0);
         int id = customerDao.create(customer).getId();
         Assertions.assertNotEquals(1, id);
     }
 
     @Test
     void customerNotEmailCreateNegativeTest() {
-        Customer customer = new Customer("Ivan", "Pisarchuk", "+380639274235", "null");
+        Customer customer = new Customer("Ivan", "Pisarchuk", "+380639274235", "null",0);
         int id = customerDao.create(customer).getId();
         Assertions.assertNotEquals(1, id);
     }
@@ -85,46 +88,120 @@ class CustomerDaoTest {
     @Test
     void findByIDNegativeTest() {
         Customer customer = customerDao.findByID(15);
+        System.out.println(customer);
         Assertions.assertNotEquals(1, 0);
     }
 
     @Test
     void updatePositiveTest() {
-        Customer customer = new Customer("Ivan", "Burchenko", "+380639274235", "burchenko@gmal.com");
-        int id = customerDao.create(customer).getId();
-        Customer newCustomer = new Customer(id,"Petr", "Mikulenko", "+380639274299", "mikulenko@gmal.com");
-        int customerId = customerDao.update(newCustomer).getId();
-        assertEquals(1, 1);
+        Customer customer = new Customer("Ivan", "Burchenko", "+380440000000", "burchenko@gmal.com",0);
+        customerDao.create(customer);
+        int id = customerDao.findByField("+380440000000").getId();
+        Customer editCustomer = new Customer(id,"Petr", "Mikulenko", "+380639274299", "mk@gmal.com");
+        Customer customer1 = customerDao.update(editCustomer);
+        System.out.println(customer1);
+        int customerId = customerDao.findByField("+380639274299").getId();
+        String email = customerDao.findByID(customerId).getEmail();
+        System.out.println(email);
+        assertEquals("mk@gmal.com", email);
         customerDao.delete(customerId);
     }
     @Test
     void updateNegativeTest() {
-        Customer customer = new Customer("Ivan", "Burchenko", "+380639274235", "burchenko@gmal.com");
-        int id = customerDao.create(customer).getId();
+        Customer customer = new Customer("Ivan", "Burchenko", "+380639274235", "burchenko@gmal.com",0);
+        customerDao.create(customer);
+        int id = customerDao.findByField("+380639274235").getId();
+        System.out.println(id);
         Customer newCustomer = new Customer(id,"Petr", "null", "+380639274299", "mikulenko@gmal.com");
-        int customerId = customerDao.update(newCustomer).getId();
+        customerDao.update(newCustomer);
+        int customerId = customerDao.findByField("+380639274299").getId();
+        System.out.println(customerId);
         Assertions.assertNotEquals(1, 0);
         customerDao.delete(customerId);
     }
 
     @Test
-    void delete() {
+    void deletePositiveTest() {
+        Customer customer = new Customer("Ivan", "Burchenko", "+380639274235", "burchenko@gmal.com",0);
+        customerDao.create(customer);
+        int id = customerDao.findByField("+380639274235").getId();
+        assertEquals(1,1);
+        customerDao.delete(id);
+    }
+    @Test
+    void deleteNegativeTest() {
+        customerDao.delete(30);
+        Assertions.assertNotEquals(1, 0);
     }
 
     @Test
-    void findAll() {
+    void findAllPositiveTest() {
+        List<Customer> customers = customerDao.findAll();
+        int size = customers.size();
+        System.out.println(size);
+        assertEquals(size,customers.size());
     }
 
     @Test
-    void addBalance() {
+    void addBalancePositiveTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+        customerDao.addBalance(id,200);
+        int balance = customerDao.findByID(id).getBalance();
+        assertEquals(200,balance);
+        customerDao.delete(id);
+    }
+    @Test
+    void addBalanceNegativeTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+        customerDao.addBalance(id,-200);
+        int balance = customerDao.findByID(id).getBalance();
+        System.out.println(balance);
+        Assertions.assertNotEquals(-200, 0);
+        customerDao.delete(id);
     }
 
     @Test
-    void withdrawBalance() {
+    void withdrawBalancePositiveTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+        System.out.println(id);
+        int oldBalance = 1000;
+        customerDao.addBalance(id,oldBalance);
+
+        int money = 450;
+        customerDao.withdrawBalance(id,money);
+        int afterWithDraw = oldBalance-money;
+        int newBalance = customerDao.findByID(id).getBalance();
+        System.out.println(newBalance);
+
+        assertEquals(afterWithDraw,newBalance);
+        customerDao.delete(id);
+
+    }
+    @Test
+    void withdrawBalanceNegativeTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+        int oldBalance = 100;
+        customerDao.addBalance(id,oldBalance);
+
+        int money = 450;
+        customerDao.withdrawBalance(id,money);
+        int afterWithDraw = oldBalance-money;
+        int newBalance = customerDao.findByID(id).getBalance();
+        customerDao.delete(id);
+
+        Assertions.assertNotEquals(afterWithDraw, newBalance);
     }
 
     @Test
-    void addTariffCustomer() {
+    void addTariffCustomerPositiveTest() {
     }
 
     @Test

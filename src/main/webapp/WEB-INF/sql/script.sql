@@ -36,9 +36,9 @@ create table customers
 create table tariffs
 (
     id            int(10) auto_increment,
-    name          varchar(25)                            not null unique,
+    name          varchar(25) not null unique,
     service_type  enum ('TV','INTERNET','IPTV','MOBILE') not null,
-    price_per_day int(10)                                not null,
+    price_per_day int(10) not null ,
     isActive      boolean   default true,
     created       timestamp default now(),
     updated       timestamp default now() on update NOW(),

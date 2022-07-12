@@ -21,6 +21,12 @@ public class Tariff {
         this.type = type;
         this.pricePerDay = pricePerDay;
     }
+    public Tariff(String name, ServiceType type, int pricePerDay,boolean isActive) {
+        this.name = name;
+        this.type = type;
+        this.pricePerDay = pricePerDay;
+        this.isActive= isActive;
+    }
 
     public Tariff(String name, ServiceType type, int pricePerDay, boolean isActive, LocalDateTime created, LocalDateTime updated) {
         this.name = name;

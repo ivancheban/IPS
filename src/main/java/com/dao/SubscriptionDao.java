@@ -115,8 +115,8 @@ public class SubscriptionDao implements Dao<Subscription> {
             subscription.setId(resultSet.getInt("id"));
             subscription.setName(resultSet.getString("name"));
             subscription.setActive(resultSet.getBoolean("isActive"));
-            subscription.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-            subscription.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+            subscription.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+            subscription.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
             subscription.setTariffs(getAllTariffs(subscription.getId()));
         } catch (Exception ex) {
             logger.debug("Problem with searching subscription: " + ex.getMessage());

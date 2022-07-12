@@ -49,7 +49,7 @@ public class TariffDao implements Dao<Tariff> {
     }
 
     @Override
-    public Tariff create(Tariff tariff) throws TariffException {
+    public Tariff create(Tariff tariff) {
         logger.debug("Start tariff creating");
         if (tariff == null) {
             logger.error("tariff not found");
@@ -60,6 +60,9 @@ public class TariffDao implements Dao<Tariff> {
 
             pst.setString(1, tariff.getName());
             pst.setString(2, String.valueOf(tariff.getType()));
+            if(tariff.getPricePerDay()==0){
+                throw new SQLException();
+            }
             pst.setInt(3, tariff.getPricePerDay());
             pst.setBoolean(4, tariff.isActive());
 
@@ -70,12 +73,15 @@ public class TariffDao implements Dao<Tariff> {
             if (keys.next()) {
                 int id = keys.getInt(1);
                 tariff.setId(id);
-                System.out.println(tariff.getId());
             }
 
         } catch (Exception ex) {
             logger.debug("Problem with creating tariff: " + ex.getMessage());
-            throw new TariffException(ex.getMessage(), ex);
+            try {
+                throw new Exception(ex.getMessage(), ex);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         logger.debug("Tariff created");
         return tariff;
@@ -91,13 +97,13 @@ public class TariffDao implements Dao<Tariff> {
 
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
-
+            tariff.setId(resultSet.getInt("id"));
             tariff.setName(resultSet.getString("name"));
             tariff.setType(ServiceType.valueOf(resultSet.getString("service_type")));
             tariff.setPricePerDay(resultSet.getInt("price_per_day"));
             tariff.setActive(resultSet.getBoolean("isActive"));
-            tariff.setCreated(LocalDateTime.parse(resultSet.getString("created")));
-            tariff.setUpdated(LocalDateTime.parse(resultSet.getString("updated")));
+            tariff.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+            tariff.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
 
         } catch (Exception ex) {
             logger.debug("Problem with searching tariff: " + ex.getMessage());
@@ -138,10 +144,10 @@ public class TariffDao implements Dao<Tariff> {
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
 
-            pst.setString(1,tariff.getName());
+            pst.setString(1, tariff.getName());
             pst.setString(2, String.valueOf(ServiceType.valueOf(String.valueOf(tariff.getType()))));
-            pst.setInt(3,tariff.getPricePerDay());
-            pst.setBoolean(4,tariff.isActive());
+            pst.setInt(3, tariff.getPricePerDay());
+            pst.setBoolean(4, tariff.isActive());
             pst.setInt(5, tariff.getId());
 
             int status = pst.executeUpdate();

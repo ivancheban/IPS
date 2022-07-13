@@ -2,6 +2,8 @@ package com.dao;
 
 import com.exceptions.UserException;
 import com.model.Customer;
+import com.model.ServiceType;
+import com.model.Tariff;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -26,6 +28,15 @@ class CustomerDaoTest {
             e.printStackTrace();
         }
     }
+    TariffDao tariffDao;
+
+    {
+        try {
+            tariffDao = new TariffDao();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     void customerCreatePositiveTest() {
@@ -40,7 +51,7 @@ class CustomerDaoTest {
 
     @Test
     void customerNotNameNegativeTest() {
-        Customer customer = new Customer("", "Burchenko", "+380639274235", "burchenko@gmal.com",0);
+        Customer customer = new Customer(null, "Burchenko", "+380639274235", "burchenko@gmal.com",0);
         customerDao.create(customer);
         int id = customerDao.findByField("+380639274235").getId();
         Assertions.assertNotEquals(1, id);
@@ -48,7 +59,7 @@ class CustomerDaoTest {
 
     @Test
     void customerNotSurnameCreateNegativeTest() {
-        Customer customer = new Customer("Ivan", "null", "+380639274235", "burchenko@gmal.com",0);
+        Customer customer = new Customer("Ivan", null, "+380639274235", "burchenko@gmal.com",0);
         customerDao.create(customer);
         int id = customerDao.findByField("+380639274235").getId();
         Assertions.assertNotEquals(1, id);
@@ -56,14 +67,14 @@ class CustomerDaoTest {
 
     @Test
     void customerNotPhoneCreateNegativeTest() {
-        Customer customer = new Customer("Ivan", "Pisarchuk", "null", "burchenko@gmal.com",0);
+        Customer customer = new Customer("Ivan", "Pisarchuk", null, "burchenko@gmal.com",0);
         int id = customerDao.create(customer).getId();
         Assertions.assertNotEquals(1, id);
     }
 
     @Test
     void customerNotEmailCreateNegativeTest() {
-        Customer customer = new Customer("Ivan", "Pisarchuk", "+380639274235", "null",0);
+        Customer customer = new Customer("Ivan", "Pisarchuk", "+380639274235", null,0);
         int id = customerDao.create(customer).getId();
         Assertions.assertNotEquals(1, id);
     }
@@ -99,10 +110,8 @@ class CustomerDaoTest {
         int id = customerDao.findByField("+380440000000").getId();
         Customer editCustomer = new Customer(id,"Petr", "Mikulenko", "+380639274299", "mk@gmal.com");
         Customer customer1 = customerDao.update(editCustomer);
-        System.out.println(customer1);
         int customerId = customerDao.findByField("+380639274299").getId();
         String email = customerDao.findByID(customerId).getEmail();
-        System.out.println(email);
         assertEquals("mk@gmal.com", email);
         customerDao.delete(customerId);
     }
@@ -111,11 +120,9 @@ class CustomerDaoTest {
         Customer customer = new Customer("Ivan", "Burchenko", "+380639274235", "burchenko@gmal.com",0);
         customerDao.create(customer);
         int id = customerDao.findByField("+380639274235").getId();
-        System.out.println(id);
         Customer newCustomer = new Customer(id,"Petr", "null", "+380639274299", "mikulenko@gmal.com");
         customerDao.update(newCustomer);
         int customerId = customerDao.findByField("+380639274299").getId();
-        System.out.println(customerId);
         Assertions.assertNotEquals(1, 0);
         customerDao.delete(customerId);
     }
@@ -159,7 +166,6 @@ class CustomerDaoTest {
         int id = customerDao.findByField("+380445221047").getId();
         customerDao.addBalance(id,-200);
         int balance = customerDao.findByID(id).getBalance();
-        System.out.println(balance);
         Assertions.assertNotEquals(-200, 0);
         customerDao.delete(id);
     }
@@ -169,7 +175,6 @@ class CustomerDaoTest {
         Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
         Customer newCustomer = customerDao.create(customer);
         int id = customerDao.findByField("+380445221047").getId();
-        System.out.println(id);
         int oldBalance = 1000;
         customerDao.addBalance(id,oldBalance);
 
@@ -177,8 +182,6 @@ class CustomerDaoTest {
         customerDao.withdrawBalance(id,money);
         int afterWithDraw = oldBalance-money;
         int newBalance = customerDao.findByID(id).getBalance();
-        System.out.println(newBalance);
-
         assertEquals(afterWithDraw,newBalance);
         customerDao.delete(id);
 
@@ -202,13 +205,77 @@ class CustomerDaoTest {
 
     @Test
     void addTariffCustomerPositiveTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+
+        Tariff tariff = new Tariff("GOLD", ServiceType.INTERNET, 250, true);
+        Tariff tariff1 = tariffDao.create(tariff);
+        int idTariff = tariffDao.findByField("GOLD").getId();
+
+        boolean status = customerDao.addTariffCustomer(id, idTariff);
+        assertEquals("true", "true");
+        customerDao.deleteTariffCustomer(id,idTariff);
+
+        boolean deleteCustomer = customerDao.delete(id);
+        boolean deleteTariff = tariffDao.delete(idTariff);
+        assertEquals("true", "true");
+        assertEquals("true", "true");
+    }
+    @Test
+    void addTariffCustomerNegativeTest() {
+        boolean status = customerDao.addTariffCustomer(55, 48);
+        Assertions.assertNotEquals("true", "false");
     }
 
     @Test
-    void deleteTariffCustomer() {
+    void deleteTariffCustomerPositiveTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+
+        Tariff tariff = new Tariff("GOLD", ServiceType.INTERNET, 250, true);
+        Tariff tariff1 = tariffDao.create(tariff);
+        int idTariff = tariffDao.findByField("GOLD").getId();
+
+        boolean status = customerDao.addTariffCustomer(id, idTariff);
+        customerDao.deleteTariffCustomer(id,idTariff);
+        assertEquals("true", "true");
+
+        boolean deleteCustomer = customerDao.delete(id);
+        boolean deleteTariff = tariffDao.delete(idTariff);
+        assertEquals("true", "true");
+        assertEquals("true", "true");
+    }
+    @Test
+    void deleteTariffCustomerNegativeTest() {
+        customerDao.deleteTariffCustomer(104,45);
+        Assertions.assertNotEquals("true", "false");
     }
 
     @Test
-    void getAllTariffs() {
+    void getAllTariffsCustomersPositiveTest() {
+        Customer customer = new Customer("Igor", "Petrenko", "+380445221047", "petrenko@gmal.com",0);
+        Customer newCustomer = customerDao.create(customer);
+        int id = customerDao.findByField("+380445221047").getId();
+
+        Tariff tariff = new Tariff("GOLD", ServiceType.INTERNET, 250, true);
+        Tariff tariff1 = tariffDao.create(tariff);
+        int idTariff = tariffDao.findByField("GOLD").getId();
+
+        boolean status = customerDao.addTariffCustomer(id, idTariff);
+        List<Tariff> tariffs = customerDao.getAllTariffs(id);
+        int size = tariffs.size();
+        assertEquals("true","true");
+        assertNotNull(tariffs);
+
+        customerDao.deleteTariffCustomer(id,idTariff);
+        customerDao.delete(id);
+        tariffDao.delete(idTariff);
+    }
+    @Test
+    void getAllTariffsCustomersNegativeTest() {
+        List<Tariff> tariffs = customerDao.getAllTariffs(45);
+        Assertions.assertNotEquals("true", "false");
     }
 }

@@ -267,7 +267,8 @@ public class CustomerDao implements Dao<Customer> {
         logger.debug("replenished amount");
         return status_replenish;
     }
-    public void addTariffCustomer(int customersId, int tariffId)  {
+    public boolean addTariffCustomer(int customersId, int tariffId)  {
+        boolean addTariff = false;
         logger.debug("Start tariff creating");
         if (tariffId == 0) {
             logger.error("Illegal Argument!!!");
@@ -278,12 +279,16 @@ public class CustomerDao implements Dao<Customer> {
             pst.setInt(1, customersId);
             pst.setInt(2, tariffId);
             int status = pst.executeUpdate();
+            if(status==1){
+                addTariff = true;
+            }
             if (status != 1) throw new TariffException("Created more than one record!!");
         } catch ( SQLException | TariffException ex) {
             logger.debug("Problem with adding tariff to customer: " + ex.getMessage());
 
         }
         logger.debug("customer payment tariff of service ");
+        return addTariff;
     }
     public void deleteTariffCustomer(int customersId, int tariffId)  {
         logger.debug("Start tariff delete");

@@ -26,6 +26,7 @@ public class SubscriptionDao implements Dao<Subscription> {
     private static final String SQL_CALC_FOUND_ROWS = "select SQL_CALC_FOUND_ROWS * from subscriptions limit ?, ?";
     private static final String SELECT_ALL_TARIFFS_QUERY = "select * from subscriptions_tariffs where subscription_id=?";
     private static final String ADD_TARIFF_QUERY = "insert into subscriptions_tariffs(subscription_id,tariff_id ) values (?,?)";
+    private static final String DELETE_TARIFF_QUERY = "DELETE FROM subscriptions_tariffs WHERE subscription_id = ? AND tariff_id = ?;";
     private TariffDao tariffDao = new TariffDao();
     private static Logger logger = LogManager.getLogger(SubscriptionDao.class);
 
@@ -67,15 +68,33 @@ public class SubscriptionDao implements Dao<Subscription> {
             logger.debug("Problem with adding tariff to subscription: " + ex.getMessage());
             throw new SubscriptionException(ex.getMessage(), ex);
         }
-        logger.debug("subscription created");
+        logger.debug("subscription tariff created");
+    }
+    public void deleteTariff(int sub_id, int tariff_id) throws SubscriptionException {
+        logger.debug("Start subscription tariff delete");
+        if (tariff_id == 0) {
+            logger.error("Illegal Argument!!!");
+            throw new IllegalArgumentException();
+        }
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(DELETE_TARIFF_QUERY);) {
+            pst.setInt(1, sub_id);
+            pst.setInt(2, tariff_id);
+            int status = pst.executeUpdate();
+            if (status != 1) throw new SubscriptionException("Deleted more than one record!!");
+        } catch (Exception ex) {
+            logger.debug("Problem with delete tariff to subscription: " + ex.getMessage());
+            throw new SubscriptionException(ex.getMessage(), ex);
+        }
+        logger.debug("subscription tariff deleted");
     }
 
     @Override
-    public Subscription create(Subscription subscription) throws SubscriptionException {
+    public Subscription create(Subscription subscription)  {
         logger.debug("Start subscription creating");
         if (subscription == null) {
             logger.error("subscription not found");
-            throw new SubscriptionException("subscription is not found");
+
         }
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);) {
@@ -87,16 +106,14 @@ public class SubscriptionDao implements Dao<Subscription> {
 
             int status = pst.executeUpdate();
 
-            if (status != 1) throw new SubscriptionException("Created more than one record!!");
+            if (status != 1) throw new SQLException("Service is not created");
             ResultSet keys = pst.getGeneratedKeys();
             if (keys.next()) {
                 int id = keys.getInt(1);
                 subscription.setId(id);
-                System.out.println(subscription.getId());
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             logger.debug("Problem with creating subscription: " + ex.getMessage());
-            throw new SubscriptionException(ex.getMessage(), ex);
         }
         logger.debug("subscription created");
         return subscription;

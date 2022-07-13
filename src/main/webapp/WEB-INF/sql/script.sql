@@ -50,7 +50,7 @@ create table tariffs
 create table subscriptions
 (
     id           int(10) auto_increment not null,
-    name         varchar(25)            not null,
+    name         varchar(25)            not null unique,
     isActive     boolean   default true,
     created      timestamp default now(),
     updated      timestamp default now() on update NOW(),

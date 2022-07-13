@@ -44,6 +44,7 @@ class TariffDaoTest {
     void createTariffPositiveTest() {
         Tariff tariff = new Tariff("GOLD", ServiceType.INTERNET, 250, true);
         Tariff tariff1 = tariffDao.create(tariff);
+        System.out.println(tariff1);
         int id = tariffDao.findByField("GOLD").getId();
         assertEquals(1, 1);
         tariffDao.delete(id);

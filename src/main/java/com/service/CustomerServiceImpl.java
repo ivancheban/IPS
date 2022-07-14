@@ -25,6 +25,11 @@ public class CustomerServiceImpl implements CustomerService{
      public UserDao userDao;
 
     @Override
+    public Customer create(Customer customer) {
+        return customerDao.create(customer);
+    }
+
+    @Override
     public Customer findByPhoneNumber(String phone) {
         return customerDao.findByField(phone);
     }

@@ -9,6 +9,7 @@ import com.model.User;
 import java.util.List;
 
 public interface CustomerService {
+    Customer create(Customer customer);
 
     Customer findByPhoneNumber(String phone);
 
@@ -22,7 +23,7 @@ public interface CustomerService {
 
     boolean addBalance(int customerId, int money);
 
-   boolean withdrawBalance(int customerId, int money);
+    boolean withdrawBalance(int customerId, int money);
 
     void addTariffCustomer(int customerId, int tariffId);
 

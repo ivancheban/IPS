@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TariffService {
 
-    boolean create(TariffDto tariffDto) throws TariffException;
+    boolean create(TariffDto tariffDto);
 
     List<TariffDto> findAllSubscription(int customerId);
 

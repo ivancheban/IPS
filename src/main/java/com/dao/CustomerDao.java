@@ -26,7 +26,7 @@ public class CustomerDao implements Dao<Customer> {
     private static final String ADD_TARIFF_QUERY = "insert into customers_tariffs(customers_id,tariffs_id ) values (?,?)";
     private static final String FIND_ALL_SERVICE = "select *from subscriptions where customers_id=?";
     private static final String SELECT_ALL_TARIFFS_CUSTOMER = "select * from customers_tariffs where customers_id=?";
-    private  static  final String DELETE_TARIFF_OF_CUSTOMER_QUERY ="DELETE FROM customers_tariffs where customers_id = ? and tariffs_id = ?";
+    private static final String DELETE_TARIFF_OF_CUSTOMER_QUERY = "DELETE FROM customers_tariffs where customers_id = ? and tariffs_id = ?";
     private static Logger logger = LogManager.getLogger(CustomerDao.class);
 
     private CustomerDao customerDao;
@@ -53,7 +53,7 @@ public class CustomerDao implements Dao<Customer> {
             throw new UserException("customer is not found");
         }
         try (Connection con = DataSource.getConnection();
-                PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
+             PreparedStatement pst = con.prepareStatement(CREATE_QUERY);) {
 
             pst.setString(1, customer.getName());
             pst.setString(2, customer.getSurname());
@@ -91,40 +91,35 @@ public class CustomerDao implements Dao<Customer> {
                 customer.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
                 customer.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
                 customer.setBalance(resultSet.getInt("balance"));
-                if (customer == null) {
-                    throw new UserException("customer not found");
-                }
             }
-        } catch (Exception ex) {
-            logger.debug("Problem with searching customer: " + ex.getMessage());
+        } catch (SQLException userException) {
+            logger.debug("Problem with searching customer: " + userException.getMessage());
         }
         logger.debug("Customer searched");
         return customer;
     }
 
     public Customer findByID(int id) {
-        Customer customer = new Customer();
         logger.debug("Start customer searching....");
-
+        Customer customer = new Customer();
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(FIND_BY_ID);) {
             pst.setInt(1, id);
 
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                customer.setId(resultSet.getInt("id"));
-                customer.setName(resultSet.getString("name"));
-                customer.setSurname(resultSet.getString("surname"));
-                customer.setPhone(resultSet.getString("phone"));
-                customer.setEmail(resultSet.getString("email"));
-                customer.setActive(resultSet.getBoolean("isActive"));
+                int cusId = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String surName = resultSet.getString("surname");
+                String phone = resultSet.getString("phone");
+                String email = resultSet.getString("email");
+                Boolean isActive = resultSet.getBoolean("isActive");
                 LocalDateTime created = resultSet.getTimestamp("created").toLocalDateTime();
                 LocalDateTime updated = resultSet.getTimestamp("updated").toLocalDateTime();
-                customer.setBalance(resultSet.getInt("balance"));
+                int balance = resultSet.getInt("balance");
+                customer = new Customer(cusId,name,surName,phone,email,isActive,created,updated,balance);
                 customer.setTariffs(getAllTariffs(customer.getId()));
-                if (customer == null) {
-                    throw new UserException("customer not found");
-                }
+
             }
         } catch (Exception ex) {
             logger.debug("Problem with searching customer: " + ex.getMessage());
@@ -139,10 +134,10 @@ public class CustomerDao implements Dao<Customer> {
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUERY);) {
             pst.setString(1, customer.getName());
-            pst.setString(2,customer.getSurname());
-            pst.setString(3,customer.getPhone());
+            pst.setString(2, customer.getSurname());
+            pst.setString(3, customer.getPhone());
             pst.setString(4, customer.getEmail());
-            pst.setInt(5,customer.getId());
+            pst.setInt(5, customer.getId());
 
             int status = pst.executeUpdate();
             if (status != 1) throw new UserException("Updated more than one record!!");
@@ -210,8 +205,8 @@ public class CustomerDao implements Dao<Customer> {
     }
 
     public boolean addBalance(int customer_id, int money) {
-        if(money<0){
-             money = 0;
+        if (money < 0) {
+            money = 0;
         }
         boolean status_replenish = false;
         logger.debug("Start replenish amount....");
@@ -241,13 +236,13 @@ public class CustomerDao implements Dao<Customer> {
 
     public boolean withdrawBalance(int customer_id, int money) {
         boolean status_replenish = false;
-        logger.debug("Start replenish amount....");
+        logger.debug("The amount has been withdrawn....");
         try (Connection con = DataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_BALANCE);) {
 
             Customer customer = findByID(customer_id);
-            if(money < 0 || money > customer.getBalance()){
-                money=0;
+            if (money < 0 || money > customer.getBalance()) {
+                money = 0;
             }
             int newBalance = customer.getBalance() - money;
             pst.setInt(1, newBalance);
@@ -256,18 +251,20 @@ public class CustomerDao implements Dao<Customer> {
             int status = pst.executeUpdate();
             if (status == 1) {
                 status_replenish = true;
+                logger.debug("the amount withdrawn");
             }
             if (status != 1) throw new SQLException();
             con.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
-            logger.debug("Problem with replenish amount: " + ex.getMessage());
+            logger.debug("There is a problem with withdrawing the amount: " + ex.getMessage());
         }
 
-        logger.debug("replenished amount");
+
         return status_replenish;
     }
-    public boolean addTariffCustomer(int customersId, int tariffId)  {
+
+    public boolean addTariffCustomer(int customersId, int tariffId) {
         boolean addTariff = false;
         logger.debug("Start tariff creating");
         if (tariffId == 0) {
@@ -279,18 +276,19 @@ public class CustomerDao implements Dao<Customer> {
             pst.setInt(1, customersId);
             pst.setInt(2, tariffId);
             int status = pst.executeUpdate();
-            if(status==1){
+            if (status == 1) {
                 addTariff = true;
             }
             if (status != 1) throw new TariffException("Created more than one record!!");
-        } catch ( SQLException | TariffException ex) {
+        } catch (SQLException | TariffException ex) {
             logger.debug("Problem with adding tariff to customer: " + ex.getMessage());
 
         }
         logger.debug("customer payment tariff of service ");
         return addTariff;
     }
-    public void deleteTariffCustomer(int customersId, int tariffId)  {
+
+    public void deleteTariffCustomer(int customersId, int tariffId) {
         logger.debug("Start tariff delete");
         if (tariffId == 0) {
             logger.error("Illegal Argument!!!");
@@ -302,11 +300,12 @@ public class CustomerDao implements Dao<Customer> {
             pst.setInt(2, tariffId);
             int status = pst.executeUpdate();
             if (status != 1) throw new TariffException("Created more than one record!!");
-        } catch ( SQLException | TariffException ex) {
+        } catch (SQLException | TariffException ex) {
             logger.debug("Problem with delete tariff to customer: " + ex.getMessage());
         }
         logger.debug(" delete tariff of customer ");
     }
+
     public List<Tariff> getAllTariffs(int customer) {
         logger.debug("Start  searching all tariffs ...");
         List<Tariff> tariffs = new ArrayList<>();

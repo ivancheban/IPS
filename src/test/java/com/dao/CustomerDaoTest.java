@@ -99,8 +99,7 @@ class CustomerDaoTest {
     @Test
     void findByIDNegativeTest() {
         Customer customer = customerDao.findByID(15);
-        System.out.println(customer);
-        Assertions.assertNotEquals(1, 0);
+        Assertions.assertNotEquals(15, 0);
     }
 
     @Test

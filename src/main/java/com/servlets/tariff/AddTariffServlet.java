@@ -45,7 +45,7 @@ public class AddTariffServlet extends HttpServlet {
                 resp.sendRedirect("/tariffs");
             }
 
-        } catch (TariffException e) {
+        } catch (Exception e) {
 
             session.setAttribute("errorMessage", e.getMessage());
             resp.sendRedirect("/admin.jsp");

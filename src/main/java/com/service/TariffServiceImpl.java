@@ -14,12 +14,9 @@ import java.util.stream.Collectors;
 public class TariffServiceImpl implements TariffService {
     TariffDao tariffDao = new TariffDao();
     @Override
-    public boolean create(TariffDto tariffDto) throws TariffException {
+    public boolean create(TariffDto tariffDto)  {
         Tariff newTariff = BusinessMapper.convertTariff(tariffDto);
         tariffDao.create(newTariff);
-        if (newTariff.getId() == 0) {
-            throw new TariffException("tariff is not create");
-        }
         return true;
     }
 

@@ -6,7 +6,7 @@ use internet_provider_base;
 
 create table users
 (
-    id       int(10) auto_increment,
+    id       int(10) auto_increment not null,
     phone    varchar(16)  not null unique,
     password varchar(100) not null,
     isActive boolean   default true,
@@ -20,7 +20,7 @@ create table users
 
 create table customers
 (
-    id       int(10) auto_increment,
+    id       int(10) auto_increment not null,
     name     varchar(25) not null,
     surname  varchar(25) not null,
     phone    varchar(13) not null unique,
@@ -35,7 +35,7 @@ create table customers
 
 create table tariffs
 (
-    id            int(10) auto_increment,
+    id            int(10) auto_increment not null,
     name          varchar(25) not null unique,
     service_type  enum ('TV','INTERNET','IPTV','MOBILE') not null,
     price_per_day int(10) not null ,

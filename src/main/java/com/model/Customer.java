@@ -52,6 +52,18 @@ public class Customer {
         this.balance = balance;
     }
 
+    public Customer(int id, String name, String surname, String phone, String email, boolean isActive, LocalDateTime created, LocalDateTime updated, int balance) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.isActive = isActive;
+        this.created = created;
+        this.updated = updated;
+        this.balance = balance;
+    }
+
     public Customer(int id, String name, String surname, String phone, String email, int balance) {
         this.id = id;
         this.name = name;

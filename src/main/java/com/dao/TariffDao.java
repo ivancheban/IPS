@@ -83,7 +83,7 @@ public class TariffDao implements Dao<Tariff> {
                 e.printStackTrace();
             }
         }
-        logger.debug("Tariff created");
+
         return tariff;
     }
 
